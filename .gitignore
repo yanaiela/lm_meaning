@@ -315,3 +315,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,linux,windows,macos,jupyternotebooks
 
 data/
+.idea/

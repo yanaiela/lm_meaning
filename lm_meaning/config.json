@@ -1,0 +1,13 @@
+{
+    "ExampleInstruction": {
+        "max_number_of_examples": 100,
+        "debug": true,
+        "dev_size": 10
+    },
+
+    "NumericInstruction": {
+        "max_number_of_examples": 100,
+        "debug": true,
+        "dev_size": 10
+    }
+}
