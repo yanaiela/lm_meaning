@@ -62,7 +62,8 @@ def main():
 
     query, json_data = prepare_data(args)
 
-    eval_query(tokenizer, model, json_data, query)
+    acc = eval_query(tokenizer, model, json_data, query)
+    print('accuracy', acc)
 
 
 if __name__ == '__main__':
