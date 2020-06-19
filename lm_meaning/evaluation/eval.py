@@ -24,15 +24,15 @@ def log_wandb(args):
     )
 
     wandb.init(
-        name=args.instruction,
         project="lm_instructions",
+        name=args.instruction,
         tags=["lm", "eval", args.instruction],
         config=config,
     )
 
 
 def prepare_data(args):
-    json_list = get_jsonl_from_s3(args.input_file)
+    json_list = get_jsonl_from_s3(args.input_file.replace('.jsonl', '_{}.jsonl'.format(args.split)))
 
     assert len(json_list) > 0, 'data list is empty'
 
@@ -49,14 +49,13 @@ def main():
     parse.add_argument("-in", "--input_file", type=str, help="")
     parse.add_argument("-encoder", "--encoder", type=str, help="encoder model")
     # parse.add_argument("-v", "--variant", type=str, help="", default="")
-    # parse.add_argument("-s", "--split", type=str, help="The task stage to run", default="")
+    parse.add_argument("-s", "--split", type=str, help="The task stage to run", default="dev")
     parse.add_argument("--cuda_device", type=int, help="", default=-1)
-    # parse.add_argument("--copy_from", type=str, help="For create new challenge, the chllenge to copy from", default=-1)
-    # parse.add_argument("--challenge_module", type=str, help="For create new challenge, the target challenge path",
-    #                    default='')
     # parse.add_argument("-p", "--n_processes", type=int, help="For challenges with multi process", default=1)
     parse.add_argument("--config_path", type=str, help="Challenges config file", default="config.json")
     args = parse.parse_args()
+
+    log_wandb(args)
 
     tokenizer, model = get_pretrained_model(args)
 
@@ -64,6 +63,7 @@ def main():
 
     acc = eval_query(tokenizer, model, json_data, query)
     print('accuracy', acc)
+    wandb.run.summary['accuracy'] = acc
 
 
 if __name__ == '__main__':
