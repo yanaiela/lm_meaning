@@ -9,5 +9,10 @@
         "max_number_of_examples": 100,
         "debug": true,
         "dev_size": 10
+    },
+    "UppercaseInstruction": {
+        "max_number_of_examples": 100,
+        "debug": true,
+        "dev_size": 10
     }
 }
