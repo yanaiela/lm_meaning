@@ -19,7 +19,7 @@ class NumericInstruction(LMInstruction):
 
         for example_ind, num in tqdm(enumerate(range(101))):
 
-            prompt = 'The numeric version of "{}" is: [MASK]'
+            prompt = 'The numeric version of "{}" is: [MASK].'
             input_num = num2words(num)
             ans = str(num)
 
