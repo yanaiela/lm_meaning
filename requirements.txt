@@ -4,3 +4,4 @@ wandb
 boto3
 allennlp
 num2words
+spur
