@@ -10,14 +10,14 @@ from lm_meaning.common.challenge_utils import filter_vals
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 
-class PluralInstruction(LMInstruction):
+class PastInstruction(LMInstruction):
     def __init__(self, args):
-        self.instruction_name = 'PluralInstruction'
+        self.instruction_name = 'PastInstruction'
         logger.info("loading...")
         super().__init__(args)
 
     def process_conll(self, lines):
-        number_inflections = {}
+        tense_inflection = {}
 
         for line in tqdm(lines):
             if line.strip() == '':
@@ -26,36 +26,36 @@ class PluralInstruction(LMInstruction):
                 continue
             parts = line.split()
             lemma = parts[2]
-            if parts[3] == 'NOUN':
-                morph = parts[5]
-                morph_parts = morph.split('|')
-                for morph_val in morph_parts:
-                    if morph_val.startswith('Number=Plur'):
-                        number_inflections[lemma] = parts[1]
-        return number_inflections
+            if parts[3] == 'VERB':
+                morphs = parts[5]
+                morphs_parts = morphs.split('|')
+                for morph_val in morphs_parts:
+                    if morph_val.startswith('Tense=Past'):
+                        tense_inflection[lemma] = parts[1]
+        return tense_inflection
 
     def build_challenge(self, args):
 
         logger.info("loading conll file")
         lines = get_file_from_s3("s3://lminstructions/data/ud/en_ewt-ud-train.conllu")
-        plural_inflection = self.process_conll(lines)
+        past_inflection = self.process_conll(lines)
 
-        logger.info("initial examples: {}".format(len(plural_inflection)))
+        logger.info("initial examples: {}".format(len(past_inflection)))
 
         tokenizer, _ = get_pretrained_model('roberta-large')
-        filter_plural_inflection = filter_vals(plural_inflection, tokenizer)
-        logger.info("left after filtering: {}".format(len(filter_plural_inflection)))
+        filter_past_inflection = filter_vals(past_inflection, tokenizer)
+        logger.info("left after filtering: {}".format(len(filter_past_inflection)))
 
         logger.info("building examples")
 
-        prompt = 'Conjugate the word "{}" to plural form: [MASK].'
+        prompt = 'Conjugate the word "{}" to past tense: [MASK].'
 
-        for example_ind, (lemma, plural) in tqdm(enumerate(filter_plural_inflection.items())):
+        for example_ind, (lemma, plural) in tqdm(enumerate(filter_past_inflection.items())):
 
             example = {'prompt': prompt,
                        'input': lemma,
                        'answer': plural,
-                       'function': 'pluralize'}
+                       'function': 'past'}
 
             self.append_olmpics_format_example(example, do_print=self._config['debug'])
 

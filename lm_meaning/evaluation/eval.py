@@ -18,6 +18,7 @@ def log_wandb(args):
         # property=task_type,
         encoder=args.encoder,
         instruction=args.instruction,
+        split=args.split,
         # dataset=dataset,
         # masking=masking,
         # layer=layer
@@ -53,17 +54,24 @@ def main():
     parse.add_argument("--cuda_device", type=int, help="", default=-1)
     # parse.add_argument("-p", "--n_processes", type=int, help="For challenges with multi process", default=1)
     parse.add_argument("--config_path", type=str, help="Challenges config file", default="config.json")
+    parse.add_argument("--wandb", type=bool, help="Wheather to use wandb or not", default=False)
     args = parse.parse_args()
 
-    log_wandb(args)
+    if args.wandb:
+        log_wandb(args)
 
     tokenizer, model = get_pretrained_model(args.encoder)
 
     query, json_data = prepare_data(args)
 
+    if args.wandb:
+        wandb.run.summary['size'] = len(json_data)
+
     acc = eval_query(tokenizer, model, json_data, query)
     print('accuracy', acc)
-    wandb.run.summary['accuracy'] = acc
+
+    if args.wandb:
+        wandb.run.summary['accuracy'] = acc
 
 
 if __name__ == '__main__':

@@ -10,5 +10,6 @@ encoder=$4
         -i $task \
         -in $file \
         -s $split \
-        --encoder $encoder
+        --encoder $encoder \
+        --wandb True
 

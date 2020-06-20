@@ -49,7 +49,12 @@ runs_dic = {
         'task': 'Plural',
         'file': 's3://lminstructions/instructions/plurals.jsonl.gz',
         'split': 'dev',
-    }
+    },
+    'past': {
+        'task': 'Past',
+        'file': 's3://lminstructions/instructions/plurals.jsonl.gz',
+        'split': 'dev',
+    },
 
 }
 

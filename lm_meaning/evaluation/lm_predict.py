@@ -1,7 +1,8 @@
-import torch
-import numpy as np
-from tqdm import tqdm
 from collections import defaultdict
+
+import numpy as np
+import torch
+from tqdm import tqdm
 
 
 def sentences2ids(sentences, tokenizer):
@@ -40,7 +41,6 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
 
         # "normalizing" the tokens to 'standard' strings
         best_k_tokens = [tokenizer.convert_tokens_to_string(x).strip() for x in best_k_tokens]
-        # best_k_tokens = [x.replace('Ġ', '') for x in best_k_tokens]
 
         sentences_best_k.append(best_k_tokens[::-1])
     return sentences_best_k
@@ -89,7 +89,7 @@ def eval_query(tokenizer, lm_model, vals_dic, query, debug=False, bs=50, k=10, i
 
     batched_data = data2batches(query, vals_dic, tokenizer, bs)
 
-    for batch in batched_data:
+    for batch in tqdm(batched_data):
         tokenized_sentence = [x['tokenized_sentence'] for x in batch]
         mask_indices = [x['masked_ind'] for x in batch]
         answers = [x['answer'] for x in batch]
