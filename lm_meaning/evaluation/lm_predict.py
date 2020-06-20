@@ -39,7 +39,7 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
         best_k_tokens = tokenizer.convert_ids_to_tokens(top_per_sentence)
 
         # "normalizing" the tokens to 'standard' strings
-        best_k_tokens = [tokenizer.convert_tokens_to_string(x) for x in best_k_tokens]
+        best_k_tokens = [tokenizer.convert_tokens_to_string(x).strip() for x in best_k_tokens]
         # best_k_tokens = [x.replace('Ġ', '') for x in best_k_tokens]
 
         sentences_best_k.append(best_k_tokens[::-1])
