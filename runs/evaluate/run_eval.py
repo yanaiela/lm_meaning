@@ -23,7 +23,14 @@ runs_dic = {
             'bert-base-uncased',
             'bert-large-uncased',
             'roberta-base',
-            'roberta-large']
+            'roberta-large',
+            'albert-base-v2',
+            'albert-large-v2',
+            'albert-xlarge-v2',
+            'albert-xxlarge-v2',
+            'xlm-roberta-base',
+            'xlm-roberta-large',
+        ]
 
     },
 

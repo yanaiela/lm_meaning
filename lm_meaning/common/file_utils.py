@@ -303,6 +303,21 @@ def get_jsonl_from_s3(s3_path):
     return data
 
 
+def get_file_from_s3(s3_path):
+    gcide_ws_cached = cached_path(s3_path)
+    data = []
+    if s3_path.endswith('.gz'):
+        with gzip.open(gcide_ws_cached, 'r') as f:
+            for line in f:
+                data.append(line)
+    else:
+        with open(gcide_ws_cached, 'r') as f:
+            for line in f:
+                data.append(line)
+
+    return data
+
+
 def upload_jsonl_to_s3(upload_path, instances, header=None, sample_indent=False):
     output_file = upload_path.replace('s3://', '')
     bucketName = output_file.split('/')[0]
@@ -333,10 +348,10 @@ def upload_jsonl_to_s3(upload_path, instances, header=None, sample_indent=False)
 
 
 def is_path_creatable(pathname: str) -> bool:
-    '''
+    """
     `True` if the current user has sufficient permissions to create the passed
     pathname; `False` otherwise.
-    '''
+    """
     # Parent directory of the passed path. If empty, we substitute the current
     # working directory (CWD) instead.
     dirname = os.path.dirname(pathname) or os.getcwd()

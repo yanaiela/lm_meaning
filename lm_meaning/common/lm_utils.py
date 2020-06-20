@@ -7,13 +7,12 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-def get_pretrained_model(args):
+def get_pretrained_model(model_name):
     """
     Load tokenizer and model for MaskedLM kind.
-    :param args:
+    :param model_name: the name of te model to use
     :return: tokenizer, model
     """
-    model_name = args.encoder
     logger.info("using pretrained model: {}".format(model_name))
 
     try:

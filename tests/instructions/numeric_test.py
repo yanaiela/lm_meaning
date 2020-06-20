@@ -6,7 +6,7 @@ from num2words import num2words
 from lm_meaning.instructions.numerics_instruction import NumericInstruction
 
 
-class TestExampleInstruction:
+class TestNumericInstruction:
     def test_build_challenge(self):
         parse = argparse.ArgumentParser("")
         parse.add_argument("-i", "--challenge_name", type=str, help="The name of the challenge class and config to use")

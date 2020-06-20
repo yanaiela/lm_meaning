@@ -57,7 +57,7 @@ def main():
 
     log_wandb(args)
 
-    tokenizer, model = get_pretrained_model(args)
+    tokenizer, model = get_pretrained_model(args.encoder)
 
     query, json_data = prepare_data(args)
 
