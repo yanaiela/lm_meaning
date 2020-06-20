@@ -6,9 +6,34 @@ from runs.ts_run import parallelize
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
+    'nlp10',
+    'nlp11',
+    'nlp12',
+    'nlp13',
+    'nlp14',
     'nlp15',
 ]
 
+
+# ┌──────────┐
+# │ encoders │
+# └──────────┘
+encoders = ['bert-base-uncased',
+            'bert-large-uncased',
+            'roberta-base',
+            'roberta-large',
+            'albert-base-v2',
+            'albert-large-v2',
+            'albert-xlarge-v2',
+            'albert-xxlarge-v2',
+            'xlm-roberta-base',
+            'xlm-roberta-large',
+            ]
+
+# ┌────────┐
+# │ splits │
+# └────────┘
+splits = ['dev']
 
 # ┌──────────────────────┐
 # │ generate experiments │
@@ -19,20 +44,12 @@ runs_dic = {
         'task': 'Numeric',
         'file': 's3://lminstructions/instructions/number2int.jsonl.gz',
         'split': 'dev',
-        'encoders': [
-            'bert-base-uncased',
-            'bert-large-uncased',
-            'roberta-base',
-            'roberta-large',
-            'albert-base-v2',
-            'albert-large-v2',
-            'albert-xlarge-v2',
-            'albert-xxlarge-v2',
-            'xlm-roberta-base',
-            'xlm-roberta-large',
-        ]
-
     },
+    'plural': {
+        'task': 'Plural',
+        'file': 's3://lminstructions/instructions/plurals.jsonl.gz',
+        'split': 'dev',
+    }
 
 }
 
@@ -47,9 +64,9 @@ if __name__ == '__main__':
     for data_type, vals in runs_dic.items():
         task = vals['task']
         file = vals['file']
-        split = vals['split']
-        for encoder in vals['encoders']:
-            cartesian_product.append([task, file, split, encoder])
+        for split in splits:
+            for encoder in encoders:
+                cartesian_product.append([task, file, split, encoder])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/evaluate/run_eval.sh',
                 on_gpu=True, dry_run=args.dry_run)
