@@ -1,8 +1,8 @@
 import pytest
 import numpy as np
-from lm_meaning.evaluation.lm_predict import split_data2batches, sentences2ids
+from lm_meaning.evaluation.lm_predict import split_data2batches, sentences2ids, lm_baseline
 
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForMaskedLM
 
 
 def generate_examples(n, sen_len):
@@ -51,3 +51,19 @@ def test_tokenization_uneven():
     sentence_example2 = "Hello there [MASK]."
     tokenized_sentences, masked_indices = sentences2ids([sentence_example1, sentence_example2], tokenizer)
     assert len(tokenized_sentences) == len(masked_indices)
+
+
+# @pytest.fixture(params=[0, 11, 33])
+@pytest.mark.parametrize("model_name,expected", [
+    ("bert-base-uncased", "hello"),
+    ("roberta-base", "HI")
+])
+def test_lm_baseline(model_name, expected):
+    most_close = {'hi': expected}
+
+    # model_name = 'bert-base-uncased'
+    model = AutoModelForMaskedLM.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+    acc = lm_baseline(tokenizer, model, most_close)
+    assert acc == 1.

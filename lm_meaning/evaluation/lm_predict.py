@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 import numpy as np
+from scipy.spatial import distance
 import torch
 from tqdm import tqdm
 
@@ -44,6 +45,29 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
 
         sentences_best_k.append(best_k_tokens[::-1])
     return sentences_best_k
+
+
+def get_most_similar(weights, vec):
+    distances = distance.cdist(np.array([vec]), weights, "cosine")[0]
+    most_similar = np.argsort(distances)
+    # 0 index is the same vector, returning the next most similar vector
+    return most_similar[1]
+
+
+def lm_baseline(tokenizer, lm_model, vals_dic):
+
+    word_embeddings = lm_model.get_input_embeddings().weight.detach().numpy()
+
+    acc = 0.
+    for k, v in vals_dic.items():
+        token_id = tokenizer.convert_tokens_to_ids(k)
+        most_similar_id = get_most_similar(word_embeddings, word_embeddings[token_id])
+        most_similar_token = tokenizer.convert_ids_to_tokens(int(most_similar_id))
+        most_similar_token_string = tokenizer.convert_tokens_to_string([most_similar_token]).strip()
+        if v == most_similar_token_string:
+            acc += 1
+
+    return acc
 
 
 def split_data2batches(data_list, max_batch_size):

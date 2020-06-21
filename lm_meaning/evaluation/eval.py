@@ -2,7 +2,7 @@ import argparse
 import wandb
 
 from lm_meaning.common.lm_utils import get_pretrained_model
-from lm_meaning.evaluation.lm_predict import eval_query
+from lm_meaning.evaluation.lm_predict import eval_query, lm_baseline
 from lm_meaning.common.file_utils import get_jsonl_from_s3
 
 import logging
@@ -68,10 +68,13 @@ def main():
         wandb.run.summary['size'] = len(json_data)
 
     acc = eval_query(tokenizer, model, json_data, query)
+    embedding_baseline_acc = lm_baseline(tokenizer, model, json_data)
     print('accuracy', acc)
+    print('baseline accuracy', embedding_baseline_acc)
 
     if args.wandb:
         wandb.run.summary['accuracy'] = acc
+        wandb.run.summary['embedding_baseline_accuracy'] = embedding_baseline_acc
 
 
 if __name__ == '__main__':
