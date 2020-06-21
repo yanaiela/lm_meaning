@@ -67,7 +67,8 @@ def lm_baseline(tokenizer, lm_model, vals_dic):
         if v == most_similar_token_string:
             acc += 1
 
-    return acc
+    total_vals = len(vals_dic)
+    return acc / total_vals
 
 
 def split_data2batches(data_list, max_batch_size):
