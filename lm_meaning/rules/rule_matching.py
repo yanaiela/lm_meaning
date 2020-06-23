@@ -33,7 +33,9 @@ class RuleMatcher:
             title = url.split('/')[-1]
             params = {'title': title}
 
-            url_text = get_text_from_url(url)
+            html_data = get_text_from_url(url)
+            url_text = html_data['text']
+            params['infobox'] = html_data['infobox']
             ans = None
             for line in url_text.split('\n'):
                 if line.strip() == '':
