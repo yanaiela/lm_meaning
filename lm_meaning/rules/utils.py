@@ -106,6 +106,33 @@ def cache_url_fetch(cache_path=str(Path.home())):
     return decorate
 
 
+def read_infobox(text):
+    soup = BeautifulSoup(text, 'lxml')
+    table_content = []
+    infobox = soup.find('table', class_='infobox vcard')
+    if not infobox:
+        return table_content
+    for items in infobox.find_all('tr'):
+        data = items.find_all(['th', 'td'])
+        try:
+            title = data[0].text
+            answer = data[1]
+        except IndexError:
+            continue
+        row_dic = {'key': title}
+
+        answer_values = []
+        for x in answer.find_all('a'):
+            answer_values.append(x.text)
+
+        if len(answer_values) == 0:
+            answer_values.append(answer.text)
+
+        row_dic['values'] = answer_values
+        table_content.append(row_dic)
+    return table_content
+
+
 # @lru_cache(maxsize=None)
 @cache_url_fetch()
 def get_text_from_url(url):
@@ -113,6 +140,7 @@ def get_text_from_url(url):
     txt = resp.text
     soup = BeautifulSoup(txt, 'html.parser')
 
+    table_content = read_infobox(txt)
     # filtering some elements for a clearer text.
 
     # filtering tables
@@ -123,7 +151,7 @@ def get_text_from_url(url):
     for sup in soup.find_all("sup"):
         sup.extract()
 
-    return soup.get_text()
+    return {'text': soup.get_text(), 'infobox': table_content}
 
 
 def eval_performance(entry_answers):
