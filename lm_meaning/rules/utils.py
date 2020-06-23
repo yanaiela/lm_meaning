@@ -109,7 +109,7 @@ def cache_url_fetch(cache_path=str(Path.home())):
 def read_infobox(text):
     soup = BeautifulSoup(text, 'lxml')
     table_content = []
-    infobox = soup.find('table', class_='infobox vcard')
+    infobox = soup.find('table', class_='infobox')
     if not infobox:
         return table_content
     for items in infobox.find_all('tr'):
