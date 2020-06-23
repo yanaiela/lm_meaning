@@ -123,8 +123,9 @@ def read_infobox(text):
 
         answer_values = []
         if answer.text:
-            for split in answer.text.split(','):
-                answer_values.append(split.strip())
+            for split in answer.stripped_strings:
+                for comma_sep in split.split(','):
+                    answer_values.append(comma_sep.strip())
 
         for x in answer.find_all('a'):
             answer_values.append(x.text)
