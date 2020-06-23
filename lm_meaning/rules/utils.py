@@ -1,15 +1,12 @@
 import json
-from functools import lru_cache
-# Import required modules.
-from azure.cognitiveservices.search.websearch import WebSearchClient
-from msrest.authentication import CognitiveServicesCredentials
-from pathlib import Path
 import os
+from functools import lru_cache
+from pathlib import Path
+
 import requests
-import json
-from tqdm.notebook import tqdm
-import spacy
+from azure.cognitiveservices.search.websearch import WebSearchClient
 from bs4 import BeautifulSoup
+from msrest.authentication import CognitiveServicesCredentials
 
 
 def read_key():
