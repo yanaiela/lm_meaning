@@ -317,3 +317,4 @@ $RECYCLE.BIN/
 data/
 .idea/
 wandb/
+subscription.json

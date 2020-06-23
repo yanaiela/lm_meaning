@@ -1,0 +1,137 @@
+import json
+from functools import lru_cache
+# Import required modules.
+from azure.cognitiveservices.search.websearch import WebSearchClient
+from msrest.authentication import CognitiveServicesCredentials
+from pathlib import Path
+import os
+import requests
+import json
+from tqdm.notebook import tqdm
+import spacy
+from bs4 import BeautifulSoup
+
+
+def read_key():
+    with open('subscription.json', 'r') as f:
+        line = f.read().strip()
+    json_data = json.loads(line)
+    return json_data['azure_key']
+
+
+subscription_key = read_key()
+# Instantiate the client and replace with your endpoint.
+azure_client = WebSearchClient(endpoint="https://eastus.api.cognitive.microsoft.com/",
+                               credentials=CognitiveServicesCredentials(subscription_key))
+
+
+def read_file(in_file):
+    with open(in_file, 'r') as f:
+        lines = f.readlines()
+        lines = [json.loads(x.strip()) for x in lines]
+    entities = [{'obj': x['obj_label'], 'sub': x['sub_label']} for x in lines]
+    return entities
+
+
+def read_cache(in_file):
+    if not os.path.isfile(in_file):
+        return {}
+    with open(in_file, 'r') as f:
+        data = f.read()
+    json_data = json.loads(data)
+    return json_data
+
+
+def save_cache(out_file, json_obj):
+    Path(out_file.rsplit('/', 1)[0]).mkdir(parents=True, exist_ok=True)
+    with open(out_file, 'w') as f:
+        json.dump(json_obj, f)
+
+
+def cache_web_queries(cache_path=str(Path.home())):
+    cache_file = cache_path + '/.web_queries/query.json'
+
+    def decorate(func):
+        def call(*args, **kwargs):
+            json_data = read_cache(cache_file)
+            query = args[0]
+            if query in json_data:
+                result = json_data[query]
+            else:
+                result = func(*args, **kwargs)
+                json_data[query] = result
+                save_cache(cache_file, json_data)
+            return result
+        return call
+    return decorate
+
+
+@cache_web_queries()
+@lru_cache(maxsize=None)
+def search_results(query):
+
+    # Make a request.
+    web_data = azure_client.web.search(query=query)
+
+    '''
+    Web pages
+    If the search response contains web pages, the first result's name and url
+    are printed.
+    '''
+    if hasattr(web_data.web_pages, 'value'):
+
+        web_page = web_data.web_pages.value[0]
+
+        # skipping the simple wikipedia result
+        if 'simple.wikipedia' in web_page.url and len(web_data.web_pages.value) > 1:
+            web_page = web_data.web_pages.value[1]
+
+        return web_page.url
+
+    return None
+
+
+def cache_url_fetch(cache_path=str(Path.home())):
+    cache_file = cache_path + '/.web_queries/urls.json'
+
+    def decorate(func):
+        def call(*args, **kwargs):
+            json_data = read_cache(cache_file)
+            url = args[0]
+            if url in json_data:
+                text = json_data[url]
+            else:
+                text = func(*args, **kwargs)
+                json_data[url] = text
+                save_cache(cache_file, json_data)
+            return text
+        return call
+    return decorate
+
+
+# @lru_cache(maxsize=None)
+@cache_url_fetch()
+def get_text_from_url(url):
+    resp = requests.get(url)
+    txt = resp.text
+    soup = BeautifulSoup(txt, 'html.parser')
+
+    # filtering some elements for a clearer text.
+
+    # filtering tables
+    for table in soup.find_all("table"):
+        table.extract()
+
+    # filtering subscripts, which mess up the parsing sometimes (e.g. https://en.wikipedia.org/wiki/Kissyfur)
+    for sup in soup.find_all("sup"):
+        sup.extract()
+
+    return soup.get_text()
+
+
+def eval_performance(entry_answers):
+    acc = 0
+    for entry in entry_answers:
+        if entry['ans'] == entry['obj']:
+            acc += 1
+    return acc / len(entry_answers)
