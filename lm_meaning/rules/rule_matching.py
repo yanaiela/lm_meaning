@@ -9,7 +9,7 @@ class RuleMatcher:
         self.nlp = spacy.load("en_core_web_sm")
         self.search_query = search_query
 
-    def process_relation(self, data, subset=False):
+    def process_relation(self, data, subset=10):
 
         assert self.search_query is not None
 

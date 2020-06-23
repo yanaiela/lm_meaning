@@ -20,12 +20,10 @@ def main():
     data = read_file('data/TREx_train/{}.jsonl'.format(args.rule_name))
 
     matcher = RuleFactory().get_rule(args.rule_name)
-    answers = matcher.process_relation(data, subset=True)
+    answers = matcher.process_relation(data, subset=10)
 
     print(eval_performance(answers))
 
 
 if __name__ == '__main__':
     main()
-
-
