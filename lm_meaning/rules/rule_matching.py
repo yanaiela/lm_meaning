@@ -17,7 +17,7 @@ class RuleMatcher:
 
         filtered_data = data
         if subset:
-            filtered_data = data[:10]
+            filtered_data = data[:subset]
         for entry in tqdm(filtered_data):
             subj = entry['sub']
             obj = entry['obj']
