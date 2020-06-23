@@ -122,11 +122,12 @@ def read_infobox(text):
         row_dic = {'key': title}
 
         answer_values = []
+        if answer.text:
+            for split in answer.text.split(','):
+                answer_values.append(split.strip())
+
         for x in answer.find_all('a'):
             answer_values.append(x.text)
-
-        if len(answer_values) == 0:
-            answer_values.append(answer.text)
 
         row_dic['values'] = answer_values
         table_content.append(row_dic)
