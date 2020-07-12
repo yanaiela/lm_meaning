@@ -13,13 +13,13 @@ class P279(RuleMatcher):
         if title in line:
             ans = self.parse_subclass_of(title, line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'title', 'evidence': line}
         if 'is a' in line:
             ans = self.parse_is_a(line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'is a', 'evidence': line}
 
-        return None
+        return {'answer': ''}
 
     def parse_subclass_of(self, title, text):
         doc = self.nlp(text)

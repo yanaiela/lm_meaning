@@ -12,17 +12,17 @@ class P103(RuleMatcher):
         if 'language' in line:
             ans = self.parse_language(line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'language', 'evidence': line}
         if 'speak' in line:
             ans = self.parse_speak(line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'speak', 'evidence': line}
         if 'is a' in line:
             ans = self.parse_is_a(line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'is a', 'evidence': line}
 
-        return None
+        return {'answer': ''}
 
     def parse_language(self, text):
         doc = self.nlp(text)

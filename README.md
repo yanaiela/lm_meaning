@@ -10,18 +10,15 @@ add project to path:
 export PYTHONPATH=${PYTHONPATH}:/path-to-project
 ```
 
-Setup aws credentials
 
 ## Creating a new Instruction task:
 
-* Edit the `config.json` file and add the relevant fields
-* Create a new script in the instructions folder (`lm_meaning/instructions/``)
-* The name on that class should end with `Instruction` and the prefix of that class will be used
-to refer to that instruction when using the framework
-* Implement the `build_challenge` method, which is the core 'brain' of how the
- instruction will look like
-* To create and upload the task, call the `run.py` function, in a similar manner:
-```python
-python lm_meaning/run.py -i Example -o build_challenge -out s3://lminstructions/instructions/example.jsonl.gz
+* Create a new script in the rules folder (`lm_meaning/rules/trex``) that parse a wikipedia document
+* The name on the class and file should look like the relation name e.g. `P103`
+* Implement the `match_rules` method, which is the core 'brain' of how the
+ rule will parse the wikipedia page (specifically each line)
+* To parse and evaluate a rule, call the `run.py` function, in the following way:
+```py
+python lm_meaning/rules/run.py -r P1303
 ```
 

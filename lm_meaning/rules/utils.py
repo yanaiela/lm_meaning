@@ -3,6 +3,7 @@ import os
 from functools import lru_cache
 from pathlib import Path
 
+import jsonlines
 import requests
 from azure.cognitiveservices.search.websearch import WebSearchClient
 from bs4 import BeautifulSoup
@@ -30,43 +31,48 @@ def read_file(in_file):
     return entities
 
 
-def read_cache(in_file):
-    if not os.path.isfile(in_file):
-        return {}
-    with open(in_file, 'r') as f:
-        data = f.read()
-    json_data = json.loads(data)
-    return json_data
+class Cache:
+
+    def __init__(self, file: str):
+        self.file_name = file
+        self.prop = "key"
+
+        # creating dit if not existing
+        Path(file.rsplit('/', 1)[0]).mkdir(parents=True, exist_ok=True)
+        if not os.path.isfile(file):
+            data = {}
+        else:
+            data = list(jsonlines.open(file, mode="r"))
+
+        self.obj = {}
+        for entry in data:
+            for k, v in entry.items():
+                self.obj[k] = v
+
+    def add(self, k, v):
+        self.obj[k] = v
+        with jsonlines.open(self.file_name, 'a') as f:
+            f.write({k: v})  # Adds to file
 
 
-def save_cache(out_file, json_obj):
-    Path(out_file.rsplit('/', 1)[0]).mkdir(parents=True, exist_ok=True)
-    with open(out_file, 'w') as f:
-        json.dump(json_obj, f)
+def caching(file_name):
+    home_path = str(Path.home())
+    cache = Cache(os.path.join(home_path, file_name))
+
+    def wrap(func):
+        def wrap_in(*args):
+            key = args[0]
+            if key not in cache.obj:
+                cache.add(key, func(*args))
+            return cache.obj[key]
+        return wrap_in
+
+    return wrap
 
 
-def cache_web_queries(cache_path=str(Path.home())):
-    cache_file = cache_path + '/.web_queries/query.json'
-
-    def decorate(func):
-        def call(*args, **kwargs):
-            json_data = read_cache(cache_file)
-            query = args[0]
-            if query in json_data:
-                result = json_data[query]
-            else:
-                result = func(*args, **kwargs)
-                json_data[query] = result
-                save_cache(cache_file, json_data)
-            return result
-        return call
-    return decorate
-
-
-@cache_web_queries()
+@caching('.web_queries/query.json')
 @lru_cache(maxsize=None)
 def search_results(query):
-
     # Make a request.
     web_data = azure_client.web.search(query=query)
 
@@ -86,24 +92,6 @@ def search_results(query):
         return web_page.url
 
     return None
-
-
-def cache_url_fetch(cache_path=str(Path.home())):
-    cache_file = cache_path + '/.web_queries/urls.json'
-
-    def decorate(func):
-        def call(*args, **kwargs):
-            json_data = read_cache(cache_file)
-            url = args[0]
-            if url in json_data:
-                text = json_data[url]
-            else:
-                text = func(*args, **kwargs)
-                json_data[url] = text
-                save_cache(cache_file, json_data)
-            return text
-        return call
-    return decorate
 
 
 def read_infobox(text):
@@ -135,8 +123,8 @@ def read_infobox(text):
     return table_content
 
 
-# @lru_cache(maxsize=None)
-@cache_url_fetch()
+@lru_cache(maxsize=None)
+@caching('.web_queries/urls.json')
 def get_text_from_url(url):
     resp = requests.get(url)
     txt = resp.text
@@ -159,6 +147,10 @@ def get_text_from_url(url):
 def eval_performance(entry_answers):
     acc = 0
     for entry in entry_answers:
-        if entry['ans'] == entry['obj']:
+        if entry['answer'] == entry['obj']:
             acc += 1
     return acc / len(entry_answers)
+
+
+def persist_rules_answers(instances):
+    pass

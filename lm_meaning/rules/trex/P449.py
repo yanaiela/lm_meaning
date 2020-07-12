@@ -11,16 +11,17 @@ class P449(RuleMatcher):
         if 'premier' in line:
             ans = self.parse_series_text(line, 'premiere', preposition='on')
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'premiere on', 'evidence': line}
         if 'air' in line:
             ans = self.parse_series_text(line, 'air', preposition='on')
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'air on', 'evidence': line}
         if 'broadcast' in line:
             ans = self.parse_series_text(line, 'broadcast', preposition='on')
             if ans is not None:
-                return ans
-        return None
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'broadcast on', 'evidence': line}
+
+        return {'answer': ''}
 
     def parse_series_text(self, text, verb_lemma, preposition='on'):
         """

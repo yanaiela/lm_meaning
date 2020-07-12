@@ -17,9 +17,9 @@ class P37(RuleMatcher):
         if 'speak' in line:
             ans = self.parse_speaks(line)
             if ans is not None:
-                return ans
+                return {'answer': ans, 'explanation': 'rule', 'rule': 'speak', 'evidence': line}
 
-        return None
+        return {'answer': ''}
 
     def parse_speaks(self, text):
         doc = self.nlp(text)

@@ -1,6 +1,9 @@
 import spacy
 from tqdm import tqdm
 from lm_meaning.rules.utils import search_results, get_text_from_url
+import os
+import jsonlines
+from pathlib import Path
 
 
 class RuleMatcher:
@@ -26,7 +29,11 @@ class RuleMatcher:
 
             url = search_results(self.search_query.format(subj))
             entry_result['url'] = url
+            # in case the search result did not find a relevant url
             if url is None:
+                entry_result['answer'] = 'no-url'
+                entry_result['evidence'] = None
+                instances_output.append(entry_result)
                 print('no url')
                 continue
 
@@ -41,14 +48,15 @@ class RuleMatcher:
                 if line.strip() == '':
                     continue
                 ans = self.match_rules(line, params)
-                if ans is not None:
-                    entry_result['ans'] = ans
-                    entry_result['evidence'] = line
+                if ans['answer']:
+                    entry_result.update(ans)
+                    # entry_result['ans'] = ans
+                    # entry_result['evidence'] = line
                     break
 
-            if not ans:
-                entry_result['ans'] = None
-                entry_result['evidence'] = None
+            if not ans['answer']:
+                entry_result['answer'] = ''
+                entry_result['evidence'] = ''
 
             instances_output.append(entry_result)
 
@@ -56,3 +64,10 @@ class RuleMatcher:
 
     def match_rules(self, line, params={}):
         raise NotImplemented
+
+    def persist_answers(self, instances, in_dir):
+        f_name = self.__class__.__name__
+        Path(in_dir).mkdir(parents=True, exist_ok=True)
+
+        with jsonlines.open(os.path.join(in_dir, f_name) + '.jsonl', 'w') as f:
+            f.write_all(instances)
