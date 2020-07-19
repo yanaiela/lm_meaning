@@ -131,11 +131,7 @@ def main():
     # Persist predictions
 
 
-    if args.operation == 'build_challenge':
-        challenge = InstructionFactory().get_instruction(args.instruction_name, args)
-        challenge.build_challenge(args)
-    else:
-        logger.error('Operation not supported')
+
 
 
 if __name__ == '__main__':
