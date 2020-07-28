@@ -1,8 +1,7 @@
 '''
-scp -r ./meaning_mem/ aravicha@manhattan.isri.cmu.edu:/home/aravicha/LM_Instructions/
 
 #TODO 1. Find LAMA prompts
-
+#TODO 2. Support more models
 '''
 
 import argparse
@@ -11,6 +10,9 @@ import lm_utils
 import os
 import logging
 from transformers import *
+import json
+
+
 #
 def build_model_by_name(lm, args, verbose=True):
     """Load a model by name and args.
@@ -20,19 +22,26 @@ def build_model_by_name(lm, args, verbose=True):
     """
     model_type = lm.split("-")[0]
     MODEL_NAME_TO_CLASS = dict(
-        bert= BertForMaskedLM,
-        roberta=RobertaForMaskedLM,
+        bert=BertForMaskedLM,
+        roberta=pipeline("fill-mask", model="roberta-base"),
+    )
+    masked_tokens = dict(
+        bert="[MASK]",
+        roberta=MODEL_NAME_TO_CLASS["roberta"].tokenizer.mask_token
     )
     if model_type not in MODEL_NAME_TO_CLASS:
         raise ValueError("Unrecognized Language Model: %s." % lm)
     if verbose:
         print("Loading %s model..." % lm)
 
-    model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
-    tokenizer = AutoTokenizer.from_pretrained(lm)
-    model.eval()
-    return model, tokenizer
-
+    if model_type == "bert":
+        model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
+        tokenizer = AutoTokenizer.from_pretrained(lm)
+        model.eval()
+    else:
+        model = MODEL_NAME_TO_CLASS[model_type]
+        tokenizer = model.tokenizer
+    return model, tokenizer, masked_tokens[model_type]
 
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
@@ -40,16 +49,16 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-
-
-
 def main():
     parse = argparse.ArgumentParser("")
-    parse.add_argument("--relation",  type=str, help="Name of relation")
-    parse.add_argument("--lm",type=str,help="comma separated list of language models",default="bert-base-uncased")
+    parse.add_argument("--relation", type=str, help="Name of relation")
+    parse.add_argument("--lm", type=str, help="comma separated list of language models", default="bert-base-uncased")
     parse.add_argument("--output_file_prefix", type=str, help="")
     parse.add_argument("--prompts", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
     parse.add_argument("--data_path", type=str, help="", default="/data/LAMA_data/TREx")
+    parse.add_argument("--pred_path", type=str, help="Path to store LM predictions for each prompt",
+                       default="./predictions_TREx/")
+    parse.add_argument("--evaluate", action='store_true')
     args = parse.parse_args()
 
     # Load data
@@ -64,74 +73,32 @@ def main():
         raise ValueError('Relation "{}" does not exist in prompts.'.format(args.relation))
     prompts = utils.load_prompts(prompt_file)
 
-
     models_names = args.lm.split(",")
 
-
-
-    # Construct queries
-
-    # Make predictions
-
-    # Extract models
     print('Language Models: {}'.format(models_names))
-    #
-    # models = {}
-    # tokenizers = {}
 
     results_dict = {}
     for lm in models_names:
-        model, tokenizer = build_model_by_name(lm, args)
+        model, tokenizer, mask_token = build_model_by_name(lm, args)
 
-        results_dict[lm]={}
+        results_dict[lm] = {}
 
         for prompt_id, prompt in enumerate(prompts):
             results_dict[lm][prompt] = []
-            predictions = []
+            predictions = lm_utils.eval_query(tokenizer, model, data, prompt, mask_token)
+            results_dict[lm][prompt] = {"data": utils.filter_data_fields(data), "predictions": predictions}
 
-            for sample in data:
-                subject_label, object_label = sample["sub_label"], sample["obj_label"]
-                query = utils.parse_prompt(prompt, subject_label, "[MASK]")
+    # Evaluate
 
-                prediction = lm_utils.get_predictions(query, model, tokenizer)
-
-                predictions.append((subject_label, object_label, prediction))
-
-            results_dict[lm][prompt] = predictions
-
-
-
-
-
-
-
-                #
-    #     vocab_subset = None
-    #     if args.common_vocab_filename is not None:
-    #         common_vocab = load_vocab(args.common_vocab_filename)
-    #         print('Common vocabulary size: {}'.format(len(common_vocab)))
-    #
-    #
-    #     for model_name, model in models.items():
-    #         model_vocab = model.vocab
-
-            # # We create his mask to only consider candidattes in our vocabulary
-            # vocab_mask_vector = torch.full((1, len(model.vocab)), 1e20)
-            #
-            # # only keep valid cands, discard punct
-            # alpha_indices = [ind for ind in range(len(model_vocab)) if is_valid(model_vocab[ind])]
-            #
-            # # Fill in valid candidates with 1
-            # for indice in alpha_indices:
-            #     vocab_mask_vector[0][indice] = 1.0
-            #
-            # print('\n{}:'.format(model_name))
-
+    if args.evaluate:
+        accuracy = lm_utils.lm_eval(results_dict, args.lm)
 
     # Persist predictions
+    if not os.path.exists(args.pred_path):
+        os.makedirs(args.pred_path)
 
-
-
+    for lm in models_names:
+        json.dump(results_dict[lm], open(args.pred_path+"/results_{}.json".format(args.lm), "w"))
 
 
 if __name__ == '__main__':

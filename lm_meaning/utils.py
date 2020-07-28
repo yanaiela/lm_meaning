@@ -40,6 +40,16 @@ def read_data(filename):
     return dataset
 
 
+def filter_data_fields(data):
+    return [{"sub_label":sample["sub_label"], "obj_label":sample["obj_label"]} for sample in data]
+
+
+def parse_prompt(prompt, subject_label, object_label):
+    SUBJ_SYMBOL = '[X]'
+    OBJ_SYMBOL = '[Y]'
+    prompt = prompt.replace(SUBJ_SYMBOL, subject_label)
+    prompt = prompt.replace(OBJ_SYMBOL, object_label)
+    return prompt
 
 
 def load_prompts(filename: str):
@@ -51,9 +61,5 @@ def load_prompts(filename: str):
             prompts.append(prompt)
     return prompts
 
-def parse_prompt(prompt, subject_label, object_label):
-    SUBJ_SYMBOL = '[X]'
-    OBJ_SYMBOL = '[Y]'
-    prompt = prompt.replace(SUBJ_SYMBOL, subject_label)
-    prompt = prompt.replace(OBJ_SYMBOL, object_label)
-    return prompt
+
+
