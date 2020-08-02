@@ -23,20 +23,21 @@ def build_model_by_name(lm, args, verbose=True):
     model_type = lm.split("-")[0]
     MODEL_NAME_TO_CLASS = dict(
         bert=BertForMaskedLM,
-        roberta=pipeline("fill-mask", model="roberta-base"),
+        roberta=RobertaForMaskedLM,
     )
     masked_tokens = dict(
         bert="[MASK]",
-        roberta=MODEL_NAME_TO_CLASS["roberta"].tokenizer.mask_token
+        roberta="[MASK]"
     )
     if model_type not in MODEL_NAME_TO_CLASS:
         raise ValueError("Unrecognized Language Model: %s." % lm)
     if verbose:
         print("Loading %s model..." % lm)
 
-    if model_type == "bert":
+    if model_type == "bert" or model_type=="roberta":
         model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
         tokenizer = AutoTokenizer.from_pretrained(lm)
+        model.cuda()
         model.eval()
     else:
         model = MODEL_NAME_TO_CLASS[model_type]
@@ -85,7 +86,7 @@ def main():
 
         for prompt_id, prompt in enumerate(prompts):
             results_dict[lm][prompt] = []
-            predictions = lm_utils.eval_query(tokenizer, model, data, prompt, mask_token)
+            predictions = lm_utils.run_query(tokenizer, model, data, prompt, mask_token)
             results_dict[lm][prompt] = {"data": utils.filter_data_fields(data), "predictions": predictions}
 
     # Evaluate

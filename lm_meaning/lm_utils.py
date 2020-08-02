@@ -25,9 +25,11 @@ def sentences2ids(sentences, tokenizer, mask_token="[MASK]"):
 
     for sentence in sentences:
         prefix, suffix = sentence.split(mask_token)
-        prefix_tokens = tokenizer.tokenize(prefix)
-        suffix_tokens = tokenizer.tokenize(suffix)
+        prefix_tokens = tokenizer.tokenize(prefix.strip())
+        suffix_tokens = tokenizer.tokenize(suffix.strip())
         tokens = [tokenizer.cls_token] + prefix_tokens + [tokenizer.mask_token] + suffix_tokens + [tokenizer.sep_token]
+        print(tokens)
+
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
         target_idx = len(prefix_tokens) + 1
         tokenized_sentences.append(input_ids)
@@ -46,7 +48,7 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
     :param k: top k most probable words
     :return: list of lists, corresponding to the sentence batch and top k words in each one
     """
-    prediction_scores = lm_model(torch.tensor(tokenized_sentences))[0]
+    prediction_scores = lm_model(torch.tensor(tokenized_sentences).cuda())[0]
     token_scores = torch.stack([x[y] for x, y in zip(prediction_scores, target_idx)]).detach().cpu().numpy()
     best_k = (np.argsort(token_scores, axis=1))[:, -k:]
     sentences_best_k = []
@@ -55,7 +57,7 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
 
         # "normalizing" the tokens to 'standard' strings
         best_k_tokens = ["".join(tokenizer.convert_tokens_to_string(x).strip().split()) for x in best_k_tokens]
-
+        best_k_tokens = [x.replace('Ġ', '') for x in best_k_tokens]
         sentences_best_k.append(best_k_tokens[::-1])
     return sentences_best_k
 
@@ -123,13 +125,14 @@ def data2batches(prompt, vals_dic, tokenizer, batch_size, MASK_TOKEN="[MASK]"):
     return batched_data
 
 
-def eval_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", debug=False, bs=50, k=10, ignore_special_tokens=False):
+def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", debug=False, bs=50, k=10, ignore_special_tokens=False):
 
     batched_data = data2batches(prompt, vals_dic, tokenizer, bs, mask_token)
 
     predictions = []
 
     for batch in tqdm(batched_data):
+
         tokenized_sentence = [x['tokenized_sentence'] for x in batch]
         mask_indices = [x['masked_ind'] for x in batch]
         answers = [x['answer'] for x in batch]
@@ -137,6 +140,8 @@ def eval_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", debug
         top_k_per_ex = get_predictions(tokenizer, lm_model, tokenized_sentence, mask_indices, k=k)
 
         predictions+=top_k_per_ex
+
+
     return predictions
 
 def lm_eval(results_dict, lm):
