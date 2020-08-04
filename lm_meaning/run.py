@@ -37,7 +37,8 @@ def build_model_by_name(lm, args, verbose=True):
     if model_type == "bert" or model_type=="roberta":
         model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
         tokenizer = AutoTokenizer.from_pretrained(lm)
-        model.cuda()
+        if args.gpu:
+            model.cuda()
         model.eval()
     else:
         model = MODEL_NAME_TO_CLASS[model_type]
@@ -60,6 +61,7 @@ def main():
     parse.add_argument("--pred_path", type=str, help="Path to store LM predictions for each prompt",
                        default="./predictions_TREx/")
     parse.add_argument("--evaluate", action='store_true')
+    parse.add_argument("--gpu", action='store_true')
     args = parse.parse_args()
 
     # Load data
@@ -86,7 +88,7 @@ def main():
 
         for prompt_id, prompt in enumerate(prompts):
             results_dict[lm][prompt] = []
-            predictions = lm_utils.run_query(tokenizer, model, data, prompt, mask_token)
+            predictions = lm_utils.run_query(tokenizer, model, data, prompt, mask_token, use_gpu=args.gpu)
             results_dict[lm][prompt] = {"data": utils.filter_data_fields(data), "predictions": predictions}
 
     # Evaluate

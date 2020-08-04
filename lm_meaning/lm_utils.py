@@ -38,7 +38,7 @@ def sentences2ids(sentences, tokenizer, mask_token="[MASK]"):
     return tokenized_sentences, masked_word_indices
 
 
-def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
+def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, use_gpu=False, k=10):
     """
     Getting top k model prediction for sentences.
     Assuming sentences are of the same length
@@ -48,7 +48,10 @@ def get_predictions(tokenizer, lm_model, tokenized_sentences, target_idx, k=10):
     :param k: top k most probable words
     :return: list of lists, corresponding to the sentence batch and top k words in each one
     """
-    prediction_scores = lm_model(torch.tensor(tokenized_sentences).cuda())[0]
+    queries = torch.tensor(tokenized_sentences)
+    if use_gpu:
+        queries = queries.cuda()
+    prediction_scores = lm_model(queries)[0]
     token_scores = torch.stack([x[y] for x, y in zip(prediction_scores, target_idx)]).detach().cpu().numpy()
     best_k = (np.argsort(token_scores, axis=1))[:, -k:]
     sentences_best_k = []
@@ -125,7 +128,7 @@ def data2batches(prompt, vals_dic, tokenizer, batch_size, MASK_TOKEN="[MASK]"):
     return batched_data
 
 
-def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", debug=False, bs=50, k=10, ignore_special_tokens=False):
+def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", use_gpu=False, debug=False, bs=50, k=10, ignore_special_tokens=False):
 
     batched_data = data2batches(prompt, vals_dic, tokenizer, bs, mask_token)
 
@@ -137,7 +140,7 @@ def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", debug=
         mask_indices = [x['masked_ind'] for x in batch]
         answers = [x['answer'] for x in batch]
 
-        top_k_per_ex = get_predictions(tokenizer, lm_model, tokenized_sentence, mask_indices, k=k)
+        top_k_per_ex = get_predictions(tokenizer, lm_model, tokenized_sentence, mask_indices, use_gpu=use_gpu, k=k)
 
         predictions+=top_k_per_ex
 
