@@ -22,3 +22,6 @@ export PYTHONPATH=${PYTHONPATH}:/path-to-project
 python lm_meaning/rules/run.py -r P1303
 ```
 
+## Install spike
+pip install 'git+https://github.com/allenai/spike#egg=spike-datamodel&subdirectory=datamodel-lib'
+pip install git+https://github.com/allenai/spike#egg=spike-bl\&subdirectory=bl

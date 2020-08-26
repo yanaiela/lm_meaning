@@ -9,7 +9,7 @@ import utils
 import lm_utils
 import os
 import logging
-from transformers import *
+from transformers import BertForMaskedLM, AutoTokenizer, pipeline
 import json
 
 
@@ -56,10 +56,10 @@ def main():
     parse.add_argument("--relation", type=str, help="Name of relation")
     parse.add_argument("--lm", type=str, help="comma separated list of language models", default="bert-base-uncased")
     parse.add_argument("--output_file_prefix", type=str, help="")
-    parse.add_argument("--prompts", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
-    parse.add_argument("--data_path", type=str, help="", default="/data/LAMA_data/TREx")
+    parse.add_argument("--prompts", type=str, help="Path to templates for each prompt", default="data/lm_relations/")
+    parse.add_argument("--data_path", type=str, help="", default="data/LAMA_data/TREx")
     parse.add_argument("--pred_path", type=str, help="Path to store LM predictions for each prompt",
-                       default="./predictions_TREx/")
+                       default="data/predictions_lm/")
     parse.add_argument("--evaluate", action='store_true')
     parse.add_argument("--gpu", action='store_true')
     args = parse.parse_args()
@@ -101,7 +101,7 @@ def main():
         os.makedirs(args.pred_path)
 
     for lm in models_names:
-        json.dump(results_dict[lm], open(args.pred_path+"/results_{}.json".format(args.lm), "w"))
+        json.dump(results_dict[lm], open(args.pred_path+"/{}_{}_origin.json".format(args.relation, args.lm), "w"))
 
 
 if __name__ == '__main__':

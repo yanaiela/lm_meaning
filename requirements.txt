@@ -6,3 +6,5 @@ allennlp
 num2words
 spur
 tqdm
+jsonlines
+scipy

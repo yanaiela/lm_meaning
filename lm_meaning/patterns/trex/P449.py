@@ -1,4 +1,4 @@
-from lm_meaning.rules.rule_matching import RuleMatcher
+from lm_meaning.patterns.rule_matching import RuleMatcher
 
 
 class P449(RuleMatcher):
@@ -7,26 +7,32 @@ class P449(RuleMatcher):
         search_query = "wikipedia serie {}"
         super().__init__(search_query)
 
-    def match_rules(self, line, params={}):
+    def match_rules(self, text, obj, params={}):
         rule_answers = []
-        if 'premier' in line:
-            ans = self.parse_series_text(line, 'premiere', preposition='on')
-            if ans is not None:
-                rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'premiere on', 'evidence': line})
-        if 'air' in line:
-            ans = self.parse_series_text(line, 'air', preposition='on')
-            if ans is not None:
-                rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'air on', 'evidence': line})
-        if 'broadcast' in line:
-            ans = self.parse_series_text(line, 'broadcast', preposition='on')
-            if ans is not None:
-                rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'broadcast on', 'evidence': line})
+        found_rules = set()
 
-        if len(rule_answers) == 0:
-            rule_answers.append({'answer': ''})
+        for line in text:
+            if not line: continue
+
+            if 'premiere on' not in found_rules and 'premier' in line:
+                ans = self.parse_series_text(line, 'premiere', preposition='on')
+                if ans == obj:
+                    rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'premiere on', 'evidence': line})
+                    found_rules.add('premiere on')
+            if 'air on' not in found_rules and 'air' in line:
+                ans = self.parse_series_text(line, 'air', preposition='on')
+                if ans == obj:
+                    rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'air on', 'evidence': line})
+                    found_rules.add('air on')
+            if 'broadcast on' not in found_rules and 'broadcast' in line:
+                ans = self.parse_series_text(line, 'broadcast', preposition='on')
+                if ans == obj:
+                    rule_answers.append({'answer': ans, 'explanation': 'rule', 'rule': 'broadcast on', 'evidence': line})
+                    found_rules.add('broadcast on')
+
         return rule_answers
 
-    def parse_series_text(self, text, verb_lemma, preposition='on'):
+    def parse_series_text(self, text, verb_lemma, preposition):
         """
         The 'broadcast_on' rule was not part of the automated generated rules, but noticed from the data
         specifically - https://en.wikipedia.org/wiki/Homeland_(TV_series)

@@ -1,0 +1,6 @@
+wiki:
+   index_url: http://34.107.112.153:8000
+   annotator_url: https://spike-annotation.en.apps.allenai.org
+   expansion_graph_representation: universal-basic
+   annotator_propagate_coref_info: false
+   frigg: true

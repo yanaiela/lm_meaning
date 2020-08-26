@@ -21,11 +21,13 @@ def main():
     data = read_file(args.data_path + '/{}.jsonl'.format(args.rule_name))
 
     matcher = RuleFactory().get_rule(args.rule_name)
-    answers = matcher.process_relation(data, subset=10)
+    answers = matcher.process_relation(data, subset=20)
 
-    print('top@1 accuracy:', eval_performance(answers))
+    print('done')
 
-    matcher.persist_answers(answers, 'data/trex_rules')
+    # print('top@1 accuracy:', eval_performance(answers))
+
+    # matcher.persist_answers(answers, args.output_file)
 
 
 if __name__ == '__main__':
