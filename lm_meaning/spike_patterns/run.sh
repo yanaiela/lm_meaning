@@ -1,2 +1,2 @@
-python3 to_json.py p449
-python3 create_graph.py p449.jsonl p449_lemmas
+python3 to_json.py ../../data/pattern_data/p449
+python3 create_graph.py ../../data/pattern_data/p449.jsonl ../../data/pattern_data/p449_lemmas
