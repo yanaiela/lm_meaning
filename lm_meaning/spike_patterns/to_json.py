@@ -6,8 +6,9 @@ fname = sys.argv[1]
 with open(fname, "r") as f:
     lines = f.readlines()
     
- 
-with open(fname+".jsonl", "w") as f:
+
+print(fname)
+with open(fname.replace(".tsv","")+".jsonl", "w") as f:
     for line in lines[1:]:
 
        vals = line.strip().split("\t")

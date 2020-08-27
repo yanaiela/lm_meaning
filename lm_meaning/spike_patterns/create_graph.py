@@ -15,7 +15,7 @@ def load_lemmas_relations(fname: str) -> List[Tuple]:
     lemmas = []
     for line in lines:
     
-        left,right = line.strip().split(">")
+        left,right = line.strip().split("\t")
         right = right.split(",")
         for r in right:
         
@@ -54,8 +54,8 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
 
 
 if __name__ == "__main__":    
-    json_fname = sys.argv[1] #p449.jsonl
-    lemmas_fname = sys.argv[2] #p449_lemmas
+    json_fname = sys.argv[1] #p449.tsv.jsonl
+    lemmas_fname = sys.argv[2] #p449_entailment_lemmas.tsv
     patterns = load_data(json_fname)
     lemmas_rules = load_lemmas_relations(lemmas_fname)
     
