@@ -1,0 +1,6 @@
+debut>air,broadcast,release,premiere
+stream>air,broadcast,release
+air>broadcast,release
+broadcast>release,air
+return>broadcast,air,release
+premiere>release,air,broadcast
