@@ -54,7 +54,7 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
 
 
 if __name__ == "__main__":    
-    json_fname = sys.argv[1] #p449.tsv.jsonl
+    json_fname = sys.argv[1] #P449.tsv.jsonl
     lemmas_fname = sys.argv[2] #p449_entailment_lemmas.tsv
     patterns = load_data(json_fname)
     lemmas_rules = load_lemmas_relations(lemmas_fname)

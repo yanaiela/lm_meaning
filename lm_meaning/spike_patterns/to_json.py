@@ -19,7 +19,7 @@ with open(fname.replace(".tsv","")+".jsonl", "w") as f:
        vals = vals[:-1] + vals[-1].split(",")
        
        # add spike syntax
-       spike_query = pattern.replace("[X]", "<>subject:John").replace("[Y]", "object:[w={}]")
+       spike_query = pattern.replace("[X]", "<>subject:John").replace("[Y]", "object:[w={}]Hawaii")
        spike_query = spike_query.split(" ")
        
        for i,w in enumerate(spike_query):
