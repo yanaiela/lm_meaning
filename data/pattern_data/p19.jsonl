@@ -1,0 +1,10 @@
+{"pattern": "X was born in Y", "example": "Williams did not prove that X:his mother :was :born in the Y:United States.", "tense": "past", "lemma": "born", "spike_query": "<>X:[w] $was $born $in <>Y:[w]"}
+{"pattern": "X is originally from Y", "example": "X:He :is :originally from :Thailand but grew up in the Shetlands.", "tense": "present", "lemma": "is", "spike_query": "<>X:[w] $is $originally $from <>Y:[w]"}
+{"pattern": "Y is the country of origin of X", "example": " the US government released Hamdi, stripped him of his US citizenship and sent X:him to his :country :of :origin, Y:Saudi Arabia.", "tense": "present", "lemma": "is", "spike_query": "<>Y:[w] $is $the $country $of $origin $of <>X:[w]"}
+{"pattern": "The country of origin of X is Y", "example": " :The :counry :of :origin of X:Hamdi is Y:Saudi Arabia.", "tense": "present", "lemma": "is", "spike_query": "$The $country $of $origin $of <>X:[w] $is <>Y:[w]"}
+{"pattern": "X is native to Y", "example": "X:He :is :native :to Y:Connecticut.", "tense": "present", "lemma": "is", "spike_query": "<>X:[w] $is $native $to <>Y:[w]"}
+{"pattern": "X originated from Y", "example": "Mr. Wright's Portuguese identification card said X:he :originated :from Y:Guinea-Bissau, a West African nation.", "tense": "past", "lemma": "originate", "spike_query": "<>X:[w] $originated $from <>Y:[w]"}
+{"pattern": "X immigrated from his native Y", "example": "X:He :immigrated :from :his :native Y:France to seek business opportunities in America", "tense": "past", "lemma": "immigrate", "spike_query": "<>X:[w] $immigrated $from $his $native <>Y:[w]"}
+{"pattern": "X was a Y-born", "example": "X:Claudette Colbert :was :a Y:France-born American actress.", "tense": "past", "lemma": "is", "spike_query": "<>X:[w] $was $a <>Y:[w]-born"}
+{"pattern": "X is a Y-born", "example": "X:Claudette Colbert :is :a Y:France-born American actress.", "tense": "present", "lemma": "is", "spike_query": "<>X:[w] $is $a <>Y:[w]-born"}
+{"pattern": "X, a Y-born", "example": "X:Claudette Colbert, :a Y:France-born American actress.", "tense": "present", "lemma": "?", "spike_query": "<>X:[w], $a <>Y:[w]-born"}
