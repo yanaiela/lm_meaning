@@ -2,7 +2,7 @@ RULE	EXAMPLE	TYPE (l for lexical, s for syntactic)
 X was born in Y	Williams did not prove that X:his mother :was :born in the Y:United States.	none	past,born
 X is originally from Y	X:He :is :originally from :Thailand but grew up in the Shetlands.	none	present,is
 Y is the country of origin of X	 the US government released Hamdi, stripped him of his US citizenship and sent X:him to his :country :of :origin, Y:Saudi Arabia.	none	present,is
-The country of origin of X is Y	 :The :counry :of :origin of X:Hamdi is Y:Saudi Arabia.	none	present,is
+The country of origin of X is Y	 :The :country :of :origin of X:Hamdi is Y:Saudi Arabia.	none	present,is
 X is native to Y	X:He :is :native :to Y:Connecticut.	none	present,is
 X originated from Y	Mr. Wright's Portuguese identification card said X:he :originated :from Y:Guinea-Bissau, a West African nation.	none	past,originate
 X immigrated from his native Y	X:He :immigrated :from :his :native Y:France to seek business opportunities in America	none	past,immigrate

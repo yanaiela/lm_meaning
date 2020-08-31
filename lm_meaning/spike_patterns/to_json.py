@@ -14,16 +14,16 @@ with open(fname.replace(".tsv","")+".jsonl", "w") as f:
        vals = line.strip().split("\t")
        vals.pop(-2) # remove old lemma/syntax - not relevant
        tense,lemma = vals[-1].split(",")
-       pattern = vals[0]
+       pattern = vals[0].replace("X","[X]").replace("Y", "[Y]")
        example = vals[1]
        vals = vals[:-1] + vals[-1].split(",")
        
        # add spike syntax
-       spike_query = pattern.replace("X", "<>X:[w]").replace("Y", "<>Y:[w]")
+       spike_query = pattern.replace("[X]", "<>subject:John").replace("[Y]", "object:[w={}]")
        spike_query = spike_query.split(" ")
        
        for i,w in enumerate(spike_query):
-        if "X" not in w and "Y" not in w:
+        if "subject" not in w and "object" not in w:
             spike_query[i] = "$" + w
        spike_query =  " ".join(spike_query)
        
