@@ -1,11 +1,8 @@
 import argparse
-import logging
-import json
-import jsonlines
-from collections import defaultdict
-from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 
 from scipy.stats import wilcoxon
+
+from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 
 
 def read_txt_lines(in_f):
@@ -102,7 +99,8 @@ def main():
     args = parse.parse_args()
 
     lm_patterns = read_jsonline_file(args.lm_patterns)
-    spike_patterns = read_txt_lines(args.spike_patterns)
+    # spike_patterns = read_txt_lines(args.spike_patterns)
+    spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
     spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
 
     lm_raw_results = read_json_file(args.lm_file)

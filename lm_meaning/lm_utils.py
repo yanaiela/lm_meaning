@@ -1,14 +1,42 @@
-import torch
-import numpy as np
-from transformers import *
-
-
 from collections import defaultdict
 
 import numpy as np
-from scipy.spatial import distance
 import torch
+from scipy.spatial import distance
 from tqdm import tqdm
+from transformers import BertForMaskedLM, AutoTokenizer, RobertaForMaskedLM
+
+
+def build_model_by_name(lm, use_gpu, verbose=True):
+    """Load a model by name and args.
+
+    Note, args.lm is not used for model selection. args are only passed to the
+    model's initializator.
+    """
+    model_type = lm.split("-")[0]
+    MODEL_NAME_TO_CLASS = dict(
+        bert=BertForMaskedLM,
+        roberta=RobertaForMaskedLM,
+    )
+    masked_tokens = dict(
+        bert="[MASK]",
+        roberta="[MASK]"
+    )
+    if model_type not in MODEL_NAME_TO_CLASS:
+        raise ValueError("Unrecognized Language Model: %s." % lm)
+    if verbose:
+        print("Loading %s model..." % lm)
+
+    if model_type == "bert" or model_type=="roberta":
+        model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
+        tokenizer = AutoTokenizer.from_pretrained(lm)
+        if use_gpu:
+            model.cuda()
+        model.eval()
+    else:
+        model = MODEL_NAME_TO_CLASS[model_type]
+        tokenizer = model.tokenizer
+    return model, tokenizer, masked_tokens[model_type]
 
 
 def parse_prompt(prompt, subject_label, object_label):
@@ -28,7 +56,6 @@ def sentences2ids(sentences, tokenizer, mask_token="[MASK]"):
         prefix_tokens = tokenizer.tokenize(prefix.strip())
         suffix_tokens = tokenizer.tokenize(suffix.strip())
         tokens = [tokenizer.cls_token] + prefix_tokens + [tokenizer.mask_token] + suffix_tokens + [tokenizer.sep_token]
-        print(tokens)
 
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
         target_idx = len(prefix_tokens) + 1
@@ -116,8 +143,6 @@ def data2batches(prompt, vals_dic, tokenizer, batch_size, MASK_TOKEN="[MASK]"):
     for sample in vals_dic:
         data.append({'prompt': parse_prompt(prompt, sample["sub_label"], MASK_TOKEN), 'answer': sample["obj_label"]})
 
-
-
     tokenized_sentences, target_indices = sentences2ids([x['prompt'] for x in data], tokenizer, mask_token=MASK_TOKEN)
 
     for example, tokenized_sentence, target_index in zip(data, tokenized_sentences, target_indices):
@@ -128,7 +153,8 @@ def data2batches(prompt, vals_dic, tokenizer, batch_size, MASK_TOKEN="[MASK]"):
     return batched_data
 
 
-def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", use_gpu=False, debug=False, bs=50, k=10, ignore_special_tokens=False):
+def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", use_gpu=False, debug=False, bs=50, k=10,
+              ignore_special_tokens=False):
 
     batched_data = data2batches(prompt, vals_dic, tokenizer, bs, mask_token)
 
@@ -142,10 +168,10 @@ def run_query(tokenizer, lm_model, vals_dic, prompt, mask_token="[MASK]", use_gp
 
         top_k_per_ex = get_predictions(tokenizer, lm_model, tokenized_sentence, mask_indices, use_gpu=use_gpu, k=k)
 
-        predictions+=top_k_per_ex
-
+        predictions += top_k_per_ex
 
     return predictions
+
 
 def lm_eval(results_dict, lm):
     cue_to_predictions = {}
@@ -155,13 +181,12 @@ def lm_eval(results_dict, lm):
             cue = (sample["sub_label"], sample["obj_label"])
             if cue not in cue_to_predictions:
                 cue_to_predictions[cue] = []
-            cue_to_predictions[cue]+=results_dict[lm][prompt]["predictions"][sample_ind]
+            cue_to_predictions[cue] += results_dict[lm][prompt]["predictions"][sample_ind]
 
     correct, total = 0, 0
     for cue in cue_to_predictions:
-        total+=1
+        total += 1
         if cue[1] in cue_to_predictions[cue]:
-            correct+=1
+            correct += 1
 
-
-    print(correct*1.0/total)
+    print(correct * 1.0 / total)

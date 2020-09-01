@@ -1,54 +1,23 @@
-'''
-
-#TODO 1. Find LAMA prompts
-#TODO 2. Support more models
-'''
-
 import argparse
-import utils
-import lm_utils
-import os
-import logging
-from transformers import BertForMaskedLM, AutoTokenizer, pipeline
 import json
+import os
+
+from lm_meaning.utils import filter_data_fields, read_data, load_prompts
+from lm_meaning.lm_utils import build_model_by_name, run_query, lm_eval
 
 
-#
-def build_model_by_name(lm, args, verbose=True):
-    """Load a model by name and args.
+def query_lm(model_names, prompts, data, use_gpu):
+    results_dict = {}
+    for lm in model_names:
+        model, tokenizer, mask_token = build_model_by_name(lm, use_gpu)
 
-    Note, args.lm is not used for model selection. args are only passed to the
-    model's initializator.
-    """
-    model_type = lm.split("-")[0]
-    MODEL_NAME_TO_CLASS = dict(
-        bert=BertForMaskedLM,
-        roberta=RobertaForMaskedLM,
-    )
-    masked_tokens = dict(
-        bert="[MASK]",
-        roberta="[MASK]"
-    )
-    if model_type not in MODEL_NAME_TO_CLASS:
-        raise ValueError("Unrecognized Language Model: %s." % lm)
-    if verbose:
-        print("Loading %s model..." % lm)
+        results_dict[lm] = {}
 
-    if model_type == "bert" or model_type=="roberta":
-        model = MODEL_NAME_TO_CLASS[model_type].from_pretrained(lm)
-        tokenizer = AutoTokenizer.from_pretrained(lm)
-        if args.gpu:
-            model.cuda()
-        model.eval()
-    else:
-        model = MODEL_NAME_TO_CLASS[model_type]
-        tokenizer = model.tokenizer
-    return model, tokenizer, masked_tokens[model_type]
-
-
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
-                    level=logging.INFO)
-logger = logging.getLogger(__name__)
+        for prompt_id, prompt in enumerate(prompts):
+            results_dict[lm][prompt] = []
+            predictions = run_query(tokenizer, model, data, prompt, mask_token, use_gpu=use_gpu)
+            results_dict[lm][prompt] = {"data": filter_data_fields(data), "predictions": predictions}
+    return results_dict
 
 
 def main():
@@ -68,40 +37,31 @@ def main():
     data_file = os.path.join(args.data_path, args.relation + '.jsonl')
     if not os.path.exists(data_file):
         raise ValueError('Relation "{}" does not exist in data.'.format(args.relation))
-    data = utils.read_data(data_file)
+    data = read_data(data_file)
 
     # Load prompts
     prompt_file = os.path.join(args.prompts, args.relation + '.jsonl')
     if not os.path.exists(prompt_file):
         raise ValueError('Relation "{}" does not exist in prompts.'.format(args.relation))
-    prompts = utils.load_prompts(prompt_file)
+    prompts = load_prompts(prompt_file)
 
     models_names = args.lm.split(",")
 
     print('Language Models: {}'.format(models_names))
 
-    results_dict = {}
-    for lm in models_names:
-        model, tokenizer, mask_token = build_model_by_name(lm, args)
-
-        results_dict[lm] = {}
-
-        for prompt_id, prompt in enumerate(prompts):
-            results_dict[lm][prompt] = []
-            predictions = lm_utils.run_query(tokenizer, model, data, prompt, mask_token, use_gpu=args.gpu)
-            results_dict[lm][prompt] = {"data": utils.filter_data_fields(data), "predictions": predictions}
+    results_dict = query_lm(models_names, prompts, data, args.gpu)
 
     # Evaluate
 
     if args.evaluate:
-        accuracy = lm_utils.lm_eval(results_dict, args.lm)
+        accuracy = lm_eval(results_dict, args.lm)
 
     # Persist predictions
     if not os.path.exists(args.pred_path):
         os.makedirs(args.pred_path)
 
     for lm in models_names:
-        json.dump(results_dict[lm], open(args.pred_path+"/{}_{}_origin.json".format(args.relation, args.lm), "w"))
+        json.dump(results_dict[lm], open(args.pred_path+"/{}_{}_origin_new.json".format(args.relation, args.lm), "w"))
 
 
 if __name__ == '__main__':
