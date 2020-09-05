@@ -36,7 +36,7 @@ def parse_lm_results(lm_results):
             key = '_SPLIT_'.join([subj, obj])
             if key not in output_dic:
                 output_dic[key] = []
-            if preds[0] == obj:
+            if preds[0]['token_str'] == obj:
                 output_dic[key].append(pattern)
     return output_dic
 

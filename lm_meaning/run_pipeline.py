@@ -5,12 +5,13 @@
 '''
 
 import argparse
-import utils
-import lm_utils
-import os
-import logging
-from transformers import *
 import json
+import os
+
+from tqdm import tqdm
+from transformers import *
+
+from lm_meaning import utils
 
 
 def parse_prompt(prompt, subject_label, object_label):
@@ -42,16 +43,20 @@ def run_query(tokenizer, model, vals_dic, prompt, MASK_TOKEN):
         data.append({'prompt': parse_prompt(prompt, sample["sub_label"], MASK_TOKEN), 'answer': sample["obj_label"],
                      'sub_label': sample["sub_label"], 'obj_label': sample["obj_label"]})
 
+    batched_data = []
+    bs = 20
+    for i in range(0, len(data), bs):
+        batched_data.append(data[i: i + bs])
+
     predictions = []
-    for sample in data:
-        predictions.append(model(sample["prompt"]))
+    for batch in tqdm(batched_data):
+        preds = model([sample["prompt"] for sample in batch])
+        predictions.extend(preds)
 
     return data, predictions
 
 
 def lm_eval(results_dict, lm):
-    import pdb
-
     cue_to_predictions = {}
 
     for prompt in results_dict[lm]:
@@ -84,7 +89,7 @@ def main():
     parse.add_argument("--output_file_prefix", type=str, help="")
     parse.add_argument("--prompts", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
     parse.add_argument("--data_path", type=str, help="", default="/data/LAMA_data/TREx")
-    parse.add_argument("--pred_path", type=str, help="Path to store LM predictions for each prompt",
+    parse.add_argument("--pred_file", type=str, help="Path to store LM predictions for each prompt",
                        default="./predictions_TREx/")
     parse.add_argument("--evaluate", action='store_true')
     parse.add_argument("--gpu", action='store_true')
@@ -123,11 +128,11 @@ def main():
         accuracy = lm_eval(results_dict, args.lm)
 
     # Persist predictions
-    if not os.path.exists(args.pred_path):
-        os.makedirs(args.pred_path)
+    # if not os.path.exists(args.pred_path):
+    #     os.makedirs(args.pred_path)
 
     for lm in models_names:
-        json.dump(results_dict[lm], open(args.pred_path + "/results_{}.json".format(args.lm), "w"))
+        json.dump(results_dict[lm], open(args.pred_file, "w"))
 
 
 if __name__ == '__main__':
