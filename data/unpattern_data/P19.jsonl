@@ -1,0 +1,8 @@
+{"pattern": "[X] was born in [Y].", "base": true}
+{"pattern": "[X] died in [Y].", "base": false}
+{"pattern": "[X] got a divorce in [Y].", "base": false}
+{"pattern": "[X] married in [Y].", "base": false}
+{"pattern": "[X] lived in [Y].", "base": false}
+{"pattern": "[X] worked in [Y].", "base": false}
+{"pattern": "[X] started a family in [Y].", "base": false}
+{"pattern": "[X] bought a house in [Y].", "base": false}
