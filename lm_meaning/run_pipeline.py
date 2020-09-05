@@ -1,16 +1,9 @@
-'''
-
-#TODO 1. Find LAMA prompts
-#TODO 2. Support more models
-'''
-
 import argparse
 import json
-import os
 
+import torch
 from tqdm import tqdm
 from transformers import pipeline
-import torch
 
 from lm_meaning import utils
 
@@ -23,7 +16,7 @@ def parse_prompt(prompt, subject_label, object_label):
     return prompt
 
 
-#
+# get mlm model to predict masked token.
 def build_model_by_name(lm, args):
     """Load a model by name and args.
 
@@ -83,8 +76,7 @@ def lm_eval(results_dict, lm):
 
 def main():
     parse = argparse.ArgumentParser("")
-    parse.add_argument("--relation", type=str, help="Name of relation")
-    parse.add_argument("--lm", type=str, help="comma separated list of language models", default="bert-base-uncased")
+    parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-base-uncased")
     parse.add_argument("--output_file_prefix", type=str, help="")
     parse.add_argument("--patterns_file", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
     parse.add_argument("--data_file", type=str, help="", default="/data/LAMA_data/TREx/P449.jsonl")
@@ -116,13 +108,8 @@ def main():
             results_dict[lm][prompt] = {"data": filtered_data, "predictions": predictions}
 
     # Evaluate
-
     if args.evaluate:
         accuracy = lm_eval(results_dict, args.lm)
-
-    # Persist predictions
-    # if not os.path.exists(args.pred_path):
-    #     os.makedirs(args.pred_path)
 
     for lm in models_names:
         json.dump(results_dict[lm], open(args.pred_file, "w"))

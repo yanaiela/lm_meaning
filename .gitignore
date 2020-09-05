@@ -316,6 +316,7 @@ $RECYCLE.BIN/
 
 data/*
 !data/pattern_data/
+!data/output/
 .idea/
 wandb/
 subscription.json
