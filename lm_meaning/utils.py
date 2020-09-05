@@ -57,7 +57,7 @@ def load_prompts(filename: str):
     with open(filename, 'r') as fin:
         for l in fin:
             l = json.loads(l)
-            prompt = l['template']
+            prompt = l['pattern']
             prompts.append(prompt)
     return prompts
 

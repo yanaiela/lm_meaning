@@ -9,7 +9,8 @@ import json
 import os
 
 from tqdm import tqdm
-from transformers import *
+from transformers import pipeline
+import torch
 
 from lm_meaning import utils
 
@@ -23,34 +24,38 @@ def parse_prompt(prompt, subject_label, object_label):
 
 
 #
-def build_model_by_name(lm, args, verbose=True):
+def build_model_by_name(lm, args):
     """Load a model by name and args.
 
     Note, args.lm is not used for model selection. args are only passed to the
     model's initializator.
     """
-    from transformers import pipeline
-    model = pipeline("fill-mask", model=lm)
-    # nlp(f"Joey aired on {nlp.tokenizer.mask_token}.")
-    return model, model.tokenizer, model.tokenizer.mask_token
+
+    device = args.gpu
+    if not torch.cuda.is_available():
+        device = -1
+
+    model = pipeline("fill-mask", model=lm, device=device)
+    return model
 
 
-def run_query(tokenizer, model, vals_dic, prompt, MASK_TOKEN):
+def run_query(pipeline_model, vals_dic, prompt, bs=20):
     data = []
+
+    mask_token = pipeline_model.tokenizer.mask_token
 
     # create the text prompt
     for sample in vals_dic:
-        data.append({'prompt': parse_prompt(prompt, sample["sub_label"], MASK_TOKEN), 'answer': sample["obj_label"],
+        data.append({'prompt': parse_prompt(prompt, sample["sub_label"], mask_token), 'answer': sample["obj_label"],
                      'sub_label': sample["sub_label"], 'obj_label': sample["obj_label"]})
 
     batched_data = []
-    bs = 20
     for i in range(0, len(data), bs):
         batched_data.append(data[i: i + bs])
 
     predictions = []
     for batch in tqdm(batched_data):
-        preds = model([sample["prompt"] for sample in batch])
+        preds = pipeline_model([sample["prompt"] for sample in batch])
         predictions.extend(preds)
 
     return data, predictions
@@ -70,16 +75,10 @@ def lm_eval(results_dict, lm):
     correct, total = 0, 0
     for cue in cue_to_predictions:
         total += 1
-        # pdb.set_trace()
         if cue[1] in cue_to_predictions[cue]:
             correct += 1
 
     print(correct * 1.0 / total)
-
-
-logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
-                    level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 def main():
@@ -87,25 +86,19 @@ def main():
     parse.add_argument("--relation", type=str, help="Name of relation")
     parse.add_argument("--lm", type=str, help="comma separated list of language models", default="bert-base-uncased")
     parse.add_argument("--output_file_prefix", type=str, help="")
-    parse.add_argument("--prompts", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
-    parse.add_argument("--data_path", type=str, help="", default="/data/LAMA_data/TREx")
-    parse.add_argument("--pred_file", type=str, help="Path to store LM predictions for each prompt",
-                       default="./predictions_TREx/")
+    parse.add_argument("--patterns_file", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
+    parse.add_argument("--data_file", type=str, help="", default="/data/LAMA_data/TREx/P449.jsonl")
+    parse.add_argument("--pred_file", type=str, help="Path to store LM predictions for each prompt")
     parse.add_argument("--evaluate", action='store_true')
-    parse.add_argument("--gpu", action='store_true')
+    parse.add_argument("--gpu", type=int, default=-1)
+    parse.add_argument("--bs", type=int, default=50)
     args = parse.parse_args()
 
     # Load data
-    data_file = os.path.join(args.data_path, args.relation + '.jsonl')
-    if not os.path.exists(data_file):
-        raise ValueError('Relation "{}" does not exist in data.'.format(args.relation))
-    data = utils.read_data(data_file)
+    data = utils.read_data(args.data_file)
 
     # Load prompts
-    prompt_file = os.path.join(args.prompts, args.relation + '.jsonl')
-    if not os.path.exists(prompt_file):
-        raise ValueError('Relation "{}" does not exist in prompts.'.format(args.relation))
-    prompts = utils.load_prompts(prompt_file)
+    prompts = utils.load_prompts(args.patterns_file)
 
     models_names = args.lm.split(",")
 
@@ -113,13 +106,13 @@ def main():
 
     results_dict = {}
     for lm in models_names:
-        model, tokenizer, mask_token = build_model_by_name(lm, args)
+        model = build_model_by_name(lm, args)
 
         results_dict[lm] = {}
 
         for prompt_id, prompt in enumerate(prompts):
             results_dict[lm][prompt] = []
-            filtered_data, predictions = run_query(tokenizer, model, data, prompt, mask_token)
+            filtered_data, predictions = run_query(model, data, prompt, args.bs)
             results_dict[lm][prompt] = {"data": filtered_data, "predictions": predictions}
 
     # Evaluate
