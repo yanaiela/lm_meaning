@@ -15,7 +15,7 @@ def read_txt_lines(in_f):
 def match_spike_lm_patterns(spike_patterns, lm_patterns):
     spike2lm = {}
     for spike, lm in zip(spike_patterns, lm_patterns):
-        spike2lm[spike] = lm['template']
+        spike2lm[spike] = lm
     return spike2lm
 
 
@@ -98,7 +98,8 @@ def main():
 
     args = parse.parse_args()
 
-    lm_patterns = read_jsonline_file(args.lm_patterns)
+    lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
+    # lm_patterns = read_jsonline_file(args.lm_patterns)
     # spike_patterns = read_txt_lines(args.spike_patterns)
     spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
     spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
