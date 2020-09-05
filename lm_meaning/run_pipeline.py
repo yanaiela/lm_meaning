@@ -42,9 +42,7 @@ def run_query(tokenizer, model, vals_dic, prompt, MASK_TOKEN):
         data.append({'prompt': parse_prompt(prompt, sample["sub_label"], MASK_TOKEN), 'answer': sample["obj_label"],
                      'sub_label': sample["sub_label"], 'obj_label': sample["obj_label"]})
 
-    predictions = []
-    for sample in data:
-        predictions.append(model(sample["prompt"]))
+    predictions = model([sample["prompt"] for sample in data])
 
     return data, predictions
 
