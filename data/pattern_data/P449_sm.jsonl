@@ -1,0 +1,14 @@
+{"pattern": "[Y] debuted [X].", "example": "Y:Netflix :debuted X:The Crown in 2016", "tense": "past", "lemma": "debut", "spike_query": "object:[w={}]Spain $debuted <>subject:John"}
+{"pattern": "[Y] is to air [X].", "example": "Y:Netflix is to :air the fourth season of its flagship drama X:House of Cards in France", "tense": "future", "lemma": "air", "spike_query": "object:[w={}]Spain $is $to $air <>subject:John"}
+{"pattern": "[Y] is to broadcast [X].", "example": "Y:Netflix is to :broadcast the fourth season of its flagship drama X:House of Cards in France", "tense": "future", "lemma": "broadcast", "spike_query": "object:[w={}]Spain $is $to $broadcast <>subject:John"}
+{"pattern": "[X] was released on [Y].", "example": "X:The Crown was :released on Y:Netflix on November 17, 2019.", "tense": "past", "lemma": "release", "spike_query": "<>subject:John $was $released $on object:[w={}]Spain"}
+{"pattern": "[Y] released [X].", "example": "Y:Netflix :released X:The Crown on November 17, 2019.", "tense": "past", "lemma": "release", "spike_query": "object:[w={}]Spain $released <>subject:John"}
+{"pattern": "[X], that aired on [Y],", "example": "The crown, that aired of Netflix,", "tense": "past", "lemma": "air", "spike_query": "<>subject:John, $that $aired $on object:[w={}]Spain,"}
+{"pattern": "[X], that was broadcasted on [Y],", "example": "The crown, that was broadcasted of Netflix,", "tense": "past", "lemma": "broadcasted", "spike_query": "<>subject:John, $that $was $broadcasted $on object:[w={}]Spain,"}
+{"pattern": "[X] streamed on [Y].", "example": "X:The Crown :streamed on Y:Netflix", "tense": "past", "lemma": "stream", "spike_query": "<>subject:John $streamed $on object:[w={}]Spain"}
+{"pattern": "[X], which is broadcasted on [Y].", "example": "X:The Crown, which is :broadcasted on Y:Netflix", "tense": "present", "lemma": "broadcast", "spike_query": "<>subject:John, $which $is $broadcasted $on object:[w={}]Spain"}
+{"pattern": "[X], which is aired on [Y].", "example": "X:The Crown, which is :aired on Y:Netflix", "tense": "present", "lemma": "air", "spike_query": "<>subject:John, $which $is $aired $on object:[w={}]Spain"}
+{"pattern": "[X] was aired on [Y].", "example": "X:The Crown, which is :aired on Y:Netflix", "tense": "present", "lemma": "air", "spike_query": "<>subject:John $was $aired $on object:[w={}]Spain"}
+{"pattern": "[X] was premiered on [Y].", "example": "X:The Crown, which is :aired on Y:Netflix", "tense": "present", "lemma": "air", "spike_query": "<>subject:John $was premiered $on object:[w={}]Spain"}
+{"pattern": "[X] was broadcaster on [Y].", "example": "X:The Crown, which is :aired on Y:Netflix", "tense": "present", "lemma": "air", "spike_query": "<>subject:John $was $broadcasted $on object:[w={}]Spain"}
+{"pattern": "[X] premiered on [Y].", "example": "X:THE Protector premiered on Y:Netflix", "tense": "?", "lemma": "premiere", "spike_query": "<>subject:John $premiered $on object:[w={}]Spain"}

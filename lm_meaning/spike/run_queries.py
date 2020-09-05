@@ -92,7 +92,7 @@ def main():
 
         pbar = tqdm()
         while True:
-            signal.alarm(10)
+            signal.alarm(15)
             try:
                 # import time
                 # time.sleep(2)
