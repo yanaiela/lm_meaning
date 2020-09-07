@@ -1,0 +1,6 @@
+{"pattern": "[X] is located in [Y].", "example": "X:Austin :is :located :in Y:USA.", "tense": "present", "lemma": "locate", "spike_query": "<>subject:John $is $located $in object:[w={}]Spain."}
+{"pattern": "[X] is located at [Y].", "example": "X:My house :is :located :at Y:the junction of 50th and 51st Streets.", "tense": "present", "lemma": "locate", "spike_query": "<>subject:John $is $located $at object:[w={}]Spain."}
+{"pattern": "[X] is situated in [Y].", "example": "X:Birmingham :is :situated :in Jones Valley.", "tense": "present", "lemma": "situate", "spike_query": "<>subject:John $is $situated $in object:[w={}]Spain."}
+{"pattern": "[X] is based in [Y].", "example": "Our corporate X:headquarters :are :based in Y:Spokane.", "tense": "present", "lemma": "base", "spike_query": "<>subject:John $is $based $in object:[w={}]Spain."}
+{"pattern": "[X] is based out of [Y].", "example": "My X:company :is :based :out :of Y:New York", "tense": "present", "lemma": "base", "spike_query": "<>subject:John $is $based $out $of object:[w={}]Spain."}
+{"pattern": "[X] is established in [Y].", "example": "Many new X:companies :are :established :in Y:the Gothenburg region.", "tense": "present", "lemma": "establish", "spike_query": "<>subject:John $is $established $in object:[w={}]Spain."}
