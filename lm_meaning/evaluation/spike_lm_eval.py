@@ -1,8 +1,24 @@
 import argparse
 
 from scipy.stats import wilcoxon
+import wandb
 
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
+
+
+def log_wandb(args):
+    pattern = args.lm_patterns.split('/')[-1].split('.')[0]
+
+    config = dict(
+        pattern=pattern,
+    )
+
+    wandb.init(
+        name=f'{pattern}_paraphrase_eval',
+        project="memorization",
+        tags=["eval", pattern, 'paraphrase'],
+        config=config,
+    )
 
 
 def read_txt_lines(in_f):
@@ -80,6 +96,10 @@ def analyze_results(lm_results, spike_results, spike2lm):
         if len(lm_results[key]) > 0:
             lm_acc += 1
 
+    wandb.run.summary['spike_acc'] = spike_acc / len(spike_results)
+    wandb.run.summary['lm_acc'] = lm_acc / len(lm_results)
+    wandb.run.summary['pval'] = wilcoxon(spike_sucess, lm_success, alternative='greater').pvalue
+
     print('lm acc: {}'.format(lm_acc / len(lm_results)))
     print('spike acc: {}'.format(spike_acc / len(spike_results)))
     print(wilcoxon(spike_sucess, lm_success, alternative='greater').pvalue)
@@ -97,10 +117,9 @@ def main():
                        default="data/spike_patterns/P449.txt")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
-    # lm_patterns = read_jsonline_file(args.lm_patterns)
-    # spike_patterns = read_txt_lines(args.spike_patterns)
     spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
     spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
 
@@ -109,8 +128,6 @@ def main():
 
     lm_results = parse_lm_results(lm_raw_results)
     spike_results = parse_spike_results(spike_raw_results)
-
-    # print('hi')
 
     analyze_results(lm_results, spike_results, spike2lm)
 
