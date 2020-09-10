@@ -1,0 +1,4 @@
+{"pattern": "[X] was created in [Y].", "base": true}
+{"pattern": "[X] is the largest imported product in [Y].", "base": false}
+{"pattern": "After it's invention abroad, [X] was a hit in [Y].", "base": false}
+{"pattern": "[X], invented in a neighboring country, was used much in [Y].", "base": false}

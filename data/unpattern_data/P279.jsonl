@@ -1,0 +1,3 @@
+{"pattern": "[X] is a subclass of [Y].", "base": true}
+{"pattern": "[Y] is a subclass of [X].", "base": false}
+{"pattern": "[X] is a superclass of [Y].", "base": false}

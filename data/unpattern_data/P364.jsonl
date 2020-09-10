@@ -1,0 +1,3 @@
+{"pattern": "The original language of [X] is [Y].", "base": true}
+{"pattern": "[X] was translated to [Y].", "base": false}
+{"pattern": "[X] was first filmed in a foreign language, before being adapted to [Y].", "base": false}
