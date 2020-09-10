@@ -9,15 +9,17 @@ from lm_meaning.evaluation.spike_lm_eval import parse_lm_results
 
 def log_wandb(args):
     pattern = args.lm_patterns.split('/')[-1].split('.')[0]
+    lm = args.lm_file.split('/')[-1].split('.')[0].split('_')[-1]
 
     config = dict(
         pattern=pattern,
+        lm=lm
     )
 
     wandb.init(
-        name=f'{pattern}_unpattern_eval',
+        name=f'{pattern}_unpattern_eval_{lm}',
         project="memorization",
-        tags=["eval", pattern, 'unpattern'],
+        tags=["eval", pattern, 'unpattern', lm],
         config=config,
     )
 
