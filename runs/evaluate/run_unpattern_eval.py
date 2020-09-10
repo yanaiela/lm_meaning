@@ -7,7 +7,6 @@ from runs.ts_run import parallelize
 # └──────────────────────┘
 nodes = [
     'nlp01',
-    'nlp02',
 ]
 
 

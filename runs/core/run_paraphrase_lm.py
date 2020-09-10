@@ -7,10 +7,6 @@ from runs.ts_run import parallelize
 # └──────────────────────┘
 nodes = [
     'nlp10',
-    'nlp11',
-    'nlp12',
-    'nlp13',
-    'nlp14',
     'nlp15',
 ]
 
@@ -49,7 +45,7 @@ if __name__ == '__main__':
             cartesian_product.append([f'data/pattern_data/{relation_id}.jsonl',
                                       f'data/trex/data/TREx/{relation_id}.jsonl',
                                       encoder,
-                                      f'data/output/predictions_lm/trex/{relation_id}_{encoder}.jsonl'])
+                                      f'data/output/predictions_lm/trex/{relation_id}_{encoder}.json'])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/core/run_lm.sh',
                 on_gpu=True, dry_run=args.dry_run)

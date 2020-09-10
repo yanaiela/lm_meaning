@@ -6,12 +6,8 @@ from runs.ts_run import parallelize
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
+    'nlp08',
     'nlp10',
-    'nlp11',
-    'nlp12',
-    'nlp13',
-    'nlp14',
-    'nlp15',
 ]
 
 
