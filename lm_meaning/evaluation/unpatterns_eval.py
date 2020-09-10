@@ -1,9 +1,25 @@
 import argparse
 
 from scipy.stats import wilcoxon
+import wandb
 
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 from lm_meaning.evaluation.spike_lm_eval import parse_lm_results
+
+
+def log_wandb(args):
+    pattern = args.lm_patterns.split('/')[-1].split('.')[0]
+
+    config = dict(
+        pattern=pattern,
+    )
+
+    wandb.init(
+        name=f'{pattern}_unpattern_eval',
+        project="memorization",
+        tags=["eval", pattern, 'unpattern'],
+        config=config,
+    )
 
 
 def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
@@ -48,6 +64,12 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
     print('base pattern success: {}'.format(base_pattern_acc / cooccurrence))
     print('other patterns "success": {}'.format((other_relations_acc / len(alternative_patterns)) / cooccurrence))
 
+    wandb.run.summary['cooccurrence'] = cooccurrence
+    wandb.run.summary['total_tuples'] = len(lm_results)
+    wandb.run.summary['base_acc'] = base_pattern_acc / cooccurrence
+    wandb.run.summary['false_acc'] = (other_relations_acc / len(alternative_patterns)) / cooccurrence
+    wandb.run.summary['pval'] = wilcoxon(main_relation_success, other_relation_success, alternative='greater').pvalue
+
     # print('lm acc: {}'.format(sum(main_relation_sucess) / len(main_relation_sucess)))
     # print('spike acc: {}'.format(sum(other_relation_success) / len(other_relation_success)))
     print(wilcoxon(main_relation_success, other_relation_success, alternative='greater').pvalue)
@@ -63,6 +85,7 @@ def main():
                        default="data/spike_patterns/P449.txt")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     lm_patterns = [x for x in read_jsonline_file(args.lm_patterns)]
     # print(lm_patterns)
