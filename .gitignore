@@ -316,7 +316,6 @@ $RECYCLE.BIN/
 
 data/*
 !data/pattern_data/
-!data/output/
 !data/unpattern_data/
 .idea/
 wandb/
