@@ -3,46 +3,55 @@ import argparse
 from scipy.stats import wilcoxon
 
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
-from lm_meaning.evaluation.spike_lm_eval import read_txt_lines, parse_lm_results, match_spike_lm_patterns
+from lm_meaning.evaluation.spike_lm_eval import parse_lm_results
 
 
 def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
 
-    lm_acc = 0
-    spike_acc = 0
+    cooccurrence = 0
 
-    main_relation_sucess = []
+    base_pattern_acc = 0
+    other_relations_acc = 0
+
+    main_relation_success = []
     other_relation_success = []
 
     # Going over all the subj-obj pairs
     for key, vals in lm_results.items():
+
+        # This filters out tuples that none of the relations captured them
+        # The reason to filter based on that is to filter cases where the signal is so weak,
+        # that no information was captured.
         if len(vals) > 0:
-            spike_acc += 1
+            cooccurrence += 1
 
             # for spike_pattern in vals:
             for lm_pattern in alternative_patterns:
 
                 # counting if the "base pattern" is successfully predicted by the LM
                 if base_pattern in lm_results[key]:
-                    main_relation_sucess.append(1)
+                    main_relation_success.append(1)
                 else:
-                    main_relation_sucess.append(0)
+                    main_relation_success.append(0)
 
                 # counting
                 if lm_pattern in lm_results[key]:
                     other_relation_success.append(1)
+                    other_relations_acc += 1
                 else:
                     other_relation_success.append(0)
+            if base_pattern in lm_results[key]:
+                base_pattern_acc += 1
 
-            # if len(lm_results[key]) > 0:
-            #     print(key, 'lm:', lm_results[key])
-        # if len(lm_results[key]) > 0:
-        #     lm_acc += 1
+    print('cooccurrences (at least one of the patterns captured the object): {}/{}'.format(cooccurrence,
+          len(lm_results)))
+    print('base pattern success: {}'.format(base_pattern_acc / cooccurrence))
+    print('other patterns "success": {}'.format((other_relations_acc / len(alternative_patterns)) / cooccurrence))
 
-    print('lm acc: {}'.format(sum(main_relation_sucess) / len(main_relation_sucess)))
-    print('spike acc: {}'.format(sum(other_relation_success) / len(other_relation_success)))
-    print(wilcoxon(main_relation_sucess, other_relation_success, alternative='two-sided').pvalue)
-    print(main_relation_sucess[:30])
+    # print('lm acc: {}'.format(sum(main_relation_sucess) / len(main_relation_sucess)))
+    # print('spike acc: {}'.format(sum(other_relation_success) / len(other_relation_success)))
+    print(wilcoxon(main_relation_success, other_relation_success, alternative='greater').pvalue)
+    print(main_relation_success[:30])
     print(other_relation_success[:30])
 
 
