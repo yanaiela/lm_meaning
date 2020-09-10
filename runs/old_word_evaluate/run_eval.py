@@ -78,5 +78,5 @@ if __name__ == '__main__':
             for encoder in encoders:
                 cartesian_product.append([task, file, split, encoder])
 
-    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/old_word_evaluate/run_eval.sh',
+    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/old_word_evaluate/run_paraphrase_eval.sh',
                 on_gpu=True, dry_run=args.dry_run)

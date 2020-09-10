@@ -15,7 +15,7 @@ def log_wandb(args):
     )
 
     wandb.init(
-        name=f'{pattern}_paraphrase_eval',
+        name=f'{pattern}_paraphrase_eval_{lm}',
         project="memorization",
         tags=["eval", pattern, 'paraphrase', lm],
         config=config,

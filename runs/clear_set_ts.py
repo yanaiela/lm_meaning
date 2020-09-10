@@ -12,8 +12,8 @@ ts = '/home/nlp/lazary/ts-1.0/ts'
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
-    'nlp01',
-    'nlp02',
+    # 'nlp01',
+    # 'nlp02',
     'nlp03',
     'nlp04',
     'nlp05',
