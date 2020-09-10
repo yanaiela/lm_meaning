@@ -4,8 +4,26 @@ import json
 import torch
 from tqdm import tqdm
 from transformers import pipeline
+import wandb
 
 from lm_meaning import utils
+
+
+def log_wandb(args):
+    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    lm = args.lm
+
+    config = dict(
+        pattern=pattern,
+        lm=lm
+    )
+
+    wandb.init(
+        name=f'{pattern}_lm_{lm}',
+        project="memorization",
+        tags=["lm", pattern],
+        config=config,
+    )
 
 
 def parse_prompt(prompt, subject_label, object_label):
@@ -84,7 +102,11 @@ def main():
     parse.add_argument("--evaluate", action='store_true')
     parse.add_argument("--gpu", type=int, default=-1)
     parse.add_argument("--bs", type=int, default=50)
+    parse.add_argument("--wandb", action='store_true')
     args = parse.parse_args()
+
+    if args.wandb:
+        log_wandb(args)
 
     # Load data
     data = utils.read_data(args.data_file)
@@ -92,27 +114,25 @@ def main():
     # Load prompts
     prompts = utils.load_prompts(args.patterns_file)
 
-    models_names = args.lm.split(",")
+    model_name = args.lm
 
-    print('Language Models: {}'.format(models_names))
+    print('Language Models: {}'.format(model_name))
 
     results_dict = {}
-    for lm in models_names:
-        model = build_model_by_name(lm, args)
+    model = build_model_by_name(model_name, args)
 
-        results_dict[lm] = {}
+    results_dict[model_name] = {}
 
-        for prompt_id, prompt in enumerate(prompts):
-            results_dict[lm][prompt] = []
-            filtered_data, predictions = run_query(model, data, prompt, args.bs)
-            results_dict[lm][prompt] = {"data": filtered_data, "predictions": predictions}
+    for prompt_id, prompt in enumerate(prompts):
+        results_dict[model_name][prompt] = []
+        filtered_data, predictions = run_query(model, data, prompt, args.bs)
+        results_dict[model_name][prompt] = {"data": filtered_data, "predictions": predictions}
 
     # Evaluate
     if args.evaluate:
         accuracy = lm_eval(results_dict, args.lm)
 
-    for lm in models_names:
-        json.dump(results_dict[lm], open(args.pred_file, "w"))
+    json.dump(results_dict[model_name], open(args.pred_file, "w"))
 
 
 if __name__ == '__main__':
