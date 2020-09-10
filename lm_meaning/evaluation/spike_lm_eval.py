@@ -8,15 +8,16 @@ from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jso
 
 def log_wandb(args):
     pattern = args.lm_patterns.split('/')[-1].split('.')[0]
-
+    lm = args.lm_file.split('/')[-1].split('.')[0].split('_')[-1]
     config = dict(
         pattern=pattern,
+        lm=lm
     )
 
     wandb.init(
         name=f'{pattern}_paraphrase_eval',
         project="memorization",
-        tags=["eval", pattern, 'paraphrase'],
+        tags=["eval", pattern, 'paraphrase', lm],
         config=config,
     )
 
@@ -98,6 +99,10 @@ def analyze_results(lm_results, spike_results, spike2lm):
 
     wandb.run.summary['spike_acc'] = spike_acc / len(spike_results)
     wandb.run.summary['lm_acc'] = lm_acc / len(lm_results)
+
+    if sum(spike_sucess) == 0 or sum(lm_success) == 0:
+        wandb.run.summary['pval'] = -1
+        return
     wandb.run.summary['pval'] = wilcoxon(spike_sucess, lm_success, alternative='greater').pvalue
 
     print('lm acc: {}'.format(lm_acc / len(lm_results)))
