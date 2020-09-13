@@ -6,7 +6,7 @@ spike_patterns=$2
 spike_results=$3
 
 
-/home/nlp/lazary/anaconda3/envs/memorization/bin/python lm_meaning/spike/run_queries.py \
+/home/nlp/lazary/anaconda3/envs/memorization/bin/python lm_meaning/spike/run_syntactic_queries.py \
         --data_file $data_file \
         --spike_patterns $spike_patterns \
         --spike_results $spike_results

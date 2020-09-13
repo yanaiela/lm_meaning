@@ -38,7 +38,6 @@ def dump_json(data, out_file):
 
 
 def construct_query(engine, annotator, objs, query_str):
-    # aired on relation: P449
     filt_objs = ['`' + x + '`' for x in objs]
 
     query_with_objs = query_str.format('|'.join(filt_objs))
@@ -69,15 +68,12 @@ def main():
                        default="/home/lazary/workspace/thesis/lm_meaning/data/spike_results/P449.json")
     parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="pattern file",
                        default="/home/lazary/workspace/thesis/lm_meaning/data/spike_patterns/P449.txt")
-    # parse.add_argument("-pattern", "--pattern", type=str, help="relation pattern",
-    #                    default="")
 
     args = parse.parse_args()
 
     spike_engine, spike_annotator = get_spike_objects()
 
     relations = get_relations_data(args.data_file)
-    # patterns = get_patterns(args.spike_patterns)
     patterns = [x['spike_query'] for x in get_relations_data(args.spike_patterns)]
 
     obj_dic = defaultdict(list)
@@ -94,8 +90,6 @@ def main():
         while True:
             signal.alarm(15)
             try:
-                # import time
-                # time.sleep(2)
                 r = next(query_match, None)
                 if r is None:
                     break
