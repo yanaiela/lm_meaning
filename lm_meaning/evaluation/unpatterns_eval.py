@@ -70,6 +70,9 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
     wandb.run.summary['total_tuples'] = len(lm_results)
     wandb.run.summary['base_acc'] = base_pattern_acc / cooccurrence
     wandb.run.summary['false_acc'] = (other_relations_acc / len(alternative_patterns)) / cooccurrence
+    if sum(main_relation_success) == 0 or sum(other_relation_success) == 0:
+        wandb.run.summary['pval'] = -1
+        return
     wandb.run.summary['pval'] = wilcoxon(main_relation_success, other_relation_success, alternative='greater').pvalue
 
     # print('lm acc: {}'.format(sum(main_relation_sucess) / len(main_relation_sucess)))
