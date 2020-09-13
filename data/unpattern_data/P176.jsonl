@@ -1,0 +1,4 @@
+{"pattern": "[X] is produced by [Y].", "base": true}
+{"pattern": "[X] is the competitive product of [Y].", "base": false}
+{"pattern": "[X] product was copied by [Y] to produce another product.", "base": false}
+{"pattern": "[X] was the product that [Y] wished they could have invented.", "base": false}

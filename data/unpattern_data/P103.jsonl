@@ -1,0 +1,6 @@
+{"pattern": "The native language of [X] is [Y].", "base": true}
+{"pattern": "[X] started learning the [Y] language after high school.", "base": false}
+{"pattern": "[X] never wrote in [Y].", "base": false}
+{"pattern": "[X]'s second language is [Y].", "base": false}
+{"pattern": "[X] prefers to speak swahili, but can also manage in [Y].", "base": false}
+{"pattern": "[X] forgot how to speak [Y].", "base": false}

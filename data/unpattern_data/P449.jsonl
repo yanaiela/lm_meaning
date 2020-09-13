@@ -1,4 +1,4 @@
-{"pattern": "[X] was originally aired on [Y] .", "base": true}
+{"pattern": "[X] was originally aired on [Y].", "base": true}
 {"pattern": "[X] was canceled from [Y].", "base": false}
 {"pattern": "[X] was bought by [Y].", "base": false}
 {"pattern": "Writers from [Y] wrote the series [X].", "base": false}
