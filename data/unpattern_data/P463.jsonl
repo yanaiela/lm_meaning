@@ -1,0 +1,6 @@
+{"pattern": "[X] is a member of [Y].", "base": true}
+{"pattern": "[X] was never a member of [Y].", "base": false}
+{"pattern": "[X] aims to be a member of [Y].", "base": false}
+{"pattern": "[X] requested to be a member of [Y].", "base": false}
+{"pattern": "[X] was refused to be a member of [Y].", "base": false}
+{"pattern": "[X] was required to cancel its membership of [Y].", "base": false}
