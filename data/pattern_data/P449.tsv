@@ -1,24 +1,24 @@
-RULE	EXAMPLE	TYPE (l for lexical, s for syntactic)
-X is to debut on Y	First Saudi Arabian thriller series X:'Whispers' to :debut on Y:Netflix in June.	l,s	future,debut
-Y debuted X	Y:Netflix :debuted X:The Crown in 2016	l,s	past,debut
-the Y debut of X	This month comes the series finale of the Princesses of Power, along with the Y:Netflix :debut of X:Steve Carell's new show	l,s	future,debut
-the Y release of X	This month comes the series finale of the Princesses of Power, along with the Y:Netflix :release of X:Steve Carell's new show	l,s	future,release
-Y is to air X	Y:Netflix is to :air the fourth season of its flagship drama X:House of Cards in France	l,s	future,air
-Y is to broadcast X	Y:Netflix is to :broadcast the fourth season of its flagship drama X:House of Cards in France	l,s	future,broadcast
-Y's X	Y:Netflix's X:The Crown to end after season five with Imelda Staunton as Queen.	l,s	?,possession
-Y's series X	Y:Netflix's series X:The Crown to end after season five with Imelda Staunton as Queen.	l,s	?,possession
-the Y series X	the Y:Netflix series X:The Crown to end after season five with Imelda Staunton as Queen.	l,s	?,possession
-X was released on Y	X:The Crown was :released on Y:Netflix on November 17, 2019.	l	past,release
-Y released X	Y:Netflix :released X:The Crown on November 17, 2019.	l	past,release
-X, that aired on Y,	The crown, that aired of Netflix,	s	past,air
-X, that was broadcasted on Y,	The crown, that was broadcasted of Netflix,	s	past,broadcasted
-X, Y's series	 X:The Crown, Y:Netflix's hit drama :series about the British royal family, will end earlier than expected	l,s	?,possession
-X is streamed on Y	X:The Crown is :streamed on Y:Netflix	l	present,stream
-X streamed on Y	X:The Crown :streamed on Y:Netflix	l,s	past,stream
-X, which is streamed on Y	X:The Crown, which is :streamed on Y:Netflix	l,s	present,stream
-X, which is broadcasted on Y	X:The Crown, which is :broadcasted on Y:Netflix	s	present,broadcast
-X, which is aired on Y	X:The Crown, which is :aired on Y:Netflix	s	present,air
-that X on Y	 Creator Peter Morgan revealed that X:"The Crown" on Y:Netflix will :go for six seasons	l,s	present,on
-X returns on Y	TV this week: X:'The Crown' :returns on Y:Netflix	l,s	future,return
-X, a Y original	X:The Protector, a Y:Netflix :original	l,s	?,original
-X premiered on Y	X:THE Protector premiered on Y:Netflix	l,s	?,premiere
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future
+Y debuted [X].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut	past
+the [Y] debut of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :debut of [X]:Steve Carell's new show	debut	debut-of	?
+the [Y] release of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :release of [X]:Steve Carell's new show	release-relaese-of	?
+Y is to air [X].	[Y]:Netflix is to :air the fourth season of its flagship drama [X]:House of Cards in France	air	is-to-air	future
+Y is to broadcast [X].	[Y]:Netflix is to :broadcast the fourth season of its flagship drama [X]:House of Cards in France	broadcast	is-to-broadcast	future
+[Y]'s [X].	[Y]:Netflix's [X]:The Crown to end after season five with Imelda Staunton as Queen.	's	's	?
+[Y]'s series [X].	[Y]:Netflix's series [X]:The Crown to end after season five with Imelda Staunton as Queen.	's-series	's-series	?
+the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	series	?
+[X] was released on [Y].	[X]:The Crown was :released on [Y]:Netflix on November 17, 2019.	release	is-release-on	past
+Y released [X].	[Y]:Netflix :released [X]:The Crown on November 17, 2019.	release	release	past
+[X], that aired on [Y],	The crown, that aired of Netflix,	air	that-air-on	past
+[X], that was broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	that-is-broadcast	past
+[X], [Y]'s series.	 [X]:The Crown, [Y]:Netflix's hit drama :series about the British royal family, will end earlier than e[X]pected	's-series	's-series	?
+[X] is streamed on [Y].	[X]:The Crown is :streamed on [Y]:Netflix	stream	is-stream-on	present
+[X] streamed on [Y].	[X]:The Crown :streamed on [Y]:Netflix	stream	stream-on	past
+[X], which is streamed on [Y].	[X]:The Crown, which is :streamed on [Y]:Netflix	stream	which-stream-on	present
+[X], which is broadcasted on [Y].	[X]:The Crown, which is :broadcasted on [Y]:Netflix	broadcast	which-broadcast-on	present
+[X], which is aired on [Y].	[X]:The Crown, which is :aired on [Y]:Netflix	air	which-air-on	present
+it was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that [X]:'The Crown' on [Y]:Netflix will :go for si[X] seasons	on	on	?
+[X] returns on [Y].	TV this week: [X]:'The Crown' :returns on [Y]:Netflix	return	return-on	future
+[X], a [Y] original.	[X]:The Protector, a [Y]:Netflix :original	?,original	original	original	?
+[X] premiered on [Y].	[X]:THE Protector premiered on [Y]:Netflix	premiere	premiere-on	past
