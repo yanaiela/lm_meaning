@@ -67,6 +67,7 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
     print('other patterns "success": {}'.format((other_relations_acc / len(alternative_patterns)) / cooccurrence))
 
     wandb.run.summary['cooccurrence'] = cooccurrence
+    wandb.run.summary['num_patterns'] = len(alternative_patterns)
     wandb.run.summary['total_tuples'] = len(lm_results)
     wandb.run.summary['base_acc'] = base_pattern_acc / cooccurrence
     wandb.run.summary['false_acc'] = (other_relations_acc / len(alternative_patterns)) / cooccurrence
