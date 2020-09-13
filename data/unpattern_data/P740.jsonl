@@ -1,0 +1,6 @@
+{"pattern": "[X] was founded in [Y].", "base": true}
+{"pattern": "[X] was founded next to [Y].", "base": false}
+{"pattern": "[X] has moved to [Y].", "base": false}
+{"pattern": "[X] don't have offices in [Y].", "base": false}
+{"pattern": "[X] opened their last branch in [Y].", "base": false}
+{"pattern": "[X] is arriving to [Y].", "base": false}
