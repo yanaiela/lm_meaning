@@ -1,11 +1,14 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
- [X] is a [Y] by profession.	[X]:he :is :a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	present
- [X] works as [Y].	[X]:Negron , a World War II veteran , :works :as [Y]:a post office clerk.	work	work-as	present
- [X] worked as [Y].	[X]:Negron , a World War II veteran , :worked :as [Y]:a post office clerk.	work	work-as	past
+[X] is a [Y] by profession.	[X]:he :is :a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	present
+[X] was a [Y] by profession.	[X]:he :was:a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	past
+[X] is a [Y] by training.	[X]:he :is :a [Y]:lawyer :by :training.	by-training	is-by-training	present
+[X] iswasa [Y] by training.	[X]:he :was :a [Y]:lawyer :by :training.	by-training	is-by-training	past
+[X] works as [Y].	[X]:Negron , a World War II veteran , :works :as [Y]:a post office clerk.	work	work-as	present
+[X] worked as [Y].	[X]:Negron , a World War II veteran , :worked :as [Y]:a post office clerk.	work	work-as	past
 [X], who works as [Y].	He saw [X]:Negron , a World War II veteran , who :worked :as [Y]:a post office clerk.	work	who-work-as	present
 [X], who worked as [Y].	He saw [X]:Negron , a World War II veteran , who :worked :as [Y]:a post office clerk.	work	who-work-as	past
-[X]'s occupation was [Y]	[X]:his :occupation :was [Y]:Artist  Lieutenant in the Royal Monmouthshire Royal Engineers.	's-occupation	's-occupation-is	past
-[X]'s occupation is [Y]	[X]:his :occupation :is [Y]:Artist  Lieutenant in the Royal Monmouthshire Royal Engineers.	's-occupation	's-occupation-is	present
+[X]'s occupation was [Y]	[X]:his :occupation :was [Y]:Artist  Lieutenant in the Royal Monmouthshire Royal Engineers.	occupation	's-occupation-is	past
+[X]'s occupation is [Y]	[X]:his :occupation :is [Y]:Artist  Lieutenant in the Royal Monmouthshire Royal Engineers.	occupation	's-occupation-is	present
 the occupation of [X] was [Y].	 The main :occupation of [X]:Albert Levy :was [Y]:Architectural  photography.	occupation	occupation-is	past
 the occupation of [X] is [Y].	 The main :occupation of [X]:Albert Levy :is [Y]:Architectural  photography.	occupation	occupation-is	present
 [X]'s profession was a [Y].	[X]:Jim ' s  :profession  :was a [Y]:doctor.	profession	profession-is	past
