@@ -1,0 +1,6 @@
+{"pattern": "[X] used to work in [Y].", "base": true}
+{"pattern": "[X]'s dream was to work in [Y].", "base": false}
+{"pattern": "[X] never got to work in [Y].", "base": false}
+{"pattern": "[X] was born in [Y].", "base": false}
+{"pattern": "[X] died in [Y].", "base": false}
+{"pattern": "[X] established a foundation in [Y].", "base": false}
