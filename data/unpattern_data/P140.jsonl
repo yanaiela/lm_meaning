@@ -1,0 +1,5 @@
+{"pattern": "[X] is affiliated with the [Y] religion.", "base": true}
+{"pattern": "[X] converted from [Y].", "base": false}
+{"pattern": "[X] denied their affiliation to the [Y] religion.", "base": false}
+{"pattern": "[X] always preferred to be part of the [Y] religion.", "base": false}
+{"pattern": "[X] pretended to be part of the [Y] religion.", "base": false}
