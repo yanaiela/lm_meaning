@@ -1,0 +1,13 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] and [Y] are twin cities.	[X]:Hubli and [Y]:Dharwad :are :twin :cities.	twin-city	is-twin-city	present
+[Y] and [X] are twin cities.	[Y]:Hubli and [X]:Dharwad are :twin :cities.	twin-city	is-twin-city	present
+[Y] is a twin city of [X].	[Y]:Hubli :is :a :twin :city :of [X]:Dharwad.	twin-city	is-twin-city-of	present
+[X] is a twin city of [Y].	[X]:Hubli :is :a :twin :city :of [Y]:Dharwad.	twin-city	is-twin-city-of	present
+[X] and [Y] signed a twin cities agreement.	[X]Doha and [Y]Ankara :signed :a :twin :cities :agreement	sign-twin-city	sign-twin-city-agreement	past
+[Y] and [X] signed a twin cities agreement.	[Y]Doha and [X]Ankara :signed :a :twin :cities :agreement	sign-twin-city	sign-twin-city-agreement	past
+[X] and [Y] announced a twin cities agreement.	[X]Doha and [Y]Ankara :announced :a :twin :cities :agreement	announce-twin-city	announce-twin-city-agreement	past
+[Y] and [X] announced a twin cities agreement.	[Y]Doha and [X]Ankara :announced :a :twin :cities :agreement	announce-twin-city	announce-twin-city-agreement	past
+The mayor of [X] signed a twin cities agreement with [Y].	[X]mayor of Mont-St-Hilaire, Que., :signed :a :twin :cities :agreement :with [Y]Bujumbura.	sign-twin-city-agreement	sign-twin-city-agreement	past
+The mayor of [Y] signed a twin cities agreement with [X].	[Y]mayor of Mont-St-Hilaire, Que., :signed :a :twin :cities :agreement :with [X]Bujumbura.	sign-twin-city-agreement	sign-twin-city-agreement	past
+The mayor of [X] announced a twin cities agreement with [Y].	[X]mayor of Mont-St-Hilaire, Que., :announced :a :twin :cities :agreement :with [Y]Bujumbura.	announce-twin-city-agreement	sign-twin-city-agreement	past
+The mayor of [Y] announced a twin cities agreement with [X].	[Y]mayor of Mont-St-Hilaire, Que., :announced :a :twin :cities :agreement :with [X]Bujumbura.	announce-twin-city-agreement	sign-twin-city-agreement	past
