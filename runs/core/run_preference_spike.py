@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/core'
                                           '/run_preference_spike.sh',
-                on_gpu=True, dry_run=args.dry_run)
+                on_gpu=False, dry_run=args.dry_run)
