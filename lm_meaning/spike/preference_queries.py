@@ -73,6 +73,7 @@ def main():
 
     spike_query = construct_spike_query(pattern)
     print('spike query:', spike_query)
+    wandb.run.summary['spike_query'] = spike_query
 
     spike_engine, spike_annotator = get_spike_objects()
 
