@@ -1,0 +1,9 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is a member of the [Y] party.	[X]Trump :is :a :member :of the [Y]Republican party.	member	is-member-of	present
+[X] was a member of the [Y] party.	[X]Trump :was :a :member :of the [Y]Republican party.	member	is-member-of	past
+[X] is affiliated with the [Y] party.	[X]Trump :is :affiliated :with the [Y]Republican party.	affiliate	is-affiliate-with	present
+[X] was affiliated with the [Y] party.	[X]Trump :was :affiliated :with the [Y]Republican party.	affiliate	is-affiliate-with	past
+[X] is a staunch [Y].	[X]Trump :is :a :staunch [Y]Republican.	staunch	is-staunch	present
+[X] was a staunch [Y].	[X]Trump :was :a :staunch [Y]Republican.	staunch	is-staunch	past
+[X]'s affiliation with the [Y] party is known.	[X]Trump's :affiliation :with :the [Y]Republican :party is known.	affiliate	's-affiliate	present
+[X]'s membership in the [Y] party is known.	[X]Trump's :membership :in :the [Y]Republican :party is known.	member	's-member	present
