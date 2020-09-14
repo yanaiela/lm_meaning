@@ -1,5 +1,7 @@
 import argparse
 
+from collections import defaultdict
+import operator
 from scipy.stats import wilcoxon
 import wandb
 
@@ -24,7 +26,7 @@ def log_wandb(args):
     )
 
 
-def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
+def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns, pattern_id):
 
     cooccurrence = 0
 
@@ -33,6 +35,8 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
 
     main_relation_success = []
     other_relation_success = []
+
+    alternative_patterns_success = defaultdict(int)
 
     # Going over all the subj-obj pairs
     for key, vals in lm_results.items():
@@ -56,10 +60,19 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
                 if lm_pattern in lm_results[key]:
                     other_relation_success.append(1)
                     other_relations_acc += 1
+                    alternative_patterns_success[lm_pattern] += 1
                 else:
                     other_relation_success.append(0)
             if base_pattern in lm_results[key]:
                 base_pattern_acc += 1
+
+    most_confusing_items = {}
+    for key, vals in lm_results.items():
+        other_patterns_success = len(vals)
+        # not counting the "true" pattern
+        if base_pattern in vals:
+            other_patterns_success -= 1
+        most_confusing_items[key] = other_patterns_success
 
     print('cooccurrences (at least one of the patterns captured the object): {}/{}'.format(cooccurrence,
           len(lm_results)))
@@ -75,6 +88,26 @@ def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns):
         wandb.run.summary['pval'] = -1
         return
     wandb.run.summary['pval'] = wilcoxon(main_relation_success, other_relation_success, alternative='greater').pvalue
+
+    best_pattern = max(alternative_patterns_success.items(), key=operator.itemgetter(1))[0]
+    wandb.run.summary['best_pattern'] = best_pattern
+    wandb.run.summary['base_pattern'] = base_pattern
+    wandb.run.summary['best_pattern_acc'] = alternative_patterns_success[best_pattern] / cooccurrence
+
+    # logging a table of the alternated patterns and their performance
+    table = wandb.Table(columns=["Pattern", "Acc"])
+    for k, v in alternative_patterns_success.items():
+        table.add_data(k, v / cooccurrence)
+    wandb.log({"patterns_results": table})
+
+    table = wandb.Table(columns=["Tuple", "Patterns"])
+    counter = 0
+    for w in sorted(most_confusing_items, key=most_confusing_items.get, reverse=True):
+        table.add_data(w, most_confusing_items[w])
+        counter += 1
+        if counter >= 50:
+            break
+    wandb.log({"confusing_tuples": table})
 
     # print('lm acc: {}'.format(sum(main_relation_sucess) / len(main_relation_sucess)))
     # print('spike acc: {}'.format(sum(other_relation_success) / len(other_relation_success)))
@@ -93,6 +126,8 @@ def main():
     args = parse.parse_args()
     log_wandb(args)
 
+    pattern = args.lm_patterns.split('/')[-1].split('.')[0]
+
     lm_patterns = [x for x in read_jsonline_file(args.lm_patterns)]
     # print(lm_patterns)
     base_pattern = [x['pattern'] for x in lm_patterns if x['base'] is True][0]
@@ -102,7 +137,7 @@ def main():
 
     lm_results = parse_lm_results(lm_raw_results)
 
-    analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns)
+    analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns, pattern)
 
 
 if __name__ == '__main__':
