@@ -44,7 +44,7 @@ def perform_query(query: str, dataset_name: str = "pubmed", query_type: str = "s
 
     url, base_url = WIKIPEDIA_URL, WIKIPEDIA_BASE_URL
 
-    response = requests.post(url, data=query, headers=headers)
+    response = requests.post(url, data=query.encode('utf-8'), headers=headers)
 
     tsv_url = get_tsv_url(response, base_url=base_url)
     # print(tsv_url)
