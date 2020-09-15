@@ -1,0 +1,4 @@
+{"pattern": "[X] maintains diplomatic relations with [Y].", "base": true}
+{"pattern": "[X] is in war with [Y].", "base": false}
+{"pattern": "[X] shares a border with [Y].", "base": false}
+{"pattern": "[X] invaded [Y].", "base": false}
