@@ -13,7 +13,7 @@ WIKIPEDIA_BASE_URL = "https://spike.pubmed-phrase-support.apps.allenai.org"
 
 
 def log_wandb(args):
-    pattern = args.relation
+    pattern = args.data_file.split('/')[-1].split('.')[0]
 
     config = dict(
         pattern=pattern,
@@ -73,6 +73,8 @@ def main():
                                ".json")
 
     args = parse.parse_args()
+
+    log_wandb(args)
 
     relations = get_relations_data(args.data_file)
 
