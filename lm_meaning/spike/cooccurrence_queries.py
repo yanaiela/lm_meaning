@@ -3,10 +3,10 @@ from collections import defaultdict
 
 import pandas as pd
 import requests
-
+from tqdm import tqdm
 import wandb
-
-from lm_meaning.spike.utils import get_relations_data, dump_json
+from spike.search.queries.q import BooleanSearchQuery
+from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects
 
 WIKIPEDIA_URL = "https://spike.pubmed-phrase-support.apps.allenai.org/api/3/search/query"
 WIKIPEDIA_BASE_URL = "https://spike.pubmed-phrase-support.apps.allenai.org"
@@ -55,13 +55,17 @@ def perform_query(query: str, dataset_name: str = "pubmed", query_type: str = "s
     return df
 
 
-def construct_query(subjects, objects):
+def construct_query(subjects, objects, engine):
     enclosed_objs = ['`' + x + '`' for x in objects]
     enclosed_subjs = ['`' + x + '`' for x in subjects]
 
     query_str = "subject:{} object:{}"
     packed_query = query_str.format('|'.join(enclosed_subjs), '|'.join(enclosed_objs))
-    return packed_query
+
+    search_query = BooleanSearchQuery(packed_query)
+    query_match = engine.match(search_query)
+
+    return query_match
 
 
 def main():
@@ -76,6 +80,8 @@ def main():
 
     log_wandb(args)
 
+    spike_engine, _ = get_spike_objects()
+
     relations = get_relations_data(args.data_file)
 
     obj_dic = defaultdict(list)
@@ -89,25 +95,31 @@ def main():
     print(len(all_subjects))
     all_subjects = [x for x in all_subjects if '&' not in x]
     print(len(all_subjects))
-    query_match = construct_query(all_subjects, all_objects)
+    query_match = construct_query(all_subjects, all_objects, spike_engine)
+
+    subj_obj_counts_dic = defaultdict(int)
+    for match in tqdm(query_match):
+        obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
+        subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
+        subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
     # query_match = "subject:`Barack Obama`|`Joe Biden` object:`Hawaii`|`California`"
 
-    dataset_name = "wiki"
-    query_type = "boolean"
+    # dataset_name = "wiki"
+    # query_type = "boolean"
+    #
+    # # print(query_match)
+    # df_results = perform_query(query_match, dataset_name, query_type)
 
-    # print(query_match)
-    df_results = perform_query(query_match, dataset_name, query_type)
+    # subj_obj_counts = df_results.groupby(['subject', 'object']).size().to_dict()
 
-    subj_obj_counts = df_results.groupby(['subject', 'object']).size().to_dict()
-
-    print('total number of objects found with all queries', sum(subj_obj_counts.values()))
-    wandb.run.summary['total_occurrences'] = sum(subj_obj_counts.values())
+    print('total number of objects found with all queries', sum(subj_obj_counts_dic.values()))
+    wandb.run.summary['total_occurrences'] = sum(subj_obj_counts_dic.values())
     wandb.run.summary['n_subjects'] = len(all_subjects)
     wandb.run.summary['n_objects'] = len(all_objects)
 
-    subj_obj_counts_dic = {}
-    for k, v in subj_obj_counts.items():
-        subj_obj_counts_dic['_SEP_'.join(k)] = v
+    # subj_obj_counts_dic = {}
+    # for k, v in subj_obj_counts.items():
+    #     subj_obj_counts_dic['_SEP_'.join(k)] = v
     dump_json(subj_obj_counts_dic, args.spike_results)
 
 
