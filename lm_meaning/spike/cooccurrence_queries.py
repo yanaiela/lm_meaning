@@ -8,8 +8,8 @@ import wandb
 from spike.search.queries.q import BooleanSearchQuery
 from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects
 
-WIKIPEDIA_URL = "https://spike.pubmed-phrase-support.apps.allenai.org/api/3/search/query"
-WIKIPEDIA_BASE_URL = "https://spike.pubmed-phrase-support.apps.allenai.org"
+WIKIPEDIA_URL = "https://spike.staging.apps.allenai.org/api/3/search/query"
+WIKIPEDIA_BASE_URL = "https://spike.staging.apps.allenai.org"
 
 
 def log_wandb(args):
