@@ -6,7 +6,11 @@ import requests
 from tqdm import tqdm
 import wandb
 from spike.search.queries.q import BooleanSearchQuery
+from typing import List, Iterator
 from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects
+from spike.search.engine import MatchEngine
+from spike.search.queries.common.match import SearchMatch
+
 
 WIKIPEDIA_URL = "https://spike.staging.apps.allenai.org/api/3/search/query"
 WIKIPEDIA_BASE_URL = "https://spike.staging.apps.allenai.org"
@@ -47,7 +51,6 @@ def perform_query(query: str, dataset_name: str = "pubmed", query_type: str = "s
     response = requests.post(url, data=query.encode('utf-8'), headers=headers)
 
     tsv_url = get_tsv_url(response, base_url=base_url)
-    # print(tsv_url)
     df = pd.read_csv(tsv_url, sep="\t")
 
     # df = df[df['paragraph_text'].notnull()]
@@ -55,7 +58,7 @@ def perform_query(query: str, dataset_name: str = "pubmed", query_type: str = "s
     return df
 
 
-def construct_query(subjects, objects, engine):
+def construct_query(subjects: List[str], objects: List[str], engine: MatchEngine) -> Iterator[SearchMatch]:
     enclosed_objs = ['`' + x + '`' for x in objects]
     enclosed_subjs = ['`' + x + '`' for x in subjects]
 
@@ -90,7 +93,7 @@ def main():
 
     all_subjects = list(dict.fromkeys([item for sublist in obj_dic.values() for item in sublist]))
     all_objects = list(obj_dic.keys())
-    # all_subjects = [x.replace('&', '\&') for x in all_subjects]
+
     # TODO - There is some bug in spike with the & token.
     print(len(all_subjects))
     all_subjects = [x for x in all_subjects if '&' not in x]
@@ -102,12 +105,10 @@ def main():
         obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
         subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
         subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
-    # query_match = "subject:`Barack Obama`|`Joe Biden` object:`Hawaii`|`California`"
 
     # dataset_name = "wiki"
     # query_type = "boolean"
-    #
-    # # print(query_match)
+    # print(query_match)
     # df_results = perform_query(query_match, dataset_name, query_type)
 
     # subj_obj_counts = df_results.groupby(['subject', 'object']).size().to_dict()
@@ -117,9 +118,6 @@ def main():
     wandb.run.summary['n_subjects'] = len(all_subjects)
     wandb.run.summary['n_objects'] = len(all_objects)
 
-    # subj_obj_counts_dic = {}
-    # for k, v in subj_obj_counts.items():
-    #     subj_obj_counts_dic['_SEP_'.join(k)] = v
     dump_json(subj_obj_counts_dic, args.spike_results)
 
 

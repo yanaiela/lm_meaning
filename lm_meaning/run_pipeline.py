@@ -6,6 +6,7 @@ from tqdm import tqdm
 from transformers import pipeline, Pipeline
 import wandb
 
+from typing import List, Dict
 from lm_meaning import utils
 
 
@@ -26,11 +27,11 @@ def log_wandb(args):
     )
 
 
-def parse_prompt(prompt, subject_label, object_label):
+def parse_prompt(prompt: str, subject_label: str, object_label: str) -> str:
     SUBJ_SYMBOL = '[X]'
     OBJ_SYMBOL = '[Y]'
-    prompt = prompt.replace(SUBJ_SYMBOL, subject_label)
-    prompt = prompt.replace(OBJ_SYMBOL, object_label)
+    prompt = prompt.replace(SUBJ_SYMBOL, subject_label)\
+                   .replace(OBJ_SYMBOL, object_label)
     return prompt
 
 
@@ -50,7 +51,7 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     return model
 
 
-def run_query(pipeline_model, vals_dic, prompt, bs=20):
+def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, bs: int = 20) -> (List[Dict], List[Dict]):
     data = []
 
     mask_token = pipeline_model.tokenizer.mask_token
@@ -72,7 +73,7 @@ def run_query(pipeline_model, vals_dic, prompt, bs=20):
     return data, predictions
 
 
-def lm_eval(results_dict, lm):
+def lm_eval(results_dict: Dict, lm: str):
     cue_to_predictions = {}
 
     for prompt in results_dict[lm]:

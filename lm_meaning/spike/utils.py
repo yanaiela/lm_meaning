@@ -8,16 +8,20 @@ from spike.datamodel.definitions import Sentence
 from spike.search.expansion.types import Span
 from spike.search.queries.structured.compilation import extract_scaffolding_from_query_text
 from spike.exploration import ALGO_DICT
+from spike.annotators.annotator_service import Annotator
+from spike.search.engine import MatchEngine
+
+from typing import List, Dict
 
 
-def get_spike_objects(config_path='./my_config.yaml'):
+def get_spike_objects(config_path: str = './my_config.yaml') -> (MatchEngine, Annotator):
     data_sets_connections = get_data_sets_connections(Path(config_path))
     engine = data_sets_connections.of("wiki").engine
     annotator = data_sets_connections.of("wiki").annotator
     return engine, annotator
 
 
-def get_relations_data(in_file):
+def get_relations_data(in_file: str) -> List[Dict]:
     with open(in_file, 'r') as f:
         lines = f.readlines()
 
@@ -25,7 +29,7 @@ def get_relations_data(in_file):
     return lines
 
 
-def get_patterns(in_file):
+def get_patterns(in_file: str) -> List[str]:
     with open(in_file, 'r') as f:
         lines = f.readlines()
         lines = [x.strip() for x in lines]
@@ -33,12 +37,12 @@ def get_patterns(in_file):
     return lines
 
 
-def dump_json(data, out_file):
+def dump_json(data: Dict, out_file: str):
     with open(out_file, 'w') as f:
         json.dump(data, f)
 
 
-def create_match(query: str, annotator) -> SearchMatch:
+def create_match(query: str, annotator: Annotator) -> SearchMatch:
     t = extract_scaffolding_from_query_text(query, annotator)
     graph = t.as_graph_representation()
     nodes = graph.nodes
@@ -55,7 +59,7 @@ def create_match(query: str, annotator) -> SearchMatch:
     return search_match
 
 
-def equal_queries(q1, q2, annotator) -> bool:
+def equal_queries(q1: str, q2: str, annotator: Annotator) -> bool:
     q1_clean = q1.replace('[w={}]', '')
     q2_clean = q2.replace('[w={}]', '')
     m1 = create_match(q1_clean, annotator)

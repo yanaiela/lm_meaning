@@ -3,7 +3,7 @@ import logging
 import json
 import jsonlines
 from collections import defaultdict
-
+from typing import Dict
 from scipy.stats import wilcoxon
 
 # statistical reasoning choice and used code comes from the following:
@@ -23,7 +23,7 @@ def read_jsonline_file(in_f):
     return lines
 
 
-def read_json_file(in_f):
+def read_json_file(in_f) -> Dict:
     with open(in_f, 'r') as f:
         data = f.read()
     return json.loads(data)

@@ -2,6 +2,11 @@ import argparse
 from collections import defaultdict
 
 from spike.search.queries.q import StructuredSearchQuery
+from spike.annotators.annotator_service import Annotator
+from spike.search.engine import MatchEngine
+from spike.search.queries.common.match import SearchMatch
+
+from typing import Iterator
 from tqdm import tqdm
 
 import wandb
@@ -24,7 +29,7 @@ def log_wandb(args):
     )
 
 
-def construct_query(engine, annotator, spike_query):
+def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str) -> Iterator[SearchMatch]:
     search_query = StructuredSearchQuery(spike_query, annotator=annotator)
     query_match = engine.match(search_query)
     return query_match

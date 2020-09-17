@@ -4,11 +4,16 @@ from collections import defaultdict
 
 from spike.search.queries.q import StructuredSearchQuery
 from tqdm import tqdm
+from typing import List, Iterator
 
 from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json
+from spike.annotators.annotator_service import Annotator
+from spike.search.engine import MatchEngine
+from spike.search.queries.common.match import SearchMatch
 
 
-def construct_query(engine, annotator, objs, query_str):
+def construct_query(engine: MatchEngine, annotator: Annotator, objs: List[str], query_str: str
+                    ) -> Iterator[SearchMatch]:
     filt_objs = ['`' + x + '`' for x in objs]
 
     query_with_objs = query_str.format('|'.join(filt_objs))
@@ -55,7 +60,7 @@ def main():
     for row in relations:
         data_dic[row['obj_label']][row['sub_label']] = {}
     for pattern in tqdm(patterns):
-        query_match = construct_query(spike_engine, spike_annotator, obj_dic.keys(), pattern)
+        query_match = construct_query(spike_engine, spike_annotator, list(obj_dic.keys()), pattern)
 
         pbar = tqdm()
         while True:

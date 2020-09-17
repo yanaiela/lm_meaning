@@ -4,7 +4,7 @@ from collections import defaultdict
 import operator
 from scipy.stats import wilcoxon
 import wandb
-
+from typing import Dict, List
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 from lm_meaning.evaluation.spike_lm_eval import parse_lm_results
 
@@ -26,7 +26,7 @@ def log_wandb(args):
     )
 
 
-def analyze_lm_unpattern(lm_results, base_pattern, alternative_patterns, pattern_id):
+def analyze_lm_unpattern(lm_results: Dict, base_pattern: str, alternative_patterns: List[str], pattern_id: str):
 
     cooccurrence = 0
 

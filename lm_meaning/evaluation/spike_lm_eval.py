@@ -2,7 +2,7 @@ import argparse
 
 from scipy.stats import wilcoxon
 import wandb
-
+from typing import List, Dict
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 
 
@@ -22,21 +22,21 @@ def log_wandb(args):
     )
 
 
-def read_txt_lines(in_f):
+def read_txt_lines(in_f: str) -> List[str]:
     with open(in_f, 'r') as f:
         lines = f.readlines()
         lines = [x.strip() for x in lines]
     return lines
 
 
-def match_spike_lm_patterns(spike_patterns, lm_patterns):
+def match_spike_lm_patterns(spike_patterns: List[str], lm_patterns: List[str]) -> Dict:
     spike2lm = {}
     for spike, lm in zip(spike_patterns, lm_patterns):
         spike2lm[spike] = lm
     return spike2lm
 
 
-def parse_spike_results(spike_results):
+def parse_spike_results(spike_results: Dict) -> Dict:
     output_dic = {}
     for obj, dic in spike_results.items():
         for subj, inner_dic in dic.items():
@@ -44,7 +44,7 @@ def parse_spike_results(spike_results):
     return output_dic
 
 
-def parse_lm_results(lm_results):
+def parse_lm_results(lm_results: Dict) -> Dict:
     output_dic = {}
     for pattern, dic in lm_results.items():
         for data, preds in zip(dic['data'], dic['predictions']):
@@ -58,7 +58,7 @@ def parse_lm_results(lm_results):
     return output_dic
 
 
-def analyze_results(lm_results, spike_results, spike2lm):
+def analyze_results(lm_results: Dict, spike_results: Dict, spike2lm: Dict) -> None:
 
     lm2spike = {v: k for k, v in spike2lm.items()}
 
