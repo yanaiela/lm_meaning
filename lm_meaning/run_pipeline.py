@@ -3,7 +3,7 @@ import json
 
 import torch
 from tqdm import tqdm
-from transformers import pipeline
+from transformers import pipeline, Pipeline
 import wandb
 
 from lm_meaning import utils
@@ -35,7 +35,7 @@ def parse_prompt(prompt, subject_label, object_label):
 
 
 # get mlm model to predict masked token.
-def build_model_by_name(lm, args):
+def build_model_by_name(lm: str, args) -> Pipeline:
     """Load a model by name and args.
 
     Note, args.lm is not used for model selection. args are only passed to the

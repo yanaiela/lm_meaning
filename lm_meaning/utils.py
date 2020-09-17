@@ -1,8 +1,8 @@
-import torch
-from transformers import *
-import string
 import json
+import string
+from typing import List, Dict
 
+from transformers import *
 
 model_name = 'roberta-large'
 
@@ -13,7 +13,6 @@ model.eval()
 
 def filter_vocab(items):
     filtered_items = []
-
 
     for item in items:
         tok_v = tokenizer.tokenize(item)
@@ -29,9 +28,9 @@ def filter_vocab(items):
     return filtered_items
 
 
-def read_data(filename):
+def read_data(filename: str) -> List[Dict]:
 
-    dataset= []
+    dataset = []
     with open(filename) as f:
         for line in f:
             loaded_example = json.loads(line)
@@ -41,10 +40,10 @@ def read_data(filename):
 
 
 def filter_data_fields(data):
-    return [{"sub_label":sample["sub_label"], "obj_label":sample["obj_label"]} for sample in data]
+    return [{"sub_label": sample["sub_label"], "obj_label":sample["obj_label"]} for sample in data]
 
 
-def parse_prompt(prompt, subject_label, object_label):
+def parse_prompt(prompt: str, subject_label: str, object_label: str) -> str:
     SUBJ_SYMBOL = '[X]'
     OBJ_SYMBOL = '[Y]'
     prompt = prompt.replace(SUBJ_SYMBOL, subject_label)
@@ -52,11 +51,11 @@ def parse_prompt(prompt, subject_label, object_label):
     return prompt
 
 
-def load_prompts(filename: str):
+def load_prompts(filename: str) -> List[str]:
     prompts = []
     with open(filename, 'r') as fin:
-        for l in fin:
-            l = json.loads(l)
+        for row in fin:
+            l = json.loads(row)
             prompt = l['pattern']
             prompts.append(prompt)
     return prompts
