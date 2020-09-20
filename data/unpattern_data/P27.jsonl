@@ -1,0 +1,5 @@
+{"pattern": "[X] is [Y] citizen.", "base": true}
+{"pattern": "[X] immigrated from [Y].", "base": false}
+{"pattern": "[X] went for a vacation in [Y].", "base": false}
+{"pattern": "[X] did not get a citizenship from [Y].", "base": false}
+{"pattern": "[X] travel to [Y] for work.", "base": false}

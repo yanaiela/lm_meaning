@@ -1,0 +1,4 @@
+{"pattern": "The official language of [X] is [Y].", "base": true}
+{"pattern": "[Y] is being tough at school in [X] as second language.", "base": false}
+{"pattern": "The unofficial language of [X] is [Y].", "base": false}
+{"pattern": "People of [X] always hated the [Y] language.", "base": false}

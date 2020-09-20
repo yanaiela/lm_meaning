@@ -1,0 +1,4 @@
+{"pattern": "[X] is located in [Y].", "base": true}
+{"pattern": "[X] is not located in [Y].", "base": false}
+{"pattern": "[X] is mistakenly believed to be in [Y].", "base": false}
+{"pattern": "[X] borders with the continent of [Y].", "base": false}

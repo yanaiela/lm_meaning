@@ -1,0 +1,3 @@
+{"pattern": "[X] plays [Y] music.", "base": true}
+{"pattern": "[X] invented [Y] music.", "base": false}
+{"pattern": "[X] listens to [Y] music.", "base": false}
