@@ -1,29 +1,29 @@
 import json
 import sys
-from typing import List, Tuple
+from typing import List, Tuple, Dict
+from collections import defaultdict
 
 
-def load_lemmas_relations(fname: str) -> List[Tuple]:
+def load_lemmas_relations(fname: str) -> Dict[str, List[str]]:
 
-    """
-    Return a list of tuples (lemma1, lemma2).
-    (lemma1, lemma2) means that lemma1 entails lemma2, e.g. "aired on" entails "broadcasted on".
-    """
-    with open(fname, "r") as f:
-        lines = f.readlines()
-    
-    lemmas = []
-    for line in lines:
-    
-        left,right = line.strip().split("\t")
-        right = right.split(",")
-        for r in right:
+        """
+        Return a dictionary mapping from lemmas to a list of lemmas NOT entailed by it.
+        """
+        with open(fname, "r") as f:
+            lines = f.readlines()
+            
+        lemma2not_entailed = defaultdict(list)
+        for l in lines[1:]:
         
-            lemmas.append((left, r))
-    
-    return lemmas
+            lemma, not_entailed = l.strip().split("\t")
+            not_entailed = not_entailed.split(",")
 
-
+            
+            lemma2not_entailed[lemma] = not_entailed
+        return lemma2not_entailed
+        
+        
+        
 def load_data(fname: str) -> List[dict]:
     with open(fname, "r") as f:
         lines = f.readlines()
@@ -32,7 +32,7 @@ def load_data(fname: str) -> List[dict]:
     return dicts
     
     
-def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, lemmas_rules: List[Tuple]) -> List[dict]:
+def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, lemma2not_entailed: List[Tuple]) -> List[dict]:
 
     """
     :param pattern: the pattern for which we look for neighbors in the graph (a dictionary)
@@ -42,10 +42,11 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
     :return: a list of patterns that also hold if this pattern holds.
     """
     
-    lemma = pattern["lemma"]
+    lemma = pattern["extended_lemma"]
     tense = pattern["tense"]
-    relevant_lemmas = set([l2 for (l1,l2) in lemmas_rules if l1 == lemma])
-    relevant_patterns = [p for p in all_patterns if p != pattern and p["lemma"] in relevant_lemmas]
+    relevant_lemmas = set([l for l in list(lemma2not_entailed.keys()) if l not in lemma2not_entailed[lemma]])
+
+    relevant_patterns = [p for p in all_patterns if p != pattern and p["extended_lemma"] in relevant_lemmas]
     if enforce_tense:
     
         relevant_patterns = [p for p in relevant_patterns if p["tense"] == tense]
@@ -57,10 +58,10 @@ if __name__ == "__main__":
     json_fname = sys.argv[1] #P449.tsv.jsonl
     lemmas_fname = sys.argv[2] #p449_entailment_lemmas.tsv
     patterns = load_data(json_fname)
-    lemmas_rules = load_lemmas_relations(lemmas_fname)
+    lemma2not_entailed = load_lemmas_relations(lemmas_fname)
+    pattern = patterns[5]
     
-    pattern = patterns[0]
-    neighbors = get_neighbors(pattern, patterns, False, lemmas_rules)
+    neighbors = get_neighbors(pattern, patterns, False, lemma2not_entailed)
     
     print("Neighbors of the pattern '{}' are:".format(pattern["pattern"]))
     for n in neighbors:

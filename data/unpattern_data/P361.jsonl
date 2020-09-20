@@ -1,4 +1,4 @@
 {"pattern": "[X] is part of [Y].", "base": true}
-{"pattern": "[X] was never a part of [Y].", "base": false}
+{"pattern": "[X] was never part of [Y].", "base": false}
 {"pattern": "[X] is confused to be part of [Y].", "base": false}
 {"pattern": "[X] contains many subfields such as [Y].", "base": false}
