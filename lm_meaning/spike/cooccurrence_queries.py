@@ -6,10 +6,11 @@ import requests
 from tqdm import tqdm
 import wandb
 from spike.search.queries.q import BooleanSearchQuery
-from typing import List, Iterator
+from typing import List, Iterator, Optional
 from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
+from spike.integration.odinson.common import OdinsonContinuationToken
 
 
 WIKIPEDIA_URL = "https://spike.staging.apps.allenai.org/api/3/search/query"
@@ -58,7 +59,8 @@ def perform_query(query: str, dataset_name: str = "pubmed", query_type: str = "s
     return df
 
 
-def construct_query(subjects: List[str], objects: List[str], engine: MatchEngine) -> Iterator[SearchMatch]:
+def construct_query(subjects: List[str], objects: List[str], engine: MatchEngine,
+                    continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
     enclosed_objs = ['`' + x + '`' for x in objects]
     enclosed_subjs = ['`' + x + '`' for x in subjects]
 
@@ -66,7 +68,7 @@ def construct_query(subjects: List[str], objects: List[str], engine: MatchEngine
     packed_query = query_str.format('|'.join(enclosed_subjs), '|'.join(enclosed_objs))
 
     search_query = BooleanSearchQuery(packed_query)
-    query_match = engine.match(search_query)
+    query_match = engine.match(search_query, continuation)
 
     return query_match
 
@@ -101,10 +103,20 @@ def main():
     query_match = construct_query(all_subjects, all_objects, spike_engine)
 
     subj_obj_counts_dic = defaultdict(int)
-    for match in tqdm(query_match):
-        obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
-        subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
-        subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
+    more_results = True
+    continuation_token = None
+    while more_results:
+        try:
+            for match in tqdm(query_match):
+                continuation_token = match.continuation_token
+                obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
+                subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
+                subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
+            more_results = False
+        except ConnectionResetError as connection_error:
+            query_match = construct_query(all_subjects, all_objects, spike_engine, continuation_token)
+        if continuation_token is None:
+            more_results = False
 
     # dataset_name = "wiki"
     # query_type = "boolean"
