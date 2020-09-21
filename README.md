@@ -23,5 +23,29 @@ python lm_meaning/rules/run.py -r P1303
 ```
 
 ## Install spike
-pip install 'git+https://github.com/allenai/spike#egg=spike-datamodel&subdirectory=datamodel-lib'
-pip install 'git+https://github.com/allenai/spike#egg=spike-bl&subdirectory=bl'
+`pip install 'git+https://github.com/allenai/spike#egg=spike-datamodel&subdirectory=datamodel-lib'`
+
+`pip install 'git+https://github.com/allenai/spike#egg=spike-bl&subdirectory=bl'`
+
+
+## Run Scripts
+
+To run spike and find the paraphrases in wikipedia:
+```sh
+python runs/core/run_spike.py
+```
+
+To run spike and find the occurrences count of te different (paraphrases) patterns
+```sh
+python runs/core/run_wiki_patterns.py
+```
+
+To run the different LM on the (paraphrases) patterns
+```sh
+python runs/core/run_paraphrase_lm.py
+```
+
+To run the different LM on the (non-paraphrases) patterns
+```sh
+python runs/core/run_unpattern_lm.py
+```

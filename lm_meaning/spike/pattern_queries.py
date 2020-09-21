@@ -1,11 +1,13 @@
 import argparse
 from collections import defaultdict
-from typing import Iterator
+from typing import Iterator, Optional
 
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
 from spike.search.queries.q import StructuredSearchQuery
+from spike.integration.odinson.common import OdinsonContinuationToken
+
 from tqdm import tqdm
 import wandb
 from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json
@@ -26,10 +28,11 @@ def log_wandb(args):
     )
 
 
-def construct_query(engine: MatchEngine, annotator: Annotator, query_str: str) -> Iterator[SearchMatch]:
+def construct_query(engine: MatchEngine, annotator: Annotator, query_str: str,
+                    continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
 
     search_query = StructuredSearchQuery(query_str, annotator=annotator)
-    query_match = engine.match(search_query)
+    query_match = engine.match(search_query, continuation=continuation)
     return query_match
 
 
@@ -49,13 +52,31 @@ def main():
     patterns = [x['spike_query'] for x in get_relations_data(args.spike_patterns)]
 
     data_dic = defaultdict(int)
+    # The following code is slightly complicated due to the continuation token option, which allows to reset the
+    #  iterator which is connected to spike, to avoid connection issues.
+    # The code simply reset every 500K results, and then uses the continuation token in order to continue from the
+    #  point where it stopped.
     for pattern in tqdm(patterns):
-        query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''))
+        more_results = True
+        count = 0
+        continuation_token = None
+        while more_results:
+            query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''),
+                                          continuation=continuation_token)
+            for r in tqdm(query_match):
+                if r is None:
+                    more_results = False
+                    break
+                count += 1
+                if count % 500000 == 0:
+                    continuation_token = r.continuation_token
+                    if continuation_token is None:
+                        more_results = False
+                        break
+            if next(query_match, None) is None:
+                more_results = False
 
-        for r in tqdm(query_match):
-            if r is None:
-                break
-            data_dic[pattern] += 1
+        data_dic[pattern] = count
 
     for pattern, count in data_dic.items():
         print('pattern: {}. count: {}'.format(pattern, count))
