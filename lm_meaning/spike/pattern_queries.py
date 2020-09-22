@@ -1,7 +1,7 @@
 import argparse
 from collections import defaultdict
 from typing import Iterator, Optional
-
+from requests.exceptions import RequestException
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
@@ -54,27 +54,22 @@ def main():
     data_dic = defaultdict(int)
     # The following code is slightly complicated due to the continuation token option, which allows to reset the
     #  iterator which is connected to spike, to avoid connection issues.
-    # The code simply reset every 500K results, and then uses the continuation token in order to continue from the
-    #  point where it stopped.
+    # If a connection error happen due to a spike connection, the query is reconstructed with the continuation token
+    #  and resumed from there.
     for pattern in tqdm(patterns):
         more_results = True
         count = 0
         continuation_token = None
+        query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''))
         while more_results:
-            query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''),
-                                          continuation=continuation_token)
-            for r in tqdm(query_match):
-                if r is None:
-                    more_results = False
-                    break
-                count += 1
-                if count % 500000 == 0:
+            try:
+                for r in tqdm(query_match):
                     continuation_token = r.continuation_token
-                    if continuation_token is None:
-                        more_results = False
-                        break
-            if next(query_match, None) is None:
+                    count += 1
                 more_results = False
+            except (ConnectionResetError, RequestException) as connection_error:
+                query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''),
+                                              continuation=continuation_token)
 
         data_dic[pattern] = count
 
