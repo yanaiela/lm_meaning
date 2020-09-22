@@ -1,6 +1,6 @@
 import argparse
 from collections import defaultdict
-
+from requests.exceptions import RequestException
 import pandas as pd
 import requests
 from tqdm import tqdm
@@ -113,7 +113,7 @@ def main():
                 subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
                 subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
             more_results = False
-        except ConnectionResetError as connection_error:
+        except (ConnectionResetError, RequestException) as connection_error:
             query_match = construct_query(all_subjects, all_objects, spike_engine, continuation_token)
         if continuation_token is None:
             more_results = False
