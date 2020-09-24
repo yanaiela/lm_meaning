@@ -96,7 +96,7 @@ def main():
     wandb.run.summary['n_matches'] = c
     wandb.run.summary['n_patterns'] = len(patterns)
     wandb.run.summary['n_relations'] = len(relations)
-    wandb.run.summary['n_subjects'] = len(list(set(obj_dic.values())))
+    wandb.run.summary['n_subjects'] = len(list(set([item for sublist in list(obj_dic.values()) for item in sublist])))
     wandb.run.summary['n_objects'] = len(list(set(obj_dic.keys())))
 
     dump_json(data_dic, args.spike_results)
