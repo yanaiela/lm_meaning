@@ -2,7 +2,6 @@ import argparse
 import signal
 from collections import defaultdict
 
-from spike.search.queries.q import StructuredSearchQuery
 from tqdm import tqdm
 from typing import List, Iterator
 
@@ -10,6 +9,24 @@ from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_j
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
+from spike.search.queries.q import StructuredSearchQuery
+
+import wandb
+
+
+def log_wandb(args):
+    pattern = args.spike_patterns.split('/')[-1].split('.')[0]
+
+    config = dict(
+        pattern=pattern,
+    )
+
+    wandb.init(
+        name=f'{pattern}_paraphrase_queries',
+        project="memorization",
+        tags=["spike", pattern, 'paraphrases'],
+        config=config,
+    )
 
 
 def construct_query(engine: MatchEngine, annotator: Annotator, objs: List[str], query_str: str
@@ -19,7 +36,6 @@ def construct_query(engine: MatchEngine, annotator: Annotator, objs: List[str], 
     query_with_objs = query_str.format('|'.join(filt_objs))
 
     search_query = StructuredSearchQuery(query_with_objs, annotator=annotator)
-                                         # boolean_restriction='"Maurice de Vlaminck"')
     query_match = engine.match(search_query)
     return query_match
 
@@ -46,6 +62,7 @@ def main():
                        default="/home/lazary/workspace/thesis/lm_meaning/data/spike_patterns/P449.txt")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     spike_engine, spike_annotator = get_spike_objects()
 
@@ -70,7 +87,6 @@ def main():
                 if r is None:
                     break
                 obj = r.sentence.words[r.captures['object'].first]
-                # subj = r.sentence.words[r.captures['subject'].first]
                 # to capture multi words expressions
                 subj = ' '.join(r.sentence.words[r.captures['subject'].first: r.captures['subject'].last + 1])
                 if obj in obj_dic:
