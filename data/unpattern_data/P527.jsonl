@@ -1,0 +1,3 @@
+{"pattern": "[X] consists of [Y].", "base": true}
+{"pattern": "[X] does not consists of [Y].", "base": false}
+{"pattern": "[Y] is not part of [X].", "base": false}
