@@ -2,3 +2,5 @@
 {"pattern": "[X] is in war with [Y].", "base": false}
 {"pattern": "[X] does not share border with [Y].", "base": false}
 {"pattern": "[X] imports mainly from [Y].", "base": false}
+{"pattern": "[X] invaded [Y].", "base": false}
+{"pattern": "[Y] invaded [X].", "base": false}
