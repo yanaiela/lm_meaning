@@ -1,26 +1,14 @@
 import argparse
-from runs.ts_run import parallelize
-import json
 
+from runs.ts_run import parallelize
+from runs.utils import get_lama_patterns
 
 # ┌──────────────────────┐
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
     'nlp01',
-    'nlp03',
-    'nlp04',
-    'nlp05',
-    'nlp06',
-    'nlp07',
-    'nlp08',
-    'nlp09',
-    'nlp10',
-    'nlp11',
-    'nlp12',
-    'nlp13',
-    'nlp14',
-    'nlp15',
+    'nlp02',
 ]
 
 
@@ -33,9 +21,7 @@ if __name__ == '__main__':
                        default="data/trex/data/relations.jsonl")
     args = parse.parse_args()
 
-    with open(args.patterns, 'r') as f:
-        relations = f.readlines()
-        relations = [json.loads(x.strip())['relation'] for x in relations]
+    relations = get_lama_patterns(args.patterns)
 
     cartesian_product = []
     for relation_id in relations:
