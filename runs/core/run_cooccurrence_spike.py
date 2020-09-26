@@ -39,8 +39,7 @@ if __name__ == '__main__':
 
     cartesian_product = []
     for relation_id in relations:
-        cartesian_product.append([relation_id,
-                                  f'data/trex/data/TREx/{relation_id}.jsonl',
+        cartesian_product.append([f'data/trex/data/TREx/{relation_id}.jsonl',
                                   f'data/output/spike_results/preferences/{relation_id}.json'
                                   ])
 
