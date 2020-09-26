@@ -1,0 +1,4 @@
+{"pattern": "[X] is located in [Y].", "base": true}
+{"pattern": "[X] is not located in [Y].", "base": false}
+{"pattern": "[X] is outside of [Y].", "base": false}
+{"pattern": "[X] was established outside of [Y].", "base": false}
