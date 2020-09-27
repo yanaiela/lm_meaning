@@ -5,8 +5,10 @@ from spike.search.queries.q import StructuredSearchQuery
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
+from spike.integration.odinson.common import OdinsonContinuationToken
+from requests.exceptions import RequestException
 
-from typing import Iterator
+from typing import Iterator, Optional
 from tqdm import tqdm
 
 import wandb
@@ -29,9 +31,10 @@ def log_wandb(args):
     )
 
 
-def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str) -> Iterator[SearchMatch]:
+def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str,
+                    continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
     search_query = StructuredSearchQuery(spike_query, annotator=annotator)
-    query_match = engine.match(search_query)
+    query_match = engine.match(search_query, continuation=continuation)
     return query_match
 
 
@@ -85,12 +88,20 @@ def main():
     obj_counts = defaultdict(int)
 
     query_match = construct_query(spike_engine, spike_annotator, spike_query)
-
-    for match in tqdm(query_match):
-        if match is None:
-            break
-        obj = match.sentence.words[match.captures['object'].first]
-        obj_counts[obj] += 1
+    more_results = True
+    continuation_token = None
+    
+    while more_results:
+        try:
+            for match in tqdm(query_match):
+                if match is None:
+                    break
+                continuation_token = match.continuation_token
+                obj = match.sentence.words[match.captures['object'].first]
+                obj_counts[obj] += 1
+            more_results = False
+        except (ConnectionResetError, RequestException) as connection_error:
+            query_match = construct_query(spike_engine, spike_annotator, spike_query, continuation_token)
 
     distinct_objects = len(obj_counts)
     distinct_queries = sum(obj_counts.values())
