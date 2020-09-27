@@ -41,8 +41,8 @@ def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str,
 def construct_spike_query(pattern: str) -> str:
     spike_pattern = pattern.replace('[X]', 'subject:subject').strip()
     tokens = spike_pattern.split()
-    spike_tokens = []
-    for i in range(len(tokens)):
+    spike_tokens = [tokens[0]]
+    for i in range(1, len(tokens)):
         if tokens[i] == '[Y]':
             break
 
