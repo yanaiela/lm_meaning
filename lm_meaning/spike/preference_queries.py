@@ -39,7 +39,7 @@ def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str,
 
 
 def construct_spike_query(pattern: str) -> str:
-    spike_pattern = pattern.replace('[X]', '').strip()
+    spike_pattern = pattern.replace('[X]', 'subject:subject').strip()
     tokens = spike_pattern.split()
     spike_tokens = []
     for i in range(len(tokens)):
@@ -51,7 +51,7 @@ def construct_spike_query(pattern: str) -> str:
         if tokens[i] == 'originally':
             continue
         spike_tokens.append(f'${tokens[i]}')
-    spike_tokens.append('object:Object')
+    spike_tokens.append('object:object')
     spike_tokens.append('.')
     return ' '.join(spike_tokens)
 
@@ -81,6 +81,7 @@ def main():
 
     spike_query = construct_spike_query(pattern)
     print('spike query:', spike_query)
+    wandb.run.summary['pattern'] = pattern
     wandb.run.summary['spike_query'] = spike_query
 
     spike_engine, spike_annotator = get_spike_objects()
@@ -90,7 +91,7 @@ def main():
     query_match = construct_query(spike_engine, spike_annotator, spike_query)
     more_results = True
     continuation_token = None
-    
+
     while more_results:
         try:
             for match in tqdm(query_match):
