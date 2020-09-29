@@ -19,3 +19,12 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was constructed in [Y].		construct	construct-in	past
 [X], constructed in [Y].		construct	construct-in	past
 [X], that was constructed in [Y].		construct	construct-in	past
+[X] was made in [Y].		made	made-in	past
+[X], that was made in [Y].		made	made-in	past
+[X], made in [Y].		made	made-in	past
+[X] were from [Y].		from	were-from	past
+[X], who were from [Y].		from	were-from	past
+[X], from [Y].		from	were-from	past
+[X], that was developed in [Y].		developed	developed-in	past
+[X] was developed in [Y].		developed	developed-in	past
+[X], developed in [Y].		developed	developed-in	past
