@@ -51,7 +51,8 @@ def construct_spike_query(pattern: str) -> str:
         if tokens[i] == 'originally':
             continue
         spike_tokens.append(f'${tokens[i]}')
-    spike_tokens.append('object:object')
+    # capturing a multi-expression (the '<>' prefix)
+    spike_tokens.append('<>object:object')
     spike_tokens.append('.')
     return ' '.join(spike_tokens)
 
@@ -98,8 +99,11 @@ def main():
                 if match is None:
                     break
                 continuation_token = match.continuation_token
-                obj = match.sentence.words[match.captures['object'].first]
-                obj_counts[obj] += 1
+
+                # adding all words from the referred relation (which can take the object role)
+                for word_i in range(match.captures['object'].first, match.captures['object'].first + 1):
+                    obj = match.sentence.words[word_i]
+                    obj_counts[obj] += 1
             more_results = False
         except (ConnectionResetError, RequestException) as connection_error:
             query_match = construct_query(spike_engine, spike_annotator, spike_query, continuation_token)
