@@ -101,7 +101,7 @@ def main():
                 continuation_token = match.continuation_token
 
                 # adding all words from the referred relation (which can take the object role)
-                for word_i in range(match.captures['object'].first, match.captures['object'].first + 1):
+                for word_i in range(match.captures['object'].first, match.captures['object'].last + 1):
                     obj = match.sentence.words[word_i]
                     obj_counts[obj] += 1
             more_results = False
