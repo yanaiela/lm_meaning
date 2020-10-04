@@ -10,6 +10,7 @@ from lm_meaning.spike_patterns.graph_types import PatternNode, EdgeType
 import random
 import matplotlib.pyplot as plt
 import tqdm
+import pickle
 
 def load_lemmas_relations(fname: str) -> Dict[str, List[str]]:
 
@@ -64,7 +65,7 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
     #print("{} neighbors".format(len(relevant_patterns)))
     for r_p in tqdm.tqdm(relevant_patterns, total = len(relevant_patterns)):
         #print(r_p["pattern"], pattern["pattern"])
-        if  equal_queries(r_p["spike_query"], pattern["spike_query"], spike_annotator):
+        if equal_queries(r_p["spike_query"], pattern["spike_query"], spike_annotator):
             is_syntactic = True
         else:
             is_syntactic = False
@@ -110,5 +111,7 @@ if __name__ == "__main__":
             else:
                 graph.add_edge(node1, node2)
 
+    with open("graphs/" + json_fname.split(".")[0]+"graph", "wb") as f:
+        pickle.dump(graph, f)
     nx.draw(graph)
     plt.show()
