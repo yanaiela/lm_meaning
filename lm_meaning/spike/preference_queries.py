@@ -1,7 +1,7 @@
 import argparse
 from collections import defaultdict
 
-from spike.search.queries.q import StructuredSearchQuery
+from spike.search.queries.q import StructuredSearchQuery, TokenSearchQuery
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
@@ -21,6 +21,7 @@ def log_wandb(args):
 
     config = dict(
         pattern=pattern,
+        token_query=args.token_query,
     )
 
     wandb.init(
@@ -31,14 +32,21 @@ def log_wandb(args):
     )
 
 
-def construct_query(engine: MatchEngine, annotator: Annotator, spike_query: str,
-                    continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
+def get_syntactic_results(engine: MatchEngine, annotator: Annotator, spike_query: str,
+                          continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
     search_query = StructuredSearchQuery(spike_query, annotator=annotator)
     query_match = engine.match(search_query, continuation=continuation)
     return query_match
 
 
-def construct_spike_query(pattern: str) -> str:
+def get_token_results(engine: MatchEngine, annotator: Annotator, spike_query: str,
+                      continuation: Optional[OdinsonContinuationToken] = None) -> Iterator[SearchMatch]:
+    search_query = TokenSearchQuery(spike_query)
+    query_match = engine.match(search_query, continuation=continuation)
+    return query_match
+
+
+def construct_syntactic_spike_query(pattern: str) -> str:
     spike_pattern = pattern.replace('[X]', 'subject:subject').strip()
     tokens = spike_pattern.split()
     spike_tokens = [tokens[0]]
@@ -57,6 +65,26 @@ def construct_spike_query(pattern: str) -> str:
     return ' '.join(spike_tokens)
 
 
+def construct_token_spike_query(pattern: str) -> str:
+    spike_pattern = pattern.replace('[X]', '').strip()
+    tokens = spike_pattern.split()
+    spike_tokens = [tokens[0]]
+    for i in range(1, len(tokens)):
+        if tokens[i] == '[Y]':
+            break
+
+        # kinda hacky, but this deals with P449 (the "aired on" relation), which for some reason added
+        #  this word, which makes the results much more sparse
+        if tokens[i] == 'originally':
+            continue
+        spike_tokens.append(f'${tokens[i]}')
+    # capturing a single token for the object
+    spike_tokens.append('object:*')
+    # followed by an end-of-sentence (dot)
+    spike_tokens.append('.')
+    return ' '.join(spike_tokens)
+
+
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-relation", "--relation", type=str, help="relation id (e.g. P449)",
@@ -66,6 +94,10 @@ def main():
     parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
                        default="/home/lazary/workspace/thesis/lm_meaning/data/output/spike_results/preferences/P449"
                                ".json")
+    parse.add_argument("-token_query", "--token_query", type=bool, action='store_true', help="Use syntactic search"
+                                                                                             "(by default, when False, "
+                                                                                             "or the token query, when "
+                                                                                             "True)")
 
     args = parse.parse_args()
     log_wandb(args)
@@ -80,7 +112,18 @@ def main():
         print('skipping patterns that don\'t end with the object ([Y].)')
         return
 
-    spike_query = construct_spike_query(pattern)
+    if args.token_query and not pattern.startswith('[X]'):
+        print('skipping patterns that don\'t start with the subject ([X])')
+        return
+
+    if args.token_query:
+        construct_query = construct_token_spike_query
+        get_results = get_token_results
+    else:
+        construct_query = construct_syntactic_spike_query
+        get_results = get_syntactic_results
+
+    spike_query = construct_query(pattern)
     print('spike query:', spike_query)
     wandb.run.summary['pattern'] = pattern
     wandb.run.summary['spike_query'] = spike_query
@@ -89,7 +132,7 @@ def main():
 
     obj_counts = defaultdict(int)
 
-    query_match = construct_query(spike_engine, spike_annotator, spike_query)
+    query_match = get_results(spike_engine, spike_annotator, spike_query)
     more_results = True
     continuation_token = None
 
@@ -106,7 +149,7 @@ def main():
                     obj_counts[obj] += 1
             more_results = False
         except (ConnectionResetError, RequestException) as connection_error:
-            query_match = construct_query(spike_engine, spike_annotator, spike_query, continuation_token)
+            query_match = get_results(spike_engine, spike_annotator, spike_query, continuation_token)
 
     distinct_objects = len(obj_counts)
     distinct_queries = sum(obj_counts.values())
