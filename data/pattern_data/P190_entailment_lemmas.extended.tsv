@@ -1,0 +1,12 @@
+LEMMA	NOT-ENTAILED
+is-twin-city	announce-twin-city-agreement
+is-twin-city	announce-twin-city-agreement
+is-twin-city-of	announce-twin-city-agreement
+is-twin-city-of	announce-twin-city-agreement
+sign-twin-city-agreement	announce-twin-city-agreement
+sign-twin-city-agreement	announce-twin-city-agreement
+announce-twin-city-agreement	
+announce-twin-city-agreement	
+sign-twin-city-agreement	announce-twin-city-agreement
+sign-twin-city-agreement	announce-twin-city-agreement
+announce-twin-city-agreement	

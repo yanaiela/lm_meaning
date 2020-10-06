@@ -1,0 +1,13 @@
+LEMMA	NOT-ENTAILED
+die-in	commit-suicide-at,is-murder-at
+die-at	commit-suicide-at,is-murder-at
+is-the-resting-place-of	commit-suicide-at,is-murder-at
+pass-away-in	commit-suicide-at,is-murder-at
+pass-away-at	commit-suicide-at,is-murder-at
+expire-at	commit-suicide-at,is-murder-at
+lose-one's-life-at	commit-suicide-at,is-murder-at
+'s-life-ended-in	commit-suicide-at,is-murder-at
+perish-in	commit-suicide-at,is-murder-at
+succumbe-at	commit-suicide-at,is-murder-at
+commit-suicide-at	is-murder-at
+is-murder-at	commit-suicide-at

@@ -10,4 +10,4 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 The mayor of [X] signed a twin cities agreement with [Y].	[X]mayor of Mont-St-Hilaire, Que., :signed :a :twin :cities :agreement :with [Y]Bujumbura.	sign-twin-city-agreement	sign-twin-city-agreement	past
 The mayor of [Y] signed a twin cities agreement with [X].	[Y]mayor of Mont-St-Hilaire, Que., :signed :a :twin :cities :agreement :with [X]Bujumbura.	sign-twin-city-agreement	sign-twin-city-agreement	past
 The mayor of [X] announced a twin cities agreement with [Y].	[X]mayor of Mont-St-Hilaire, Que., :announced :a :twin :cities :agreement :with [Y]Bujumbura.	announce-twin-city-agreement	announce-twin-city-agreement	past
-The mayor of [Y] announced a twin cities agreement with [X].	[Y]mayor of Mont-St-Hilaire, Que., :announced :a :twin :cities :agreement :with [X]Bujumbura.	announce-twin-city-agreement	announce-twin-city-agreement	past
+

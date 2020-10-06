@@ -1,5 +1,0 @@
-is	born,originate,immigrate,?
-born	is,originate,immigrate,?
-originate	is,born,immigrate,?
-immigrate	is,born,originate,?
-?	is,born,originate,immigrate

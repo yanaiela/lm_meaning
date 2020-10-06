@@ -1,0 +1,28 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is named after [Y].	[X]:Boston Mass :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	present
+[X] was named after [Y].	[X]:Boston Mass :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	past
+[X] is named for [Y].	[X]:Boston Mass :is :named :aftforer [Y]:Boston in Lincolnshire	is-name-for	is-name-for	present
+[X] was named for [Y].	[X]:Boston Mass :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	past
+[X], which is named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	present
+[X], which was named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	past
+[X], which is named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	present
+[X], which was named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	past
+[X], named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	?
+[X], named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	?
+[X], named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	?
+[X], named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	?
+[X], named after [Y].	[X]:Boston Mass, named after [Y]:Boston in Lincolnshire.	name-after	name-after	?
+[X], named for [Y].	[X]:Boston Mass, named for [Y]:Boston in Lincolnshire.	name-for	name-for	?
+[X] is named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	present
+[X] was named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	past
+[X], named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	?
+[X], which is named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	present
+[X], which was named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	past
+[X] is called after [Y].	[X]:Boston Mass :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-call-after	present
+[X] was called after [Y].	[X]:Boston Mass :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-nacallme-after	past
+[X], which is called after [Y].	[X]:Boston Mass, :which :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-call-after	present
+[X], which was called after [Y].	[X]:Boston Mass, :which :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-call-after	past
+[X], called after [Y].	[X]:Boston Mass, :which :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-call-after	?
+[X], called after [Y].	[X]:Boston Mass, :which :is :called :after [Y]:Boston in Lincolnshire	is-call-after	is-call-after	?
+[X], called after [Y].	[X]:Boston Mass, called after [Y]:Boston in Lincolnshire.	call-after	call-after	?
+

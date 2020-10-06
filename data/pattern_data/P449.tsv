@@ -5,7 +5,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 the [Y] debut of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :debut of [X]:Steve Carell's new show	debut	debut-of	?
 the [Y] release of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :release of [X]:Steve Carell's new show	release	relaese-of	?
 [Y] is to air [X].	[Y]:Netflix is to :air the fourth season of its flagship drama [X]:House of Cards in France	air	is-to-air	future
-Y is to broadcast [X].	[Y]:Netflix is to :broadcast the fourth season of its flagship drama [X]:House of Cards in France	broadcast	is-to-broadcast	future
+[Y] is to broadcast [X].	[Y]:Netflix is to :broadcast the fourth season of its flagship drama [X]:House of Cards in France	broadcast	is-to-broadcast	future
 [Y]'s [X].	[Y]:Netflix's [X]:The Crown to end after season five with Imelda Staunton as Queen.	's	's	?
 [Y]'s series [X].	[Y]:Netflix's series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	's-series	?
 the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	series	?
