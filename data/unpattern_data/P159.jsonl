@@ -1,6 +1,6 @@
 {"pattern": "The headquarter of [X] is in [Y].", "base": true}
 {"pattern": "[X] opened their latest branch in [Y].", "base": false}
 {"pattern": "[X]'s main offices are located in a small town near [Y].", "base": false}
-{"pattern": "[X] moved their headquarters from [Y].", "base": false}
-{"pattern": "[X] opened their last office in [Y].", "base": false}
+{"pattern": "[X] moved its headquarters from [Y].", "base": false}
+{"pattern": "[X] opened its last office in [Y].", "base": false}
 {"pattern": "[X] had to close their headquarters in [Y].", "base": false}
