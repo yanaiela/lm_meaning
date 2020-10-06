@@ -22,6 +22,7 @@ relation2subj_obj = {
     'P138': {'subject': 'The rainforest frog Eleutherodactylus pecki', 'object': 'Robert M. Peck'},
     'P106': {'subject': 'Abraham Lincoln', 'object': 'lawyer'},
     'P190': {'subject': 'Hanamaki, Japan', 'object': 'Sigmundsherberg, Austria'},
+    'P47': {'subject': 'Israel', 'object': 'Syria'},
 }
 
 
