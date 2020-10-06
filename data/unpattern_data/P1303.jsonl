@@ -1,4 +1,4 @@
 {"pattern": "[X] plays [Y].", "base": true}
 {"pattern": "[X] never learned to play the [Y].", "base": false}
 {"pattern": "[X] is an amateur in playing the [Y].", "base": false}
-{"pattern": "[X] teaches the [Y].", "base": false}
+{"pattern": "[X] teaches [Y].", "base": false}
