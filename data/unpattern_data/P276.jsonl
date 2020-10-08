@@ -1,5 +1,5 @@
 {"pattern": "[X] is located in [Y].", "base": true}
 {"pattern": "[X] is located in [Y]'s twin city'.", "base": true}
-{"pattern": "[X] was moved from [Y].", "base": false}
+{"pattern": "[X] moved away from [Y].", "base": false}
 {"pattern": "[X] has recently moved to [Y] from Tel Aviv.", "base": false}
 {"pattern": "[X] could have never be held in [Y].", "base": false}
