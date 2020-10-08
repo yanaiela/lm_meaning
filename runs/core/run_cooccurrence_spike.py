@@ -26,7 +26,7 @@ if __name__ == '__main__':
     cartesian_product = []
     for relation_id in relations:
         cartesian_product.append([f'data/trex/data/TREx/{relation_id}.jsonl',
-                                  f'data/output/spike_results/preferences/{relation_id}.json'
+                                  f'data/output/spike_results/cooccurrences/{relation_id}.json'
                                   ])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/core'
