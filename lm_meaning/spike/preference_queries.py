@@ -77,7 +77,7 @@ def construct_token_spike_query(pattern: str) -> str:
         #  this word, which makes the results much more sparse
         if tokens[i] == 'originally':
             continue
-        spike_tokens.append(f'${tokens[i]}')
+        spike_tokens.append(f'{tokens[i]}')
     # capturing a single token for the object
     spike_tokens.append('object:*')
     # followed by an end-of-sentence (dot)
@@ -94,7 +94,7 @@ def main():
     parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
                        default="/home/lazary/workspace/thesis/lm_meaning/data/output/spike_results/preferences/P449"
                                ".json")
-    parse.add_argument("-token_query", "--token_query", type=bool, action='store_true', help="Use syntactic search"
+    parse.add_argument("-token_query", "--token_query", action='store_true', help="Use syntactic search"
                                                                                              "(by default, when False, "
                                                                                              "or the token query, when "
                                                                                              "True)")
