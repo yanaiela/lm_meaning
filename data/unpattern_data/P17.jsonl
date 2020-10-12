@@ -1,5 +1,3 @@
 {"pattern": "[X] is located in [Y].", "base": true}
 {"pattern": "[X] is located next to the border with [Y].", "base": false}
 {"pattern": "[X] was constructed outside of [Y].", "base": false}
-{"pattern": "[X] was never owned by [Y].", "base": false}
-{"pattern": "[X] was given from [Y].", "base": false}
