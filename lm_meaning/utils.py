@@ -2,7 +2,7 @@ import json
 from typing import List, Dict
 
 
-def read_data(filename: str) -> List[Dict]:
+def read_json_file(filename: str) -> List[Dict]:
 
     dataset = []
     with open(filename) as f:

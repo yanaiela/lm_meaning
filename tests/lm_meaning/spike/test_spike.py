@@ -2,7 +2,7 @@ from lm_meaning.spike.utils import equal_queries, get_spike_objects
 
 
 class TestPluralInstruction:
-    def test_build_challenge(self):
+    def test_equal_queries(self):
         _, spike_annotator = get_spike_objects()
 
         q1 = "<>subject:Lost $was $aired $on object:[w={}]ABC"
@@ -12,3 +12,11 @@ class TestPluralInstruction:
         assert equal_queries(q1, q2, spike_annotator) is True
         assert equal_queries(q1, q3, spike_annotator) is False
         assert equal_queries(q2, q3, spike_annotator) is False
+
+    def test_specific(self):
+        _, spike_annotator = get_spike_objects()
+
+        q1 = "object:[w={}]ABC $is $to $broadcast <>subject:Lost"
+        q2 = "object:[w={}]ABC $is $to $air <>subject:Lost"
+
+        assert equal_queries(q1, q2, spike_annotator) is True

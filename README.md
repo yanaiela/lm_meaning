@@ -35,7 +35,7 @@ To run spike and find the paraphrases in wikipedia:
 python runs/core/run_spike.py
 ```
 
-To run spike and find the occurrences count of te different (paraphrases) patterns
+To run spike and find the occurrences count of the different (paraphrases) patterns
 ```sh
 python runs/core/run_wiki_patterns.py
 ```
@@ -48,4 +48,22 @@ python runs/core/run_paraphrase_lm.py
 To run the different LM on the (non-paraphrases) patterns
 ```sh
 python runs/core/run_unpattern_lm.py
+```
+
+To get the co-occurrences of the subjects and objects in each relations
+```sh
+python runs/core/run_cooccurrence_spike.py
+```
+
+To get the ranking of objects that appeared with a pattern
+```sh
+python runs/core/run_preference_spike.py
+```
+
+
+Run the cooccurrences analysis script
+```sh
+python lm_meaning/evaluation/cooccurrences_eval.py \
+        --data_path data/trex/data/TREx/ \
+        --cooccurrence_path data/output/spike_results/cooccurrences/
 ```

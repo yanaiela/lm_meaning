@@ -47,7 +47,7 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     if not torch.cuda.is_available():
         device = -1
 
-    model = pipeline("fill-mask", model=lm, device=device)
+    model = pipeline("fill-mask", model=lm, device=device, topk=100)
     return model
 
 
@@ -110,7 +110,7 @@ def main():
         log_wandb(args)
 
     # Load data
-    data = utils.read_data(args.data_file)
+    data = utils.read_json_file(args.data_file)
 
     # Load prompts
     prompts = utils.load_prompts(args.patterns_file)
