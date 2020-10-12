@@ -1,0 +1,16 @@
+LEMMA	NOT-ENTAILED
+comprise	is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out
+comprise	is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out,is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out
+comprise-of	comprise,is-part-of,is-building-block,is-component-of,consist-of,make-of,is-ingredient-in,is-create-out
+comprise-of	comprise,is-part-of,is-building-block,is-component-of,consist-of,make-of,is-ingredient-in,is-create-out
+is-part-of	comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in
+is-part-of	comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in,comprise,is-building-block,is-component-of,is-ingredient-in
+is-building-block	is-ingredient-in
+is-component-of	is-ingredient-in
+consist-of	is-ingredient-in
+consist-of	is-ingredient-in
+make-of	is-ingredient-in
+make-of	is-ingredient-in
+is-ingredient-in	
+is-create-out	is-ingredient-in
+is-create-out	is-ingredient-in
