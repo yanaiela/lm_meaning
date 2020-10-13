@@ -68,7 +68,11 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, bs: i
     predictions = []
     for batch in tqdm(batched_data):
         preds = pipeline_model([sample["prompt"] for sample in batch])
-        predictions.extend(preds)
+        # pipeline_model returns a list in case there is only 1 item to predict (in contrast to list of lists)
+        if len(batch) == 1:
+            predictions.extend([preds])
+        else:
+            predictions.extend(preds)
 
     return data, predictions
 
