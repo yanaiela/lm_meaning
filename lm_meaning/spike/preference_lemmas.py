@@ -57,7 +57,7 @@ def construct_token_spike_query(lemma: List[str], lemma_first: bool, object_list
     spike_tokens = []
     lemma_tokens = []
     for w in lemma:
-        lemma_tokens.append(f'lemma={w}')
+        lemma_tokens.append(f'lemma=`{w}`')
     if lemma_first:
         spike_tokens.extend(lemma_tokens)
         spike_tokens.append('...')
