@@ -2,8 +2,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was born in [Y].	Williams did not prove that [X]:his mother :was :born in the [Y]:United States.	born	born-in	past
 [X] is originally from [Y].	[X]:He :is :originally from :Thailand but grew up in the Shetlands.	from	is-originally-from	present
 [X] was originally from [Y].	[X]:He :was :originally from :Thailand but grew up in the Shetlands.	from	is-originally-from	past
-Y is the country of origin of [X].	 the US government released Hamdi, stripped him of his US citizenship and sent [X]:him to his :country :of :origin, [Y]:Saudi Arabia.	country-of-origin	is-counry-of-origin	present
-Y was the country of origin of [X].	 the US government released Hamdi, stripped him of his US citizenship and sent [X]:him to his :country :of :origin, [Y]:Saudi Arabia.	country-of-origin	is-counry-of-origin	past
+[Y] is the country of origin of [X].	 the US government released Hamdi, stripped him of his US citizenship and sent [X]:him to his :country :of :origin, [Y]:Saudi Arabia.	country-of-origin	is-counry-of-origin	present
+[Y] was the country of origin of [X].	 the US government released Hamdi, stripped him of his US citizenship and sent [X]:him to his :country :of :origin, [Y]:Saudi Arabia.	country-of-origin	is-counry-of-origin	past
 The country of origin of [X] is [Y].	 :The :country :of :origin of [X]:Hamdi is [Y]:Saudi Arabia.	country-of-origin	country-of-origin-is	present
 The country of origin of [X] was [Y].	 :The :country :of :origin of [X]:Hamdi was [Y]:Saudi Arabia.	country-of-origin	country-of-origin-is	past
 [X] is native to [Y].	[X]:He :is :native :to [Y]:Connecticut.	native	is-native-to	present
