@@ -4,6 +4,7 @@ from difflib import SequenceMatcher
 from typing import List
 
 import pandas as pd
+from pandas import DataFrame
 import wandb
 from requests.exceptions import RequestException
 from tqdm import tqdm
@@ -27,7 +28,7 @@ def log_wandb(args):
     )
 
 
-def get_pattern_essentials(paraphrases_file):
+def get_pattern_essentials(paraphrases_file: str) -> DataFrame:
     patterns_df = pd.read_csv(paraphrases_file, sep='\t')
     patterns_df = patterns_df.loc[patterns_df['LEMMA'] != '?']
 
@@ -80,15 +81,13 @@ def main():
                                "P19.json")
 
     args = parse.parse_args()
-    # log_wandb(args)
+    log_wandb(args)
 
     relations = get_relations_data(args.data_file)
     objects = []
     for row in relations:
         objects.append(row['obj_label'])
     objects = list(set(objects))
-
-    # relation = args.relation
 
     filtered_patterns_data = get_pattern_essentials(args.paraphrases_file)
 
@@ -102,8 +101,6 @@ def main():
         spike_query = construct_token_spike_query(lemma.split(), lemma_first, objects)
 
         print('spike query:', spike_query)
-        # wandb.run.summary['pattern'] = pattern
-        # wandb.run.summary['spike_query'] = spike_query
 
         obj_counts = defaultdict(int)
 
@@ -126,13 +123,10 @@ def main():
 
         patterns_lemmas_cooccurrences['_SEP_'.join([pattern, lemma, str(lemma_first)])] = obj_counts
 
-    # distinct_objects = len(obj_counts)
-    # distinct_queries = sum(obj_counts.values())
-    # print('total number of unique objects: ', distinct_objects)
-    # print('total number of objects: ', distinct_queries)
-    #
-    # wandb.run.summary['unique_objects'] = distinct_objects
-    # wandb.run.summary['unique_queries'] = distinct_queries
+    distinct_lemmas_order = len(patterns_lemmas_cooccurrences)
+    print('total number of lemmas/order: ', distinct_lemmas_order)
+
+    wandb.run.summary['unique_lemmas_order'] = distinct_lemmas_order
 
     dump_json(patterns_lemmas_cooccurrences, args.spike_results)
 
