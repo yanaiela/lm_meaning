@@ -108,13 +108,17 @@ def main():
     parse.add_argument("--gpu", type=int, default=-1)
     parse.add_argument("--bs", type=int, default=50)
     parse.add_argument("--wandb", action='store_true')
+    parse.add_argument("--no_subj", type=bool, default=False)
     args = parse.parse_args()
 
     if args.wandb:
         log_wandb(args)
 
     # Load data
-    data = utils.read_json_file(args.data_file)
+    if args.no_subj:
+        data = [{"sub_label": "", "obj_label": ""}]
+    else:
+        data = utils.read_json_file(args.data_file)
 
     # Load prompts
     prompts = utils.load_prompts(args.patterns_file)
