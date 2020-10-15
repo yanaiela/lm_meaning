@@ -66,7 +66,7 @@ def main():
         # if args.evaluate:
         #     accuracy = lm_eval(results_dict, args.lm)
 
-        json.dump(results_dict, open(args.pred_path + '/' + pattern_name + '.json', "w"))
+        json.dump(results_dict, open(args.pred_path + '/' + pattern_name + '_' + model_name + '.json', "w"))
 
 
 if __name__ == '__main__':

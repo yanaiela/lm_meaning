@@ -124,7 +124,7 @@ def main():
             except (ConnectionResetError, RequestException) as connection_error:
                 query_match = get_token_results(spike_engine, spike_annotator, spike_query, continuation_token)
 
-        patterns_lemmas_cooccurrences['_SEP_'.join([pattern, lemma, lemma_first])] = obj_counts
+        patterns_lemmas_cooccurrences['_SEP_'.join([pattern, lemma, str(lemma_first)])] = obj_counts
 
     # distinct_objects = len(obj_counts)
     # distinct_queries = sum(obj_counts.values())
