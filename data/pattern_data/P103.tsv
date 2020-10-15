@@ -3,4 +3,4 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was written in the [Y] language.	[X]:This book :is :written :in he [Y]:English language.	write	is-write-in	past
 [X] is broadcasted in the [Y] language.	[X]:This movie :is :broadcasted :in the [Y]:English language.	write	is-write-in	present
 [X] was broadcasted in the [Y] language.	[X]:This movie :is :broadcasted :in the [Y]:English language.	write	is-write-in	past
-[X] is a [Y] name.	[X]:David is an [Y]:English name.	name	is-name	present	
+[X] is a [Y] name.	[X]:David is an [Y]:English name.	name	is-name	present
