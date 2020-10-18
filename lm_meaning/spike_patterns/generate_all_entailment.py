@@ -11,10 +11,23 @@ with open(lemmas_file, "r") as f:
 	lines = f.readlines()
 	
 asymetric_lemmas = defaultdict(list)
+all_lemmas = set([l.strip().split("\t")[0] for l in lines])
+print(all_lemmas)
+
 for line in lines[:]:
 	#print(line)
-	l, not_entailed = line.strip().split("\t")
-	not_entailed = not_entailed.split("*/")[1].split(",")
+	l, other_lemmas = line.strip().split("\t")
+	if "*" in other_lemmas:
+		mode = "not-entailed"
+	elif "+" in other_lemmas:
+		mode = "entailed"
+	
+	if mode == "not-entailed":
+		not_entailed = other_lemmas.split("*/")[1].split(",")
+	elif mode == "entailed":
+		entailed = other_lemmas.split("+/")[1].split(",")
+		not_entailed = [l2 for l2 in all_lemmas if l2 not in entailed and l2 != l]
+		
 	print("Not entailed from lemma {} are: {}".format(l, not_entailed))
 	for not_entailed_l in not_entailed:
 	
@@ -28,8 +41,8 @@ with open(lemmas_file.split(".tsv")[0]+".extended.tsv", "w") as f:
 	for lemma in all_lemmas:
 
 		if lemma not in asymetric_lemmas.keys():
-			not_entailed = list(asymetric_lemmas.keys())
+			not_entailed = list(set(asymetric_lemmas.keys()))
 		else:
-			not_entailed = asymetric_lemmas[lemma]
+			not_entailed = list(set(asymetric_lemmas[lemma]))
 
 		f.write(lemma + "\t" + ",".join(not_entailed) + "\n")
