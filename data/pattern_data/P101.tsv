@@ -1,0 +1,29 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] specializes in [Y].	Tommy Dreyfus specializes in mathematics.	specialize	specialize-in	present
+[X] specialized in [Y].	Tommy Dreyfus specialized in mathematics.	specialize	specialize-in	past
+[Y] is the specialization of [X].	mathematics is the specialization of Tommy Dreyfus	specialization	is-specialization-of	present
+[Y] was the specialization of [X].	mathematics was the specialization of Tommy Dreyfus	specialization	is-specialization-of	past
+[X] works in the field of [Y].	Tommy Dreyfus works in the field of mathematics.	work	work-in-field	present
+[X] worked in the field of [Y].	Tommy Dreyfus worked in the field of mathematics.	work	work-in-field	past
+The speciality of [X] is [Y].	The speciality of Tommy Dreyfus is mathematics.	speciality	speciality	present
+The speciality of [X] was [Y].	The speciality of Tommy Dreyfus is mathematics.	speciality	speciality	past
+[Y] is the speciality of [X].	mathematics is the speciality of Tommy Dreyfus.	speciality	speciality	present
+[Y] was the speciality of [X].	mathematics was the speciality of Tommy Dreyfus.	speciality	speciality	past
+The domain of activity of [X] is [Y].	The domain of activity of Tommy Dreyfus is mathematics.	domain-of-activity	domain-of-activity	present
+The domain of activity of [X] was [Y].	The domain of activity of Tommy Dreyfus was mathematics.	domain-of-activity	domain-of-activity	past
+The domain of work of [X] is [Y].	The domain of work of Tommy Dreyfus is mathematics.	domain-of-work	domain-of-work	present
+The domain of work of [X] was [Y].	The domain of actiworkvity of Tommy Dreyfus was mathematics.	domain-of-work	domain-of-work	past
+[Y] is the domain of activity of [X].	mathematics is the domain of activity of Tommy Dreyfus.	domain-of-activity	domain-of-activity	present
+[Y] was the domain of activity of [X].	mathematics was the domain of activity of Tommy Dreyfus.	domain-of-activity	domain-of-activity	past
+[X]'s area of work is [Y].	Tommy Dreyfus's area of work is mathematics.	area-of-work	's-area-of-work	present
+[X]'s area of work was [Y].	Tommy Dreyfus's area of work was mathematics.	area-of-work	's-area-of-work	past
+[X]'s domain of work was [Y].	Tommy Dreyfus's domain of work was mathematics.	domain-of-work	's-domain-of-work	past
+[X]'s domain of work is [Y].	Tommy Dreyfus's domain of work was mathematics.	domain-of-work	's-domain-of-work	present
+[X]'s domain of activity was [Y].	Tommy Dreyfus's domain of activity was mathematics.	domain-of-activity	's-domain-of-activity	past
+[X]'s domain of activity is [Y].	Tommy Dreyfus's domain of activity was mathematics.	domain-of-activity	's-domain-of-activity	present
+[X]'s speciality was [Y].	Tommy Dreyfus's speciality was mathematics.	speciality	's-speciality	past
+[X]'s speciality is [Y].	Tommy Dreyfus's speciality was mathematics.	speciality	's-speciality	presen
+[X] works in the field of [Y].	Tommy Dreyfus works in the field of mathematics.	work	work-in-field	present
+[X] worked in the field of [Y].	Tommy Dreyfus worked in the field of mathematics.	work	work-in-field	past
+[X] works in the area of [Y].	Tommy Dreyfus works in the field of mathematics.	work	work-in-area	present
+[X] worked in the area of [Y].	Tommy Dreyfus worked in the field of mathematics.	work	work-in-area	past
