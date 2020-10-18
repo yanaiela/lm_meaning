@@ -65,7 +65,7 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
     #print("{} neighbors".format(len(relevant_patterns)))
     for r_p in tqdm.tqdm(relevant_patterns, total = len(relevant_patterns)):
         #print(r_p["pattern"], pattern["pattern"])
-        if random.random() < 0.5: #equal_queries(r_p["spike_query"], pattern["spike_query"], spike_annotator):
+        if equal_queries(r_p["spike_query"], pattern["spike_query"], spike_annotator):
             is_syntactic = True
         else:
             is_syntactic = False
