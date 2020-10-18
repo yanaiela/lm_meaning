@@ -1,0 +1,32 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] used to communicate in [Y] .		communicate	communicate	past
+[Y] actress [X].		actress	actress	present
+[Y] author [X].		author	author	present
+[Y] actor [X].		actor	actor	present
+[Y] poet [X].		poet	poet	present
+[Y] composer [X].		composer	composer	present
+[Y] playwright [X].		playwright	playwright	present
+[Y] writer [X].		writer	writer	present
+[Y] is a [X] actress.		actress	is-actress	present
+[Y] is a [X] author.		author	is-author	present
+[Y] is a  [X] actor.		actor	is-actor	present
+[Y] is a [X] poet.		poet	is-poet	present
+[Y] is a [X] composer.		composer	is-composer	present
+[Y] is a [X] playwright.		playwright	is-playwright	present
+[Y] is a [X] writer.		writer	is-writer	present
+[Y] novelist [X].		novelist	novelist	present
+[Y] musician [X].		musician	musician	present
+[Y] philospher [X].		philospher	philospher	present
+[Y] is a [X] novelist.		novelist	is-novelist	present
+[Y] is a [X] musician.		musician	is-musician	present
+[Y] is a [X] philospher.		philospher	is-philospher	present
+[Y], who is a [X] actress.		actress	who-is-actress	present
+[Y], who is a [X] author.		author	who-is-author	present
+[Y], who is a [X] actor.		actor	who-is-actor	present
+[Y], who is a [X] poet.		poet	who-is-poet	present
+[Y], who is a [X] composer.		composer	who-is-composer	present
+[Y], who is a [X] playwright.		playwright	who-is-playwright	present
+[Y], who is a [X] writer.		writer	who-is-writer	present
+[Y], who is a [X] novelist.		novelist	who-is-novelist	present
+[Y], who is a [X] musician.		musician	who-is-musician	present
+[Y], who is a [X] philospher.		philospher	who-is-philospher	present
