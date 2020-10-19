@@ -1,0 +1,37 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is located in [Y] .		located-in	located-in	present
+[X] is a road in [Y].		road-in	road-in	present
+[X] is an island in [Y].		island-in	island-in	present
+[X] is a province in [Y].		province-in	province-in	present
+[X] is a city in [Y].		city-in	city-in	present
+[X] is a municipality in [Y].		municipality-in	municipality-in	present
+[X] is a county in [Y].		county-in	county-in	present
+[X] is a district in [Y].		district-in	district-in	present
+[X] is a school in [Y].		school-in	school-in	present
+[X] is a church in [Y].		church-in	church-in	present
+[X] is a highway in [Y].		highway-in	highway-in	present
+[X] is a freeway in [Y].		freeway-in	freeway-in	present
+[X] is a museum in [Y].		museum-in	museum-in	present
+[X] is a hotel in [Y].		hotel-in	hotel-in	present
+[X] is a river in [Y].		river-in	river-in	present
+[X] is a bridge in [Y].		bridge-in	bridge-in	present
+[X], that is a road in [Y].		that-road-in	that-road-in	present
+[X], that is an island in [Y].		that-island-in	that-island-in	present
+[X], that is a province in [Y].		that-province-in	that-province-in	present
+[X], that is a city in [Y].		that-city-in	that-city-in	present
+[X], that is a municipality in [Y].		that-municipality-in	that-municipality-in	present
+[X], that is a county in [Y].		that-county-in	that-county-in	present
+[X], that is a district in [Y].		that-district-in	that-district-in	present
+[X], that is a school in [Y].		that-school-in	that-school-in	present
+[X], that is a church in [Y].		that-church-in	that-church-in	present
+[X], that is a highway in [Y].		that-highway-in	that-highway-in	present
+[X], that is a freeway in [Y].		that-freeway-in	that-freeway-in	present
+[X], that is a museum in [Y].		that-museum-in	that-museum-in	present
+[X], that is a hotel in [Y].		that-hotel-in	that-hotel-in	present
+[X], that is a river in [Y].		that-river-in	that-river-in	present
+[X], that is a bridge in [Y].		that-bridge-in	that-bridge-in	present
+[X] province, [Y].		province	province	present
+[X] municipality, [Y].		municipality	municipality	present
+[X] county, [Y].		county	county	present
+[X] district, [Y].		district	district	present
+[X] school, [Y].		school	school	present
