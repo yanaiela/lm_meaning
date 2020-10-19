@@ -1,0 +1,31 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is located in [Y] .		locate	locate	present
+[X] happens in [Y].		happen	happen	present
+[X] takes place in [Y].		take-place	take-place	present
+[X] held in [Y].		held	held	past
+[X] was held in [Y].		was-held-in	was-held-in	past
+[X] was held at the [Y].		was-held-at	was-held-at	past
+[X] took place in [Y].		take-place	take-place	past
+[Y] hosts [X].		host	host	present
+[Y] hosted the [X].		host-the	host-the	present
+[X], which is located in [Y] .		locate	which-locate	present
+[X], which happens in [Y].		happen	which-happen	present
+[X], which takes place in [Y].		take-place	which-take-place	present
+[X], which is held in [Y].		held	which-held	past
+[X], which was held in [Y].		was-held-in	which-was-held-in	past
+[X], which was held at the [Y].		was-held-at	which-was-held-at	past
+[X], which took place in [Y].		take-place	which-take-place	past
+[Y], which hosts [X].		host	which-host	present
+[Y], which hosted the [X].		host-the	which-host-the	present
+[X], that is located in [Y] .		locate	that-locate	present
+[X], that happens in [Y].		happen	that-happen	present
+[X], that takes place in [Y].		take-place	that-take-place	present
+[X], that is held in [Y].		held	that-held	past
+[X], that was held in [Y].		was-held-in	that-was-held-in	past
+[X], that was held at the [Y].		was-held-at	that-was-held-at	past
+[X], that took place in [Y].		take-place	that-take-place	past
+[Y], that hosts [X].		host	that-host	present
+[Y], that hosted the [X].		host-the	that-host-the	present
+[X] festival in [Y].		festival	festival	present
+[X], which is a festival in [Y].		festival	which-festival	present
+[X], a festival in [Y].		festival	a-festival	present
