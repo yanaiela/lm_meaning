@@ -1,0 +1,11 @@
+LEMMA	NOT-ENTAILED
+is-country	is-mountain-located-in-continent,is-river-located-in-continent,is-mountain-in-continent,is-river-in-continent
+is-country-locate	is-mountain-located-in-continent,is-river-located-in-continent,is-mountain-in-continent,is-river-in-continent
+is-state	is-mountain-located-in-continent,is-river-located-in-continent,is-mountain-in-continent,is-river-in-continent
+is-state-locate	is-mountain-located-in-continent,is-river-located-in-continent,is-mountain-in-continent,is-river-in-continent
+is-locate-in-continent	
+is-mountain-in-continent	is-river-in-continent,is-country-locate,is-state,is-country,is-river-located-in-continent,is-state-locate
+is-mountain-located-in-continent	is-river-in-continent,is-country-locate,is-state,is-country,is-river-located-in-continent,is-state-locate
+is-river-in-continent	is-mountain-in-continent,is-country-locate,is-state,is-mountain-located-in-continent,is-country,is-state-locate
+is-river-located-in-continent	is-mountain-in-continent,is-country-locate,is-state,is-mountain-located-in-continent,is-country,is-state-locate
+belong-to-continent	

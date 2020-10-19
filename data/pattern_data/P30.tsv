@@ -1,0 +1,11 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is a country in [Y].	Italy is a country in Europe.	is-country	is-country	present
+[X] is a country located in [Y].	Italy is a country located in Europe.	is-country	is-country-locate	present
+[X] is a state in [Y].	Italy is a state in Europe.	is-state	is-state	present
+[X] is a state located in [Y].	Italy is a state located in Europe.	is-state	is-state-locate	present
+[X] is located in the continent [Y].	Italy is located in the continent Europe.	is-locate	is-locate-in-continent	present
+[X] is a mountain in the continent of [Y].	Mount Wuteve is a mountain in the continent of Africa.	is-mountain	is-mountain-in-continent	present
+[X] is a mountain located in the continent of [Y].	Mount Wuteve is a mountain located in the continent of Africa.	is-mountain	is-mountain-located-in-continent	present
+[X] is a river in the continent of [Y].	Inn is a river in the continent of Europe.	is-river	is-river-in-continent	present
+[X] is a river located in the continent of [Y].	Inn is a river located in the continent of Europe.	is-river	is-river-located-in-continent	present
+[X] belongs to the continent of [Y].	Japan belongs to the continent of Asia	belong	belong-to-continent	present
