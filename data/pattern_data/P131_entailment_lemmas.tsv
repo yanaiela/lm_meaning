@@ -1,0 +1,37 @@
+EXTENDED-LEMMA	
+located-in	+/that-located-in
+road-in	+/that-located-in, that-road-in
+island-in	+/that-located-in, that-island-in
+province-in	+/that-located-in, that-province-in, province
+city-in	+/that-located-in, that-city-in
+municipality-in	+/that-located-in, that-municipality-in, municipality
+county-in	+/that-located-in, that-county-in, county
+district-in	+/that-located-in, that-district-in, district
+school-in	+/that-located-in, that-school-in, school
+church-in	+/that-located-in, that-church-in
+highway-in	+/that-located-in, that-highway-in
+freeway-in	+/that-located-in, that-freeway-in
+museum-in	+/that-located-in, that-museum-in
+hotel-in	+/that-located-in, that-hotel-in
+river-in	+/that-located-in, that-river-in
+bridge-in	+/that-located-in, that-bridge-in
+that-road-in	+/that-located-in, road-in
+that-island-in	+/that-located-in, island-in
+that-province-in	+/that-located-in, province-in, province
+that-city-in	+/that-located-in, city-in
+that-municipality-in	+/that-located-in, municipality-in, municipality
+that-county-in	+/that-located-in, county-in, county
+that-district-in	+/that-located-in, district-in, district
+that-school-in	+/that-located-in, school-in, school
+that-church-in	+/that-located-in, church-in
+that-highway-in	+/that-located-in, highway-in
+that-freeway-in	+/that-located-in, freeway-in
+that-museum-in	+/that-located-in, museum-in
+that-hotel-in	+/that-located-in, hotel-in
+that-river-in	+/that-located-in, river-in
+that-bridge-in	+/that-located-in, bridge-in
+province	+/that-located-in, province-in, that-province-in,  province
+municipality	+/that-located-in, municipality-in, that-municipality-in, municipality
+county	+/that-located-in, county-in, that-county-in, county
+district	+/that-located-in, district-in, that-district-in, district
+school	+/that-located-in, school-in, that-school-in, school

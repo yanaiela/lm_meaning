@@ -1,0 +1,31 @@
+communicate	
+actress	+/communicate, is-actress, who-is-actress
+author	+/communicate, is-author, who-is-author, writer, is-writer, who-is-writer
+actor	+/communicate, is-actor, who-is-actor
+poet	+/communicate, is-poet, who-is-poet
+composer	+/communicate, is-composer, who-is-composer
+playwright	+/communicate, is-playwright, who-is-playwright
+writer	+/communicate, is-writer, who-is-writer
+is-actress	+/communicate, actress, who-is-actress
+is-author	+/communicate, author, who-is-author, writer, is-writer, who-is-writer
+is-actor	+/communicate, actor, who-is-actor
+is-poet	+/communicate, poet, who-is-poet
+is-composer	+/communicate, composer, who-is-composer
+is-playwright	+/communicate, playwright, who-is-playwright, writer, is-writer, who-is-writer
+is-writer	+/communicate, writer, who-is-writer
+novelist	+/communicate, is-novelist, who-is-novelist, writer, is-writer, who-is-writer
+musician	+/communicate, is-musician, who-is-musician
+philospher	+/communicate, is-philospher, who-is-philospher
+is-novelist	+/communicate, writer, is-writer, who-is-writer
+is-musician	+/communicate, musician, who-is-musician
+is-philospher	+/communicate, philospher, who-is-philospher
+who-is-actress	+/communicate, actress, is-actress
+who-is-author	+/communicate, author, is-author, writer, is-writer, who-is-writer
+who-is-actor	+/communicate, actor, is-actor
+who-is-poet	+/communicate, poet, is-poet
+who-is-composer	+/communicate, composer, is-composer
+who-is-playwright	+/communicate, playwright, is-playwright, writer, is-writer, who-is-writer
+who-is-writer	+/communicate, writer, is-writer
+who-is-novelist	+/communicate, novelist, is-novelist, writer, is-writer, who-is-writer
+who-is-musician	+/communicate, musician, is-musician
+who-is-philospher	+/communicate, philospher, is-philospher

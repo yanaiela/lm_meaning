@@ -1,0 +1,15 @@
+LEMMA	NOT-ENTAILED
+belong-to-organization	president-of
+belong-to-organization	president-of
+is-member-of	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+is-member-of	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+is-part-of-organization	president-of
+is-part-of-organization	president-of
+affiliate-with	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+affiliate-with	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+affiliate-with-organization	president-of
+affiliate-with-organization	president-of
+join-as-member	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+become-affiliate-with	president-of,affiliate-with-organization,belong-to-organization,is-part-of-organization
+president-of	
+president-of	

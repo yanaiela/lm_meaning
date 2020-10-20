@@ -1,0 +1,9 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X]	plays as a [Y].	[X]:Joe Thornton plays as a [Y]:centre.	play-as	play-as	present
+[X]	played as a [Y].	[X]:Joe Thornton played as a [Y]:centre.	play-as	play-as	past
+[X], who plays as a [Y].	[X]:Joe Thornton, who plays as a [Y]:centre.	play-as	play-as	present
+[X], who played as a [Y].	[X]:Joe Thornton, who plays as a [Y]:centre.	play-as	play-as	past
+[X]'s position within the team is a [Y].	[X]:Joe Thornton's position within the team is a [Y]:centre.	position	's position	present
+[X]'s position within the team was a [Y].	[X]:Joe Thornton's position within the team is a [Y]:centre.	position	's position	past
+[X]'s role within the team is a [Y].	[X]:Joe Thornton's position within the team is a [Y]:centre.	role	's role	present
+[X]'s role within the team was a [Y].	[X]:Joe Thornton's position within the team is a [Y]:centre.	role	's role	past

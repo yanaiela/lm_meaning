@@ -1,7 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] died in [Y].	[X]:He :died :in [Y]:his home.	die	die-in	past
 [X] died at [Y].	In 1884 [X]:Johnson :died :at [Y]:his estate Chiefswood.	die	die-at	past
-Y is the resting place of [X].	[X]:Ryu's village :is :the :resting :place of [Y]:the Dark Dragon Blade.	resting-place	is-the-resting-place-of	present
+[Y] is the resting place of [X].	[X]:Ryu's village :is :the :resting :place of [Y]:the Dark Dragon Blade.	resting-place	is-the-resting-place-of	present
 [X] passed away in [Y].	[X]:the Mayor of Blue Ash :passed :away :in [Y]:France	pass-away	pass-away-in	past
 [X] passed away at [Y].	[X]:Airey :passed :away from heart failure :at [Y]:Panama City , Florida.	pass-away	pass-away-at	past
 [X] expired at [Y].	[X]:Bavji :expired :at [Y]:Karjali Haveli at the not-so-ripe age of 49 on 1 July 1929.	expire	expire-at	past

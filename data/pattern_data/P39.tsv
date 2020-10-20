@@ -1,0 +1,29 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] has the position of [Y] .		position	position	present
+[X], who has the position of [Y].		who-position	who-position	present
+[X], whose position is that of [Y].		whose-position	whose-position	present
+[X]'s position is [Y].		s-position	s-position	present
+[X], who holds the position of [Y].		who-holds	who-holds	present
+[X] holds the position of [Y].		holds	holds	present
+[X], who was elected [Y].		who-elected	who-elected	past
+[X] was elected [Y].		elected	elected	past
+[X], who was appointed [Y].		who-appointed	who-appointed	past
+[X] was appointed [Y].		appointed	appointed	past
+[X], who served as [Y].		who-served	who-served	past
+[X] served as [Y].		served	served	past
+[X], who serves as [Y].		who-served	who-served	present
+[X] serves as [Y].		served	served	present
+[X] was elected as [Y].		was-elected	was-elected	past
+[X], who was named [Y].		who-named	who-named	past
+[X] was named [Y].		was-named	was-named	past
+[X], who was sworn in as [Y].		who-sworn	who-sworn	past
+[X] was sworn in as [Y].		was-sworn	was-sworn	past
+[X], who was crowned [Y].		who-crowned	who-crowned	past
+[X] was crowned [Y].		was-crowned	was-crowned	past
+[X], who has been crowned [Y].		who-has-crowned	who-has-crowned	past
+[X] has been crowned [Y].		has-crowned	has-crowned	past
+[X] is crowned [Y].		is-crowned	is-crowned	present
+[X], who was given the position of [Y].		who-given	who-given	past
+[X] was given the position of [Y].		was-given	was-given	past
+[X], who ascended to the [Y] position.		who-ascended	who-ascended	past
+[X] ascended to the [Y] position.		ascended	ascended	past
