@@ -18,7 +18,6 @@ def get_data(task):
 
 
 def highlight_errors(row):
-    print(pd.isna(row['cooccurrences']))
     return ['background-color: red' if (row['memorization'] == -1 and row['cooccurrences'] == -1 and
                                         row['preference'] == -1) else '' for v in row]
 
@@ -49,10 +48,8 @@ relations2labels = {x['relation']: x['label'] for x in all_patterns}
 
 relevants_relations = [x for x in all_relations if x in relations2labels.keys()]
 relation_names = [f'{relations2labels[x]} ({x})' for x in relevants_relations]
-print(relation_names)
-selected_pattern = st.sidebar.radio('Choose Relation', relation_names)
+selected_pattern = st.sidebar.radio('Choose Relation', relation_names, 20)
 pattern_id = selected_pattern.split(' ')[-1][1:-1]
-print(pattern_id)
 
 
 paraphrase_file = f'{paraphrases_dir}/{pattern_id}.jsonl'
@@ -108,9 +105,6 @@ for k, tuple_explanation in explanations.items():
         n_explanations += 1
     row = k.split('_')
     assert len(row) == 2
-    print(tuple_explanation['memorization'],
-                tuple_explanation['cooccurences'],
-                tuple_explanation['preference'])
     row.extend([tuple_explanation['memorization'],
                 tuple_explanation['cooccurences'],
                 tuple_explanation['preference']])
