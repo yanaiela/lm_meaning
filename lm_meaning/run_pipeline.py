@@ -118,7 +118,7 @@ def main():
     if args.no_subj:
         data = [{"sub_label": "", "obj_label": ""}]
     else:
-        data = utils.read_json_file(args.data_file)
+        data = utils.read_jsonl_file(args.data_file)
 
     # Load prompts
     prompts = utils.load_prompts(args.patterns_file)

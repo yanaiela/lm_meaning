@@ -2,7 +2,7 @@ import json
 from typing import List, Dict
 
 
-def read_json_file(filename: str) -> List[Dict]:
+def read_jsonl_file(filename: str) -> List[Dict]:
 
     dataset = []
     with open(filename) as f:
@@ -11,6 +11,12 @@ def read_json_file(filename: str) -> List[Dict]:
             dataset.append(loaded_example)
 
     return dataset
+
+
+def read_json_file(filename: str) -> Dict:
+    with open(filename, 'r') as f:
+        data = json.load(f)
+    return data
 
 
 def load_prompts(filename: str) -> List[str]:

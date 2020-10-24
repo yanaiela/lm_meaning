@@ -43,7 +43,7 @@ def main():
     if args.wandb:
         log_wandb(args)
 
-    lama_patterns = utils.read_json_file(args.lama_patterns)
+    lama_patterns = utils.read_jsonl_file(args.lama_patterns)
     rel2pattern = {x['relation']: x['template'] for x in lama_patterns}
 
     model_name = args.lm
@@ -54,7 +54,7 @@ def main():
     # Load data
     for file_name in glob(args.data_path + '/*'):
         print(file_name)
-        data = utils.read_json_file(file_name)
+        data = utils.read_jsonl_file(file_name)
         pattern_name = file_name.split('/')[-1].split('.')[0]
         pattern = rel2pattern[pattern_name]
         results_dict = {}
