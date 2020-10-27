@@ -19,7 +19,7 @@ def get_data(task):
 
 def highlight_errors(row):
     return ['background-color: red' if (row['memorization'] == -1 and row['cooccurrences'] == -1 and
-                                        row['preference'] == -1) else '' for v in row]
+                                        row['preference'] == -1 and row['contains'] == -1) else '' for _ in row]
 
 
 bias_file = 'data/preference_bias/bias.json'
@@ -39,7 +39,7 @@ for relation in glob('data/pattern_data/*.jsonl'):
 st.title('Explaining Model Success')
 # st.write(pattern_id)
 
-min_cooccurrence = st.sidebar.slider('minimum cooccurence', min_value=0, max_value=5000, value=100, step=50)
+min_cooccurrence = st.sidebar.slider('minimum cooccurence', min_value=0, max_value=1000, value=100, step=10)
 max_rank = st.sidebar.slider('maximum rank', min_value=0, max_value=20, value=5, step=1)
 
 
