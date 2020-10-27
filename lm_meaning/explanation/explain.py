@@ -63,6 +63,16 @@ def explain_preference_bias(preference_bias_data: List, top_k: int, tuples_data:
     return dic
 
 
+def explain_subject_contains_object(tuples_data: List[Tuple]):
+    dic = {}
+    for subj, obj in tuples_data:
+        if obj in subj:
+            dic[f'{subj}_{obj}'] = {'contains': 1}
+        else:
+            dic[f'{subj}_{obj}'] = {'contains': None}
+    return dic
+
+
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-bias_file", "--bias_file", type=str, help="preference bias file")
