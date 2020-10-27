@@ -125,8 +125,9 @@ df = df.astype({"cooccurrences": int, "preference": int, "contains": int})
 df = df.style.apply(highlight_errors, axis=1)
 
 
+st.write('overall tuples:', len(lm_predictions))
 st.write('overall model success:', lm_correct_count)
-st.write('managed to explain:', n_explanations)
+st.write('managed to explain:', n_explanations, 'that is {:.2f}%'.format(n_explanations / lm_correct_count))
 st.write('explanation by category:', explanation_type)
 
 st.write(df)
