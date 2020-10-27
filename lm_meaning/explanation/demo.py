@@ -7,7 +7,7 @@ import streamlit as st
 from streamlit import StopException
 
 from lm_meaning.explanation.explain import explain_preference_bias, explain_cooccurrences, explain_memorization, \
-    get_lm_preds, get_items
+    explain_subject_contains_object, get_lm_preds, get_items
 from lm_meaning.utils import read_json_file, read_jsonl_file
 
 
@@ -81,10 +81,15 @@ pattern_data = get_items(memorization)
 memorization_explained = explain_memorization(memorization, spike_pattern)
 cooccurrence_explained = explain_cooccurrences(cooccurrences, min_cooccurrence, pattern_data)
 preference_bias_explained = explain_preference_bias(preference_bias, max_rank, pattern_data)
+inclusion_explained = explain_subject_contains_object(pattern_data)
 
 explanations = {}
 for k, v in memorization_explained.items():
-    explanations[k] = {**v, **cooccurrence_explained[k], **preference_bias_explained[k]}
+    explanations[k] = {**v,
+                       **cooccurrence_explained[k],
+                       **preference_bias_explained[k],
+                       **inclusion_explained[k]
+                       }
 
 n_explanations = 0
 explanation_type = defaultdict(int)
@@ -107,13 +112,15 @@ for k, tuple_explanation in explanations.items():
     assert len(row) == 2
     row.extend([tuple_explanation['memorization'],
                 tuple_explanation['cooccurences'],
-                tuple_explanation['preference']])
+                tuple_explanation['preference'],
+                tuple_explanation['contains']
+                ])
 
     table_data.append(row)
 
-df = pd.DataFrame(table_data, columns=['subject', 'object', 'memorization', 'cooccurrences', 'preference'])
+df = pd.DataFrame(table_data, columns=['subject', 'object', 'memorization', 'cooccurrences', 'preference', 'contains'])
 df = df.replace(np.nan, -1)
-df = df.astype({"cooccurrences": int, "preference": int})
+df = df.astype({"cooccurrences": int, "preference": int, "contains": int})
 df = df.style.apply(highlight_errors, axis=1)
 
 
