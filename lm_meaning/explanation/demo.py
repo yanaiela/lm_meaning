@@ -48,7 +48,7 @@ relations2labels = {x['relation']: x['label'] for x in all_patterns}
 
 relevants_relations = [x for x in all_relations if x in relations2labels.keys()]
 relation_names = [f'{relations2labels[x]} ({x})' for x in relevants_relations]
-selected_pattern = st.sidebar.radio('Choose Relation', relation_names, 20)
+selected_pattern = st.sidebar.radio('Choose Relation', relation_names, 15)
 pattern_id = selected_pattern.split(' ')[-1][1:-1]
 
 
