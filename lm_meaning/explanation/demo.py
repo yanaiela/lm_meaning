@@ -103,7 +103,7 @@ for k, tuple_explanation in explanations.items():
     lm_correct_count += 1
     found_explanation = False
     for specific_explanation, val in tuple_explanation.items():
-        if val != -1:
+        if val:
             found_explanation = True
             explanation_type[specific_explanation] += 1
     if found_explanation:
