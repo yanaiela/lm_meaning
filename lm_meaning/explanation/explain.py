@@ -1,6 +1,7 @@
 import argparse
 from collections import defaultdict
 from typing import List, Dict, Tuple
+import operator
 
 from lm_meaning.utils import read_json_file, read_jsonl_file
 
@@ -38,16 +39,35 @@ def explain_memorization(memorization_data: Dict, pattern: str):
     return dic
 
 
-def explain_cooccurrences(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple]):
+def get_subj_obj_cooccurence_dic(cooccurence_data: Dict):
+    subj_obj_dic = defaultdict(dict)
+    for subj_obj, count in cooccurence_data.items():
+        subj, obj = subj_obj.split('_SEP_')
+        subj_obj_dic[subj][obj] = count
+    return subj_obj_dic
+
+
+def explain_cooccurrences(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple], min_count_cooccurrence=False):
+    subj_obj_dic = get_subj_obj_cooccurence_dic(cooccurence_data)
+
     dic = {}
     for subj, obj in tuples_data:
         data_key = f'{subj}_SEP_{obj}'
         if data_key in cooccurence_data:
-            count = cooccurence_data[data_key]
-            if count > min_count:
-                dic[f'{subj}_{obj}'] = {'cooccurences': count}
+            if min_count_cooccurrence:
+                count = cooccurence_data[data_key]
+                if count > min_count:
+                    dic[f'{subj}_{obj}'] = {'cooccurences': count}
+                else:
+                    dic[f'{subj}_{obj}'] = {'cooccurences': None}
             else:
-                dic[f'{subj}_{obj}'] = {'cooccurences': None}
+                obj_counts = subj_obj_dic[subj]
+                biggest_obj, count = max(obj_counts.items(), key=operator.itemgetter(1))
+                if biggest_obj == obj:
+                    dic[f'{subj}_{obj}'] = {'cooccurences': count}
+                else:
+                    dic[f'{subj}_{obj}'] = {'cooccurences': None}
+
         else:
             dic[f'{subj}_{obj}'] = {'cooccurences': None}
     return dic

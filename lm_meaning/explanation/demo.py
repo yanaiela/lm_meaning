@@ -39,7 +39,12 @@ for relation in glob('data/pattern_data/*.jsonl'):
 st.title('Explaining Model Success')
 # st.write(pattern_id)
 
-min_cooccurrence = st.sidebar.slider('minimum cooccurence', min_value=0, max_value=1000, value=100, step=10)
+use_simple_cooccurrence_count = st.sidebar.checkbox('Use simple co-occurrence (by counts)', value=False)
+if use_simple_cooccurrence_count:
+    min_cooccurrence = st.sidebar.slider('minimum cooccurence', min_value=0, max_value=1000, value=100, step=10)
+else:
+    min_cooccurrence = None
+
 max_rank = st.sidebar.slider('maximum rank', min_value=0, max_value=20, value=5, step=1)
 
 
@@ -79,7 +84,8 @@ memorization = read_json_file(memorization_file)
 pattern_data = get_items(memorization)
 
 memorization_explained = explain_memorization(memorization, spike_pattern)
-cooccurrence_explained = explain_cooccurrences(cooccurrences, min_cooccurrence, pattern_data)
+cooccurrence_explained = explain_cooccurrences(cooccurrences, min_cooccurrence, pattern_data,
+                                               min_count_cooccurrence=min_cooccurrence is not None)
 preference_bias_explained = explain_preference_bias(preference_bias, max_rank, pattern_data)
 inclusion_explained = explain_subject_contains_object(pattern_data)
 
@@ -103,7 +109,6 @@ for k, tuple_explanation in explanations.items():
     lm_correct_count += 1
     found_explanation = False
     for specific_explanation, val in tuple_explanation.items():
-        print(val)
         if val is not None:
             found_explanation = True
             explanation_type[specific_explanation] += 1
@@ -127,7 +132,7 @@ df = df.style.apply(highlight_errors, axis=1)
 
 st.write('overall tuples:', len(lm_predictions))
 st.write('overall model success:', lm_correct_count)
-st.write('managed to explain:', n_explanations, 'that is {:.2f}%'.format(n_explanations / lm_correct_count))
+st.write('managed to explain:', n_explanations, 'that is {:.1f}%'.format(100. * n_explanations / lm_correct_count))
 st.write('explanation by category:', explanation_type)
 
 st.write(df)
