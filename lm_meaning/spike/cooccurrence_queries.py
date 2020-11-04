@@ -7,10 +7,11 @@ from tqdm import tqdm
 import wandb
 from spike.search.queries.q import BooleanSearchQuery
 from typing import List, Iterator, Optional
-from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects
+from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects, enclose_entities
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
 from spike.integration.odinson.common import OdinsonContinuationToken
+from spike.spacywrapper.annotator import SpacyAnnotator
 
 
 WIKIPEDIA_URL = "https://spike.staging.apps.allenai.org/api/3/search/query"
@@ -99,6 +100,8 @@ def main():
     # TODO - There is some bug in spike with the & token.
     print(len(all_subjects))
     all_subjects = [x for x in all_subjects if '&' not in x]
+    spacy_annotator = SpacyAnnotator.from_config("en.json")
+    all_subjects = [enclose_entities(spacy_annotator, subj) for subj in all_subjects]
     print(len(all_subjects))
     query_match = construct_query(all_subjects, all_objects, spike_engine)
 
