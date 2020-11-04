@@ -10,9 +10,10 @@ from spike.integration.odinson.common import OdinsonContinuationToken
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
 from spike.search.queries.q import StructuredSearchQuery
+from spike.spacywrapper.annotator import SpacyAnnotator
 from tqdm import tqdm
 
-from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json
+from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json, enclose_entities
 
 
 def log_wandb(args):
@@ -44,11 +45,11 @@ def construct_query(engine: MatchEngine, annotator: Annotator, objs: List[str], 
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-data_file", "--data_file", type=str, help="pattern file",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/TREx_train/P449.jsonl")
+                       default="data/trex/data/TREx/P449.jsonl")
     parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/spike_results/P449.json")
+                       default="data/output/spike_results/paraphrases/P449.json")
     parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="pattern file",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/spike_patterns/P449.txt")
+                       default="data/spike_patterns/P449.txt")
 
     args = parse.parse_args()
     log_wandb(args)
@@ -61,6 +62,14 @@ def main():
     obj_dic = defaultdict(list)
     for row in relations:
         obj_dic[row['obj_label']].append(row['sub_label'])
+
+    spacy_annotator = SpacyAnnotator.from_config("en.json")
+    subj_tokenized2original = {}
+    for subj in [s for s_list in obj_dic.values() for s in s_list]:
+        tokenized_subj = enclose_entities(spacy_annotator, subj)
+        print(subj, tokenized_subj)
+        subj_tokenized2original[subj] = tokenized_subj
+    tokenized_subjects = set(subj_tokenized2original.values())
 
     data_dic = defaultdict(dict)
     for row in relations:
@@ -80,7 +89,10 @@ def main():
                     # to capture multi words expressions
                     subj = ' '.join(r.sentence.words[r.captures['subject'].first: r.captures['subject'].last + 1])
                     if obj in obj_dic:
-                        if subj in obj_dic[obj]:
+                        # Checking first if this subject appears as the tokenized subjects
+                        # and if so, checking if the original subject (checking this after mapping to the original
+                        # subject) is within the lama corpus
+                        if subj in tokenized_subjects and subj_tokenized2original[subj] in obj_dic[obj]:
                             sentence = r.sentence.words
                             data_dic[obj][subj][pattern] = sentence
                 more_results = False

@@ -73,3 +73,11 @@ def equal_queries(q1: str, q2: str, annotator: Annotator) -> bool:
     assert len(p2) == 1
 
     return list(p1)[0].signature == list(p2)[0].signature
+
+
+def enclose_entities(annotator: Annotator, entity: str) -> str:
+    annotated = annotator.annotate_text(entity)
+    words = []
+    for sentence in annotated.sentences:
+        words.extend(sentence.words)
+    return ' '.join(words)
