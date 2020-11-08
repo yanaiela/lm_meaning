@@ -1,0 +1,20 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] ties diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present
+[Y] ties diplomatic relations with [X].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present
+[X] tied diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	past
+[Y] tied diplomatic relations with [X].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	past
+[X] has diplomatic relations with [Y].	North Korea has diplomatic relations with Japan.	have	have-diplomatic-relations	present
+[X] had diplomatic relations with [Y].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past
+[Y] had diplomatic relations with [X].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past
+[X] has an embassy in [Y]	Spain has an embassy in France	have	have-embassy	present
+[X] had an embassy in [Y]	Spain had an embassy in France	have	have-embassy	past
+[Y] has an embassy in [X]	Spain has an embassy in France	have	have-embassy	present
+[Y] had an embassy in [X]	Spain had an embassy in France	have	have-embassy	past
+[X] exchanged ambassadors with [Y]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past
+[Y] exchanged ambassadors with [X]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past
+[X], which has diplomatic relations with [Y]	Spain, which has diplomatic relation with France	has	has-diplomatic-relations	present
+[X], which had diplomatic relations with [Y]	Spain, which has diplomatic relation with France	has	has-diplomatic-relations	past
+[Y], which has diplomatic relations with [X]	Spain, which has diplomatic relation with France	has	has-diplomatic-relations	present
+[Y], which had diplomatic relations with [X]	Spain, which has diplomatic relation with France	has	has-diplomatic-relations	past
+[Y], which ties diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	present
+[Y], which tied diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	past
