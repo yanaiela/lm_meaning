@@ -1,0 +1,8 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] received the [Y] prize.	 NTT received the prize of the commissioner of the Japan patent office.	receive	receive-prize	past
+[X] was awarded the [Y] prize.	 NTT was awarded the prize of the commissioner of the Japan patent office.	award	award-prize	past
+[X] was given the [Y] prize.	 NTT was given the prize of the commissioner of the Japan patent office.	give	give-prize	past
+[X] was granted the [Y] prize.	 NTT was granted the prize of the commissioner of the Japan patent office.	grant	grant-prize	past
+!someone awarded [X] with the [Y] prize.	 someone awarded NNT with the prize of the commissioner of the Japan patent office.	award	award-prize	past
+!someone gave [X] the [Y] prize.	 someone gave NTT the prize of the commissioner of the Japan patent office.	give	give-prize	past
+[X] was the winner of the [Y] prize.	 NTT was the winner of the prize of the commissioner of the Japan patent office.	win	win-of-prize	past
