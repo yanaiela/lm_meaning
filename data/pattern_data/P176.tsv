@@ -1,0 +1,17 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is produced by [Y]	:iphone is produced by Apple	produce	produce-by	present
+[X] was produced by [Y]	:iphone was produced by Apple	produce	produce-by	past
+[X] is manufactured by [Y]	:iphone is produced by Apple	manufacture	manufacture-by	present
+[X] was manufactured by [Y]	:iphone was produced by Apple	manufacture	manufacture-by	past
+[X] is created by [Y]	:iphone is produced by Apple	create	create-by	present
+[X] was created by [Y]	:iphone was produced by Apple	create	create-by	past
+[X] is a product of [Y]	:iphone is a product of Apple	product	is-product-of	present
+[X] was a product of [Y]	:iphone is a product of Apple	product	is-product-of	past
+[X], a product of [Y]	:iphone, a product of Apple	product	product-of	?
+[X], a product created by [Y]	:iphone, a product created by Apple	product	product-release-by	?
+[X], a product manufactured by [Y]	:iphone, a product manufactured by Apple	product	product-manufacture-by	?
+[Y], that manufactured [X]	apple, that manufactured iphone	manufacture	that-manufactured	past
+[Y], that created [X]	apple, that created iphone	create	that-create	past
+[Y], the creator of the [X]	apple, the creator of the iphone	creator	creator-of	?
+[Y], the manufacturer of the [X]	apple, the creator of the iphone	manufacturer	manufacturer-of	?
+[X] and its product [Y]	apple and its product iphone	product	its-product	?
