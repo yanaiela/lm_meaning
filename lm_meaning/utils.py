@@ -29,4 +29,8 @@ def load_prompts(filename: str) -> List[str]:
     return prompts
 
 
-
+def write_jsonl_file(data, out_f):
+    with open(out_f, 'w') as f:
+        for obj in data:
+            json.dump(obj, f)
+            f.write('\n')
