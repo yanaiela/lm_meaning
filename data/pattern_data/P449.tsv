@@ -25,7 +25,7 @@ the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season fiv
 [X], which is aired on [Y].	[X]:The Crown, which is :aired on [Y]:Netflix	air	air-on	present
 [X] was aired on [Y].	[X]:The Crown :was :aired on [Y]:Netflix	air	is-air-on	past
 [X] is aired on [Y].	[X]:The Crown :is :aired on [Y]:Netflix	air	is-air-on	present
-it was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that [X]:'The Crown' on [Y]:Netflix will :go for six seasons	on	on	?
+It was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that [X]:'The Crown' on [Y]:Netflix will :go for six seasons	on	on	?
 [X] returns on [Y].	TV this week: [X]:'The Crown' :returns on [Y]:Netflix	return	return-on	future
 [X] returned on [Y].	TV this week: [X]:'The Crown' :returned on [Y]:Netflix	return	return-on	past
 [X], a [Y] original.	[X]:The Protector, a [Y]:Netflix :original	original	original	?
