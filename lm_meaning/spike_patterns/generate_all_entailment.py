@@ -11,7 +11,7 @@ def main():
     parse.add_argument("-lemmas_file", "--lemmas_file", type=str, help=" path to the lemmas file",
                        default="data/pattern_data/P449_entailment_lemmas.tsv")
     parse.add_argument("-output_file", "--output_file", type=str, help="output file",
-                       default="data/pattern_data/output_file/P449_entailment_lemmas.tsv")
+                       default="data/pattern_data/entailed_lemmas_extended/P449_entailment_lemmas.tsv")
 
     args = parse.parse_args()
 

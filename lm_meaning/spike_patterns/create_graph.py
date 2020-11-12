@@ -105,5 +105,5 @@ if __name__ == "__main__":
             else:
                 graph.add_edge(node1, node2)
 
-    with open(args.out_file, "w") as f:
+    with open(args.out_file, "wb") as f:
         pickle.dump(graph, f)
