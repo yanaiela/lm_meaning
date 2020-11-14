@@ -2,14 +2,17 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] belongs to the organization of [Y].	Nigeria belongs to the organization of OPEC.	belong	belong-to-organization	present
 [X] belonged to the organization of [Y].	Nigeria belonged to the organization of OPEC.	belong	belong-to-organization	past
 [X] is a member of [Y].	Nigeria is a member of OPEC.	member	is-member-of	present
+[X] became a member of [Y].	Nigeria is a member of OPEC.	member	become-member-of	past
 [X] was a member of [Y].	Nigeria was a member of OPEC.	member	is-member-of	past
 [X] is a part of the [Y] organization.	Nigeria is a member of the OPEC organization.	part	is-part-of-organization	present
+[X] became a part of the [Y] organization.	Nigeria is a member of the OPEC organization.	part	become-part-of-organization	past
 [X] was a part of the [Y] organization.	Nigeria was a member of the OPEC organization.	part	is-part-of-organization	past
 [X] is affiliated with [Y].	Kindness Day UK is affiliated with the World Kindness Movement.	affiliate	affiliate-with	present
 [X] was affiliated with [Y].	Kindness Day UK was affiliated with the World Kindness Movement.	affiliate	affiliate-with	past
 [X] is affiliated with the [Y] organization.	Kindness Day UK is affiliated with the World Kindness Movement.	affiliate	affiliate-with-organization	present
 [X] was affiliated with the [Y] organization.	Kindness Day UK was affiliated with the World Kindness Movement.	affiliate	affiliate-with-organization	past
 [X] joined [Y] as a member.	Nigeria joined OPEC as a member.	join	join-as-member	past
+[X] joined [Y].	Nigeria joined OPEC.	join	join	past
 [X] became affiliated with [Y].	Kindness Day UK became affiliated with the World Kindness Movement.	become-affiliate	become-affiliate-with	past
 [X] is a president of [Y].	Jeffrey D. Webb (born 24 September 1964) is the president of CIFA.	president	president-of	present
 [X] was a president of [Y].	Jeffrey D. Webb (born 24 September 1964) was the president of CIFA.	president	president-of	past
