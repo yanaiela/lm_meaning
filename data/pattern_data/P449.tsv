@@ -1,6 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was originally aired on [Y] .   air air-on-originally past
 [X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future
+[Y] is to debut [X].	[Y]:Netflix is to debut the first Saudi Arabian thriller series [X]:'Whispers' in June.	debut	to-debut	future
 [Y] debuted [X].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut	past
 [X] debuted on [Y].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut-on	past
 the [Y] debut of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :debut of [X]:Steve Carell's new show	debut	debut-of	?
