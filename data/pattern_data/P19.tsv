@@ -12,4 +12,4 @@ The country of origin of [X] was [Y].	 :The :country :of :origin of [X]:Hamdi wa
 [X] immigrated from his native [Y].	[X]:He :immigrated :from :his :native [Y]:France to seek business opportunities in America	immigrate	immigrate-from-his-native	past
 [X] was a [Y]-born person.	[X]:Claudette Colbert :was :a [Y]:France-born American actress.	born	born	past
 [X] is a [Y]-born person.	[X]:Claudette Colbert :is :a [Y]:France-born American actress.	born	born	present
-[X], a [Y]-born person.	[X]:Claudette Colbert, :a [Y]:France-born American actress.	?	?	present
+[X], a [Y]-born person.	[X]:Claudette Colbert, :a [Y]:France-born American actress.	born	born	present
