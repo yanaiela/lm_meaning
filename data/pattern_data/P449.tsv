@@ -17,6 +17,7 @@ the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season fiv
 [Y] released [X].	[Y]:Netflix :released [X]:The Crown on November 17, 2019.	release	release	past
 [X], that aired on [Y],	The crown, that aired of Netflix,	air	air-on	past
 [X], that is aired on [Y],	The crown, that is aired of Netflix,	air	air-on	present
+[X], that was aired on [Y],	The crown, that is aired of Netflix,	air	air-on	past
 [X], that was broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	past
 [X], that is broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	present
 [X] was broadcasted on [Y].	The crown was broadcasted of Netflix,	broadcast	is-broadcast	past
