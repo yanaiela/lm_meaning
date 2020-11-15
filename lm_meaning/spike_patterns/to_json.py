@@ -4,22 +4,22 @@ import json
 
 def main():
     parse = argparse.ArgumentParser("")
-    parse.add_argument("-patterns_file", "--patterns_file", type=str, help=" path to the pattern file",
+    parse.add_argument("-patterns_file", "--patterns_file", type=str, help="path to the patterns file",
                        default="data/pattern_data/P449.tsv")
     parse.add_argument("-subject", "--subject", type=str, help="name of the subject",
                        default="Friends")
     parse.add_argument("-object", "--object", type=str, help="name of the object",
                        default="NBC")
+    parse.add_argument("-out_file", "--out_file", type=str, help="output file",
+                       default="data/pattern_data/parsed/P449.jsonl")
     args = parse.parse_args()
 
-    fname = args.patterns_file
     subj, obj = args.subject, args.object
 
-    with open(fname, "r") as f:
+    with open(args.patterns_file, "r") as f:
         lines = f.readlines()
 
-    print(fname)
-    with open(fname.replace(".tsv", "") + ".jsonl", "w") as f:
+    with open(args.out_file, "w") as f:
         for line in lines[1:]:
 
             vals = line.strip().split("\t")
