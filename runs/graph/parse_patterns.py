@@ -39,6 +39,7 @@ relation2subj_obj = {
     'P407': {'subject': 'Hamlet', 'object': 'English'},
     'P530': {'subject': 'France', 'object': 'Italy'},
     'P37': {'subject': 'Italy', 'object': 'Italian'},
+    'P413': {'subject': 'John', 'object': 'keeper'},
 }
 
 
@@ -51,17 +52,19 @@ if __name__ == '__main__':
                        default="runs/core/patterns.txt")
     args = parse.parse_args()
 
-    with open(args.patterns, 'r') as f:
-        relations = f.readlines()
-        relations = [x.strip() for x in relations]
+    # with open(args.patterns, 'r') as f:
+    #     relations = f.readlines()
+    #     relations = [x.strip() for x in relations]
 
     cartesian_product = []
-    for relation_id in relations:
-        subj = relation2subj_obj[relation_id]['subject']
-        obj = relation2subj_obj[relation_id]['object']
+    for relation_id, subj_obj in relation2subj_obj.items():
+        subj = subj_obj['subject']
+        obj = subj_obj['object']
         cartesian_product.append([f'data/pattern_data/{relation_id}.tsv',
                                   subj,
-                                  obj])
+                                  obj,
+                                  f'data/pattern_data/parsed/{relation_id}.jsonl'
+                                  ])
 
     parallelize(nodes, cartesian_product,
                 '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/graph/parse_patterns.sh',
