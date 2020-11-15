@@ -4,8 +4,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was written in the [Y] language.	The story was written in the English language.	write	write-in-language	past
 [X] is written in the [Y] language.	The story is written in the English language.	write	write-in-language	present
 [X], written in the [Y] language.	The book, written in the English langauge.	write	write-in-langauge	past
-The language of [X] is [Y].	language	language-is	present
-The language of [X] was [Y].	language	language-is	past
+The language of [X] is [Y].	The language of Italy is Italian.	language	language-is	present
+The language of [X] was [Y].	The langauge of Italy was Italian.	language	language-is	past
 [X] is a [Y]-language	The story is an English-language work.	language	-language	present
 [X], a [Y]-language	The story is an English-language work.	language	language	?
 [X] was a [Y]-language.	The story is an English-language work.	language	-language	past
