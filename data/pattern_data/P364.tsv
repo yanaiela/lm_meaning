@@ -1,6 +1,6 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 The original language of [X] is [Y].	The original language of the story is English.	language	original-language-is	present
-The original language of [X] is [Y].	The original language of the story was English.	language	original-language-is	present
+The original language of [X] was [Y].	The original language of the story was English.	language	original-language-is	past
 The language of [X] is [Y].	The language of the story is English.	language	language-is	present
 The language of [X] was [Y].	The language of the story was English.	language	language-is	past
 [X] is a [Y]-language show.	The story is an English-language show.	language	-language-show	present
