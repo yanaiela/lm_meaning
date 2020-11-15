@@ -1,20 +1,26 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] is developed by [Y].	iphone is developed by Apple.	develop	develop-by	present
 [X] was developed by [Y].	iphone is developed by Apple.	develop	develop-by	past
-[X], developed by [Y].	iphone-8, developed by Apple.	develop	develop-by	past
+[X], developed by [Y].	iphone-8, developed by Apple.	develop	develop-by	?
 [X] is produced by [Y]	:iphone is produced by Apple	produce	produce-by	present
 [X] was produced by [Y]	:iphone was produced by Apple	produce	produce-by	past
+[X], produced by [Y].	iphone-8, developed by Apple.	produce	produce-by	?
 [X] is manufactured by [Y]	:iphone is produced by Apple	manufacture	manufacture-by	present
 [X] was manufactured by [Y]	:iphone was produced by Apple	manufacture	manufacture-by	past
+[X], manufactured by [Y].	iphone-8, developed by Apple.	manufacture	manufacture-by	?
 [X] is created by [Y]	:iphone is produced by Apple	create	create-by	present
 [X] was created by [Y]	:iphone was produced by Apple	create	create-by	past
+[X], created by [Y].	iphone-8, developed by Apple.	create	create-by	?
 [X] is a product of [Y]	:iphone is a product of Apple	product	is-product-of	present
 [X] was a product of [Y]	:iphone is a product of Apple	product	is-product-of	past
 [X], a product of [Y]	:iphone, a product of Apple	product	product-of	?
 [X], a product created by [Y]	:iphone, a product created by Apple	product	product-release-by	?
 [X], a product manufactured by [Y]	:iphone, a product manufactured by Apple	product	product-manufacture-by	?
+[X], a product developed by [Y]	:iphone, a product developed by Apple	product	product-develope-by	?
 [Y], that manufactured [X]	apple, that manufactured iphone	manufacture	that-manufactured	past
+[Y], that developed [X]	apple, that developed iphone	developed	that-develope	past
+[Y], that produced [X]	apple, that produced iphone	produce	that-produce	past
 [Y], that created [X]	apple, that created iphone	create	that-create	past
 [Y], the creator of the [X]	apple, the creator of the iphone	creator	creator-of	?
 [Y], the manufacturer of the [X]	apple, the creator of the iphone	manufacturer	manufacturer-of	?
-[X] and its product [Y]	apple and its product iphone	product	its-product	?
+[Y] and its product [X]	apple and its product iphone	product	its-product	?
