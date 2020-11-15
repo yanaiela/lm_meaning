@@ -1,4 +1,10 @@
 belong-to-organization	*/president-of
-is-part-of-organization	*/president-of
-affiliate-with-organization	*/president-of
+is-member-of  */president-of
+become-member-of  */president-of
+become-part-of-organization */president-of
+is-part-of-organization */president-of
+affiliate-with  */president-of
+join-as-member  */president-of
+affiliate-with-organization */president-of
+become-affiliate-with */president-of
 president-of	*/

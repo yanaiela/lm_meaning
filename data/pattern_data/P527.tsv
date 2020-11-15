@@ -1,6 +1,6 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] comprises [Y].	[X]:This book :comprises [Y]:250 pages.	comprise	comprise	present
-[X] comprises [Y].	[X]:This book :comprised [Y]:250 pages.	comprise	comprise	past
+[X] comprised [Y].	[X]:This book :comprised [Y]:250 pages.	comprise	comprise	past
 [X] is comprised of [Y].	[X]:This book :is :comprised :of [Y]:250 pages.	comprise	comprise-of	present
 [X] was comprised of [Y].	[X]:This book :was :comprised :of [Y]:250 pages.	comprise	comprise-of	past
 [Y] is a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	present
