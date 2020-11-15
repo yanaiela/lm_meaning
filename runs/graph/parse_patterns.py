@@ -10,14 +10,14 @@ nodes = [
 ]
 
 relation2subj_obj = {
-    'P101': {'subject': 'Alan Turing', 'object': 'logic'},
-    'P103': {'subject': 'Pierre Messmer', 'object': 'French'},
+    'P101': {'subject': 'Turing', 'object': 'logic'},
+    'P103': {'subject': 'Messmer', 'object': 'French'},
     'P1376': {'subject': 'Edmonton', 'object': 'Alberta'},
-    'P1412': {'subject': 'Itzik Zohar', 'object': 'Hebrew'},
-    'P159': {'subject': 'Waterloo Maple', 'object': 'Waterloo'},
-    'P276': {'subject': 'Eiffel Tower', 'object': 'Paris'},
-    'P30': {'subject': 'Beardmore Glacier', 'object': 'Antarctica'},
-    'P39': {'subject': 'David Beaton', 'object': 'abbot'},
+    'P1412': {'subject': 'Zohar', 'object': 'Hebrew'},
+    'P159': {'subject': 'Maple', 'object': 'Waterloo'},
+    'P276': {'subject': 'Tower', 'object': 'Paris'},
+    'P30': {'subject': 'Glacier', 'object': 'Antarctica'},
+    'P39': {'subject': 'Beaton', 'object': 'abbot'},
     'P463': {'subject': 'Albania', 'object': 'NATO'},
 
     'P495': {'subject': 'golf', 'object': 'Scotland'},
