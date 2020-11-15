@@ -1,5 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] was awarded the [Y].  NTT was awarded the prize of the commissioner of the Japan patent office.  award award past
+[X] was awarded the [Y]. 	NTT was awarded the prize of the commissioner of the Japan patent office. 	award	award	past
 [X] received the [Y] prize.	 NTT received the prize of the commissioner of the Japan patent office.	receive	receive-prize	past
 [X] was awarded the [Y] prize.	 NTT was awarded the prize of the commissioner of the Japan patent office.	award	award-prize	past
 [X] was given the [Y] prize.	 NTT was given the prize of the commissioner of the Japan patent office.	give	give-prize	past
