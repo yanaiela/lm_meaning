@@ -1,0 +1,22 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+The original language of [X] is [Y].	The original language of the story is English.	language	original-language-is	present
+The original language of [X] is [Y].	The original language of the story was English.	language	original-language-is	past
+The language of [X] is [Y].	language	language-is	present
+The language of [X] was [Y].	language	language-is	past
+[X] is a [Y]-language show.	The story is an English-language show.	language	-language-show	present
+[X] is a [Y]-language film.	The story is an English-language film.	language	-language-film	present
+[X] is a [Y]-language series.	The story is an English-language series.	language	-language-series	present
+[X], a [Y]-language show.	The story is an English-language work.	language	-language-show	?
+[X], a [Y]-language film.	The story is an English-language work.	language	-language-film	?
+[X], a [Y]-language series.	The story is an English-language work.	language	-language-series	?
+[X] was a [Y]-language show.	The story is an English-language work.	language	-language-show	past
+[X] was a [Y]-language film.	The story is an English-language work.	language	-language-film	past
+[X] was a [Y]-language series.	The story is an English-language work.	language	-language-series	past
+[X] is a film in the [Y] language.	The story is a work in the English-language.	language	film-in-language	present
+[X] was a film in the [Y] language.	The story was a work in the English-language.	language	film-in-language	past
+[X] is a show in the [Y] language.	The story is a work in the English-language.	language	show-in-language	present
+[X] was a show in the [Y] language.	The story was a work in the English-language.	language	show-in-language	past
+[X] is a series in the [Y] language.	The story is a work in the English-language.	language	series-in-language	present
+[X] was a series in the [Y] language.	The story was a work in the English-language.	language	series-in-language	past
+[Y] is the language of [X].	Hebrew is the language of the Old Testament	language	is-langauge-of	present
+[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	was-langauge-of	present

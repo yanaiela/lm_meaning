@@ -1,0 +1,3 @@
+-language-show	*/-language-film, -language-series, film-in-language, series-in-language
+-language-film	*/-language-show, -language-series, series-in-language, show-in-language
+-language-series	*/-language-film, -language-show, show-in-language, film-in-language
