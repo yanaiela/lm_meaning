@@ -1,0 +1,13 @@
+LEMMA	NOT-ENTAILED
+write-in-language	is-name
+is-langauge-of	is-name
+write-in-langauge	is-name
+was-langauge-of	is-name
+is-name	write-in-language,language-is,language,write-in,-language
+past	is-name
+in-language	is-name
+language	is-name
+write-in	is-name
+-language	is-name
+?	is-name
+present	is-name

@@ -1,9 +1,11 @@
 from lm_meaning.spike.utils import equal_queries, get_spike_objects
+from spike.spacywrapper.annotator import SpacyAnnotator
 
 
 class TestPluralInstruction:
     def test_equal_queries(self):
-        _, spike_annotator = get_spike_objects()
+        # _, spike_annotator = get_spike_objects()
+        spike_annotator = SpacyAnnotator.from_config("en.json")
 
         q1 = "<>subject:Lost $was $aired $on object:[w={}]ABC"
         q2 = "<>subject:Lost $was $premiered $on object:[w={}]ABC"

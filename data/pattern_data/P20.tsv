@@ -9,5 +9,5 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X]'s life ended in [Y].	[X]:Christian ' s  :life :ended :in [Y]:Westmoreland County , Pennsylvania.	life-ended	's-life-ended-in	past
 [X] perished in [Y].	[X]:businessman Sam Reynolds is believed to be dead after he :perished :in [Y]:Africa.	perish	perish-in	past
 [X] succumbed at [Y].	[X]:he :succumbed :at [Y]:his residence , 4619 Grand boulevard.	succumbe	succumbe-at	past
-#[X] committed-suicide at [Y].	A 22-year-old [X]:man allegedly :committed :suicide :at [Y]:AIIMS on Friday	commit-suicide	commit-suicide-at	past
-#[X] was murdered at [Y].	[X]he :was :murdered :at [Y]Vienne	murder	is-murder-at	past
+[X] committed-suicide at [Y].	A 22-year-old [X]:man allegedly :committed :suicide :at [Y]:AIIMS on Friday	commit-suicide	commit-suicide-at	past
+[X] was murdered at [Y].	[X]he :was :murdered :at [Y]Vienne	murder	is-murder-at	past

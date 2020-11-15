@@ -1,8 +1,7 @@
-premiere-on	*/stream
-to-debut-on	*/stream
-debut-on	*/stream
-debut	*/stream
-debut-of	*/stream
-stream	*/premiere-on,to-debut-on,debut-of,debut,debut-on
+premiere-on	*/stream-on
+to-debut-on	*/stream-on
+debut-on	*/stream-on
+debut	*/stream-on
+debut-of	*/stream-on
 is-stream-on	*/premiere-on,to-debut-on,debut-of,debut,debut-on
 stream-on	*/premiere-on,to-debut-on,debut-of,debut,debut-on

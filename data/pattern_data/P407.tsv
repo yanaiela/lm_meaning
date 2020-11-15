@@ -1,0 +1,19 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] was written in [Y].	The story was written in English.	write	write-in	past
+[X] is written in [Y].	The story is written in English.	write	write-in	present
+[X] was written in the [Y] language.	The story was written in the English language.	write	write-in-language	past
+[X] is written in the [Y] language.	The story is written in the English language.	write	write-in-language	present
+[X], written in the [Y] language.	The book, written in the English langauge.	write	write-in-langauge	past
+The language of [X] is [Y].	language	language-is	present
+The language of [X] was [Y].	language	language-is	past
+[X] is a [Y]-language	The story is an English-language work.	language	-language	present
+[X], a [Y]-language	The story is an English-language work.	language	language	?
+[X] was a [Y]-language.	The story is an English-language work.	language	-language	past
+[X] is a work in the [Y] language.	The story is a work in the English-language.	language	in-language	present
+[X] was a work in the [Y] language.	The story was a work in the English-language.	language	in-language	past
+[X] is a [Y] name.	John is an English name	name	is-name	present
+[X] was a [Y] name.	John was an English name	name	is-name	past
+[X], a [Y]-language name	John, an English-language name	is-name	?
+The [Y]-language creation [X]	The English-langauge creation Hamlet.	-language	-language	?
+[Y] is the language of [X].	Hebrew is the language of the Old Testament	language	is-langauge-of	present
+[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	was-langauge-of	present

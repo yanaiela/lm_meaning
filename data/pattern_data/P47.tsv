@@ -1,5 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] borders with [Y].	[X]:Israel :borders :with [Y][Syria].	border-with	border-with	present
+[X] borders with [Y].	[X]:Israel :borders :with [Y][Syria].	border	border-with	present
 [X] shares the border with [Y].	[X]:Israel :shares :the :border :with [Y]:Syria.	share-border	share-border	present
 [X] shares its border with [Y].	[X]:Israel :shares :its :border :with [Y]:Syria.	share-border	share-border	present
 [X] shares a common border with [Y].	[X]:Israel :shares :A :common :border :with [Y]:Syria.	share-common-border	share-common-border	present
@@ -7,7 +7,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] shares a water border with [Y].	[X]:Rhode Island :shares :a :water :border :with [Y]:New York.	share-water-border	share-water-border	present
 [X] shares a maritime border with [Y].	[X]:Rhode Island :shares :a :maritime :border :with [Y]:New York.	share-maritime-border	share-maritime-border	present
 [X] shares an international border with [Y].	[X]:Israel :borders :with [Y][Syria].	share-international-border	share-international-border	present
-[Y] borders with [X].	[Y]:Israel :borders :with [X][Syria].	border-with	border-with	present
+[Y] borders with [X].	[Y]:Israel :borders :with [X][Syria].	border	border-with	present
 [Y] shares the border with [X].	[Y]:Israel :shares :the :border :with [X]:Syria.	share-border	share-border	present
 [Y] shares its border with [X].	[Y]:Israel :shares :its :border :with [X]:Syria.	share-border	share-border	present
 [Y] shares a common border with [X].	[Y]:Israel :shares :A :common :border :with [X]:Syria.	share-common-border	share-common-border	present
