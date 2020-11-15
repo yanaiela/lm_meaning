@@ -1,0 +1,10 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] plays in [Y] position.	John plays in the keeper position	play	play-in-position	present
+[X] played in [Y] position.	John played in the keeper position	play	play-in-position	past
+[X] plays in the position of [Y].	John plays in the position of a keeper	play	play-in-position	present
+[X] played in the position of [Y].	John played in the position of a keeper	play	play-in-position	past
+[X], who plays in [Y] position.	John plays in the keeper position	play	play-in-position	present
+[X], who played in [Y] position.	John played in the keeper position	play	play-in-position	past
+$playing $as a [Y], [X]	 Aimson began his career as a defender, playing as a centre-half	play	play-as	?
+[X] plays as [Y]	 Byrd also plays as a quarterback	play	play-as	present
+[X] played as [Y]	 In 1906 , Byrd also played as a quarterback	play	play-as	past
