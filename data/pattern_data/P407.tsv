@@ -13,7 +13,7 @@ The language of [X] was [Y].	The langauge of Italy was Italian.	language	languag
 [X] was a work in the [Y] language.	The story was a work in the English-language.	language	in-language	past
 [X] is a [Y] name.	John is an English name	name	is-name	present
 [X] was a [Y] name.	John was an English name	name	is-name	past
-[X], a [Y]-language name	John, an English-language name	is-name	?
+[X], a [Y]-language name	John, an English-language name	is-name	is-name	?
 The [Y]-language creation [X]	The English-langauge creation Hamlet.	-language	-language	?
 [Y] is the language of [X].	Hebrew is the language of the Old Testament	language	is-langauge-of	present
 [Y] was the language of [X].	Hebrew is the language of the Old Testament	language	was-langauge-of	present
