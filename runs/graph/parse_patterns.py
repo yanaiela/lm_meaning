@@ -29,7 +29,7 @@ relation2subj_obj = {
     'P131': {'subject': 'John', 'object': 'Spain'},
     'P190': {'subject': 'Doha', 'object': 'Ankara'},
     'P449': {'subject': 'Lost', 'object': 'ABC'},
-    'P138': {'subject': 'The rainforest frog Eleutherodactylus pecki', 'object': 'Robert M. Peck'},
+    'P138': {'subject': 'aristotelianism', 'object': 'Aristotle'},
     'P47': {'subject': 'Israel', 'object': 'Syria'},
     'P102': {'subject': 'Trump', 'object': 'Republican'},
     'P527': {'subject': 'Book', 'object': 'chapters'},
