@@ -35,6 +35,7 @@ relation2subj_obj = {
     'P527': {'subject': 'Book', 'object': 'chapters'},
     'P166': {'subject': 'Obama', 'object': 'Nobel'},
     'P176': {'subject': 'Iphone', 'object': 'Apple'},
+    'P178': {'subject': 'Iphone', 'object': 'Apple'},
     'P27': {'subject': 'John', 'object': 'England'},
     'P407': {'subject': 'Hamlet', 'object': 'English'},
     'P530': {'subject': 'France', 'object': 'Italy'},
