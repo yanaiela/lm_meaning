@@ -1,5 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] was originally aired on [Y] . Chernobyl was originally aired on HBO.  air air-on-originally past
+[X] was originally aired on [Y].	Chernobyl was originally aired on HBO.	air	air-on-originally	past
 [X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future
 [Y] is to debut [X].	[Y]:Netflix is to debut the first Saudi Arabian thriller series [X]:'Whispers' in June.	debut	to-debut	future
 [Y] debuted [X].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut	past
