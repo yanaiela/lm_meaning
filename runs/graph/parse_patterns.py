@@ -38,6 +38,7 @@ relation2subj_obj = {
     'P27': {'subject': 'John', 'object': 'England'},
     'P407': {'subject': 'Hamlet', 'object': 'English'},
     'P530': {'subject': 'France', 'object': 'Italy'},
+    'P37': {'subject': 'Italy', 'object': 'Italian'},
 }
 
 
