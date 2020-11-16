@@ -68,7 +68,7 @@ def main():
     for subj in [s for s_list in obj_dic.values() for s in s_list]:
         tokenized_subj = enclose_entities(spacy_annotator, subj)
         print(subj, tokenized_subj)
-        subj_tokenized2original[subj] = tokenized_subj
+        subj_tokenized2original[tokenized_subj] = subj
     tokenized_subjects = set(subj_tokenized2original.values())
 
     data_dic = defaultdict(dict)

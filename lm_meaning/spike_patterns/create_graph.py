@@ -22,7 +22,10 @@ def load_lemmas_relations(fname: str) -> Dict[str, List[str]]:
     lemma2not_entailed = defaultdict(list)
     for l in lines[1:]:
         lemma, not_entailed = l.strip().split("\t")
-        not_entailed = not_entailed.split(",")
+        if not_entailed == '-':
+            not_entailed = []
+        else:
+            not_entailed = not_entailed.split(",")
 
         lemma2not_entailed[lemma] = not_entailed
     return lemma2not_entailed

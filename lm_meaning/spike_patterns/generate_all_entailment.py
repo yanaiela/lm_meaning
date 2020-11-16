@@ -52,7 +52,12 @@ def main():
             else:
                 not_entailed = list(set(asymetric_lemmas[lemma]))
 
-            f.write(lemma + "\t" + ",".join(not_entailed) + "\n")
+            f.write(lemma + "\t")
+            if len(not_entailed) > 0:
+                f.write(",".join(not_entailed) + "\n")
+            else:
+                f.write("-" + "\n")
+
 
 
 if __name__ == '__main__':
