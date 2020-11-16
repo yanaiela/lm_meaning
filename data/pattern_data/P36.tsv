@@ -3,12 +3,12 @@ The capital of [X] is [Y] .		capital	capital-of	present
 The capital city of [X] is [Y].		capital-city	capital-city-of	present
 [Y] is the capital of [X].		capital	capital-of	present
 [Y] is the capital city of [X].		capital-city	capital-city-of	present
-[X]'s capital, [Y].		capital	capital-of	present
-[X]'s capital city, [Y].		capital-city	capital-city-of	present
+[X]'s capital, [Y].		capital	capital-of	?
+[X]'s capital city, [Y].		capital-city	capital-city-of	?
 [X]'s capital is [Y].		capital	capital-of	present
 [X]'s capital city is [Y].		capital-city	capital-city-of	present
-[Y], the capital of [X].		capital	capital-of	present
-[Y], the capital city of [X].		capital-city	capital-city-of	present
+[Y], the capital of [X].		capital	capital-of	?
+[Y], the capital city of [X].		capital-city	capital-city-of	?
 [Y], that is the capital of [X].		capital	capital-of	present
 [Y], that is the capital city of [X].		capital-city	capital-city-of	present
 [X], which has the capital [Y].		capital	capital-of	present

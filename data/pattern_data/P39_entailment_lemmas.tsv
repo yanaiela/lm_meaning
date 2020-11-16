@@ -15,8 +15,9 @@ who-named	+/position, whose-position,who-position, `s-position, holds, was-named
 was-named	+/position, whose-position,who-position, `s-position, holds, who-named
 who-sworn	+/position, whose-position,who-position, `s-position, holds, was-sworn
 was-sworn	+/position, whose-position,who-position, `s-position, holds, who-sworn
-who-crowned	+/position, whose-position,who-position, `s-position, holds, was-crowned, who-has-crowned, has-crowned, is-crowned
-was-crowned	+/position, whose-position,who-position, `s-position, holds, who-has-crowned, has-crowned, is-crowned, who-crowned
+who-crowned	+/position, whose-position,who-position, `s-position, holds, was-crowned, who-has-crowned, has-crowned, is-crowned, crowned
+was-crowned	+/position, whose-position,who-position, `s-position, holds, who-has-crowned, has-crowned, is-crowned, who-crowned, crowned
+crowned	+/position, whose-position,who-position, `s-position, holds, who-has-crowned, has-crowned, is-crowned, who-crowned, was-crowned
 who-has-crowned	+/position, whose-position,who-position, `s-position, holds, was-crowned, has-crowned, is-crowned, who-crowned
 has-crowned	+/position, whose-position,who-position, `s-position, holds, was-crowned, who-has-crowned, is-crowned, who-crowned
 is-crowned	+/position, whose-position,who-position, `s-position, holds, was-crowned, who-has-crowned, has-crowned, who-crowned
