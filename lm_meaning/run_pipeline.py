@@ -1,5 +1,6 @@
 import argparse
 import json
+from copy import deepcopy
 
 import torch
 from tqdm import tqdm
@@ -51,6 +52,21 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     return model
 
 
+def tokenize_results(results, pipeline_model):
+    if pipeline_model.model.config.model_type in ['roberta']:
+        preds_tokenized = []
+        for example in results:
+            example_tokenized = []
+            for ans in example:
+                ans_copy = deepcopy(ans)
+                ans_copy['token_str'] = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str'])
+                example_tokenized.append(ans_copy)
+            preds_tokenized.append(example_tokenized)
+        return preds_tokenized
+    else:
+        return results
+
+
 def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possible_objects: List[str], bs: int = 20)\
         -> (List[Dict], List[Dict]):
     data = []
@@ -71,9 +87,9 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
         preds = pipeline_model([sample["prompt"] for sample in batch], targets=possible_objects)
         # pipeline_model returns a list in case there is only 1 item to predict (in contrast to list of lists)
         if len(batch) == 1:
-            predictions.extend([preds])
-        else:
-            predictions.extend(preds)
+            preds = [preds]
+        tokenized_preds = tokenize_results(preds, pipeline_model)
+        predictions.extend(tokenized_preds)
 
     return data, predictions
 
@@ -127,6 +143,8 @@ def main():
 
     if args.use_targets:
         all_objects = list(set([x['obj_label'] for x in data]))
+        if 'roberta' in args.lm:
+            all_objects = [' ' + x for x in all_objects]
     else:
         all_objects = None
 
