@@ -7,6 +7,9 @@ from runs.ts_run import parallelize
 # └──────────────────────┘
 nodes = [
     'nlp01',
+    'nlp02',
+    'nlp03',
+    'nlp04',
 ]
 
 
@@ -15,8 +18,8 @@ nodes = [
 # └──────────┘
 encoders = ['bert-base-cased',
             'bert-large-cased',
-            'roberta-base',
-            'roberta-large',
+            #'roberta-base',
+            #'roberta-large',
             ]
 
 

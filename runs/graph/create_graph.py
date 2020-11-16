@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     cartesian_product = []
     for relation_id in relations:
-        cartesian_product.append([f'data/pattern_data/{relation_id}.tsv',
+        cartesian_product.append([f'data/pattern_data/{relation_id}.jsonl',
                                   f'data/pattern_data/entailed_lemmas_extended/{relation_id}_entailment_lemmas.tsv',
                                   f'data/pattern_data/graphs/{relation_id}.tsv'])
 

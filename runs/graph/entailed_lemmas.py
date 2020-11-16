@@ -30,5 +30,5 @@ if __name__ == '__main__':
                                   f'data/pattern_data/entailed_lemmas_extended/{relation_id}_entailment_lemmas.tsv'])
 
     parallelize(nodes, cartesian_product,
-                '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/graph/parse_patterns.sh',
+                '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/graph/entailed_lemmas.sh',
                 on_gpu=False, dry_run=args.dry_run)
