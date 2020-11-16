@@ -1,37 +1,66 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is located in [Y] .		located-in	located-in	present
-[X] is a road in [Y].		road-in	road-in	present
-[X] is an island in [Y].		island-in	island-in	present
-[X] is a province in [Y].		province-in	province-in	present
-[X] is a city in [Y].		city-in	city-in	present
-[X] is a municipality in [Y].		municipality-in	municipality-in	present
-[X] is a county in [Y].		county-in	county-in	present
-[X] is a district in [Y].		district-in	district-in	present
-[X] is a school in [Y].		school-in	school-in	present
-[X] is a church in [Y].		church-in	church-in	present
-[X] is a highway in [Y].		highway-in	highway-in	present
-[X] is a freeway in [Y].		freeway-in	freeway-in	present
-[X] is a museum in [Y].		museum-in	museum-in	present
-[X] is a hotel in [Y].		hotel-in	hotel-in	present
-[X] is a river in [Y].		river-in	river-in	present
-[X] is a bridge in [Y].		bridge-in	bridge-in	present
-[X], that is a road in [Y].		that-road-in	that-road-in	present
-[X], that is an island in [Y].		that-island-in	that-island-in	present
-[X], that is a province in [Y].		that-province-in	that-province-in	present
-[X], that is a city in [Y].		that-city-in	that-city-in	present
-[X], that is a municipality in [Y].		that-municipality-in	that-municipality-in	present
-[X], that is a county in [Y].		that-county-in	that-county-in	present
-[X], that is a district in [Y].		that-district-in	that-district-in	present
-[X], that is a school in [Y].		that-school-in	that-school-in	present
-[X], that is a church in [Y].		that-church-in	that-church-in	present
-[X], that is a highway in [Y].		that-highway-in	that-highway-in	present
-[X], that is a freeway in [Y].		that-freeway-in	that-freeway-in	present
-[X], that is a museum in [Y].		that-museum-in	that-museum-in	present
-[X], that is a hotel in [Y].		that-hotel-in	that-hotel-in	present
-[X], that is a river in [Y].		that-river-in	that-river-in	present
-[X], that is a bridge in [Y].		that-bridge-in	that-bridge-in	present
-[X] province, [Y].		province	province	present
-[X] municipality, [Y].		municipality	municipality	present
-[X] county, [Y].		county	county	present
-[X] district, [Y].		district	district	present
-[X] school, [Y].		school	school	present
+[X] is located in [Y] .		in	located-in	present
+[X] is a road in [Y].		in	road-in	present
+[X] is an island in [Y].		in	island-in	present
+[X] is a province in [Y].		in	province-in	present
+[X] is a city in [Y].		in	city-in	present
+[X] is a municipality in [Y].		in	municipality-in	present
+[X] is a county in [Y].		in	county-in	present
+[X] is a district in [Y].		in	district-in	present
+[X] is a school in [Y].		in	school-in	present
+[X] is a church in [Y].		in	church-in	present
+[X] is a highway in [Y].		in	highway-in	present
+[X] is a freeway in [Y].		in	freeway-in	present
+[X] is a museum in [Y].		in	museum-in	present
+[X] is a hotel in [Y].		in	hotel-in	present
+[X] is a river in [Y].		in	river-in	present
+[X] is a bridge in [Y].		in	bridge-in	present
+[X] is a lake in [Y].		in	lake-in	present
+[X] is a road with location in [Y].		with-location-in	road-with-location-in	present
+[X] is an island with location in [Y].		with-location-in	island-with-location-in	present
+[X] is a province with location in [Y].		with-location-in	province-with-location-in	present
+[X] is a city with location in [Y].		with-location-in	city-with-location-in	present
+[X] is a municipality with location in [Y].		with-location-in	municipality-with-location-in	present
+[X] is a county with location in [Y].		with-location-in	county-with-location-in	present
+[X] is a district with location in [Y].		with-location-in	district-with-location-in	present
+[X] is a school with location in [Y].		with-location-in	school-with-location-in	present
+[X] is a church with location in [Y].		with-location-in	church-with-location-in	present
+[X] is a highway with location in [Y].		with-location-in	highway-with-location-in	present
+[X] is a freeway with location in [Y].		with-location-in	freeway-with-location-in	present
+[X] is a museum with location in [Y].		with-location-in	museum-with-location-in	present
+[X] is a hotel with location in [Y].		with-location-in	hotel-with-location-in	present
+[X] is a river with location in [Y].		with-location-in	river-with-location-in	present
+[X] is a bridge with location in [Y].		with-location-in	bridge-with-location-in	present
+[X] is a lake with location in [Y].		with-location-in	lake-with-location-in	present
+[X], that is a road in [Y].		that-in	that-road-in	present
+[X], that is an island in [Y].		that-in	that-island-in	present
+[X], that is a province in [Y].		that-in	that-province-in	present
+[X], that is a city in [Y].		that-in	that-city-in	present
+[X], that is a municipality in [Y].		that-in	that-municipality-in	present
+[X], that is a county in [Y].		that-in	that-county-in	present
+[X], that is a district in [Y].		that-in	that-district-in	present
+[X], that is a school in [Y].		that-in	that-school-in	present
+[X], that is a church in [Y].		that-in	that-church-in	present
+[X], that is a highway in [Y].		that-in	that-highway-in	present
+[X], that is a freeway in [Y].		that-in	that-freeway-in	present
+[X], that is a museum in [Y].		that-in	that-museum-in	present
+[X], that is a hotel in [Y].		that-in	that-hotel-in	present
+[X], that is a river in [Y].		that-in	that-river-in	present
+[X], that is a bridge in [Y].		that-in	that-bridge-in	present
+[X], that is a lake in [Y].		that-in	that-lake-in	present
+[X] province, [Y].		province	province	?
+[X] municipality, [Y].		municipality	municipality	?
+[X] county, [Y].		county	county	?
+[X] district, [Y].		district	district	?
+[X] school, [Y].		school	school	?
+[X] river, [Y].		river	river	?
+[X] museum, [Y].		museum	museum	?
+[X] freeway, [Y].		freeway	freeway	?
+[X] highway, [Y].		highway	highway	?
+[X] hotel, [Y].		hotel	hotel	?
+[X] road, [Y].		road	road	?
+[X] church, [Y].		church	church	?
+[X] bridge, [Y].		bridge	bridge	?
+[X] city, [Y].		city	city	?
+[X] island, [Y].		island	island	?
+[X] lake, [Y].		lake	lake	?
