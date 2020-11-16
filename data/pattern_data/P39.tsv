@@ -25,7 +25,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X], who has been crowned [Y].		who-has-crowned	who-has-crowned	past
 [X] has been crowned [Y].		has-crowned	has-crowned	past
 [X] is crowned [Y].		is-crowned	is-crowned	present
-[X], crowned [Y].		is-crowned	is-crowned	?
+[X], crowned [Y].		crowned	crowned	?
 [X], who was given the position of [Y].		who-given	who-given	past
 [X] was given the position of [Y].		was-given	was-given	past
 [X], who ascended to the [Y] position.		who-ascended	who-ascended	past
