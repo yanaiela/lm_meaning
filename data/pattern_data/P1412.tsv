@@ -16,10 +16,10 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [Y] is a [X] writer.		writer	is-writer	present
 [Y] novelist [X].		novelist	novelist	present
 [Y] musician [X].		musician	musician	present
-[Y] philospher [X].		philospher	philospher	present
+[Y] philosopher [X].		philosopher	philosopher	present
 [Y] is a [X] novelist.		novelist	is-novelist	present
 [Y] is a [X] musician.		musician	is-musician	present
-[Y] is a [X] philospher.		philospher	is-philospher	present
+[Y] is a [X] philosopher.		philosopher	is-philosopher	present
 [Y], who is a [X] actress.		actress	who-is-actress	present
 [Y], who is a [X] author.		author	who-is-author	present
 [Y], who is a [X] actor.		actor	who-is-actor	present
@@ -29,4 +29,4 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [Y], who is a [X] writer.		writer	who-is-writer	present
 [Y], who is a [X] novelist.		novelist	who-is-novelist	present
 [Y], who is a [X] musician.		musician	who-is-musician	present
-[Y], who is a [X] philospher.		philospher	who-is-philospher	present
+[Y], who is a [X] philosopher.		philosopher	who-is-philosopher	present
