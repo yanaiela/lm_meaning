@@ -2,11 +2,11 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 The official language of [X] is [Y].	The :official :language :of [X]:Italy :is [Y]:Italian.	official-language	official-language	present
 The official language of [X] is the [Y] language.	The :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	official-language	present
 [Y] is the official language of [X].	[Y]:Italian is the official language of [X]:Italy.	official-language	official-language	present
-THE [Y] language is the official language of [X].	the [Y]:Italian language is the official language of [X]:Italy.	official-language	official-language	present
-[Y] is officialy spoken in [X].	[Y]:Italian is officially spoken in [X]:Italy.	is-officially-speak	is-officially-speak	present
+The [Y] language is the official language of [X].	the [Y]:Italian language is the official language of [X]:Italy.	official-language	official-language	present
+[Y] is officially spoken in [X].	[Y]:Italian is officially spoken in [X]:Italy.	is-officially-speak	is-officially-speak	present
 In [X] [Y] is an official language.	In [X]:Italy [Y]:Italian is an official language.	is-official-language	is-official-language	present
 In [X] the [Y] language is an official language.	In [X]:Italy the [Y]:Italian language is an official language.	is-official-language	is-official-language	present
-Oficially, [Y] is the language of [X].	Officially, [Y]:Italian is the language of [X]:Italy	is-language	is-officially-language-of	present
+Officially, [Y] is the language of [X].	Officially, [Y]:Italian is the language of [X]:Italy	is-language	is-officially-language-of	present
 The law in [X] declares [Y] an official language.	The law in [X]:Italy declares [Y]:Italian as an official language.	declare-official-language	declare-official-language	present
 The law in [X] declares the [Y] language an official language.	The law in [X]:Italy declares the [Y]:Italian language as an official language.	declare-official-language	declare-official-language	present
 The law in [X] defines [Y] an official language.	The law in [X]:Italy defines [Y]:Italian as an official language.	define-official-language	define-official-language	present
