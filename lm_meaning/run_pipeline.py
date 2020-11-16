@@ -51,7 +51,8 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     return model
 
 
-def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, bs: int = 20) -> (List[Dict], List[Dict]):
+def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possible_objects: List[str], bs: int = 20)\
+        -> (List[Dict], List[Dict]):
     data = []
 
     mask_token = pipeline_model.tokenizer.mask_token
@@ -67,7 +68,7 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, bs: i
 
     predictions = []
     for batch in tqdm(batched_data):
-        preds = pipeline_model([sample["prompt"] for sample in batch])
+        preds = pipeline_model([sample["prompt"] for sample in batch], targets=possible_objects)
         # pipeline_model returns a list in case there is only 1 item to predict (in contrast to list of lists)
         if len(batch) == 1:
             predictions.extend([preds])
@@ -109,6 +110,10 @@ def main():
     parse.add_argument("--bs", type=int, default=50)
     parse.add_argument("--wandb", action='store_true')
     parse.add_argument("--no_subj", type=bool, default=False)
+    parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
+                                                                                 "from the data as the possible"
+                                                                                 "candidates")
+
     args = parse.parse_args()
 
     if args.wandb:
@@ -119,6 +124,11 @@ def main():
         data = [{"sub_label": "", "obj_label": ""}]
     else:
         data = utils.read_jsonl_file(args.data_file)
+
+    if args.use_targets:
+        all_objects = list(set([x['obj_label'] for x in data]))
+    else:
+        all_objects = None
 
     # Load prompts
     prompts = utils.load_prompts(args.patterns_file)
@@ -132,9 +142,9 @@ def main():
 
     results_dict[model_name] = {}
 
-    for prompt_id, prompt in enumerate(prompts):
+    for prompt_id, prompt in enumerate(prompts[:2]):
         results_dict[model_name][prompt] = []
-        filtered_data, predictions = run_query(model, data, prompt, args.bs)
+        filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
         results_dict[model_name][prompt] = {"data": filtered_data, "predictions": predictions}
 
     # Evaluate
