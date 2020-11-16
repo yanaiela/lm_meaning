@@ -1,15 +1,15 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was founded in [Y].		found	found-in	past
-[X], founded in [Y].		found	found-in	past
+[X], founded in [Y].		found	found-in	?
 [X] that was founded in [Y].		found	found-in	past
 [X], that begun in [Y].		begin	begin-in	past
-[X], begun in [Y]		begin	begin-in	past
+[X] begun in [Y]		begin	begin-in	past
 [X] was begun in [Y].		begin	begin-in	past
 [X], that was started in [Y].		start	start-in	past
 [X] started in [Y].		start	start-in	past
 [X] was started in [Y]		start	start-in	past
 [X], that was created in [Y].		create	create-in	past
-[X], created in [Y].		create	create-in	past
+[X], created in [Y].		create	create-in	?
 [X] was created in [Y].		create	create-in	past
 [X], that originated in [Y].		originate	originate-in	past
 [X] originated in [Y].		originate	originate-in	past
