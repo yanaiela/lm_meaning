@@ -48,6 +48,38 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X], that is a river in [Y].		that-in	that-river-in	present
 [X], that is a bridge in [Y].		that-in	that-bridge-in	present
 [X], that is a lake in [Y].		that-in	that-lake-in	present
+[X], that is a road loacted in [Y].		that-loacted-in	that-road-loacted-in	present
+[X], that is an island loacted in [Y].		that-loacted-in	that-island-loacted-in	present
+[X], that is a province loacted in [Y].		that-loacted-in	that-province-loacted-in	present
+[X], that is a city loacted in [Y].		that-loacted-in	that-city-loacted-in	present
+[X], that is a municipality loacted in [Y].		that-loacted-in	that-municipality-loacted-in	present
+[X], that is a county loacted in [Y].		that-loacted-in	that-county-loacted-in	present
+[X], that is a district loacted in [Y].		that-loacted-in	that-district-loacted-in	present
+[X], that is a school loacted in [Y].		that-loacted-in	that-school-loacted-in	present
+[X], that is a church loacted in [Y].		that-loacted-in	that-church-loacted-in	present
+[X], that is a highway loacted in [Y].		that-loacted-in	that-highway-loacted-in	present
+[X], that is a freeway loacted in [Y].		that-loacted-in	that-freeway-loacted-in	present
+[X], that is a museum loacted in [Y].		that-loacted-in	that-museum-loacted-in	present
+[X], that is a hotel loacted in [Y].		that-loacted-in	that-hotel-loacted-in	present
+[X], that is a river loacted in [Y].		that-loacted-in	that-river-loacted-in	present
+[X], that is a bridge loacted in [Y].		that-loacted-in	that-bridge-loacted-in	present
+[X], that is a lake loacted in [Y].		that-loacted-in	that-lake-loacted-in	present
+[X], that is a road with loaction in [Y].		that-with-loaction-in	that-road-with-loaction-in	present
+[X], that is an island with loaction in [Y].		that-with-loaction-in	that-island-with-loaction-in	present
+[X], that is a province with loaction in [Y].		that-with-loaction-in	that-province-with-loaction-in	present
+[X], that is a city with loaction in [Y].		that-with-loaction-in	that-city-with-loaction-in	present
+[X], that is a municipality with loaction in [Y].		that-with-loaction-in	that-municipality-with-loaction-in	present
+[X], that is a county with loaction in [Y].		that-with-loaction-in	that-county-with-loaction-in	present
+[X], that is a district with loaction in [Y].		that-with-loaction-in	that-district-with-loaction-in	present
+[X], that is a school with loaction in [Y].		that-with-loaction-in	that-school-with-loaction-in	present
+[X], that is a church with loaction in [Y].		that-with-loaction-in	that-church-with-loaction-in	present
+[X], that is a highway with loaction in [Y].		that-with-loaction-in	that-highway-with-loaction-in	present
+[X], that is a freeway with loaction in [Y].		that-with-loaction-in	that-freeway-with-loaction-in	present
+[X], that is a museum with loaction in [Y].		that-with-loaction-in	that-museum-with-loaction-in	present
+[X], that is a hotel with loaction in [Y].		that-with-loaction-in	that-hotel-with-loaction-in	present
+[X], that is a river with loaction in [Y].		that-with-loaction-in	that-river-with-loaction-in	present
+[X], that is a bridge with loaction in [Y].		that-with-loaction-in	that-bridge-with-loaction-in	present
+[X], that is a lake with loaction in [Y].		that-with-loaction-in	that-lake-with-loaction-in	present
 [X] province, [Y].		province	province	?
 [X] municipality, [Y].		municipality	municipality	?
 [X] county, [Y].		county	county	?
