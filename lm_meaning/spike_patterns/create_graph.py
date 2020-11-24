@@ -104,7 +104,7 @@ if __name__ == "__main__":
         for pattern_str2, typ in zip(connected_patterns, types):
             node1, node2 = pattern2node[pattern_str], pattern2node[pattern_str2]
             different_lemma = node1["extended_lemma"] != node2["extended_lemma"]
-            if typ == "syntactic": and different_lemma: # different lemma, different syntax
+            if typ == "syntactic" and different_lemma: # different lemma, different syntax
                 edge_type = EdgeType.both
             elif typ == "syntactic": # different syntax, same lemma
                 edge_type = EdgeType.syntactic
