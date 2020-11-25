@@ -51,4 +51,4 @@ if __name__ == '__main__':
 
     parallelize(nodes, cartesian_product,
                 '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/lm_entail/run_entail_eval.sh',
-                on_gpu=True, dry_run=args.dry_run)
+                on_gpu=False, dry_run=args.dry_run)
