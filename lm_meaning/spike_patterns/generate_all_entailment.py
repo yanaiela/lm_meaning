@@ -3,6 +3,22 @@ from collections import defaultdict
 
 import pandas as pd
 
+import wandb
+
+
+def log_wandb(args):
+    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    config = dict(
+        pattern=pattern,
+    )
+
+    wandb.init(
+        name=f'{pattern}_generate_entailments',
+        project="memorization",
+        tags=[pattern],
+        config=config,
+    )
+
 
 def main():
     parse = argparse.ArgumentParser("")
@@ -14,6 +30,7 @@ def main():
                        default="data/pattern_data/entailed_lemmas_extended/P449_entailment_lemmas.tsv")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     df_patterns = pd.read_csv(args.patterns_file, sep="\t")
 
