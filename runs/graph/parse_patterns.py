@@ -19,7 +19,6 @@ relation2subj_obj = {
     'P30': {'subject': 'Glacier', 'object': 'Antarctica'},
     'P39': {'subject': 'Beaton', 'object': 'abbot'},
     'P463': {'subject': 'Albania', 'object': 'NATO'},
-
     'P495': {'subject': 'golf', 'object': 'Scotland'},
     'P740': {'subject': 'Nikon', 'object': 'Tokyo'},
     'P36': {'subject': 'France', 'object': 'Paris'},
@@ -53,10 +52,6 @@ if __name__ == '__main__':
     parse.add_argument("-patterns", "--patterns", type=str, help="patterns file",
                        default="runs/core/patterns.txt")
     args = parse.parse_args()
-
-    # with open(args.patterns, 'r') as f:
-    #     relations = f.readlines()
-    #     relations = [x.strip() for x in relations]
 
     cartesian_product = []
     for relation_id, subj_obj in relation2subj_obj.items():
