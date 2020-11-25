@@ -7,9 +7,25 @@ import networkx as nx
 import tqdm
 from spike.spacywrapper.annotator import SpacyAnnotator
 
+import wandb
+
 from lm_meaning.spike.utils import equal_queries
 from lm_meaning.spike_patterns.graph_types import PatternNode, EdgeType
 from lm_meaning.utils import read_jsonl_file
+
+
+def log_wandb(args):
+    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    config = dict(
+        pattern=pattern,
+    )
+
+    wandb.init(
+        name=f'{pattern}_create_graph',
+        project="memorization",
+        tags=[pattern],
+        config=config,
+    )
 
 
 def load_lemmas_relations(fname: str) -> Dict[str, List[str]]:
@@ -73,6 +89,7 @@ if __name__ == "__main__":
                        default="data/pattern_data/graphs/P449.graph")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     patterns = read_jsonl_file(args.patterns_file)
     lemma2not_entailed = load_lemmas_relations(args.lemmas_file)
@@ -83,7 +100,7 @@ if __name__ == "__main__":
     for p in tqdm.tqdm(patterns, total=len(patterns)):
         pattern_node = PatternNode(p["pattern"], p["spike_query"],
                                    p["lemma"], p["extended_lemma"], p["tense"], p["example"])
-        pattern2node[p["pattern"]] = pattern_node 
+        pattern2node[p["pattern"]] = pattern_node
         graph.add_node(pattern_node)
 
     # collection connections dictionary
@@ -104,15 +121,14 @@ if __name__ == "__main__":
         for pattern_str2, typ in zip(connected_patterns, types):
             node1, node2 = pattern2node[pattern_str], pattern2node[pattern_str2]
             different_lemma = node1.extended_lemma != node2.extended_lemma
-            if typ == "syntactic" and different_lemma: # different lemma, different syntax
+            if typ == "syntactic" and different_lemma:  # different lemma, different syntax
                 edge_type = EdgeType.both
-            elif typ == "syntactic": # different syntax, same lemma
+            elif typ == "syntactic":  # different syntax, same lemma
                 edge_type = EdgeType.syntactic
-            else: # same syntax, different lemma
+            else:  # same syntax, different lemma
                 edge_type = EdgeType.lexical
-              
-            graph.add_edge(node1, node2, edge_type=edge_type)
 
+            graph.add_edge(node1, node2, edge_type=edge_type)
 
     with open(args.out_file, "wb") as f:
         pickle.dump(graph, f)

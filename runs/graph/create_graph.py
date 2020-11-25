@@ -1,5 +1,6 @@
 import argparse
 from runs.ts_run import parallelize
+from runs.utils import get_lama_patterns
 
 
 # ┌──────────────────────┐
@@ -23,17 +24,15 @@ if __name__ == '__main__':
     parse.add_argument("-dry_run", "--dry_run", type=bool, help="flag to only print commands and not execute them",
                        default=False)
     parse.add_argument("-patterns", "--patterns", type=str, help="patterns file",
-                       default="runs/core/patterns.txt")
+                       default="data/trex/data/relations.jsonl")
     args = parse.parse_args()
 
-    with open(args.patterns, 'r') as f:
-        relations = f.readlines()
-        relations = [x.strip() for x in relations]
+    relations = get_lama_patterns(args.patterns)
 
     cartesian_product = []
     for relation_id in relations:
-        cartesian_product.append([f'data/pattern_data/{relation_id}.jsonl',
-                                  f'data/pattern_data/entailed_lemmas_extended/{relation_id}_entailment_lemmas.tsv',
+        cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
+                                  f'data/pattern_data/entailed_lemmas_extended/{relation_id}.tsv',
                                   f'data/pattern_data/graphs/{relation_id}.tsv'])
 
     parallelize(nodes, cartesian_product,
