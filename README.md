@@ -27,6 +27,8 @@ python lm_meaning/rules/run.py -r P1303
 
 `pip install 'git+https://github.com/allenai/spike#egg=spike-bl&subdirectory=bl'`
 
+`pip install 'git+https://github.com/allenai/spike#egg=spike-annotator-lib&subdirectory=annotator-lib'`
+
 
 ## Run Scripts
 
@@ -66,4 +68,16 @@ Run the cooccurrences analysis script
 python lm_meaning/evaluation/cooccurrences_eval.py \
         --data_path data/trex/data/TREx/ \
         --cooccurrence_path data/output/spike_results/cooccurrences/
+```
+
+Run the evaluation for testing correlations between objects preference when given 
+the subject, to the preference bias, when no subject is given
+```sh
+python lm_meaning/evaluation/subj_insensitivity_ranks.py
+```
+
+
+Creating json files from patterns
+```sh
+python runs/graph/parse_patterns.py
 ```
