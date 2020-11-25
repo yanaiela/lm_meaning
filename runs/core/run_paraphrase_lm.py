@@ -52,7 +52,7 @@ if __name__ == '__main__':
     cartesian_product = []
     for relation_id in relations:
         for encoder in encoders:
-            cartesian_product.append([f'data/pattern_data/{relation_id}.jsonl',
+            cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
                                       f'data/trex_lms_vocab/{relation_id}.jsonl',
                                       encoder,
                                       f'data/output/predictions_lm/trex_lms_vocab/{relation_id}_{encoder}.json'])
