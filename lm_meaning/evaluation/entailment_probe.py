@@ -6,6 +6,7 @@ import wandb
 
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file, read_jsonline_file
 from lm_meaning.utils import read_jsonl_file
+from lm_meaning.spike_patterns.graph_types import EdgeType
 
 
 def log_wandb(args):
@@ -93,9 +94,11 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
     points = 0
 
     total_syn = 0
-    total_rest = 0
+    total_lex = 0
+    total_both = 0
     points_syn = 0
-    points_rest = 0
+    points_lex = 0
+    points_both = 0
 
     # all_patterns = spike2lm.values()
 
@@ -112,10 +115,6 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
                 if [ent_node, graph_node] not in patterns_graph.edges:
                     continue
                 entailment_type = patterns_graph.edges[ent_node, graph_node]
-                if len(entailment_type) == 1:
-                    entailment_type = 'syn'
-                else:
-                    entailment_type = 'rest'
 
                 ent_pattern = ent_node.lm_pattern
                 # going over all data
@@ -128,21 +127,27 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
                         points += 1
                     total += 1
 
-                    if entailment_type == 'syn':
+                    if entailment_type['edge_type'] == EdgeType.syntactic:
                         if ent_pattern in lm_results[new_key]:
                             points_syn += 1
                         total_syn += 1
+                    elif entailment_type['edge_type'] == EdgeType.lexical:
+                        if ent_pattern in lm_results[new_key]:
+                            points_lex += 1
+                        total_lex += 1
                     else:
                         if ent_pattern in lm_results[new_key]:
-                            points_rest += 1
-                        total_rest += 1
+                            points_both += 1
+                        total_both += 1
 
-    print(points, total, points / total)
-    print(points_syn, total_syn, points_syn / total_syn)
-    print(points_rest, total_rest, points_rest / total_rest)
+    print('overall', points, total, points / total)
+    print('syntactic', points_syn, total_syn, points_syn / total_syn)
+    print('lexical', points_lex, total_lex, points_lex / total_lex)
+    print('both', points_both, total_both, points_both / total_both)
     wandb.run.summary['inferred_acc'] = points / total
     wandb.run.summary['syntactic_inferred_acc'] = points_syn / total_syn
-    wandb.run.summary['lexical_inferred_acc'] = points_rest / total_rest
+    wandb.run.summary['lexical_inferred_acc'] = points_lex / total_lex
+    wandb.run.summary['both_inferred_acc'] = points_both / total_both
 
 
 def main():
