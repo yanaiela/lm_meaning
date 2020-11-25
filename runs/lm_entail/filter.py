@@ -20,6 +20,8 @@ encoders = ['bert-base-cased',
             'bert-large-cased-whole-word-masking',
             'roberta-base',
             'roberta-large',
+            'albert-base-v2',
+            'albert-xxlarge-v2'
             ]
 
 

@@ -5,6 +5,24 @@ from transformers import AutoTokenizer
 
 from lm_meaning.utils import read_jsonl_file, write_jsonl_file
 
+import wandb
+
+
+def log_wandb(args):
+    models = args.model_names
+    pattern = args.in_data.split('/')[-1].split('.')[0]
+    config = dict(
+        pattern=pattern,
+        models=models,
+    )
+
+    wandb.init(
+        name=f'{pattern}_filter_oov',
+        project="memorization",
+        tags=[pattern],
+        config=config,
+    )
+
 
 def get_tokenizer_by_name(model_name: str) -> AutoTokenizer:
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -16,19 +34,14 @@ def get_tokenizers(model_names: List[str]):
     return tokenizers
 
 
-def filter_oov(data, tokenizer, model_name):
-    if 'roberta' in model_name or 'albert' in model_name:
-        all_vocab = list(tokenizer.get_vocab().keys())
-        vocab = [tokenizer.convert_tokens_to_string(x).strip() for x in all_vocab]
-    else:
-        vocab = list(tokenizer.vocab.keys())
+def filter_oov(data, tokenizer):
 
     filt_data = []
 
     for row in data:
         subj = row['sub_label']
         obj = row['obj_label']
-        if obj not in vocab:
+        if len(tokenizer.tokenize(f' {obj}')) != 1:
             continue
         filt_data.append({'sub_label': subj, 'obj_label': obj,
                           'uuid': row['uuid']})
@@ -45,19 +58,22 @@ def main():
                        default="data/trex_lms_vocab/P1001.jsonl")
 
     args = parse.parse_args()
+    log_wandb(args)
 
     data = read_jsonl_file(args.in_data)
-    print(len(data))
+    original_length = len(data)
 
     model_names = args.model_names.split(',')
     tokenizers = get_tokenizers(model_names)
 
     for tokenizer_name, tokenizer in zip(model_names, tokenizers):
         before = len(data)
-        data = filter_oov(data, tokenizer, tokenizer_name)
+        data = filter_oov(data, tokenizer)
         after = len(data)
         print(f'{tokenizer_name} filtered out {before - after} examples')
 
+    wandb.run.summary['original_length'] = original_length
+    wandb.run.summary['filtered_length'] = len(data)
     write_jsonl_file(data, args.out_file)
 
 
