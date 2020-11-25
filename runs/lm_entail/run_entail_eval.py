@@ -45,8 +45,8 @@ if __name__ == '__main__':
     for relation_id in relations:
         for lm in encoders:
             cartesian_product.append([f'data/trex/data/TREx/{relation_id}.jsonl',
-                                      f'data/output/predictions_lm/trex/{relation_id}_{lm}.json',
-                                      f'data/pattern_data/{relation_id}.jsonl',
+                                      f'data/output/predictions_lm/trex_lms_vocab/{relation_id}_{lm}.json',
+                                      f'data/pattern_data/parsed/{relation_id}.jsonl',
                                       f'data/pattern_data/graphs/{relation_id}.graph'])
 
     parallelize(nodes, cartesian_product,
