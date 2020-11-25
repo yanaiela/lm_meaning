@@ -10,7 +10,7 @@ from lm_meaning.spike_patterns.graph_types import EdgeType
 
 
 def log_wandb(args):
-    pattern = args.lm_patterns.split('/')[-1].split('.')[0]
+    pattern = args.trex.split('/')[-1].split('.')[0]
     lm = args.lm_file.split('/')[-1].split('.')[0].split('_')[-1]
     config = dict(
         pattern=pattern,
@@ -156,8 +156,8 @@ def main():
                        default="data/trex/data/TREx/P449.jsonl")
     parse.add_argument("-lm_file", "--lm_file", type=str, help="lm prediction file",
                        default="data/predictions_lm/P449_bert-large-cased.json")
-    parse.add_argument("-lm_patterns", "--lm_patterns", type=str, help="lm patterns",
-                       default="data/lm_relations/P449.jsonl")
+    # parse.add_argument("-lm_patterns", "--lm_patterns", type=str, help="lm patterns",
+    #                    default="data/lm_relations/P449.jsonl")
     parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="spike pattern",
                        default="data/spike_patterns/P449.txt")
     parse.add_argument("-graph", "--graph", type=str, help="graph file",
@@ -166,9 +166,9 @@ def main():
     args = parse.parse_args()
     log_wandb(args)
 
-    lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
+    # lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
     spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
-    spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
+    # spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
 
     lm_raw_results = read_json_file(args.lm_file)
     patterns_graph = read_graph(args.graph)
@@ -182,7 +182,7 @@ def main():
 
     lm_results = parse_lm_results(lm_raw_results, all_objects)
 
-    analyze_results(lm_results, patterns_graph, spike2lm, subj_obj)
+    analyze_results(lm_results, patterns_graph, None, subj_obj)
 
 
 if __name__ == '__main__':
