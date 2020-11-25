@@ -53,13 +53,13 @@ def build_model_by_name(lm: str, args) -> Pipeline:
 
 
 def tokenize_results(results, pipeline_model):
-    if pipeline_model.model.config.model_type in ['roberta']:
+    if pipeline_model.model.config.model_type in ['roberta', 'albert']:
         preds_tokenized = []
         for example in results:
             example_tokenized = []
             for ans in example:
                 ans_copy = deepcopy(ans)
-                ans_copy['token_str'] = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str'])
+                ans_copy['token_str'] = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
                 example_tokenized.append(ans_copy)
             preds_tokenized.append(example_tokenized)
         return preds_tokenized
@@ -160,7 +160,7 @@ def main():
 
     results_dict[model_name] = {}
 
-    for prompt_id, prompt in enumerate(prompts[:2]):
+    for prompt_id, prompt in enumerate(prompts):
         results_dict[model_name][prompt] = []
         filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
         results_dict[model_name][prompt] = {"data": filtered_data, "predictions": predictions}
