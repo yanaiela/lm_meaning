@@ -33,7 +33,7 @@ if __name__ == '__main__':
     for relation_id in relations:
         cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
                                   f'data/pattern_data/entailed_lemmas_extended/{relation_id}.tsv',
-                                  f'data/pattern_data/graphs/{relation_id}.tsv'])
+                                  f'data/pattern_data/graphs/{relation_id}.graph'])
 
     parallelize(nodes, cartesian_product,
                 '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/graph/create_graph.sh',
