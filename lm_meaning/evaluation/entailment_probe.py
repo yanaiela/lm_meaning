@@ -140,14 +140,26 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
                             points_both += 1
                         total_both += 1
 
-    print('overall', points, total, points / total)
-    print('syntactic', points_syn, total_syn, points_syn / total_syn)
-    print('lexical', points_lex, total_lex, points_lex / total_lex)
-    print('both', points_both, total_both, points_both / total_both)
-    wandb.run.summary['inferred_acc'] = points / total
-    wandb.run.summary['syntactic_inferred_acc'] = points_syn / total_syn
-    wandb.run.summary['lexical_inferred_acc'] = points_lex / total_lex
-    wandb.run.summary['both_inferred_acc'] = points_both / total_both
+    if total > 0:
+        print('overall', points, total, points / total)
+        wandb.run.summary['inferred_acc'] = points / total
+    else:
+        wandb.run.summary['inferred_acc'] = -1
+    if total_syn > 0:
+        wandb.run.summary['syntactic_inferred_acc'] = points_syn / total_syn
+        print('syntactic', points_syn, total_syn, points_syn / total_syn)
+    else:
+        wandb.run.summary['syntactic_inferred_acc'] = -1
+    if total_lex > 0:
+        wandb.run.summary['lexical_inferred_acc'] = points_lex / total_lex
+        print('lexical', points_lex, total_lex, points_lex / total_lex)
+    else:
+        wandb.run.summary['lexical_inferred_acc'] = -1
+    if total_both > 0:
+        print('both', points_both, total_both, points_both / total_both)
+        wandb.run.summary['both_inferred_acc'] = points_both / total_both
+    else:
+        wandb.run.summary['both_inferred_acc'] = -1
 
 
 def main():
