@@ -96,18 +96,21 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     total_syn = 0
     total_lex = 0
     total_both = 0
+    total_uni = 0
+    total_bi = 0
+
     points_syn = 0
     points_lex = 0
     points_both = 0
+    points_uni = 0
+    points_bi = 0
 
-    # all_patterns = spike2lm.values()
 
     for key, vals in lm_results.items():
         subj, obj = key.split('_SPLIT_')
         for successful_lm_pattern in vals:
             graph_node = get_node(patterns_graph, successful_lm_pattern)
             if graph_node is None:
-                # print(successful_lm_pattern)
                 continue
 
             # going over all entailed patterns
@@ -140,6 +143,15 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                             points_both += 1
                         total_both += 1
 
+                    if [ent_node, graph_node] in patterns_graph.edges:
+                        if ent_pattern in lm_results[new_key]:
+                            points_bi += 1
+                        total_bi += 1
+                    else:
+                        if ent_pattern in lm_results[new_key]:
+                            points_uni += 1
+                        total_uni += 1
+
     if total > 0:
         print('overall', points, total, points / total)
         wandb.run.summary['inferred_acc'] = points / total
@@ -160,6 +172,17 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         wandb.run.summary['both_inferred_acc'] = points_both / total_both
     else:
         wandb.run.summary['both_inferred_acc'] = -1
+
+    if total_uni > 0:
+        print('uni', points_uni, total_uni, points_uni / total_uni)
+        wandb.run.summary['uni_inferred_acc'] = points_uni / total_uni
+    else:
+        wandb.run.summary['uni_inferred_acc'] = -1
+    if total_bi > 0:
+        print('bi', points_bi, total_bi, points_bi / total_bi)
+        wandb.run.summary['bi_inferred_acc'] = points_bi / total_bi
+    else:
+        wandb.run.summary['bi_inferred_acc'] = -1
 
 
 def analyze_graph(patterns_graph):
