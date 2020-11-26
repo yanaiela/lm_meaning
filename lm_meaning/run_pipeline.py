@@ -52,14 +52,25 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     return model
 
 
-def tokenize_results(results, pipeline_model):
+def get_original_token(tokenized_obj, possible_objects, tokenizer):
+    for obj in possible_objects:
+        if tokenizer.tokenize(obj)[0] == tokenized_obj:
+            return obj.strip()
+    return None
+
+
+def tokenize_results(results, pipeline_model, possible_objects):
     if pipeline_model.model.config.model_type in ['roberta', 'albert']:
         preds_tokenized = []
         for example in results:
             example_tokenized = []
             for ans in example:
                 ans_copy = deepcopy(ans)
-                ans_copy['token_str'] = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
+                tokenized_obj_ans = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
+                original_obj_ans = get_original_token(tokenized_obj_ans, possible_objects, pipeline_model.tokenizer)
+                assert original_obj_ans is not None, "did not find object in tokenized objects"
+                ans_copy['token_str'] = original_obj_ans
+
                 example_tokenized.append(ans_copy)
             preds_tokenized.append(example_tokenized)
         return preds_tokenized
@@ -88,7 +99,7 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
         # pipeline_model returns a list in case there is only 1 item to predict (in contrast to list of lists)
         if len(batch) == 1:
             preds = [preds]
-        tokenized_preds = tokenize_results(preds, pipeline_model)
+        tokenized_preds = tokenize_results(preds, pipeline_model, possible_objects)
         predictions.extend(tokenized_preds)
 
     return data, predictions
@@ -143,7 +154,7 @@ def main():
 
     if args.use_targets:
         all_objects = list(set([x['obj_label'] for x in data]))
-        if 'roberta' in args.lm:
+        if 'roberta' in args.lm or 'albert' in args.lm:
             all_objects = [' ' + x for x in all_objects]
     else:
         all_objects = None
