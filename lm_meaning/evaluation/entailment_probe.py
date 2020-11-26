@@ -88,7 +88,7 @@ def get_node(graph, pattern):
     return None
 
 
-def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: Dict) -> None:
+def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
 
     total = 0
     points = 0
@@ -112,9 +112,9 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
 
             # going over all entailed patterns
             for ent_node in patterns_graph.successors(graph_node):
-                if [ent_node, graph_node] not in patterns_graph.edges:
+                if [graph_node, ent_node] not in patterns_graph.edges:
                     continue
-                entailment_type = patterns_graph.edges[ent_node, graph_node]
+                entailment_type = patterns_graph.edges[graph_node, ent_node]
 
                 ent_pattern = ent_node.lm_pattern
                 # going over all data
@@ -162,6 +162,27 @@ def analyze_results(lm_results: Dict, patterns_graph, spike2lm: Dict, subj2obj: 
         wandb.run.summary['both_inferred_acc'] = -1
 
 
+def analyze_graph(patterns_graph):
+    syn_edges = 0
+    lex_edges = 0
+    both_edges = 0
+
+    for node in patterns_graph:
+        for ent_node in patterns_graph.successors(node):
+            entailment_type = patterns_graph.edges[node, ent_node]['edge_type']
+            if entailment_type == EdgeType.syntactic:
+                syn_edges += 1
+            elif entailment_type == EdgeType.lexical:
+                lex_edges += 1
+            else:
+                both_edges += 1
+
+    wandb.run.summary['n_patterns'] = len(patterns_graph)
+    wandb.run.summary['syntactic_edges'] = syn_edges
+    wandb.run.summary['lexical_edges'] = lex_edges
+    wandb.run.summary['both_edges'] = both_edges
+
+
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-trex", "--trex", type=str, help="trex data file",
@@ -170,8 +191,8 @@ def main():
                        default="data/predictions_lm/P449_bert-large-cased.json")
     # parse.add_argument("-lm_patterns", "--lm_patterns", type=str, help="lm patterns",
     #                    default="data/lm_relations/P449.jsonl")
-    parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="spike pattern",
-                       default="data/spike_patterns/P449.txt")
+    # parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="spike pattern",
+    #                    default="data/spike_patterns/P449.txt")
     parse.add_argument("-graph", "--graph", type=str, help="graph file",
                        default="data/spike_patterns/graphs/P449.graph")
 
@@ -179,7 +200,7 @@ def main():
     log_wandb(args)
 
     # lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
-    spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
+    # spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
     # spike2lm = match_spike_lm_patterns(spike_patterns, lm_patterns)
 
     lm_raw_results = read_json_file(args.lm_file)
@@ -194,7 +215,8 @@ def main():
 
     lm_results = parse_lm_results(lm_raw_results, all_objects)
 
-    analyze_results(lm_results, patterns_graph, None, subj_obj)
+    analyze_results(lm_results, patterns_graph, subj_obj)
+    analyze_graph(patterns_graph)
 
 
 if __name__ == '__main__':
