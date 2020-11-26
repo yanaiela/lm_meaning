@@ -66,8 +66,8 @@ def tokenize_results(results, pipeline_model, possible_objects):
             example_tokenized = []
             for ans in example:
                 ans_copy = deepcopy(ans)
-                tokenized_obj_ans = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
-                original_obj_ans = get_original_token(tokenized_obj_ans, possible_objects, pipeline_model.tokenizer)
+                # tokenized_obj_ans = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
+                original_obj_ans = get_original_token(ans['token_str'], possible_objects, pipeline_model.tokenizer)
                 assert original_obj_ans is not None, "did not find object in tokenized objects"
                 ans_copy['token_str'] = original_obj_ans
 
