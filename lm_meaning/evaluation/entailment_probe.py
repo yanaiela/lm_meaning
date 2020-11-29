@@ -98,37 +98,37 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
 
                 ent_pattern = ent_node.lm_pattern
                 # going over all data
-                for new_subj, new_obj in subj2obj.items():
+                # for new_subj, new_obj in subj2obj.items():
                     # in case these are the same
-                    if new_subj == subj and new_obj == obj:
-                        continue
-                    new_key = '{}_SPLIT_{}'.format(new_subj, new_obj)
-                    success = ent_pattern in lm_results[new_key]
+                    # if new_subj == subj and new_obj == obj:
+                    #     continue
+                    # new_key = '{}_SPLIT_{}'.format(new_subj, new_obj)
+                success = ent_pattern in lm_results[key]
+                if success:
+                    points += 1
+                total += 1
+
+                if entailment_type['edge_type'] == EdgeType.syntactic:
                     if success:
-                        points += 1
-                    total += 1
+                        points_syn += 1
+                    total_syn += 1
+                elif entailment_type['edge_type'] == EdgeType.lexical:
+                    if success:
+                        points_lex += 1
+                    total_lex += 1
+                else:
+                    if success:
+                        points_both += 1
+                    total_both += 1
 
-                    if entailment_type['edge_type'] == EdgeType.syntactic:
-                        if success:
-                            points_syn += 1
-                        total_syn += 1
-                    elif entailment_type['edge_type'] == EdgeType.lexical:
-                        if success:
-                            points_lex += 1
-                        total_lex += 1
-                    else:
-                        if success:
-                            points_both += 1
-                        total_both += 1
-
-                    if [ent_node, graph_node] in patterns_graph.edges:
-                        if success:
-                            points_bi += 1
-                        total_bi += 1
-                    else:
-                        if success:
-                            points_uni += 1
-                        total_uni += 1
+                if [ent_node, graph_node] in patterns_graph.edges:
+                    if success:
+                        points_bi += 1
+                    total_bi += 1
+                else:
+                    if success:
+                        points_uni += 1
+                    total_uni += 1
 
     if total > 0:
         print('overall', points, total, points / total)
