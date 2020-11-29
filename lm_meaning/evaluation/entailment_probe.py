@@ -1,12 +1,11 @@
 import argparse
-import pickle
 from typing import List, Dict
 
 import wandb
 
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file
-from lm_meaning.utils import read_jsonl_file, read_graph
 from lm_meaning.spike_patterns.graph_types import EdgeType
+from lm_meaning.utils import read_jsonl_file, read_graph
 
 
 def log_wandb(args):
@@ -162,6 +161,12 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         wandb.run.summary['bi_inferred_acc'] = points_bi / total_bi
     else:
         wandb.run.summary['bi_inferred_acc'] = -1
+
+    wandb.run.summary['total'] = total
+    wandb.run.summary['total_syn'] = total_syn
+    wandb.run.summary['total_lex'] = total_lex
+    wandb.run.summary['total_bi'] = total_bi
+    wandb.run.summary['total_uni'] = total_uni
 
 
 def analyze_graph(patterns_graph):
