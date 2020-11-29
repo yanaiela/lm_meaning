@@ -1,4 +1,5 @@
 import json
+import pickle
 from typing import List, Dict
 
 
@@ -34,3 +35,9 @@ def write_jsonl_file(data, out_f):
         for obj in data:
             json.dump(obj, f)
             f.write('\n')
+
+
+def read_graph(in_file: str):
+    with open(in_file, 'rb') as f:
+        graph = pickle.load(f)
+    return graph
