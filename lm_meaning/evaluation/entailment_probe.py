@@ -84,7 +84,6 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     points_bi = 0
 
     for key, vals in lm_results.items():
-        subj, obj = key.split('_SPLIT_')
         for successful_lm_pattern in vals:
             graph_node = get_node(patterns_graph, successful_lm_pattern)
             if graph_node is None:
@@ -97,12 +96,6 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                 entailment_type = patterns_graph.edges[graph_node, ent_node]
 
                 ent_pattern = ent_node.lm_pattern
-                # going over all data
-                # for new_subj, new_obj in subj2obj.items():
-                    # in case these are the same
-                    # if new_subj == subj and new_obj == obj:
-                    #     continue
-                    # new_key = '{}_SPLIT_{}'.format(new_subj, new_obj)
                 success = ent_pattern in lm_results[key]
                 if success:
                     points += 1
@@ -165,6 +158,7 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
     wandb.run.summary['total_lex'] = total_lex
+    wandb.run.summary['total_both'] = total_both
     wandb.run.summary['total_bi'] = total_bi
     wandb.run.summary['total_uni'] = total_uni
 
