@@ -185,6 +185,7 @@ def analyze_graph(patterns_graph):
                 uni_edges += 1
 
     wandb.run.summary['n_patterns'] = len(patterns_graph)
+    wandb.run.summary['all_edges'] = len(patterns_graph.edges)
     wandb.run.summary['syntactic_edges'] = syn_edges
     wandb.run.summary['lexical_edges'] = lex_edges
     wandb.run.summary['both_edges'] = both_edges
