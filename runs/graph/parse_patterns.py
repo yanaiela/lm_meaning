@@ -41,6 +41,23 @@ relation2subj_obj = {
     'P37': {'subject': 'Italy', 'object': 'Italian'},
     'P413': {'subject': 'John', 'object': 'keeper'},
     'P364': {'subject': 'Lost', 'object': 'English'},
+    'P740': {'subject': 'Barren Earth', 'object': 'Helsinki'}
+    'P108': {'subject': 'Steve Wozniak', 'object': 'Apple'}
+    'P937': {'subject': 'Enki Bilal', 'object': 'Paris'}
+    'P136': {'subject': 'Herbie Mann', 'object': 'jazz'}
+    'P1303': {'subject': 'Walter Parazaider', 'object': 'saxophone'}
+    'P17': {'subject': 'Simcoe Composite School', 'object': 'Canada'}
+    'P127': {'subject': 'Atari Interactive', 'object': 'Atari'}
+    'P103': {'subject': 'Valeria Bruni Tedeschi', 'object': 'French'}
+    'P31': {'subject': 'Long Preston', 'object': 'village'}
+    'P159': {'subject': 'Chaparral Cars', 'object': 'Midland'}
+    'P495': {'subject': 'Great Dangaioh', 'object': 'Japan'}
+    'P361': {'subject': 'arithmetic', 'object': 'mathematics'}
+    'P140': {'subject': 'Christianization', 'object': 'Christianity'}
+    'P1001': {'subject': 'Prime Minister of Canada', 'object': 'Canada'}
+    'P178': {'subject': 'macOS', 'object': 'Apple'}
+    'P264': {'subject': 'Buddy Holly', 'object': 'Brunswick'}
+    'P36': {'subject': 'Brody Raion', 'object': 'Brody'}
 }
 
 
