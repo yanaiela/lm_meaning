@@ -1,0 +1,22 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] plays [Y] music .		plays	plays	present
+[X], who plays [Y] music		who-plays	who-plays	present
+[X] is a [Y] musician.		is-a-musician	is-a-musician	present
+[X] is an [Y] musician.		is-an-musician	is-an-musician	present
+[X], who is a [Y] musician.		who-is-a-musician	who-is-a-musician	present
+[X], who is an [Y] musician		who-is-an-musician	who-is-an-musician	present
+[X] plays [Y].		plays	plays	present
+[X], who plays [Y].		who-plays	who-plays	present
+[X] performs in [Y] concerts.		perform-concert	perform-concert	present
+[X], who performs in [Y] concerts.		who-perform-concert	who-perform-concert	present
+[Y] artist [X].		artist	artist	present
+[Y] singer [X].		singer	singer	present
+[Y] musician [X].		musician	musician	present
+[Y] star [X].		star	star	present
+[Y] artists such as [X].		artist-such	artist-such	present
+[Y] bands [X].		band	band	present
+[Y] musicians [X].		musicians	musicians	present
+[Y] musicians such as [X].		musicians-such	musicians-such	present
+[Y] bands such as [X].		bands-such	bands-such	present
+[Y] singers such as [X].		singers-such	singers-such	present
+[Y] stars such as [X].		stars-such	stars-such	present

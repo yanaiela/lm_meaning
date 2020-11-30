@@ -1,0 +1,24 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is owned by [Y] .		owned-by	owned-by	present
+[X] owner [Y] .		owner	owner	present
+[Y] acquired [X] .		acquire	acquire	past
+[Y] owns [X] .		own	own	present
+The [Y]-owned [X]	"The ESPN y - owned "" FiveThirtyEight x "" launched on March 17 , 2014 ."	owned-by	owned	present
+[X] is a subsidiary of [Y] .		is-subsidiary	is-subsidiary	present
+[X] local media subsidiary of [Y] .		local-media-subsidiary	local-media-subsidiary	present
+[X] is a [Y] subsidiary.		subsidiary	subsidiary	present
+[X] division of [Y].		division	division	present
+[Y] puchased the [X].		purchased	purchased	past
+[Y] bought [X]		bought	bought	past
+[Y]'s acquisitions such as [X].	Ballmer was instrumental in driving Microsoft y 's connected computing strategy , with acquisitions such as Skype x .	acquisitions-such	acquisitions-such	present
+[X] was acquired by [Y].	Skype x was acquired by Microsoft y in May 2011 for $ 8.5 billion .	was-acquire	was-acquire	past
+[X] was purchased by [Y].	In May 2011 Skype x was purchased by Microsoft y for $ 8.5 billion .	was-purchased	was-purchased	past
+[X] was bought out by [Y].	Amstrad x was bought out by Sky y in 2007 , and decided to bring in its satellite receiver development and manufacturing in - house .	was-bought	was-bought	past
+[Y] bought out [X].	Sky y bought out Amstrad x satellite production in 2007 and now only distribute boxes which initially appeared as Amstrad models but are now badged merely as Sky .	bought-out	bought-out	past
+[X] is a motorway in [Y].	Münden and to Bundesautobahn x 7 , one of the most important motorways in Germany y .	motorway	motorway	present
+[X] was founded by [Y].	Nammo x was founded in 1998 by Raufoss ( Norway y ) , Patria ( Finland ) , and Celsius ( Sweden ) .	was-founded	was-founded	past
+[Y] launched [X].	Microsoft y launched MSN x Messenger , later renamed Windows Live Messenger , on 22 July 1999 .	launched	launched	past
+[Y] Group's [X].	"Offered by Renault y Group 's Dacia x under the "" Easy - R "" name , it is founded on electro - mechanical rather than hydraulic technology ."	group	group	present
+[X] is the corportate headquarters complex of [Y].	The Googleplex x is the corporate headquarters complex of Google y and its parent company Alphabet Inc.	corporate-hq	corporate-hq	present
+[X] is the headquarters complex of [Y].		headquarter-complex	headquarter-complex	present
+[Y] formerly [X].	Until 2009 , the field was operated by BP y ( formerly Amoco x ) .	formerly	formerly	present

@@ -26,6 +26,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X], that took place in [Y].		take-place	that-take-place	past
 [Y], that hosts [X].		host	that-host	present
 [Y], that hosted the [X].		host-the	that-host-the	present
-[X] festival in [Y].		festival	festival	?
+[X] festival in [Y].		festival	festival	present
 [X], which is a festival in [Y].		festival	which-festival	present
-[X], a festival in [Y].		festival	a-festival	?
+[X], a festival in [Y].		festival	a-festival	present

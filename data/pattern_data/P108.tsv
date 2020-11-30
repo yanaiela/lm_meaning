@@ -1,0 +1,30 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] works for [Y] .		works-for	works-for	present
+[X], who works for [Y].		who-works-for	who-works-for	present
+[X] is employed by [Y].		employed-by	employed-by	present
+[X], who is employed by [Y].		who-employed-by	who-employed-by	present
+[Y] CEO [X].		CEO	CEO	present
+[X] is the CEO of [Y].		is-CEO	is-CEO	present
+[X], who is the CEO of [Y].		who-is-CEO	who-is-CEO	present
+[X] is a professor at [Y].		professor	professor	present
+[X], who is a professor at [Y].		who-professor	who-professor	present
+[X] is a television commentator at [Y].		commentator-at	commentator-at	present
+[X] is a television commentator with [Y].		commentator-with	commentator-with	present
+[X] is a presenter at [Y].		presenter-at	presenter-at	present
+[X] is a presenter on [Y].		presenter-on	presenter-on	present
+[X] is a presenter with the [Y].		presenter-with	presenter-with	present
+[X] is the chief technical officer at [Y].		chief-technical	chief-technical	present
+[X] is the CTO of [Y].		cto	cto	present
+[X] is a director at [Y].		director	director	present
+[X] is a correspondent at [Y].		correspondent	correspondent	present
+[X], who is a television commentator at [Y].		who-commentator-at	who-commentator-at	present
+[X], who is a television commentator with [Y].		who-commentator-with	who-commentator-with	present
+[X], who is a presenter at [Y].		who-presenter-at	who-presenter-at	present
+[X], who is a presenter on [Y].		who-presenter-on	who-presenter-on	present
+[X], who is a presenter with the [Y].		who-presenter-with	who-presenter-with	present
+[X], who is the chief technical officer at [Y].		who-chief-technical	who-chief-technical	present
+[X], who is the CTO of [Y].		who-cto	who-cto	present
+[X], who is a director at [Y].		who-director	who-director	present
+[X], who is a correspondent at [Y].		who-correspondent	who-correspondent	present
+[X] is a journalist at [Y].		journalist	journalist	present
+[X], who is a journalist at [Y].		who-journalist	who-journalist	present

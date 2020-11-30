@@ -1,0 +1,32 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is affiliated with the [Y] religion .		is-affliated-with	is-affliated-with	present
+[X] followed the [Y] religion.		follow	follow	past
+[X] follows the [Y] religion.		follow	follow	present
+[X] converted to [Y].		convert	convert	past
+[Y] founder [X].		founder	founder	past
+[Y] scholar [X].		scholar	scholar	past
+[Y] philospher [X].		philospher	philospher	past
+[Y] preacher [X].		preacher	preacher	past
+[X] who converted to [Y].		who-converted	who-converted	past
+[Y] scholars such as [X].		scholar-such	scholar-such	past
+[Y] scholars including [X].		scholar-including	scholar-including	past
+[X] was received into the [Y] .		received-into	received-into	past
+[X] and converted to [Y] .		and-converted	and-converted	past
+[Y] apostle [X] .		apostle	apostle	past
+[Y] saint [X] .		saint	saint	past
+[X] had converted to [Y] .		had-converted	had-converted	past
+[X] founded [Y].		founded	founded	past
+[X] was a [Y] preacher.		was-preacher	was-preacher	past
+[X] was a [Y] theologian.		was-theologian	was-theologian	past
+[X] established [Y].		establish	establish	past
+[Y] theologian [X].		theologian	theologian	past
+[X] is a monastic in [Y].		monastic	monastic	present
+[X] is ordained in [Y].		ordain	ordain	present
+[Y] is the primary religion in [X].		primary-religion	primary-religion	present
+[Y] is the majority religion for [X].		majority-religion	majority-religion	present
+[X] were followers of [Y].		were-followers	were-followers	past
+[Y] was one of [X]'s official religions.		was-one-official-religion	was-one-official-religion	past
+[Y] is [X]'s official religion.		is-official-religion	is-official-religion	present
+[Y] was [X]'s official religion.		was-official-religion	was-official-religion	past
+[X] practiced [Y].		practice	practice	past
+[X] practices [Y].		practice	practice	present

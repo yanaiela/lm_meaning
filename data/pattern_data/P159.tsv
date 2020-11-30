@@ -1,7 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 The headquarter of [X] is in [Y] .		headquarter	headquarter	present
 The headquarters of [X] is in [Y] .		headquarters	headquarters-in	present
-The headquarter of [X] is located in [Y] .		headquarter-located-in	headquarter-located-in	present
+The headquarter of [X] is located in [Y] .		located-in	located-in	present
 [Y] contains the headquarters of [X].		contains-headquarters	contains-headquarters	present
 [X] is headquartered in [Y].		is-headquarter	is-headquarter	present
 [Y] has the headquarters of [X].		has-headquarter	has-headquarter	present

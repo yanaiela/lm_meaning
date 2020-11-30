@@ -1,0 +1,19 @@
+used-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+found-emplyment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+was-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+work-in	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+held-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+take-post	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+moved-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+establish-foundation	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+run-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+found-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+works-in	*/writer, filmmaker,director,artist,establish-foundation,run-company-found-company,live-work-in,taught-in,taught-in-uni,moved-work,rector-in
+live-work-in	*/writer, filmmaker,director,artist,establish-foundation,run-company-found-company,taught-in,taught-in-uni,moved-work,rector-in
+taught-in-uni	*/writer, filmmaker,director,artist,establish-foundation,run-company-found-company,live-work-in,taught-in,moved-work,rector-in
+taught-in	*/writer, filmmaker,director,artist,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,moved-work,rector-in
+rector-in	*/writer, filmmaker,director,artist,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,taught-in,moved-work
+artist	*/writer, filmmaker,director,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,taught-in,rector-in,moved-work
+writer	*/artist, filmmaker,director,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,taught-in,rector-in,moved-work
+filmmaker	*/writer,artist,director,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,taught-in,rector-in,moved-work
+director	*/writer, filmmaker,artist,establish-foundation,run-company-found-company,live-work-in,taught-in-uni,taught-in,rector-in,moved-work

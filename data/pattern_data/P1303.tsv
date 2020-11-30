@@ -1,0 +1,23 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] plays [Y] .		play	play	present
+[X] played [Y] .		play	play	past
+[X] played the [Y] .		play-the	play-the	past
+[X] playing [Y] .		play	play	present-continuous
+[Y] player [X] 		player	player	present
+[X] playing the [Y] .		play-the	play-the	present-continuous
+[Y] sonatas of [X] .		sonata	sonata	present
+[X] plays the [Y] .		play-the	play-the	present
+[Y] pieces by [X] .		pieces	pieces	present
+[Y] solo by [X] .		solo	solo	present
+[Y] maestro [X] .		maestro	maestro	present
+[X] to play [Y] 		to-play	to-play	future
+[X] on vocals and [Y] .		vocals	vocals	present
+[Y] played by [X] .		play-by	play-by	past
+features [X]'s [Y] solo.		features	features	present
+[X] is a [Y] player.		is-a-player	is-a-player	present
+[X] was a [Y] player.		was-a-player	was-a-player	past
+[X] plays a variety of instruments, including [Y].		variety-instruments	variety-instruments	present
+[X] studies [Y].		study	study	present
+[X] performing on [Y].		perform	perform	present
+[X] began playing [Y].		began-play	began-play	past
+[X] is a [Y] performer.		performer	performer	present

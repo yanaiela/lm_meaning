@@ -1,50 +1,37 @@
-EXTENDED-LEMMA	
+EXTENDED-LEMMA	+/Unnamed:_1
 located-in	+/that-located-in
-road-in	+/that-located-in, that-road-in, road, that-road-with-loaction-in, road-with-location-in, that-road-loacted-in
-island-in	+/that-located-in, that-island-in, island, that-island-with-loaction-in, island-with-location-in, that-island-loacted-in
-province-in	+/that-located-in, that-province-in, province, that-province-with-loaction-in, province-with-location-in, that-province-loacted-in
-city-in	+/that-located-in, that-city-in, city, that-city-with-loaction-in, city-with-location-in, that-city-loacted-in
-municipality-in	+/that-located-in, that-municipality-in, municipality, that-municipality-with-loaction-in, municipality-with-location-in, that-municipality-loacted-in
-county-in	+/that-located-in, that-county-in, county, that-county-with-loaction-in, county-with-location-in, that-county-loacted-in
-district-in	+/that-located-in, that-district-in, district, that-district-with-loaction-in, district-with-location-in, that-district-loacted-in
-school-in	+/that-located-in, that-school-in, school, that-school-with-loaction-in, school-with-location-in, that-school-loacted-in
-church-in	+/that-located-in, that-church-in, church, that-church-with-loaction-in, church-with-location-in, that-church-loacted-in
-highway-in	+/that-located-in, that-highway-in, highway, that-highway-with-loaction-in, highway-with-location-in, that-highway-loacted-in
-freeway-in	+/that-located-in, that-freeway-in, freeway, that-freeway-with-loaction-in, freeway-with-location-in, that-freeway-loacted-in
-museum-in	+/that-located-in, that-museum-in, museum, that-museum-with-loaction-in, museum-with-location-in, that-museum-loacted-in
-hotel-in	+/that-located-in, that-hotel-in, hotel, that-hotel-with-loaction-in, hotel-with-location-in, that-hotel-loacted-in
-river-in	+/that-located-in, that-river-in, river, that-river-with-loaction-in, river-with-location-in, that-river-loacted-in
-bridge-in	+/that-located-in, that-bridge-in, bridge, that-bridge-with-loaction-in, bridge-with-location-in, that-bridge-loacted-in
-lake-in	+/that-located-in, that-lake-in, lake, that-lake-with-loaction-in, lake-with-location-in, that-lake-loacted-in
-that-road-in	+/that-located-in, road-in, road, that-road-with-loaction-in, road-with-location-in, that-road-loacted-in
-that-island-in	+/that-located-in, island-in, island, that-island-with-loaction-in, island-with-location-in, that-island-loacted-in
-that-province-in	+/that-located-in, province-in, province, that-province-with-loaction-in, province-with-location-in, that-province-loacted-in
-that-city-in	+/that-located-in, city-in, city, that-city-with-loaction-in, city-with-location-in, that-city-loacted-in
-that-municipality-in	+/that-located-in, municipality-in, municipality, that-municipality-with-loaction-in, municipality-with-location-in, that-municipality-loacted-in
-that-county-in	+/that-located-in, county-in, county, that-county-with-loaction-in, county-with-location-in, that-county-loacted-in
-that-district-in	+/that-located-in, district-in, district, that-district-with-loaction-in, district-with-location-in, that-district-loacted-in
-that-school-in	+/that-located-in, school-in, school, that-school-with-loaction-in, school-with-location-in, that-school-loacted-in
-that-church-in	+/that-located-in, church-in, church, that-church-with-loaction-in, church-with-location-in, that-church-loacted-in
-that-highway-in	+/that-located-in, highway-in, highway, that-highway-with-loaction-in, v-with-location-in, that-highway-loacted-in
-that-freeway-in	+/that-located-in, freeway-in, freeway, that-freeway-with-loaction-in, freeway-with-location-in, that-freeway-loacted-in
-that-museum-in	+/that-located-in, museum-in, museum, that-museum-with-loaction-in, museum-with-location-in, that-museum-loacted-in
-that-hotel-in	+/that-located-in, hotel-in, hotel, that-hotel-with-loaction-in, hotel-with-location-in, that-hotel-loacted-in
-that-river-in	+/that-located-in, river-in, river, that-river-with-loaction-in, river-with-location-in, that-river-loacted-in
-that-bridge-in	+/that-located-in, bridge-in, bridge, that-bridge-with-loaction-in, bridge-with-location-in, that-bridge-loacted-in
-that-lake-in	+/that-located-in, lake-in, lake, that-lake-with-loaction-in, lake-with-location-in, that-lake-loacted-in
-road	+/that-located-in, that-road-in, road-in, road, that-road-with-loaction-in, road-with-location-in, that-road-loacted-in
-island	+/that-located-in, that-island-in, island-in, island, that-island-with-loaction-in, island-with-location-in, that-island-loacted-in
-province	+/that-located-in, that-province-in, province-in, province, that-province-with-loaction-in, province-with-location-in, that-province-loacted-in
-city	+/that-located-in, that-city-in, city-in, city, that-city-with-loaction-in, city-with-location-in, that-city-loacted-in
-municipality	+/that-located-in, that-municipality-in, municipality-in, municipality, that-municipality-with-loaction-in, municipality-with-location-in, that-municipality-loacted-in
-county	+/that-located-in, that-county-in, county-in, county, that-county-with-loaction-in, county-with-location-in, that-county-loacted-in
-district	+/that-located-in, that-district-in, district-in, district, that-district-with-loaction-in, district-with-location-in, that-district-loacted-in
-school	+/that-located-in, that-school-in, school-in, school, that-school-with-loaction-in, school-with-location-in, that-school-loacted-in
-church	+/that-located-in, that-church-in, church-in, church, that-church-with-loaction-in, church-with-location-in, that-church-loacted-in
-highway	+/that-located-in, that-highway-in, highway-in, highway, that-highway-with-loaction-in, highway-with-location-in, that-highway-loacted-in
-freeway	+/that-located-in, that-freeway-in, freeway-in, freeway, that-freeway-with-loaction-in, freeway-with-location-in, that-freeway-loacted-in
-museum	+/that-located-in, that-museum-in, museum-in, museum, that-museum-with-loaction-in, museum-with-location-in, that-museum-loacted-in
-hotel	+/that-located-in, that-hotel-in, hotel-in, hotel, that-hotel-with-loaction-in, hotel-with-location-in, that-hotel-loacted-in
-river	+/that-located-in, that-river-in, river-in, river, that-river-with-loaction-in, river-with-location-in, that-river-loacted-in
-bridge	+/that-located-in, that-bridge-in, bridge-in, bridge, that-bridge-with-loaction-in, bridge-with-location-in, that-bridge-loacted-in
-lake	+/that-located-in, that-lake-in, lake-in, lake, that-lake-with-loaction-in, lake-with-location-in, that-lake-loacted-in
+road-in	+/that-located-in, that-road-in
+island-in	+/that-located-in, that-island-in
+province-in	+/that-located-in, that-province-in, province
+city-in	+/that-located-in, that-city-in
+municipality-in	+/that-located-in, that-municipality-in, municipality
+county-in	+/that-located-in, that-county-in, county
+district-in	+/that-located-in, that-district-in, district
+school-in	+/that-located-in, that-school-in, school
+church-in	+/that-located-in, that-church-in
+highway-in	+/that-located-in, that-highway-in
+freeway-in	+/that-located-in, that-freeway-in
+museum-in	+/that-located-in, that-museum-in
+hotel-in	+/that-located-in, that-hotel-in
+river-in	+/that-located-in, that-river-in
+bridge-in	+/that-located-in, that-bridge-in
+that-road-in	+/that-located-in, road-in
+that-island-in	+/that-located-in, island-in
+that-province-in	+/that-located-in, province-in, province
+that-city-in	+/that-located-in, city-in
+that-municipality-in	+/that-located-in, municipality-in, municipality
+that-county-in	+/that-located-in, county-in, county
+that-district-in	+/that-located-in, district-in, district
+that-school-in	+/that-located-in, school-in, school
+that-church-in	+/that-located-in, church-in
+that-highway-in	+/that-located-in, highway-in
+that-freeway-in	+/that-located-in, freeway-in
+that-museum-in	+/that-located-in, museum-in
+that-hotel-in	+/that-located-in, hotel-in
+that-river-in	+/that-located-in, river-in
+that-bridge-in	+/that-located-in, bridge-in
+province	+/that-located-in, province-in, that-province-in,  province
+municipality	+/that-located-in, municipality-in, that-municipality-in, municipality
+county	+/that-located-in, county-in, that-county-in, county
+district	+/that-located-in, district-in, that-district-in, district
+school	+/that-located-in, school-in, that-school-in, school

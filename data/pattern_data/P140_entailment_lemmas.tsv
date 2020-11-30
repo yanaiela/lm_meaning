@@ -1,0 +1,29 @@
+is-affliated-with	+/follow,_were-followers,practice,is-official-religion,was-official-region,was-one-official-religion
+follow	+/is-affiliated-with, were-followers,practice,is-official-religion,was-official-region,was-one-official-religion
+convert	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, who-converted, and-converted, had-converted
+founder	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, establish
+scholar	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, scholar-such, scholar-including
+philospher	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+preacher	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, was-preacher
+who-converted	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion,convert, and-converted, had-converted
+scholar-such	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, scholar-including, scholar
+scholar-including	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, scholar, scholar-such
+received-into	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+and-converted	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion,convert, who-converted, had-converted
+apostle	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+saint	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+had-converted	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion,convert, and-converted, who-converted
+founded	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+was-preacher	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, preacher
+was-theologian	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion,theologian
+establish	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion, founder
+theologian	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion,was-theologian
+monastic	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+ordain	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+primary-religion	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+majority-religion	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+were-followers	+/is-affiliated-with,practice,were-followers,follow,is-official-religion,was-official-region,was-one-official-religion
+was-one-official-religion	+/is-affiliated-with, were-followers,follow,practice,is-official-religion,was-official-religion
+is-official-religion	+/is-affiliated-with, were-followers,follow,practice,was-official-religion,was-one-official-religion
+was-official-religion	+/is-affiliated-with, were-followers,follow,practice,is-official-religion,was-one-official-religion
+practice	+/is-affiliated-with, were-followers,follow,is-official-religion,was-official-region,was-one-official-religion

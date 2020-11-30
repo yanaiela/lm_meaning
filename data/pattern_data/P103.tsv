@@ -1,6 +1,18 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is written in the [Y] language.	[X]:This book :is :written :in the [Y]:English language.	write	is-write-in	present
-[X] was written in the [Y] language.	[X]:This book :is :written :in he [Y]:English language.	write	is-write-in	past
-[X] is broadcasted in the [Y] language.	[X]:This movie :is :broadcasted :in the [Y]:English language.	write	is-write-in	present
-[X] was broadcasted in the [Y] language.	[X]:This movie :is :broadcasted :in the [Y]:English language.	write	is-write-in	past
-[X] is a [Y] name.	[X]:David is an [Y]:English name.	name	is-name	present
+The native language of [X] is [Y].		native	native	present
+[X] has known [Y] since childhood.		childhood	childhood	present
+[Y] actress [X].		actress	actress	present
+[Y] author [X].		author	author	present
+[Y] actor [X].		actor	actor	present
+[Y] poet [X].		poet	poet	present
+[X] was a [Y] politician.		was-politician	was-politician	past
+[Y] writer [X].	Behzad was known  for the books of French y science writer Jean Rostand x and English naturalist Charles Darwin that he translated .	writer	writer	past
+[X] was a [Y] composer.		was-composer	was-composer	past
+[X] was a [Y] actor.	Pierre Alcover x ( 14 March 1893 – 14 November 1957 ) was a French y stage and film actor .	was-actor	was-actor	past
+[X] was a [Y] film actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-film-actress	was-film-actress	past
+[X] was a [Y] actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-actress	was-actress	past
+[X] was a [Y] painter.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-painter	was-painter	past
+[Y] naturalist [X].	"The specific "" gustavi "" commemorates the Dutch y naturalist Gustaaf Schlegel x ."	was-naturalist	was-naturalist	present
+[Y] botanist [X].		was-botanist	was-botanist	present
+[Y] minister [X].	On 26 September 1961 , the Dutch y Foreign Minister Joseph Luns x offered to hand over the territory to a United Nations trusteeship .	was-minister	was-minister	present
+[X] was born to a [Y] family.		was-born	was-born	past

@@ -3,12 +3,12 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 The capital of [Y] is [X].		capital	capital-of	present
 The capital city of [Y] is [X].		capital-city	capital-city-of	present
 [X] is the capital city of [Y].		capital-city	capital-city-of	present
-[Y]'s capital, [X].		capital	capital-of	?
-[Y]'s capital city, [X].		capital-city	capital-city-of	?
+[Y]'s capital, [X].		capital	capital-of	present
+[Y]'s capital city, [X].		capital-city	capital-city-of	present
 [Y]'s capital is [X].		capital	capital-of	present
 [Y]'s capital city is [X].		capital-city	capital-city-of	present
-[X], the capital of [Y].		capital	capital-of	?
-[X], the capital city of [Y].		capital-city	capital-city-of	?
+[X], the capital of [Y].		capital	capital-of	present
+[X], the capital city of [Y].		capital-city	capital-city-of	present
 [X], that is the capital of [Y].		capital	capital-of	present
 [X], that is the capital city of [Y].		capital-city	capital-city-of	present
 [Y], which has the capital [X].		capital	capital-of	present

@@ -7,10 +7,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] holds the position of [Y].		holds	holds	present
 [X], who was elected [Y].		who-elected	who-elected	past
 [X] was elected [Y].		elected	elected	past
-[X], elected [Y].		elected	elected	?
 [X], who was appointed [Y].		who-appointed	who-appointed	past
-[X] was appointed [Y].		appointed	appointed	?
-[X], appointed [Y].		appointed	appointed	past
+[X] was appointed [Y].		appointed	appointed	past
 [X], who served as [Y].		who-served	who-served	past
 [X] served as [Y].		served	served	past
 [X], who serves as [Y].		who-served	who-served	present
@@ -25,7 +23,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X], who has been crowned [Y].		who-has-crowned	who-has-crowned	past
 [X] has been crowned [Y].		has-crowned	has-crowned	past
 [X] is crowned [Y].		is-crowned	is-crowned	present
-[X], crowned [Y].		crowned	crowned	?
 [X], who was given the position of [Y].		who-given	who-given	past
 [X] was given the position of [Y].		was-given	was-given	past
 [X], who ascended to the [Y] position.		who-ascended	who-ascended	past

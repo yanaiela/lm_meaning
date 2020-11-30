@@ -1,0 +1,22 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+[X] is a [Y] .		is-a	is-a	present
+[Y] including [X] .		include	include	present-continuous
+[Y] like [X] .		like	like	present
+[Y] includes [X] .		include	include	present
+[Y] including the [X] .		including-the	including-the	present
+[X] is the largest [Y] .		is-largest	is-largest	present
+[X] is a small [Y] .		is-small	is-small	present
+[Y] may include [X] .		may-include	may-include	present
+[X] is called [Y].		is-called	is-called	present
+[X] is a example of [Y].		is-example	is-example	present
+[X] is a class of [Y].		is-class	is-class	present
+[X] is a type of [Y].		is-type	is-type	present
+[X] is a kind of [Y].		is-kind	is-kind	present
+[X] and some other [Y].		and-some	and-some	present
+[X] and any other [Y].		and-any	and-any	present
+[X] or some other [Y].		or-some	or-some	present
+[X] a special case of [Y].		special-case	special-case	present
+[X] is an [Y].		is-an	is-an	present
+[Y] such as [X].		such-as	such-as	present
+[X] is the [Y].		is-the	is-the	present
+[X] is a form of [Y].		is-form	is-form	present

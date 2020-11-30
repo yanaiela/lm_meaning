@@ -1,0 +1,17 @@
+native	*/
+childhood	+/native
+actress	+/native, was-actress
+was-film-actress	+/native,actress,was-actress
+was-actress	+/native, actress
+author	+/native, writer
+writer	+/native, author
+actor	+/native,was-actor
+was-actor	+/native,actor
+poet	+/native
+was-politician	+/native
+was-composer	+/native
+was-painter	+/native
+was-naturalist	+/native
+was-botanist	+/native
+was-minister	+/native
+was-born	+/native
