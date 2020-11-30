@@ -54,7 +54,11 @@ def main():
         elif mode == "entailed":
             entailed = other_lemmas.split("+/")[1].split(",")
             not_entailed = [l2 for l2 in all_lemmas if l2 not in entailed and l2 != l]
+        else:
+            assert False, "not supported mode"
 
+        # filtering empty strings
+        not_entailed = [x for x in not_entailed if x != '']
         print("Not entailed from lemma {} are: {}".format(l, not_entailed))
         asymetric_lemmas[l].extend(not_entailed)
 
