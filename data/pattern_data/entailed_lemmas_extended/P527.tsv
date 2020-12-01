@@ -1,0 +1,10 @@
+LEMMA	NOT-ENTAILED
+is-part-of	is-component-of,is-building-block,is-ingredient-in,comprise
+make-of	is-ingredient-in
+is-building-block	is-ingredient-in
+comprise	is-part-of,is-building-block,is-component-of,is-create-out,is-ingredient-in
+consist-of	is-ingredient-in
+comprise-of	is-part-of,make-of,is-building-block,comprise,consist-of,is-component-of,is-create-out,is-ingredient-in
+is-component-of	is-ingredient-in
+is-create-out	is-ingredient-in
+is-ingredient-in	-

@@ -1,0 +1,10 @@
+LEMMA	NOT-ENTAILED
+is-name	write-in,language-is,-language,write-in-language,language
+write-in	is-name
+language-is	is-name
+-language	is-name
+write-in-language	is-name
+language	is-name
+in-language	is-name
+was-language-of	is-name
+is-language-of	is-name

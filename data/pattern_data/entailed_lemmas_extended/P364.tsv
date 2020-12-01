@@ -1,0 +1,11 @@
+LEMMA	NOT-ENTAILED
+is-language-of	-language-film,-language-series,-language-show
+language-is	-language-film,-language-series,-language-show
+-language-film	 series-in-language, show-in-language, -language-series,-language-show
+show-in-language	-language-film,-language-series,-language-show
+-language-show	-language-film, -language-series, series-in-language, film-in-language
+film-in-language	-language-film,-language-series,-language-show
+original-language-is	-language-film,-language-series,-language-show
+series-in-language	-language-film,-language-series,-language-show
+was-language-of	-language-film,-language-series,-language-show
+-language-series	-language-film, show-in-language, film-in-language, -language-show
