@@ -70,10 +70,11 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool, 
     for r_p in tqdm.tqdm(relevant_patterns, total=len(relevant_patterns)):
         # print(r_p["pattern"], pattern["pattern"])
         if equal_queries(r_p["spike_query"], pattern["spike_query"], spike_annotator):
-            is_syntactic = True
+            syntactic_equivalence = True
         else:
-            is_syntactic = False
-        connections[pattern["pattern"]].append((r_p["pattern"], "syntactic" if is_syntactic else "not-syntactic"))
+            syntactic_equivalence = False
+        connections[pattern["pattern"]].append((r_p["pattern"],
+                                                "same_syntax" if syntactic_equivalence else "diff_syntax"))
 
     return relevant_patterns
 
@@ -121,9 +122,9 @@ if __name__ == "__main__":
         for pattern_str2, typ in zip(connected_patterns, types):
             node1, node2 = pattern2node[pattern_str], pattern2node[pattern_str2]
             different_lemma = node1.extended_lemma != node2.extended_lemma
-            if typ == "syntactic" and different_lemma:  # different lemma, different syntax
+            if typ == "diff_syntax" and different_lemma:  # different lemma, different syntax
                 edge_type = EdgeType.both
-            elif typ == "syntactic":  # different syntax, same lemma
+            elif typ == "diff_syntax":  # different syntax, same lemma
                 edge_type = EdgeType.syntactic
             else:  # same syntax, different lemma
                 edge_type = EdgeType.lexical
