@@ -1,7 +1,0 @@
-RULE	EXAMPLE	TYPE (l for lexical, s for syntactic)
-X is located in Y.	X:Austin :is :located :in Y:USA.	none	present,locate
-X is located at Y.	X:My house :is :located :at Y:the junction of 50th and 51st Streets.	none	present,locate
-X is situated in Y.	X:Birmingham :is :situated :in Jones Valley.	none	present,situate
-X is based in Y.	Our corporate X:headquarters :are :based in Y:Spokane.	none	present,base
-X is based out of Y.	My X:company :is :based :out :of Y:New York	none	present,base
-X is established in Y.	Many new X:companies :are :established :in Y:the Gothenburg region.	none	present,establish
