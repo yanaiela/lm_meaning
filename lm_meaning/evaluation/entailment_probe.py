@@ -1,5 +1,9 @@
 import argparse
+from collections import defaultdict
 from typing import List, Dict
+
+import numpy as np
+from scipy.stats import entropy
 
 import wandb
 
@@ -83,12 +87,17 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     points_uni = 0
     points_bi = 0
 
+    points_by_edge = defaultdict(list)
+
+    avg_entropy = []
+
     for key, vals in lm_results.items():
         for successful_lm_pattern in vals:
             graph_node = get_node(patterns_graph, successful_lm_pattern)
             if graph_node is None:
                 continue
 
+            base_pattern_success = []
             # going over all entailed patterns
             for ent_node in patterns_graph.successors(graph_node):
                 if [graph_node, ent_node] not in patterns_graph.edges:
@@ -100,6 +109,9 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                 if success:
                     points += 1
                 total += 1
+                base_pattern_success.append(int(success))
+
+                points_by_edge[graph_node.lm_pattern + '_' + ent_node.lm_pattern].append(int(success))
 
                 if entailment_type['edge_type'] == EdgeType.syntactic:
                     if success:
@@ -122,6 +134,10 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                     if success:
                         points_uni += 1
                     total_uni += 1
+
+            base_success = sum(base_pattern_success) / len(base_pattern_success)
+            ent = entropy([base_success, 1.0 - base_success], base=2)
+            avg_entropy.append(ent)
 
     if total > 0:
         print('overall', points, total, points / total)
@@ -155,12 +171,20 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     else:
         wandb.run.summary['bi_inferred_acc'] = -1
 
+    avg_by_edge = []
+    for _, vals in points_by_edge.items():
+        avg_by_edge.append(sum(vals) / len(vals))
+    wandb.run.summary['avg_inferred_by_edge'] = np.average(avg_by_edge)
+
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
     wandb.run.summary['total_lex'] = total_lex
     wandb.run.summary['total_both'] = total_both
     wandb.run.summary['total_bi'] = total_bi
     wandb.run.summary['total_uni'] = total_uni
+
+    wandb.run.summary['avg_entropy'] = np.average(avg_entropy)
+    wandb.run.summary['std_entropy'] = np.std(avg_entropy)
 
 
 def analyze_graph(patterns_graph):
