@@ -22,3 +22,11 @@ class TestPluralInstruction:
         q2 = "object:[w={}]ABC $is $to $air <>subject:Lost"
 
         assert equal_queries(q1, q2, spike_annotator) is True
+
+    def test_easy(self):
+        spike_annotator = SpacyAnnotator.from_config("en.json")
+
+        q1 = "<>subject:John $died $in object:[w={}]England."
+        q2 = "<>subject:John $died $at object:[w={}]England."
+
+        assert equal_queries(q1, q2, spike_annotator) is True

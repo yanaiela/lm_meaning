@@ -1,17 +1,15 @@
 import json
-
-from spike.search.data_set_connections import get_data_sets_connections
 from pathlib import Path
-
-from spike.search.queries.common.match import SearchMatch
-from spike.datamodel.definitions import Sentence
-from spike.search.expansion.types import Span
-from spike.search.queries.structured.compilation import extract_scaffolding_from_query_text
-from spike.exploration import ALGO_DICT
-from spike.annotators.annotator_service import Annotator
-from spike.search.engine import MatchEngine
-
 from typing import List, Dict
+
+from spike.annotators.annotator_service import Annotator
+from spike.datamodel.definitions import Sentence
+from spike.exploration import ALGO_DICT
+from spike.search.data_set_connections import get_data_sets_connections
+from spike.search.engine import MatchEngine
+from spike.search.expansion.types import Span
+from spike.search.queries.common.match import SearchMatch
+from spike.search.queries.structured.compilation import extract_scaffolding_from_query_text
 
 
 def get_spike_objects(config_path: str = './my_config.yaml') -> (MatchEngine, Annotator):
@@ -71,7 +69,6 @@ def equal_queries(q1: str, q2: str, annotator: Annotator) -> bool:
 
     assert len(p1) == 1
     assert len(p2) == 1
-
     return list(p1)[0].signature == list(p2)[0].signature
 
 
@@ -81,3 +78,54 @@ def enclose_entities(annotator: Annotator, entity: str) -> str:
     for sentence in annotated.sentences:
         words.extend(sentence.words)
     return ' '.join(words)
+
+
+def _lexical_diff(words2pos1, words2pos2):
+    words1 = [x[0] for x in words2pos1]
+    words2 = [x[0] for x in words2pos2]
+    prep_substitute = False
+    for lemma, pos in words2pos1:
+        if lemma not in words2:
+            if pos in ['DET']:
+                continue
+            if pos in ['ADP']:
+                prep_substitute = True
+                continue
+            return True, prep_substitute
+        if words1.count(lemma) != words2.count(lemma):
+            return True
+    return False, prep_substitute
+
+
+def _det_diff(words2pos1, words2pos2):
+    words1 = [x[0] for x in words2pos1]
+    words2 = [x[0] for x in words2pos2]
+    for lemma, pos in words2pos1:
+        if lemma not in words2:
+            if pos in ['DET']:
+                return True
+        if pos in ['DET'] and words1.count(lemma) != words2.count(lemma):
+            return True
+    return False
+
+
+def lexical_difference(q1, q2, spacy_annotator):
+    doc1 = spacy_annotator(q1.replace('[X]', 'subject').replace('[Y]', 'object'))
+    doc2 = spacy_annotator(q2.replace('[X]', 'subject').replace('[Y]', 'object'))
+    words1 = [(x.lemma_, x.pos_) for x in doc1 if x.text not in ['subject', 'object']]
+    words2 = [(x.lemma_, x.pos_) for x in doc2 if x.text not in ['subject', 'object']]
+
+    diff_lemma, prep_substitutue1 = _lexical_diff(words1, words2)
+    if not diff_lemma:
+        diff_lemma, prep_substitutue2 = _lexical_diff(words2, words1)
+        # if both preposition were substituted, considering it as a lexical change
+        # e.g. "[X] died in [Y]." and "[X] died at [Y]."
+        if prep_substitutue1 and prep_substitutue2:
+            diff_lemma = True
+
+    diff_det = _det_diff(words1, words2)
+    if not diff_det:
+        diff_det = _det_diff(words2, words1)
+
+    return {'diff_lemma': diff_lemma,
+            'diff_det': diff_det}
