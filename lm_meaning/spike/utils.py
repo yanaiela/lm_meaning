@@ -93,7 +93,7 @@ def _lexical_diff(words2pos1, words2pos2):
                 continue
             return True, prep_substitute
         if words1.count(lemma) != words2.count(lemma):
-            return True
+            return True, prep_substitute
     return False, prep_substitute
 
 
