@@ -86,7 +86,7 @@ def _lexical_diff(words2pos1, words2pos2):
     prep_substitute = False
     for lemma, pos in words2pos1:
         if lemma not in words2:
-            if pos in ['DET']:
+            if pos in ['DET', 'PUNCT', 'SYM']:
                 continue
             if pos in ['ADP']:
                 prep_substitute = True
