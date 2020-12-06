@@ -13,4 +13,4 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X], who held a citizenship of [Y].	John held a citizenship of France	hold	hold-citizenship-of	past
 [X], who has a citizenship of [Y].	John has a citizenship of France	have	have-citizenship-of	present
 [X], who had a citizenship of [Y].	John had a citizenship of France	have	have-citizenship-of	past
-as a citizen of [Y], [X]	Bodiroga won his first award in 2002 , as a citizen of Yugoslavia	citizen	as-citizen-of	? 	
+as a citizen of [Y], [X]	Bodiroga won his first award in 2002 , as a citizen of Yugoslavia	citizen	as-citizen-of	?
