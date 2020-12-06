@@ -1,5 +1,5 @@
 comprise	*/is-part-of,is-building-block,is-component-of,is-ingredient-in,is-create-out
-is-part-of	*/comprise,is-building-block,is-component-of,is-ingredient-in
+is-part-of	+/comprise,is-building-block,is-component-of,is-ingredient-in
 is-building-block	*/is-ingredient-in
 is-component-of	*/is-ingredient-in
 consist-of	*/is-ingredient-in
