@@ -172,15 +172,10 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         wandb.run.summary['bi_inferred_acc'] = -1
 
     avg_by_edge = []
-    weighted_avg_by_edge = []
-    total_vals = sum([len(x) for x in points_by_edge.values()])
     for _, vals in points_by_edge.items():
         avg_by_edge.append(sum(vals) / len(vals))
 
-        # weighted average, multiplying by the number of base patterns that were correctly predicted
-        weighted_avg_by_edge.append((len(vals)) * (sum(vals) / len(vals)))
     wandb.run.summary['avg_inferred_by_edge'] = np.average(avg_by_edge)
-    wandb.run.summary['weighted_avg_inferred_by_edge'] = np.sum(weighted_avg_by_edge) / total_vals
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
