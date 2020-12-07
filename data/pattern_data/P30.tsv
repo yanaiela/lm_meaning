@@ -13,4 +13,4 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] is a lake located in the continent of [Y].	 Edersee is a lake located in the continent of Europe.	is-lake	is-lake-located-in-continent	present
 [X] is a lake in the continent of [Y].	 Edersee is a lake located in the continent of Europe.	is-lake	is-lake-in-continent	present
 [X] belongs to the continent of [Y].	Japan belongs to the continent of Asia	belong	belong-to-continent	present
-[X] part of the continent of [Y].	Japan part of the continent of Asia	part	part-of-continent	present
+[X] is a part of the continent of [Y].	Japan part of the continent of Asia	part	part-of-continent	present
