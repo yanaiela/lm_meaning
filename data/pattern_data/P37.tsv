@@ -4,7 +4,7 @@ The official language of [X] is the [Y] language.	The :official :language :of [X
 [Y] is the official language of [X].	[Y]:Italian is the official language of [X]:Italy.	official-language	official-language	present
 The [Y] language is the official language of [X].	the [Y]:Italian language is the official language of [X]:Italy.	official-language	official-language	present
 [Y] is officially spoken in [X].	[Y]:Italian is officially spoken in [X]:Italy.	is-officially-speak	is-officially-speak	present
-In [X] [Y] is an official language.	In [X]:Italy [Y]:Italian is an official language.	is-official-language	is-official-language	present
+In [X], [Y] is an official language.	In [X]:Italy [Y]:Italian is an official language.	is-official-language	is-official-language	present
 In [X] the [Y] language is an official language.	In [X]:Italy the [Y]:Italian language is an official language.	is-official-language	is-official-language	present
 Officially, [Y] is the language of [X].	Officially, [Y]:Italian is the language of [X]:Italy	is-language	is-officially-language-of	present
 The law in [X] declares [Y] an official language.	The law in [X]:Italy declares [Y]:Italian as an official language.	declare-official-language	declare-official-language	present
