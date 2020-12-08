@@ -88,6 +88,8 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
     points_bi = 0
 
     points_by_edge = defaultdict(list)
+    edges_out = defaultdict(list)
+    edges_in = defaultdict(list)
 
     avg_entropy = []
 
@@ -112,6 +114,8 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                 base_pattern_success.append(int(success))
 
                 points_by_edge[graph_node.lm_pattern + '_' + ent_node.lm_pattern].append(int(success))
+                edges_out[graph_node.lm_pattern].append(int(success))
+                edges_in[ent_node.lm_pattern].append(int(success))
 
                 if entailment_type['edge_type'] == EdgeType.syntactic:
                     if success:
@@ -176,6 +180,24 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         avg_by_edge.append(sum(vals) / len(vals))
 
     wandb.run.summary['avg_inferred_by_edge'] = np.average(avg_by_edge)
+
+    avg_out_normalized = []
+    out_edges_total = 0
+    for k, vals in points_by_edge.items():
+        eo = sum(edges_out[k.split('_')[0]]) / len(edges_out[k.split('_')[0]])
+        avg_out_normalized.append(eo * (sum(vals) / len(vals)))
+        out_edges_total += eo
+
+    wandb.run.summary['avg_inferred_by_edge_out'] = sum(avg_out_normalized) / out_edges_total
+
+    avg_in_normalized = []
+    in_edges_total = 0
+    for k, vals in points_by_edge.items():
+        ei = sum(edges_in[k.split('_')[1]]) / len(edges_in[k.split('_')[1]])
+        avg_in_normalized.append(ei * (sum(vals) / len(vals)))
+        in_edges_total += ei
+
+    wandb.run.summary['avg_inferred_by_edge_in'] = sum(avg_in_normalized) / in_edges_total
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
