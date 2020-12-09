@@ -1,0 +1,14 @@
+legal-term	+/
+represent	+/legal-term
+unit-of-government	+/legal-term, government-body
+executive-body	+/legal-term
+government-body	+/legal-term, unit-of-government
+head-state	+/legal-term, represent
+head-government	+/legal-term, represent
+leader	+/legal-term, represent
+local-authority	+/legal-term
+mandate	+/legal-term
+currency	+/legal-term
+constitution	+/legal-term
+national-parliament	+/legal-term, parliament
+parliament	+/legal-term
