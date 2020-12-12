@@ -5,7 +5,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] was comprised of [Y].	[X]:This book :was :comprised :of [Y]:250 pages.	comprise	comprise-of	past
 [Y] is a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	present
 [Y] was a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	past
-[Y] is a building block of [Y].	[Y]:Beta carotene :is :a :building :block :of [X]:vitamin A	building-block	is-building-block	present
+[Y] is a building block of [X].	[Y]:Beta carotene :is :a :building :block :of [X]:vitamin A	building-block	is-building-block	present
 [Y] is a component of [X].	[Y]:Tpx-1 :is :a :component :of [X]:the outer dense fibers	component-of	is-component-of	present
 [X] consists of [Y].	[X]:The curriculum :consists :of [Y]:13 student-run funds	consist	consist-of	present
 [X] consisted of [Y].	[X]:The curriculum :consisted :of [Y]:13 student-run funds	consist	consist-of	past
