@@ -10,7 +10,7 @@ The music label that is representing [X] is [Y].		representing	that-representing
 [X]'s label is [Y].		s-label	s-label	present
 [X]'s label was [Y].		s-label	s-label-was	past
 [X] signed to [Y].		signed-to	signed-to	past
-[X] signed with [T].		signed-with	signed-with	past
+[X] signed with [Y].		signed-with	signed-with	past
 [X], that signed to [Y].		signed-to	that-signed-to	past
 [X], that signed with [Y].		signed-with	that-signed-with	past
 [X] was signed to [Y].		signed-to	was-signed-to	past
