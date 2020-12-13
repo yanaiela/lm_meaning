@@ -1,25 +1,38 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is represented by music label [Y] .		represented-by	represented-by	present
-[X], that is represented by music label [Y].		represented-by	that-represented-by	present
-[X], which is represented by music label [Y].		represented-by	which-represented-by	present
+[X] is represented by music label [Y] .		represented-by-music-label	represented-by-music-label	present
+[X], that is represented by music label [Y].		represented-by-music-label	that-represented-by-music-label	present
+[X], which is represented by music label [Y].		represented-by-music-label	which-represented-by-music-label	present
+[X] is represented by record label [Y] .		represented-by-record-label	represented-by-record-label	present
+[X], that is represented by record label [Y].		represented-by-record-label	that-represented-by-record-label	present
+[X], which is represented by record label [Y].		represented-by-record-label	which-represented-by-record-label	present
+[X] is represented by [Y] .		represented-by	represented-by	present
+[X], that is represented by [Y].		represented-by	that-represented-by	present
+[X], which is represented by [Y].		represented-by	which-represented-by	present
 The music label representing [X] is [Y].		representing	representing	present
 The music label that is representing [X] is [Y].		representing	that-representing	present
 [X] signed a record deal with [Y].		signed	signed	past
 [X], that signed a record deal with [Y].		signed-up	that-signed-a	past
-[X] signed up with music label [Y].		signed-up	signed-up	past
+[X] signed up with music label [Y].		signed-up-music-label	signed-up-music-label	past
+[X] signed up with [Y].		signed-up	signed-up	past
 [X]'s label is [Y].		s-label	s-label	present
 [X]'s label was [Y].		s-label	s-label-was	past
+[X]'s record label is [Y].		s-record-label	s-record-label	present
+[X]'s record label was [Y].		s-record-label	s-record-label-was	past
+[X]'s music label is [Y].		s-music-label	s-music-label	present
+[X]'s music label was [Y].		s-music-label	s-music-label-was	past
 [X] signed to [Y].		signed-to	signed-to	past
 [X] signed with [Y].		signed-with	signed-with	past
 [X], that signed to [Y].		signed-to	that-signed-to	past
 [X], that signed with [Y].		signed-with	that-signed-with	past
 [X] was signed to [Y].		signed-to	was-signed-to	past
+[X] is released by [Y].		released-by	is-released-by	present
 [X] was released by [Y].		released-by	was-released-by	past
 [X] recorded for [Y].		recorded-for	recorded-for	present
-[X] label : [Y].		label-colon	label-colon	present
+[X] was recorded for [Y].		recorded-for	was-recorded-for	past
+[X] label : [Y].		label-colon	label-colon	-
 [X], released by [Y].		released-by	released-by	present
-[Y] recording artist [X].		recording-artist	recording-artist	present
-[Y] artists such as [X].		artist-such	artist-such	present
-[Y] artists including [X].		artist-including	artist-including	present
+[Y] recording artist [X].		recording-artist	recording-artist	-
+[Y] artists such as [X].		artist-such	artist-such	-
+[Y] artists including [X].		artist-including	artist-including	-
 [X] recorded the song for [Y].		recorded-song	recorded-song	past
 [X] recorded the album for [Y].		recorded-album	recorded-album	past

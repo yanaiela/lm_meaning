@@ -1,11 +1,16 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] used to work in [Y] .		used-work	used-work	past
-[X] found employment in [Y].		found-emplyment	found-emplyment	past
+[X] found employment in [Y].		found-employment	found-employment 	past
 [X] was employed in [Y].		was-employment	was-employment	past
 [X] worked in [Y].		work-in	work-in	past
 [X] held a position in [Y].		held-position	held-position	past
 [X] took up a post in [Y].		take-post	take-post	past
+[X] took up a position in [Y].		take-position	take-position	past
+[X] took up work in [Y].		take-work	take-work	past
 [X] moved to [Y] to work.		moved-work	moved-work	past
+[X] moved for a new position to [Y] to work.		moved-for-position	moved-for-position	past
+[X] moved for a new post to [Y] to work.		moved-for-post	moved-for-post	past
+[X] moved for work to [Y].		moved-for-work	moved-for-work	past
 [X] moved to [Y] to establish a foundation.		establish-foundation	establish-foundation	past
 [X] moved to [Y] to run a company.		run-company	run-company	past
 [X] moved to [Y] to found a company.		found-company	found-company	past

@@ -3,29 +3,31 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] followed the [Y] religion.		follow	follow	past
 [X] follows the [Y] religion.		follow	follow	present
 [X] converted to [Y].		convert	convert	past
-[Y] founder [X].		founder	founder	past
-[Y] scholar [X].		scholar	scholar	past
-[Y] philospher [X].		philospher	philospher	past
-[Y] preacher [X].		preacher	preacher	past
+[Y] founder [X].		founder	founder	-
+[Y] scholar [X].		scholar	scholar	-
+[Y] philosopher [X].		philosopher	philosopher	-
+[Y] preacher [X].		preacher	preacher	-
 [X] who converted to [Y].		who-converted	who-converted	past
-[Y] scholars such as [X].		scholar-such	scholar-such	past
-[Y] scholars including [X].		scholar-including	scholar-including	past
+[Y] scholars such as [X].		scholar-such	scholar-such	-
+[Y] scholars including [X].		scholar-including	scholar-including	-
 [X] was received into the [Y] .		received-into	received-into	past
 [X] and converted to [Y] .		and-converted	and-converted	past
-[Y] apostle [X] .		apostle	apostle	past
-[Y] saint [X] .		saint	saint	past
+[Y] apostle [X] .		apostle	apostle	-
+[Y] saint [X] .		saint	saint	-
 [X] had converted to [Y] .		had-converted	had-converted	past
 [X] founded [Y].		founded	founded	past
 [X] was a [Y] preacher.		was-preacher	was-preacher	past
 [X] was a [Y] theologian.		was-theologian	was-theologian	past
 [X] established [Y].		establish	establish	past
-[Y] theologian [X].		theologian	theologian	past
+[Y] theologian [X].		theologian	theologian	-
 [X] is a monastic in [Y].		monastic	monastic	present
 [X] is ordained in [Y].		ordain	ordain	present
 [Y] is the primary religion in [X].		primary-religion	primary-religion	present
 [Y] is the majority religion for [X].		majority-religion	majority-religion	present
-[X] were followers of [Y].		were-followers	were-followers	past
+[X] is follower of [Y].		is-follower	is-follower	present
+[X] was follower of [Y].		was-follower	was-follower	past
 [Y] was one of [X]'s official religions.		was-one-official-religion	was-one-official-religion	past
+[Y] is one of [X]'s official religions.		is-one-official-religion	is-one-official-religion	past
 [Y] is [X]'s official religion.		is-official-religion	is-official-religion	present
 [Y] was [X]'s official religion.		was-official-religion	was-official-religion	past
 [X] practiced [Y].		practice	practice	past

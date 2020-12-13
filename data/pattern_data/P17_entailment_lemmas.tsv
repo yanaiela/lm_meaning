@@ -1,43 +1,43 @@
-is-located	+/which-located,_located
-which-located	+/is-located, located
-located	+/is-located, which-located
-is-town	+/is-located,which-located,located,which-town,town
-which-town	+/is-located,which-located,located, is-town,town
-town	+/is-located,which-located,located, is-town,which-town
-a-city	+/is-located,which-located,located,is-city,which-city,city,city-of
-city-of	+/is-located,which-located,located,is-city,which-city,city,a-city
-is-city	+/is-located,which-located,located,which-city,city,city-of,a-city
-which-city	+/is-located,which-located,located,is-city,city,city-of,a-city
-city	+/is-located,which-located,located,is-city,which-city,city-of,a-city
-is-state	+/is-located,which-located,located,which-state,state
-which-state	+/is-located,which-located,located,is-state,state
-state	+/is-located,which-located,located,is-state,which-state
-is-county	+/is-located,which-located,located,which-county,county,a-county
-which-county	+/is-located,which-located,located,is-county,county,a-county
-a-county	+/is-located,which-located,located,is-county,which-county,county
-county	+/is-located,which-located,located,is-county,which-county,a-county
-is-municipality	+/is-located,which-located,located,which-municipality,municipality
-which-municipality	+/is-located,which-located,located,is-municipality,municipality
-municipality	+/is-located,which-located,located,is-municipality,which-municipality
-which-district	+/is-located,which-located,located,district,is-district
-district	+/is-located,which-located,located,which-district,is-district
-is-district	+/is-located,which-located,located,which-district,district
-which-commune	+/is-located,which-located,located,commune,is-commune
-commune	+/is-located,which-located,located,which-commune,is-commune
-is-commune	+/is-located,which-located,located,which-commune,commune
-which-valley	+/is-located,which-located,located,a-valley,valley
-a-valley	+/is-located,which-located,located,which-valley,valley
-valley	+/is-located,which-located,located,which-valley,a-valley
-a-region	+/is-located,which-located,located,which-region,region,area-of
-which-region	+/is-located,which-located,located,a-region,region,area-of
-area-of	+/is-located,which-located,located,a-region,which-region,region
-region	+/is-located,which-located,located,a-region,which-region,area-of
-island-of	+/is-located,which-located,located,is-island-of,which-is-island-of
-is-island-of	+/is-located,which-located,located,island-of,which-is-island-of
-which-is-island-of	+/is-located,which-located,located,island-of,is-island-of
-capital	+/is-located,which-located,located,capital-of,is-capital-of,the-capital-of,is-capital-city,which-capital-city,city,city-of,is-city,which-city,city
-capital-of	+/is-located,which-located,located,capital,is-capital-of,the-capital-of,is-capital-city,which-capital-city,city,city-of,is-city,which-city,city
-is-capital-of	+/is-located,which-located,located,capital,capital-of,the-capital-of,is-capital-city,which-capital-city,city,city-of,is-city,which-city,city
-the-capital-of	+/is-located,which-located,located,capital,capital-of,is-capital-of,is-capital-city,which-capital-city,city,city-of,is-city,which-city,city
-is-capital-city	+/is-located,which-located,located,capital,capital-of,is-capital-of,the-capital-of,which-capital-city,city,city-of,is-city,which-city,city
-which-capital-city	+/is-located,which-located,located,capital,capital-of,is-capital-of,the-capital-of,is-capital-city,city,city-of,is-city,which-city,city
+is-located	+/which-is-located,located
+which-is-located	+/is-located, located
+located	+/is-located, which-is-located
+is-town	+/is-located,which-is-located,located,which-is-town,town
+which-is-town	+/is-located,which-is-located,located, is-town,town
+town	+/is-located,which-is-located,located, is-town,which-is-town
+a-city	+/is-located,which-is-located,located,is-city,which-is-city,city,city-of
+city-of	+/is-located,which-is-located,located,is-city,which-is-city,city,a-city
+is-city	+/is-located,which-is-located,located,which-is-city,city,city-of,a-city
+which-is-city	+/is-located,which-is-located,located,is-city,city,city-of,a-city
+city	+/is-located,which-is-located,located,is-city,which-is-city,city-of,a-city
+is-state	+/is-located,which-is-located,located,which-is-state,state
+which-is-state	+/is-located,which-is-located,located,is-state,state
+state	+/is-located,which-is-located,located,is-state,which-is-state
+is-county	+/is-located,which-is-located,located,which-is-county,county,a-county
+which-is-county	+/is-located,which-is-located,located,is-county,county,a-county
+a-county	+/is-located,which-is-located,located,is-county,which-is-county,county
+county	+/is-located,which-is-located,located,is-county,which-is-county,a-county
+is-municipality	+/is-located,which-is-located,located,which-is-municipality,municipality
+which-is-municipality	+/is-located,which-is-located,located,is-municipality,municipality
+municipality	+/is-located,which-is-located,located,is-municipality,which-is-municipality
+which-is-district	+/is-located,which-is-located,located,district,is-district
+district	+/is-located,which-is-located,located,which-is-district,is-district
+is-district	+/is-located,which-is-located,located,which-is-district,district
+which-is-commune	+/is-located,which-is-located,located,commune,is-commune
+commune	+/is-located,which-is-located,located,which-is-commune,is-commune
+is-commune	+/is-located,which-is-located,located,which-is-commune,commune
+which-is-valley	+/is-located,which-is-located,located,a-valley,valley
+a-valley	+/is-located,which-is-located,located,which-is-valley,valley
+valley	+/is-located,which-is-located,located,which-is-valley,a-valley
+a-region	+/is-located,which-is-located,located,which-is-region,region,area-of
+which-is-region	+/is-located,which-is-located,located,a-region,region,area-of
+area-of	+/is-located,which-is-located,located,a-region,which-is-region,region
+region	+/is-located,which-is-located,located,a-region,which-is-region,area-of
+island-of	+/is-located,which-is-located,located,is-island-of,which-is-is-island-of
+is-island-of	+/is-located,which-is-located,located,island-of,which-is-island-of
+which-is-island-of	+/is-located,which-is-located,located,island-of,is-island-of
+capital	+/is-located,which-is-located,located,capital-of,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
+capital-of	+/is-located,which-is-located,located,capital,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
+is-capital-of	+/is-located,which-is-located,located,capital,capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
+the-capital-of	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
+is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,which-is-capital-city,city,city-of,is-city,which-is-city,city
+which-is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,is-capital-city,city,city-of,is-city,which-is-city,city
