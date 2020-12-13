@@ -29,7 +29,12 @@ encoders = ['bert-base-cased',
             'roberta-base',
             'roberta-large',
             'albert-base-v2',
-            'albert-xxlarge-v2'
+            'albert-xxlarge-v2',
+            
+            'nyu-mll/roberta-base-1B-1',
+            'nyu-mll/roberta-base-100M-1',
+            'nyu-mll/roberta-base-10M-1',
+            'nyu-mll/roberta-med-small-1M-1'
             ]
 
 
