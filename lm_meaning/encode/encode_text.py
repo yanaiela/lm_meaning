@@ -110,8 +110,8 @@ def main():
     results_dict[model_name] = {}
 
     representations = []
-    for prompt_id, prompt in enumerate(prompts):
-        predictions = run_query(model, tokenizer, data, prompt, args.bs)
+    for prompt_id, prompt in enumerate(tqdm(prompts)):
+        predictions = run_query(model, tokenizer, data, prompt)
         representations.append(predictions)
 
     representations = np.array(representations)
