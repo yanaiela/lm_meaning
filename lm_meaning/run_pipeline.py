@@ -107,8 +107,11 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
         data_reduced.append({'sub_label': row['sub_label'], 'obj_label': row['obj_label']})
 
     preds_reduced = []
-    for row in predictions:
-        preds_reduced.append({'score': row['score'], 'token': row['token'], 'token_str': row['token_str']})
+    for top_k in predictions:
+        vals = []
+        for row in top_k:
+            vals.append({'score': row['score'], 'token': row['token'], 'token_str': row['token_str']})
+        preds_reduced.append(vals)
 
     return data_reduced, preds_reduced
 
