@@ -36,16 +36,12 @@ def parse_prompt(prompt: str, subject_label: str, mask: str) -> str:
 
 
 # get mlm model to predict masked token.
-def build_model_by_name(lm: str, args):
+def build_model_by_name(lm: str):
     """Load a model by name and args.
 
     Note, args.lm is not used for model selection. args are only passed to the
     model's initializator.
     """
-
-    device = args.gpu
-    if not torch.cuda.is_available():
-        device = -1
 
     model = AutoModel.from_pretrained(lm)
     tokenizer = AutoTokenizer.from_pretrained(lm)
@@ -91,8 +87,6 @@ def main():
     parse.add_argument("--patterns_file", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
     parse.add_argument("--data_file", type=str, help="", default="/data/LAMA_data/TREx/P449.jsonl")
     parse.add_argument("--pred_file", type=str, help="Path to store LM predictions for each prompt")
-    parse.add_argument("--gpu", type=int, default=-1)
-    parse.add_argument("--bs", type=int, default=100)
     parse.add_argument("--wandb", action='store_true')
 
     args = parse.parse_args()
@@ -111,7 +105,7 @@ def main():
     print('Language Models: {}'.format(model_name))
 
     results_dict = {}
-    model, tokenizer = build_model_by_name(model_name, args)
+    model, tokenizer = build_model_by_name(model_name)
 
     results_dict[model_name] = {}
 
