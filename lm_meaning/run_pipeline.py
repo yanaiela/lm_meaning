@@ -86,7 +86,7 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
 
     # create the text prompt
     for sample in vals_dic:
-        data.append({'prompt': parse_prompt(prompt, sample["sub_label"], mask_token), 'answer': sample["obj_label"],
+        data.append({'prompt': parse_prompt(prompt, sample["sub_label"], mask_token),
                      'sub_label': sample["sub_label"], 'obj_label': sample["obj_label"]})
 
     batched_data = []
@@ -102,7 +102,15 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
         tokenized_preds = tokenize_results(preds, pipeline_model, possible_objects)
         predictions.extend(tokenized_preds)
 
-    return data, predictions
+    data_reduced = []
+    for row in data:
+        data_reduced.append({'sub_label': row['sub_label'], 'obj_label': row['obj_label']})
+
+    preds_reduced = []
+    for row in predictions:
+        preds_reduced.append({'score': row['score'], 'token': row['token'], 'token_str': row['token_str']})
+
+    return data_reduced, preds_reduced
 
 
 def lm_eval(results_dict: Dict, lm: str):
@@ -134,7 +142,7 @@ def main():
     parse.add_argument("--pred_file", type=str, help="Path to store LM predictions for each prompt")
     parse.add_argument("--evaluate", action='store_true')
     parse.add_argument("--gpu", type=int, default=-1)
-    parse.add_argument("--bs", type=int, default=50)
+    parse.add_argument("--bs", type=int, default=100)
     parse.add_argument("--wandb", action='store_true')
     parse.add_argument("--no_subj", type=bool, default=False)
     parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
