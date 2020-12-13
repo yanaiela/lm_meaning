@@ -1,10 +1,15 @@
 used-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
-found-emplyment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+found-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 was-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 work-in	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 held-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 take-post	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
-moved-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+take-position +/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+take-work +/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
+moved-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in,moved-for-work
+moved-for-position +/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in,moved-for-work,moved-for-post
+moved-for-post +/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in,moved-for-work,moved-for-position
+moved-for-work +/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in,moved-for-position,moved-for-post
 establish-foundation	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 run-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
 found-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,works-in
