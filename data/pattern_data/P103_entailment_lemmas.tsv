@@ -7,11 +7,18 @@ author	+/native, writer
 writer	+/native, author
 actor	+/native,was-actor
 was-actor	+/native,actor
-poet	+/native
-was-politician	+/native
-was-composer	+/native
-was-painter	+/native
-was-naturalist	+/native
-was-botanist	+/native
-was-minister	+/native
+poet	+/native,was-poet
+was-politician	+/native,politician
+was-composer	+/native,composer
+was-painter	+/native,painter
+was-naturalist	+/native,naturalist
+was-botanist	+/native,botanist
+was-minister	+/native,minister
+was-poet	+/native,poet
+politician	+/native,was-politician
+composer	+/native,was-composer
+painter	+/native,was-painter
+naturalist	+/native,was-naturalist
+botanist	+/native,was-botanist
+minister	+/native,was-minister
 was-born	+/native
