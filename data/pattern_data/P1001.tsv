@@ -1,8 +1,10 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] is a legal term in [Y] .		legal-term	legal-term	present
+[X] is a legal unit in [Y] .		legal-unit	legal-unit	present
 [X] is representing [Y] .		represent	represent	present-continuous
 [X] representing [Y].		represent	represent	present-continuous
 [X] represents [Y].		represent	represent	present
+[X] is an institution in [Y] .		institution	institution	present
 [X], which represents [Y].		represent	represent	present
 [X] is a unit of government in [Y].		unit-of-government	unit-of-government	present
 [X] is an executive body in [Y].		executive-body	executive-body	present
