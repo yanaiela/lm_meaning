@@ -1,15 +1,15 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-The capital of [X] is [Y] .		capital	capital-of	present
-The capital city of [X] is [Y].		capital-city	capital-city-of	present
-[Y] is the capital of [X].		capital	capital-of	present
-[Y] is the capital city of [X].		capital-city	capital-city-of	present
-[X]'s capital, [Y].		capital	capital-of	present
-[X]'s capital city, [Y].		capital-city	capital-city-of	present
-[X]'s capital is [Y].		capital	capital-of	present
-[X]'s capital city is [Y].		capital-city	capital-city-of	present
-[Y], the capital of [X].		capital	capital-of	present
-[Y], the capital city of [X].		capital-city	capital-city-of	present
-[Y], that is the capital of [X].		capital	capital-of	present
-[Y], that is the capital city of [X].		capital-city	capital-city-of	present
-[X], which has the capital [Y].		capital	capital-of	present
-[X], which has the capital city [Y].		capital-city	capital-city-of	present
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE FUNCTION
+The capital of [X] is [Y] .		capital	capital-of	present 1-1
+The capital city of [X] is [Y].		capital-city	capital-city-of	present 1-1
+[Y] is the capital of [X].		capital	capital-of	present 1-1
+[Y] is the capital city of [X].		capital-city	capital-city-of	present 1-1
+[X]'s capital, [Y].		capital	capital-of	present 1-1
+[X]'s capital city, [Y].		capital-city	capital-city-of	present 1-1
+[X]'s capital is [Y].		capital	capital-of	present 1-1
+[X]'s capital city is [Y].		capital-city	capital-city-of	present 1-1
+[Y], the capital of [X].		capital	capital-of	present 1-1
+[Y], the capital city of [X].		capital-city	capital-city-of	present 1-1
+[Y], that is the capital of [X].		capital	capital-of	present 1-1
+[Y], that is the capital city of [X].		capital-city	capital-city-of	present 1-1
+[X], which has the capital [Y].		capital	capital-of	present 1-1
+[X], which has the capital city [Y].		capital-city	capital-city-of	present 1-1
