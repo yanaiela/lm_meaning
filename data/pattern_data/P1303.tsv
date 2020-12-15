@@ -1,23 +1,23 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] plays [Y] .		play	play	present
-[X] played [Y] .		play	play	past
-[X] played the [Y] .		play-the	play-the	past
-[X] playing [Y] .		play	play	present-continuous
-[Y] player [X] 		player	player	present
-[X] playing the [Y] .		play-the	play-the	present-continuous
-[Y] sonatas of [X] .		sonata	sonata	-
-[X] plays the [Y] .		play-the	play-the	present
-[Y] pieces by [X] .		pieces	pieces	-
-[Y] solo by [X] .		solo	solo	-
-[Y] maestro [X] .		maestro	maestro	-
-[X] to play [Y] 		to-play	to-play	future
-[X] on vocals and [Y] .		vocals	vocals	-
-[Y] played by [X] .		play-by	play-by	past
-features [X]'s [Y] solo.		features	features	present
-[X] is a [Y] player.		is-a-player	is-a-player	present
-[X] was a [Y] player.		was-a-player	was-a-player	past
-[X] plays a variety of instruments, including [Y].		variety-instruments	variety-instruments	present
-[X] studies [Y].		study	study	present
-[X] performing on [Y].		perform	perform	present
-[X] began playing [Y].		began-play	began-play	past
-[X] is a [Y] performer.		performer	performer	present
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] plays [Y] .		play	play	present	N-M
+[X] played [Y] .		play	play	past	N-M
+[X] played the [Y] .		play-the	play-the	past	N-M
+[X] playing [Y] .		play	play	present-continuous	N-M
+[Y] player [X] 		player	player	present	N-M
+[X] playing the [Y] .		play-the	play-the	present-continuous	N-M
+[Y] sonatas of [X] .		sonata	sonata	-	N-M
+[X] plays the [Y] .		play-the	play-the	present	N-M
+[Y] pieces by [X] .		pieces	pieces	-	N-M
+[Y] solo by [X] .		solo	solo	-	N-M
+[Y] maestro [X] .		maestro	maestro	-	N-M
+[X] to play [Y] 		to-play	to-play	future	N-M
+[X] on vocals and [Y] .		vocals	vocals	-	N-M
+[Y] played by [X] .		play-by	play-by	past	N-M
+features [X]'s [Y] solo.		features	features	present	N-M
+[X] is a [Y] player.		is-a-player	is-a-player	present	N-M
+[X] was a [Y] player.		was-a-player	was-a-player	past	N-M
+[X] plays a variety of instruments, including [Y].		variety-instruments	variety-instruments	present	N-M
+[X] studies [Y].		study	study	present	N-M
+[X] performing on [Y].		perform	perform	present	N-M
+[X] began playing [Y].		began-play	began-play	past	N-M
+[X] is a [Y] performer.		performer	performer	present	N-M
