@@ -59,12 +59,15 @@ if __name__ == '__main__':
         for encoder in encoders:
 
             prediction_encoder_name = encoder
-            if 'nyu-mll' in prediction_encoder_name:
+            if 'nyu-mll' in encoders:
+                prediction_encoder_name = encoder.split('/')[-1]
+            if 'entailment' in encoders:
                 prediction_encoder_name = encoder.split('/')[-1]
             cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
                                       f'data/trex_lms_vocab/{relation_id}.jsonl',
                                       encoder,
-                                      f'data/output/predictions_lm/trex_lms_vocab/{relation_id}_{prediction_encoder_name}.json'])
+                                      f'data/output/predictions_lm/trex_lms_vocab/'
+                                      f'{relation_id}_{prediction_encoder_name}.json'])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/core/run_lm.sh',
                 on_gpu=True, dry_run=args.dry_run)

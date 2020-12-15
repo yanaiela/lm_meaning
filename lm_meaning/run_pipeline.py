@@ -20,6 +20,17 @@ def log_wandb(args):
         lm=lm
     )
 
+    # entailment_bert-large-cased-whole-word-masking_100_4_2_P176-P30-P39-P127
+    if 'entailment' in lm:
+        model_args = lm.split('_')
+        config['ft_type'] = model_args[0]
+        config['model_name'] = model_args[1]
+        config['n_tuples'] = model_args[2]
+        config['n_graphs'] = model_args[3]
+        config['epoch'] = model_args[4]
+        config['graphs_trained'] = model_args[5]
+
+
     wandb.init(
         name=f'{pattern}_lm_{lm}',
         project="memorization",
