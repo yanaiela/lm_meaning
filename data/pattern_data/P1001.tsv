@@ -1,21 +1,21 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is a legal term in [Y] .		legal-term	legal-term	present
-[X] is a legal unit in [Y] .		legal-unit	legal-unit	present
-[X] is a legal entity in [Y] .		legal-entity	legal-entity	present
-[X] is representing [Y] .		represent	represent	present-continuous
-[X] representing [Y].		represent	represent	present-continuous
-[X] represents [Y].		represent	represent	present
-[X] is an institution in [Y] .		institution	institution	present
-[X], which represents [Y].		represent	represent	present
-[X] is a unit of government in [Y].		unit-of-government	unit-of-government	present
-[X] is an executive body in [Y].		executive-body	executive-body	present
-[X] is a government body in [Y].		government-body	government-body	present
-[X] is a head of state in [Y].		head-state	head-state	present
-[X] is a head of government in [Y].		head-government	head-government	present
-[X] is the leader of the executive branch of the government of [Y].		leader	leader	present
-[X] is the local government authority for [Y].		local-authority	local-authority	present
-[X] is a mandate in [Y].		mandate	mandate	present
-[X] is the currency of [Y].		currency	currency	present
-[X] is the constitution of [Y].		constitution	constitution	present
-[X] is the national parliament of [Y].		national-parliament	national-parliament	present
-[X] is a parliament in [Y].		parliament	parliament	present
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is a legal term in [Y] .		legal-term	legal-term	present	N-M
+[X] is a legal unit in [Y] .		legal-unit	legal-unit	present	N-M
+[X] is a legal entity in [Y] .		legal-entity	legal-entity	present	N-M
+[X] is representing [Y] .		represent	represent	present-continuous	N-M
+[X] representing [Y].		represent	represent	present-continuous	N-M
+[X] represents [Y].		represent	represent	present	N-M
+[X] is an institution in [Y] .		institution	institution	present	N-M
+[X], which represents [Y].		represent	represent	present	N-M
+[X] is a unit of government in [Y].		unit-of-government	unit-of-government	present	N-1
+[X] is an executive body in [Y].		executive-body	executive-body	present	N-M
+[X] is a government body in [Y].		government-body	government-body	present	N-1
+[X] is a head of state in [Y].		head-state	head-state	present	N-1
+[X] is a head of government in [Y].		head-government	head-government	present	N-1
+[X] is the leader of the executive branch of the government of [Y].		leader	leader	present	N-1
+[X] is the local government authority for [Y].		local-authority	local-authority	present	N-1
+[X] is a mandate in [Y].		mandate	mandate	present	N-M
+[X] is the currency of [Y].		currency	currency	present	N-M
+[X] is the constitution of [Y].		constitution	constitution	present	N-1
+[X] is the national parliament of [Y].		national-parliament	national-parliament	present	N-1
+[X] is a parliament in [Y].		parliament	parliament	present	N-1
