@@ -14,5 +14,6 @@ pred_file=$4
         --pred_file $pred_file \
         --gpu 0 \
         --evaluate \
-        --wandb
+        --wandb \
+        --use_targets
 

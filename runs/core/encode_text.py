@@ -6,8 +6,8 @@ from runs.utils import get_lama_patterns
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
-    'nlp01',
-    'nlp02',
+    #'nlp01',
+    #'nlp02',
     'nlp03',
     'nlp04',
     'nlp05',

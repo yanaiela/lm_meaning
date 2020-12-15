@@ -22,6 +22,11 @@ encoders = ['bert-base-cased',
             'roberta-large',
             'albert-base-v2',
             'albert-xxlarge-v2'
+
+            'nyu-mll/roberta-base-1B-1',
+            'nyu-mll/roberta-base-100M-1',
+            'nyu-mll/roberta-base-10M-1',
+            'nyu-mll/roberta-med-small-1M-1'
             ]
 
 
@@ -44,8 +49,11 @@ if __name__ == '__main__':
     cartesian_product = []
     for relation_id in relations:
         for lm in encoders:
+            prediction_encoder_name = lm
+            if 'nyu-mll' in prediction_encoder_name:
+                prediction_encoder_name = lm.split('/')[-1]
             cartesian_product.append([f'data/trex_lms_vocab/{relation_id}.jsonl',
-                                      f'data/output/predictions_lm/trex_lms_vocab/{relation_id}_{lm}.json',
+                                      f'data/output/predictions_lm/trex_lms_vocab/{relation_id}_{prediction_encoder_name}.json',
                                       f'data/pattern_data/graphs/{relation_id}.graph'])
 
     parallelize(nodes, cartesian_product,
