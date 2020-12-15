@@ -1,16 +1,17 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is a citizen of [Y].	John is a citizen of France.	citizen	is-citizen-of	present
-[X] was a citizen of [Y].	John was a citizen of France.	citizen	is-citizen-of	past
-[X] was granted a citizenship of [Y].	John was granted a citizenship in France.	grant-citizenship	grant-citizenship-of	past
-[X], a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	?
-[X], who is a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	present
-[X], who was a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	past
-[X] holds a citizenship of [Y].	John holds a citizenship of France	hold	hold-citizenship-of	present
-[X] held a citizenship of [Y].	John held a citizenship of France	hold	hold-citizenship-of	past
-[X] has a citizenship of [Y].	John has a citizenship of France	have	have-citizenship-of	present
-[X] had a citizenship of [Y].	John had a citizenship of France	have	have-citizenship-of	past
-[X], who holds a citizenship of [Y].	John holds a citizenship of France	hold	hold-citizenship-of	present
-[X], who held a citizenship of [Y].	John held a citizenship of France	hold	hold-citizenship-of	past
-[X], who has a citizenship of [Y].	John has a citizenship of France	have	have-citizenship-of	present
-[X], who had a citizenship of [Y].	John had a citizenship of France	have	have-citizenship-of	past
-as a citizen of [Y], [X]	Bodiroga won his first award in 2002 , as a citizen of Yugoslavia	citizen	as-citizen-of	?
+[X] is [Y] citizen.	John is France citizen.	citizen	is-citizen	present	N-M
+[X] is a citizen of [Y].	John is a citizen of France.	citizen	is-citizen-of	present	N-M
+[X] was a citizen of [Y].	John was a citizen of France.	citizen	is-citizen-of	past	N-M
+[X] was granted a citizenship of [Y].	John was granted a citizenship in France.	grant-citizenship	grant-citizenship-of	past	N-M
+[X], a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	?	N-M
+[X], who is a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	present	N-M
+[X], who was a citizen of [Y].	John, a citizen of France.	citizen	citizen-of	past	N-M
+[X] holds a citizenship of [Y].	John holds a citizenship of France	hold	hold-citizenship-of	present	N-M
+[X] held a citizenship of [Y].	John held a citizenship of France	hold	hold-citizenship-of	past	N-M
+[X] has a citizenship of [Y].	John has a citizenship of France	have	have-citizenship-of	present	N-M
+[X] had a citizenship of [Y].	John had a citizenship of France	have	have-citizenship-of	past	N-M
+[X], who holds a citizenship of [Y].	John holds a citizenship of France	hold	hold-citizenship-of	present	N-M
+[X], who held a citizenship of [Y].	John held a citizenship of France	hold	hold-citizenship-of	past	N-M
+[X], who has a citizenship of [Y].	John has a citizenship of France	have	have-citizenship-of	present	N-M
+[X], who had a citizenship of [Y].	John had a citizenship of France	have	have-citizenship-of	past	N-M
+as a citizen of [Y], [X]	Bodiroga won his first award in 2002 , as a citizen of Yugoslavia	citizen	as-citizen-of	?	N-M
