@@ -1,30 +1,30 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] was created in [Y].		create	was-create-in	past
-[X], that begun in [Y].		begin	that-begin-in	past
-[X], begun in [Y]		begin	begin-in	past
-[X] was begun in [Y].		begin	was-begin-in	past
-[X], that was started in [Y].		start	that-start-in	past
-[X] started in [Y].		start	start-in	past
-[X] was started in [Y]		start	was-start-in	past
-[X], that was created in [Y].		create	that-create-in	past
-[X], created in [Y].		create	create-in	past
-[X], that originated in [Y].		originate	that-originate-in	past
-[X] originated in [Y].		originate	originate-in	past
-[X] formed in [Y].		form	form-in	past
-[X] was formed in [Y].		form	was-form-in	past
-[X], that was formed in [Y].		form	that-form-in	past
-[X] was formulated in [Y].		formulate	was-formulate-in	past
-[X], formulated in [Y].		formulate	formulate-in	past
-[X], that was formulated in [Y].		formulate	that-formulate-in	past
-[X] was constructed in [Y].		construct	was-construct-in	past
-[X], constructed in [Y].		construct	construct-in	past
-[X], that was constructed in [Y].		construct	that-construct-in	past
-[X] was made in [Y].		made	was-made-in	past
-[X], that was made in [Y].		made	that-made-in	past
-[X], made in [Y].		made	made-in	past
-[X] was from [Y].		from	was-from	past
-[X], who was from [Y].		from	was-from	past
-[X], from [Y].		from	were-from	past
-[X], that was developed in [Y].		developed	that-developed-in	past
-[X] was developed in [Y].		developed	was-developed-in	past
-[X], developed in [Y].		developed	developed-in	past
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] was created in [Y].		create	was-create-in	past	N-1
+[X], that begun in [Y].		begin	that-begin-in	past	N-1
+[X], begun in [Y]		begin	begin-in	past	N-1
+[X] was begun in [Y].		begin	was-begin-in	past	N-1
+[X], that was started in [Y].		start	that-start-in	past	N-1
+[X] started in [Y].		start	start-in	past	N-1
+[X] was started in [Y]		start	was-start-in	past	N-1
+[X], that was created in [Y].		create	that-create-in	past	N-1
+[X], created in [Y].		create	create-in	past	N-1
+[X], that originated in [Y].		originate	that-originate-in	past	N-1
+[X] originated in [Y].		originate	originate-in	past	N-1
+[X] formed in [Y].		form	form-in	past	N-1
+[X] was formed in [Y].		form	was-form-in	past	N-1
+[X], that was formed in [Y].		form	that-form-in	past	N-1
+[X] was formulated in [Y].		formulate	was-formulate-in	past	N-1
+[X], formulated in [Y].		formulate	formulate-in	past	N-1
+[X], that was formulated in [Y].		formulate	that-formulate-in	past	N-1
+[X] was constructed in [Y].		construct	was-construct-in	past	N-1
+[X], constructed in [Y].		construct	construct-in	past	N-1
+[X], that was constructed in [Y].		construct	that-construct-in	past	N-1
+[X] was made in [Y].		made	was-made-in	past	N-1
+[X], that was made in [Y].		made	that-made-in	past	N-1
+[X], made in [Y].		made	made-in	past	N-1
+[X] was from [Y].		from	was-from	past	N-1
+[X], who was from [Y].		from	was-from	past	N-1
+[X], from [Y].		from	were-from	past	N-1
+[X], that was developed in [Y].		developed	that-developed-in	past	N-1
+[X] was developed in [Y].		developed	was-developed-in	past	N-1
+[X], developed in [Y].		developed	developed-in	past	N-1
