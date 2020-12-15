@@ -4,7 +4,7 @@ from copy import deepcopy
 
 import torch
 from tqdm import tqdm
-from transformers import pipeline, Pipeline
+from transformers import pipeline, Pipeline, BertForMaskedLM, BertTokenizer
 import wandb
 
 from typing import List, Dict
@@ -59,7 +59,12 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     if not torch.cuda.is_available():
         device = -1
 
-    model = pipeline("fill-mask", model=lm, device=device, topk=100)
+    if 'entailment' in lm:
+        model = BertForMaskedLM.from_pretrained(lm)
+        tokenizer = BertTokenizer.from_pretrained("bert-large-cased-whole-word-masking")
+        model = pipeline("fill-mask", model=model, tokenizer=tokenizer, device=device, topk=100)
+    else:
+        model = pipeline("fill-mask", model=lm, device=device, topk=100)
     return model
 
 
