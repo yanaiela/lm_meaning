@@ -1,16 +1,16 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] comprises [Y].	[X]:This book :comprises [Y]:250 pages.	comprise	comprise	present
-[X] comprised [Y].	[X]:This book :comprised [Y]:250 pages.	comprise	comprise	past
-[X] is comprised of [Y].	[X]:This book :is :comprised :of [Y]:250 pages.	comprise	comprise-of	present
-[X] was comprised of [Y].	[X]:This book :was :comprised :of [Y]:250 pages.	comprise	comprise-of	past
-[Y] is a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	present
-[Y] was a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	past
-[Y] is a building block of [X].	[Y]:Beta carotene :is :a :building :block :of [X]:vitamin A	building-block	is-building-block	present
-[Y] is a component of [X].	[Y]:Tpx-1 :is :a :component :of [X]:the outer dense fibers	component-of	is-component-of	present
-[X] consists of [Y].	[X]:The curriculum :consists :of [Y]:13 student-run funds	consist	consist-of	present
-[X] consisted of [Y].	[X]:The curriculum :consisted :of [Y]:13 student-run funds	consist	consist-of	past
-[X] is made of [Y].	[X]:Chairs :are :made :of [Y]:wood.	make	make-of	present
-[X] was made of [Y].	[X]:Chairs :were :made :of [Y]:wood.	make	make-of	past
-[Y] is an ingredient in [X].	[X]:Taurine :is :an :ingredient :in [Y]:many energy drinks.	ingredient	is-ingredient-in	present
-[X] is created out of [Y]	[X]:Capital reserve :is :created :out :of [Y]:capital profits like upward revaluation of assets, profits on sale of assets etc.	create-out	is-create-out	present
-[X] was created out of [Y]	[X]:Capital reserve :was :created :out :of [Y]:capital profits like upward revaluation of assets, profits on sale of assets etc.	create-out	is-create-out	past
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] consists of [Y].	[X]:The curriculum :consists :of [Y]:13 student-run funds	consist	consist-of	present	N-M
+[X] consisted of [Y].	[X]:The curriculum :consisted :of [Y]:13 student-run funds	consist	consist-of	past	N-M
+[X] comprises [Y].	[X]:This book :comprises [Y]:250 pages.	comprise	comprise	present	N-M
+[X] comprised [Y].	[X]:This book :comprised [Y]:250 pages.	comprise	comprise	past	N-M
+[X] is comprised of [Y].	[X]:This book :is :comprised :of [Y]:250 pages.	comprise	comprise-of	present	N-M
+[X] was comprised of [Y].	[X]:This book :was :comprised :of [Y]:250 pages.	comprise	comprise-of	past	N-M
+[Y] is a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	present	N-M
+[Y] was a part of [X].	[Y]:Central Europe :is :a :part :of [X]:Europe	part-of	is-part-of	past	N-M
+[Y] is a building block of [X].	[Y]:Beta carotene :is :a :building :block :of [X]:vitamin A	building-block	is-building-block	present	N-M
+[Y] is a component of [X].	[Y]:Tpx-1 :is :a :component :of [X]:the outer dense fibers	component-of	is-component-of	present	N-M
+[X] is made of [Y].	[X]:Chairs :are :made :of [Y]:wood.	make	make-of	present	N-M
+[X] was made of [Y].	[X]:Chairs :were :made :of [Y]:wood.	make	make-of	past	N-M
+[Y] is an ingredient in [X].	[X]:Taurine :is :an :ingredient :in [Y]:many energy drinks.	ingredient	is-ingredient-in	present	N-M
+[X] is created out of [Y]	[X]:Capital reserve :is :created :out :of [Y]:capital profits like upward revaluation of assets, profits on sale of assets etc.	create-out	is-create-out	present	N-M
+[X] was created out of [Y]	[X]:Capital reserve :was :created :out :of [Y]:capital profits like upward revaluation of assets, profits on sale of assets etc.	create-out	is-create-out	past	N-M
