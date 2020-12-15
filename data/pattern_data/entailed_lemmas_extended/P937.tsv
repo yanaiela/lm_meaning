@@ -1,20 +1,20 @@
 LEMMA	NOT-ENTAILED
-work-in	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-run-company	taught-in,artist,establish-foundation,director,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-take-post	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-works-in	taught-in,artist,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker,live-work-in
-artist	taught-in,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker,live-work-in
-establish-foundation	taught-in,artist,run-company,director,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-director	taught-in,artist,establish-foundation,writer,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker,live-work-in
-found-company	taught-in,artist,establish-foundation,director,run-company,writer,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-rector-in	taught-in,artist,establish-foundation,writer,director,run-company-found-company,moved-work,taught-in-uni, filmmaker,live-work-in
-taught-in-uni	taught-in,artist,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in, filmmaker,live-work-in
-used-work	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-writer	taught-in,artist,establish-foundation,director,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker,live-work-in
-was-employment	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-moved-work	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,rector-in,taught-in-uni,live-work-in,filmmaker
-filmmaker	taught-in,artist,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in,taught-in-uni,live-work-in
-taught-in	artist,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker,live-work-in
-found-emplyment	taught-in,artist,establish-foundation,director,run-company,writer,found-company,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-held-position	taught-in,artist,establish-foundation,director,run-company,writer,found-company,found-emplyment,moved-work,rector-in,taught-in-uni,live-work-in,filmmaker
-live-work-in	taught-in,artist,establish-foundation,writer,director,run-company-found-company,moved-work,rector-in,taught-in-uni, filmmaker
+used-work	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+found-company	taught-in,run-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+artist	taught-in, filmmaker,live-work-in,writer,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+writer	taught-in, filmmaker,live-work-in,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+taught-in-uni	taught-in, filmmaker,live-work-in,writer,artist,run-company-found-company,director,establish-foundation,moved-work,rector-in
+director	taught-in, filmmaker,live-work-in,writer,artist,taught-in-uni,run-company-found-company,establish-foundation,moved-work,rector-in
+work-in	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+taught-in	 filmmaker,live-work-in,writer,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+run-company	taught-in,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+held-position	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+filmmaker	taught-in,live-work-in,writer,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+take-post	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+was-employment	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+establish-foundation	taught-in,run-company,found-company,live-work-in,artist,writer,taught-in-uni,filmmaker,director,found-emplyment,moved-work,rector-in
+live-work-in	taught-in, filmmaker,writer,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+found-emplyment	taught-in,run-company,found-company,live-work-in,artist,writer,taught-in-uni,filmmaker,director,establish-foundation,moved-work,rector-in
+works-in	taught-in, filmmaker,live-work-in,writer,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work,rector-in
+moved-work	taught-in,run-company,found-company,live-work-in,artist,writer,found-emplyment,taught-in-uni,filmmaker,director,establish-foundation,rector-in
+rector-in	taught-in, filmmaker,live-work-in,writer,artist,taught-in-uni,run-company-found-company,director,establish-foundation,moved-work

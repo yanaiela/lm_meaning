@@ -1,0 +1,15 @@
+LEMMA	NOT-ENTAILED
+mandate	national-parliament,local-authority,constitution,executive-body,head-government,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+local-authority	mandate,national-parliament,constitution,executive-body,head-government,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+constitution	mandate,national-parliament,local-authority,executive-body,head-government,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+executive-body	mandate,national-parliament,local-authority,constitution,head-government,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+head-government	mandate,national-parliament,local-authority,constitution,executive-body,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+national-parliament	mandate,local-authority,constitution,executive-body,head-government,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+legal-term	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,parliament,represent,government-body,head-state,currency
+leader	mandate,local-authority,constitution,executive-body,head-government,national-parliament,unit-of-government,parliament,represent,government-body,head-state,currency
+unit-of-government	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,parliament,represent,government-body,head-state,currency
+parliament	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,represent,government-body,head-state,currency
+represent	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,parliament,government-body,head-state,currency
+government-body	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,parliament,represent,head-state,currency
+head-state	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,parliament,represent,government-body,currency
+currency	mandate,local-authority,constitution,executive-body,head-government,national-parliament,leader,unit-of-government,parliament,represent,government-body,head-state

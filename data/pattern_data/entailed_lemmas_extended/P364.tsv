@@ -1,11 +1,11 @@
 LEMMA	NOT-ENTAILED
-is-language-of	-language-film,-language-series,-language-show
-language-is	-language-film,-language-series,-language-show
--language-film	 series-in-language, show-in-language, -language-series,-language-show
-show-in-language	-language-film,-language-series,-language-show
--language-show	-language-film, -language-series, series-in-language, film-in-language
-film-in-language	-language-film,-language-series,-language-show
-original-language-is	-language-film,-language-series,-language-show
-series-in-language	-language-film,-language-series,-language-show
-was-language-of	-language-film,-language-series,-language-show
--language-series	-language-film, show-in-language, film-in-language, -language-show
+is-language-of	-language-series,-language-show,-language-film
+film-in-language	-language-series,-language-show,-language-film
+-language-show	 film-in-language,-language-film, series-in-language, -language-series
+-language-film	-language-show, show-in-language, series-in-language, -language-series
+original-language-is	-language-series,-language-show,-language-film
+show-in-language	-language-series,-language-show,-language-film
+series-in-language	-language-series,-language-show,-language-film
+-language-series	 film-in-language, -language-show, show-in-language,-language-film
+was-language-of	-language-series,-language-show,-language-film
+language-is	-language-series,-language-show,-language-film
