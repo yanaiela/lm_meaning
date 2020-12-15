@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is [Y] citizen.	John is France citizen.	citizen	is-citizen	present	N-M
 [X] is a citizen of [Y].	John is a citizen of France.	citizen	is-citizen-of	present	N-M
 [X] was a citizen of [Y].	John was a citizen of France.	citizen	is-citizen-of	past	N-M
