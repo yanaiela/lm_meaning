@@ -1,21 +1,21 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-The native language of [X] is [Y].		native	native	present
-[X] has known [Y] since childhood.		childhood	childhood	present
-[Y] actress [X].		actress	actress	-
-[Y] author [X].		author	author	-
-[Y] actor [X].		actor	actor	-
-[Y] poet [X].		poet	poet	-
-[X] was a [Y] politician.		was-politician	was-politician	past
-[Y] writer [X].	Behzad was known  for the books of French y science writer Jean Rostand x and English naturalist Charles Darwin that he translated .	writer	writer	-
-[X] was a [Y] composer.		was-composer	was-composer	past
-[X] was a [Y] actor.	Pierre Alcover x ( 14 March 1893 – 14 November 1957 ) was a French y stage and film actor .	was-actor	was-actor	past
-[X] was a [Y] film actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-film-actress	was-film-actress	past
-[X] was a [Y] actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-actress	was-actress	past
-[X] was a [Y] painter.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-painter	was-painter	past
-[X] was a [Y] naturalist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-naturalist	was-naturalist	past
-[X] was a [Y] botanist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-botanist	was-botanist	past
-[X] was a [Y] minister.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-minister	was-minister	past
-[Y] naturalist [X].	"The specific "" gustavi "" commemorates the Dutch y naturalist Gustaaf Schlegel x ."	naturalist	naturalist	-
-[Y] botanist [X].		botanist	botanist	-
-[Y] minister [X].	On 26 September 1961 , the Dutch y Foreign Minister Joseph Luns x offered to hand over the territory to a United Nations trusteeship .	minister	minister	-
-[X] was born to a [Y] family.		was-born	was-born	past
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+The native language of [X] is [Y].		native	native	present	N-1
+[X] has known [Y] since childhood.		childhood	childhood	present	N-M
+[Y] actress [X].		actress	actress	-	N-1
+[Y] author [X].		author	author	-	N-1
+[Y] actor [X].		actor	actor	-	N-1
+[Y] poet [X].		poet	poet	-	N-1
+[X] was a [Y] politician.		was-politician	was-politician	past	N-1
+[Y] writer [X].	Behzad was known  for the books of French y science writer Jean Rostand x and English naturalist Charles Darwin that he translated .	writer	writer	-	N-1
+[X] was a [Y] composer.		was-composer	was-composer	past	N-1
+[X] was a [Y] actor.	Pierre Alcover x ( 14 March 1893 – 14 November 1957 ) was a French y stage and film actor .	was-actor	was-actor	past	N-1
+[X] was a [Y] film actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-film-actress	was-film-actress	past	N-1
+[X] was a [Y] actress.	Marthe Mellot x ( 16 February 1870 - 13 August 1947 ) was a French y film actress .	was-actress	was-actress	past	N-1
+[X] was a [Y] painter.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-painter	was-painter	past	N-1
+[X] was a [Y] naturalist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-naturalist	was-naturalist	past	N-1
+[X] was a [Y] botanist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-botanist	was-botanist	past	N-1
+[X] was a [Y] minister.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-minister	was-minister	past	N-1
+[Y] naturalist [X].	"The specific "" gustavi "" commemorates the Dutch y naturalist Gustaaf Schlegel x ."	naturalist	naturalist	-	N-1
+[Y] botanist [X].		botanist	botanist	-	N-1
+[Y] minister [X].	On 26 September 1961 , the Dutch y Foreign Minister Joseph Luns x offered to hand over the territory to a United Nations trusteeship .	minister	minister	-	N-1
+[X] was born to a [Y] family.		was-born	was-born	past	N-1
