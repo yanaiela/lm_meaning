@@ -1,20 +1,25 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] ties diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present
-[Y] ties diplomatic relations with [X].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present
-[X] tied diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	past
-[Y] tied diplomatic relations with [X].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	past
-[X] has diplomatic relations with [Y].	North Korea has diplomatic relations with Japan.	have	have-diplomatic-relations	present
-[X] had diplomatic relations with [Y].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past
-[Y] had diplomatic relations with [X].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past
-[X] has an embassy in [Y]	Spain has an embassy in France	have	have-embassy	present
-[X] had an embassy in [Y]	Spain had an embassy in France	have	have-embassy	past
-[Y] has an embassy in [X]	Spain has an embassy in France	have	have-embassy	present
-[Y] had an embassy in [X]	Spain had an embassy in France	have	have-embassy	past
-[X] exchanged ambassadors with [Y]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past
-[Y] exchanged ambassadors with [X]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past
-[X], which has diplomatic relations with [Y]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	present
-[X], which had diplomatic relations with [Y]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	past
-[Y], which has diplomatic relations with [X]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	present
-[Y], which had diplomatic relations with [X]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	past
-[Y], which ties diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	present
-[Y], which tied diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	past
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] maintains diplomatic relations with [Y].	North Korea maintains diplomatic relations with Japan.	maintains	maintains-diplomatic-relations	present	N-M
+[X] maintained diplomatic relations with [Y].	North Korea maintained diplomatic relations with Japan.	maintains	maintains-diplomatic-relations	past	N-M
+[X] maintains diplomatic relations with [X].	Japan maintains diplomatic relations with North Korea.	maintains	maintains-diplomatic-relations	present	N-M
+[Y] maintained diplomatic relations with [X].	Japan maintained diplomatic relations with North Korea.	maintains	maintains-diplomatic-relations	past	N-M
+[X] ties diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present	N-M
+[Y] ties diplomatic relations with [X].	Japan ties diplomatic relations with North Korea.	tie	tie-diplomatic-relations	present	N-M
+[X] tied diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	past	N-M
+[Y] tied diplomatic relations with [X].	Japan ties diplomatic relations with North Korea.	tie	tie-diplomatic-relations	past	N-M
+[X] has diplomatic relations with [Y].	North Korea has diplomatic relations with Japan.	have	have-diplomatic-relations	present	N-M
+[Y] has diplomatic relations with [X].	North Korea has diplomatic relations with Japan.	have	have-diplomatic-relations	present	N-M
+[X] had diplomatic relations with [Y].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past	N-M
+[Y] had diplomatic relations with [X].	North Korea had diplomatic relations with Japan.	have	have-diplomatic-relations	past	N-M
+[X] has an embassy in [Y]	Spain has an embassy in France	have	have-embassy	present	N-M
+[X] had an embassy in [Y]	Spain had an embassy in France	have	have-embassy	past	N-M
+[Y] has an embassy in [X]	Spain has an embassy in France	have	have-embassy	present	N-M
+[Y] had an embassy in [X]	Spain had an embassy in France	have	have-embassy	past	N-M
+[X] exchanged ambassadors with [Y]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past	N-M
+[Y] exchanged ambassadors with [X]	Spain exchanged ambassadors with [Y]	exchange	exchange-ambassador	past	N-M
+[X], which has diplomatic relations with [Y]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	present	N-M
+[X], which had diplomatic relations with [Y]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	past	N-M
+[Y], which has diplomatic relations with [X]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	present	N-M
+[Y], which had diplomatic relations with [X]	Spain, which has diplomatic relation with France	have	have-diplomatic-relations	past	N-M
+[Y], which ties diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	present	N-M
+[Y], which tied diplomatic relations with [X]	Spain, which has diplomatic relation with France	tie	tie-diplomatic-relations	past	N-M
