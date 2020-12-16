@@ -1,17 +1,17 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] borders with [Y].	[X]:Israel :borders :with [Y][Syria].	border	border-with	present
-[X] shares the border with [Y].	[X]:Israel :shares :the :border :with [Y]:Syria.	share-border	share-border	present
-[X] shares its border with [Y].	[X]:Israel :shares :its :border :with [Y]:Syria.	share-border	share-border	present
-[X] shares a common border with [Y].	[X]:Israel :shares :A :common :border :with [Y]:Syria.	share-common-border	share-common-border	present
-[X] shares a territorial border with [Y].	[X]:Israel :shares :a :territorial :border :with [Y]:Syria.	share-territorial-border	share-territorial-border	present
-[X] shares a water border with [Y].	[X]:Rhode Island :shares :a :water :border :with [Y]:New York.	share-water-border	share-water-border	present
-[X] shares a maritime border with [Y].	[X]:Rhode Island :shares :a :maritime :border :with [Y]:New York.	share-maritime-border	share-maritime-border	present
-[X] shares an international border with [Y].	[X]:Israel :borders :with [Y][Syria].	share-international-border	share-international-border	present
-[Y] borders with [X].	[Y]:Israel :borders :with [X][Syria].	border	border-with	present
-[Y] shares the border with [X].	[Y]:Israel :shares :the :border :with [X]:Syria.	share-border	share-border	present
-[Y] shares its border with [X].	[Y]:Israel :shares :its :border :with [X]:Syria.	share-border	share-border	present
-[Y] shares a common border with [X].	[Y]:Israel :shares :A :common :border :with [X]:Syria.	share-common-border	share-common-border	present
-[Y] shares a territorial border with [X].	[Y]:Israel :shares :a :territorial :border :with [X]:Syria.	share-territorial-border	share-territorial-border	present
-[Y] shares a water border with [X].	[Y]:Rhode Island :shares :a :water :border :with [X]:New York.	share-water-border	share-water-border	present
-[Y] shares a maritime border with [X].	[Y]:Rhode Island :shares :a :maritime :border :with [X]:New York.	share-maritime-border	share-maritime-border	present
-[Y] shares an international border with [X].	[Y]:Israel :borders :with [X][Syria].	share-international-border	share-international-border	present
+[X] borders with [Y].	[X]:Israel :borders :with [Y][Syria].	border	border-with	present	N-M
+[X] shares the border with [Y].	[X]:Israel :shares :the :border :with [Y]:Syria.	share-border	share-border	present	N-M
+[X] shares its border with [Y].	[X]:Israel :shares :its :border :with [Y]:Syria.	share-border	share-border	present	N-M
+[X] shares a common border with [Y].	[X]:Israel :shares :A :common :border :with [Y]:Syria.	share-common-border	share-common-border	present	N-M
+[X] shares a territorial border with [Y].	[X]:Israel :shares :a :territorial :border :with [Y]:Syria.	share-territorial-border	share-territorial-border	present	N-M
+[X] shares a water border with [Y].	[X]:Rhode Island :shares :a :water :border :with [Y]:New York.	share-water-border	share-water-border	present	N-M
+[X] shares a maritime border with [Y].	[X]:Rhode Island :shares :a :maritime :border :with [Y]:New York.	share-maritime-border	share-maritime-border	present	N-M
+[X] shares an international border with [Y].	[X]:Israel :borders :with [Y][Syria].	share-international-border	share-international-border	present	N-M
+[Y] borders with [X].	[Y]:Israel :borders :with [X][Syria].	border	border-with	present	N-M
+[Y] shares the border with [X].	[Y]:Israel :shares :the :border :with [X]:Syria.	share-border	share-border	present	N-M
+[Y] shares its border with [X].	[Y]:Israel :shares :its :border :with [X]:Syria.	share-border	share-border	present	N-M
+[Y] shares a common border with [X].	[Y]:Israel :shares :A :common :border :with [X]:Syria.	share-common-border	share-common-border	present	N-M
+[Y] shares a territorial border with [X].	[Y]:Israel :shares :a :territorial :border :with [X]:Syria.	share-territorial-border	share-territorial-border	present	N-M
+[Y] shares a water border with [X].	[Y]:Rhode Island :shares :a :water :border :with [X]:New York.	share-water-border	share-water-border	present	N-M
+[Y] shares a maritime border with [X].	[Y]:Rhode Island :shares :a :maritime :border :with [X]:New York.	share-maritime-border	share-maritime-border	present	N-M
+[Y] shares an international border with [X].	[Y]:Israel :borders :with [X][Syria].	share-international-border	share-international-border	present	N-M

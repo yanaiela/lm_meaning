@@ -1,38 +1,38 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] was originally aired on [Y].	Chernobyl was originally aired on HBO.	air	air-on-originally	past
-[X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future
-[Y] is to debut [X].	[Y]:Netflix is to debut the first Saudi Arabian thriller series [X]:'Whispers' in June.	debut	to-debut	future
-[Y] debuted [X].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut	past
-[X] debuted on [Y].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut-on	past
-the [Y] debut of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :debut of [X]:Steve Carell's new show	debut	debut-of	?
-the [Y] release of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :release of [X]:Steve Carell's new show	release	release-of	?
-[Y] is to air [X].	[Y]:Netflix is to :air the fourth season of its flagship drama [X]:House of Cards in France	air	is-to-air	future
-[X] is to air on [Y].	The fourth season of its flagship drama [X]:House of Cards in France  is to air on [Y]:Netflix	air	is-to-air-on	future
-[Y] is to broadcast [X].	[Y]:Netflix is to :broadcast the fourth season of its flagship drama [X]:House of Cards in France	broadcast	is-to-broadcast	future
-[X] is to be broadcasted on [Y].	the fourth season of its flagship drama [X]:House of Cards in France is to be broadcasted on [Y]:Netflix.	broadcast	is-to-broadcast-on	future
-[Y]'s [X].	[Y]:Netflix's [X]:The Crown to end after season five with Imelda Staunton as Queen.	's	's	?
-[Y]'s series [X].	[Y]:Netflix's series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	's-series	?
-the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	series	?
-[X] was released on [Y].	[X]:The Crown was :released on [Y]:Netflix on November 17, 2019.	release	is-release-on	past
-[Y] released [X].	[Y]:Netflix :released [X]:The Crown on November 17, 2019.	release	release	past
-[X], that aired on [Y],	The crown, that aired of Netflix,	air	air-on	past
-[X], that is aired on [Y],	The crown, that is aired of Netflix,	air	air-on	present
-[X], that was aired on [Y],	The crown, that is aired of Netflix,	air	air-on	past
-[X], that was broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	past
-[X], that is broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	present
-[X] was broadcasted on [Y].	The crown was broadcasted of Netflix,	broadcast	is-broadcast	past
-[X] is broadcasted on [Y].	The crown is broadcasted of Netflix,	broadcast	is-broadcast	present
-[X], [Y]'s series.	 [X]:The Crown, [Y]:Netflix's hit drama :series about the British royal family, will end earlier than expected	series	's-series	?
-[X] is streamed on [Y].	[X]:The Crown is :streamed on [Y]:Netflix	stream	is-stream-on	present
-[X] streamed on [Y].	[X]:The Crown :streamed on [Y]:Netflix	stream	stream-on	past
-[X], which is streamed on [Y].	[X]:The Crown, which is :streamed on [Y]:Netflix	stream	stream-on	present
-[X], which is broadcasted on [Y].	[X]:The Crown, which is :broadcasted on [Y]:Netflix	broadcast	broadcast-on	present
-[X], which is aired on [Y].	[X]:The Crown, which is :aired on [Y]:Netflix	air	air-on	present
-[X] was aired on [Y].	[X]:The Crown :was :aired on [Y]:Netflix	air	is-air-on	past
-[X] is aired on [Y].	[X]:The Crown :is :aired on [Y]:Netflix	air	is-air-on	present
-It was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that [X]:'The Crown' on [Y]:Netflix will :go for six seasons	on	on	?
-[X] returns on [Y].	TV this week: [X]:'The Crown' :returns on [Y]:Netflix	return	return-on	future
-[X] returned on [Y].	TV this week: [X]:'The Crown' :returned on [Y]:Netflix	return	return-on	past
-[X], a [Y] original.	[X]:The Protector, a [Y]:Netflix :original	original	original	?
-[X] premiered on [Y].	[X]:THE Protector premiered on [Y]:Netflix	premiere	premiere-on	past
-[X] premieres on [Y].	[X]:THE Protector premieres on [Y]:Netflix	premiere	premiere-on	present
+[X] was originally aired on [Y].	Chernobyl was originally aired on HBO.	air	air-on-originally	past	N-1
+[X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future	N-1
+[Y] is to debut [X].	[Y]:Netflix is to debut the first Saudi Arabian thriller series [X]:'Whispers' in June.	debut	to-debut	future	N-1
+[Y] debuted [X].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut	past	N-1
+[X] debuted on [Y].	[Y]:Netflix :debuted [X]:The Crown in 2016	debut	debut-on	past	N-1
+the [Y] debut of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :debut of [X]:Steve Carell's new show	debut	debut-of	?	N-1
+the [Y] release of [X].	This month comes the series finale of the Princesses of Power, along with the [Y]:Netflix :release of [X]:Steve Carell's new show	release	release-of	?	N-1
+[Y] is to air [X].	[Y]:Netflix is to :air the fourth season of its flagship drama [X]:House of Cards in France	air	is-to-air	future	N-M
+[X] is to air on [Y].	The fourth season of its flagship drama [X]:House of Cards in France  is to air on [Y]:Netflix	air	is-to-air-on	future	N-M
+[Y] is to broadcast [X].	[Y]:Netflix is to :broadcast the fourth season of its flagship drama [X]:House of Cards in France	broadcast	is-to-broadcast	future	N-M
+[X] is to be broadcasted on [Y].	the fourth season of its flagship drama [X]:House of Cards in France is to be broadcasted on [Y]:Netflix.	broadcast	is-to-broadcast-on	future	N-M
+[Y]'s [X].	[Y]:Netflix's [X]:The Crown to end after season five with Imelda Staunton as Queen.	's	's	?	N-M
+[Y]'s series [X].	[Y]:Netflix's series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	's-series	?	N-M
+the [Y] series [X].	the [Y]:Netflix series [X]:The Crown to end after season five with Imelda Staunton as Queen.	series	series	?	N-M
+[X] was released on [Y].	[X]:The Crown was :released on [Y]:Netflix on November 17, 2019.	release	is-release-on	past	N-M
+[Y] released [X].	[Y]:Netflix :released [X]:The Crown on November 17, 2019.	release	release	past	N-M
+[X], that aired on [Y],	The crown, that aired of Netflix,	air	air-on	past	N-M
+[X], that is aired on [Y],	The crown, that is aired of Netflix,	air	air-on	present	N-M
+[X], that was aired on [Y],	The crown, that is aired of Netflix,	air	air-on	past	N-M
+[X], that was broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	past	N-M
+[X], that is broadcasted on [Y],	The crown, that was broadcasted of Netflix,	broadcast	is-broadcast	present	N-M
+[X] was broadcasted on [Y].	The crown was broadcasted of Netflix,	broadcast	is-broadcast	past	N-M
+[X] is broadcasted on [Y].	The crown is broadcasted of Netflix,	broadcast	is-broadcast	present	N-M
+[X], [Y]'s series.	 [X]:The Crown, [Y]:Netflix's hit drama :series about the British royal family, will end earlier than expected	series	's-series	?	N-M
+[X] is streamed on [Y].	[X]:The Crown is :streamed on [Y]:Netflix	stream	is-stream-on	present	N-M
+[X] streamed on [Y].	[X]:The Crown :streamed on [Y]:Netflix	stream	stream-on	past	N-M
+[X], which is streamed on [Y].	[X]:The Crown, which is :streamed on [Y]:Netflix	stream	stream-on	present	N-M
+[X], which is broadcasted on [Y].	[X]:The Crown, which is :broadcasted on [Y]:Netflix	broadcast	broadcast-on	present	N-M
+[X], which is aired on [Y].	[X]:The Crown, which is :aired on [Y]:Netflix	air	air-on	present	N-M
+[X] was aired on [Y].	[X]:The Crown :was :aired on [Y]:Netflix	air	is-air-on	past	N-M
+[X] is aired on [Y].	[X]:The Crown :is :aired on [Y]:Netflix	air	is-air-on	present	N-M
+It was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that [X]:'The Crown' on [Y]:Netflix will :go for six seasons	on	on	?	N-M
+[X] returns on [Y].	TV this week: [X]:'The Crown' :returns on [Y]:Netflix	return	return-on	future	N-M
+[X] returned on [Y].	TV this week: [X]:'The Crown' :returned on [Y]:Netflix	return	return-on	past	N-M
+[X], a [Y] original.	[X]:The Protector, a [Y]:Netflix :original	original	original	?	N-1
+[X] premiered on [Y].	[X]:THE Protector premiered on [Y]:Netflix	premiere	premiere-on	past	N-1
+[X] premieres on [Y].	[X]:THE Protector premieres on [Y]:Netflix	premiere	premiere-on	present	N-1
