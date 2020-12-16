@@ -1,6 +1,6 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] used to communicate in [Y] .		communicate	communicate	past M-N
-[Y] actress [X].		actress	actress	present M-N
+[X] used to communicate in [Y] .		communicate	communicate	past	M-N
+[Y] actress [X].		actress	actress	present	M-N
 [Y] author [X].		author	author	present M-N
 [Y] actor [X].		actor	actor	present M-N
 [Y] poet [X].		poet	poet	present M-N
