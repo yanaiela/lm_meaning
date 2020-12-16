@@ -1,44 +1,44 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is located in [Y] .		is-located	is-located	present
-[X], which is located in [Y].		which-is-located	which-is-located	present
-[X], located in [Y].		located	located	present
-[X] is a town in [Y].		is-town	is-town	present
-[X], which is a town in [Y].		which-is-town	which-is-town	present
-[X], a town in [Y].		town	town	present
-[X] is a city in [Y].		is-city	is-city	present
-[X], which is a city in [Y].		which-is-city	which-is-city	present
-[X], a city in [Y].		a-city-in	a-city	present
-[X] is a state in [Y].		is-state	is-state	present
-[X], which is a state in [Y].		which-is-state	which-is-state	present
-[X], a state in [Y].		state	state	present
-[X] is a county in [Y].		is-county	is-county	present
-[X], which is a county in [Y].		which-is-county	which-is-county	present
-[X], a county in [Y].		a-county	a-county	present
-[X] is a municipality in [Y].		is-municipality	is-municipality	present
-[X], which is a municipality in [Y].		which-is-municipality	which-is-municipality	present
-[X], a municipality in [Y].		municipality	municipality	present
-[X], which is a district in [Y].		which-is-district	which-is-district	present
-[X] district in [Y].		district	district	present
-[X] is a district in [Y].		is-district	is-district	present
-[X], which is a commune in [Y].		which-commune	which-commune	present
-[X] commune in [Y].		commune	commune	present
-[X] is a commune in [Y].		is-commune	is-commune	present
-[X], which is a valley in [Y].		which-valley	which-valley	present
-[X], a valley in [Y].		a-valley	a-valley	present
-[X] valley in [Y].		valley	valley	present
-[X], a region in [Y].		a-region	a-region	present
-[X]. which is a region in [Y].		which-region	which-region	present
-[X] region in [Y].		region	region	present
-[Y] capital [X].		capital	capital	present
-[Y] city of [X].		city-of	city-of	present
-[X] county, [Y].		county	county	present
-[Y] capital of [X] .		capital-of	capital-of	present
-[Y] island of [X] .		island-of	island-of	present
-[X] is an island of [Y].		is-island-of	is-island-of	present
-[X], which is an island of [Y].		which-is-island-of	which-is-island-of	present
-[X] area of [Y].		area-of	area-of	present
-[Y] city [X].		city	city	present
-[X] is the capital of [Y].		is-capital-of	is-capital-of	present
-[X], the capital of [Y].		the-capital-of	the-capital-of	present
-[X] is the capital city of [Y].		is-capital-city	is-capital-city	present
-[X], which is the capital city of [Y].		which-is-capital-city	which-is-capital-city	present
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is located in [Y] .		is-located	is-located	present	N-1
+[X], which is located in [Y].		which-is-located	which-is-located	present	N-1
+[X], located in [Y].		located	located	present	N-1
+[X] is a town in [Y].		is-town	is-town	present	N-1
+[X], which is a town in [Y].		which-is-town	which-is-town	present	N-1
+[X], a town in [Y].		town	town	present	N-1
+[X] is a city in [Y].		is-city	is-city	present	N-1
+[X], which is a city in [Y].		which-is-city	which-is-city	present	N-1
+[X], a city in [Y].		a-city-in	a-city	present	N-1
+[X] is a state in [Y].		is-state	is-state	present	N-1
+[X], which is a state in [Y].		which-is-state	which-is-state	present	N-1
+[X], a state in [Y].		state	state	present	N-1
+[X] is a county in [Y].		is-county	is-county	present	N-1
+[X], which is a county in [Y].		which-is-county	which-is-county	present	N-1
+[X], a county in [Y].		a-county	a-county	present	N-1
+[X] is a municipality in [Y].		is-municipality	is-municipality	present	N-1
+[X], which is a municipality in [Y].		which-is-municipality	which-is-municipality	present	N-1
+[X], a municipality in [Y].		municipality	municipality	present	N-1
+[X], which is a district in [Y].		which-is-district	which-is-district	present	N-1
+[X] district in [Y].		district	district	present	N-1
+[X] is a district in [Y].		is-district	is-district	present	N-1
+[X], which is a commune in [Y].		which-commune	which-commune	present	N-1
+[X] commune in [Y].		commune	commune	present	N-1
+[X] is a commune in [Y].		is-commune	is-commune	present	N-1
+[X], which is a valley in [Y].		which-valley	which-valley	present	N-1
+[X], a valley in [Y].		a-valley	a-valley	present	N-1
+[X] valley in [Y].		valley	valley	present	N-1
+[X], a region in [Y].		a-region	a-region	present	N-1
+[X]. which is a region in [Y].		which-region	which-region	present	N-1
+[X] region in [Y].		region	region	present	N-1
+[Y] capital [X].		capital	capital	present	1-1
+[Y] city of [X].		city-of	city-of	present	N-1
+[X] county, [Y].		county	county	present	N-1
+[Y] capital of [X] .		capital-of	capital-of	present	1-1
+[Y] island of [X] .		island-of	island-of	present	N-1
+[X] is an island of [Y].		is-island-of	is-island-of	present	N-1
+[X], which is an island of [Y].		which-is-island-of	which-is-island-of	present	N-1
+[X] area of [Y].		area-of	area-of	present	N-1
+[Y] city [X].		city	city	present	N-1
+[X] is the capital of [Y].		is-capital-of	is-capital-of	present	1-1
+[X], the capital of [Y].		the-capital-of	the-capital-of	present	1-1
+[X] is the capital city of [Y].		is-capital-city	is-capital-city	present	1-1
+[X], which is the capital city of [Y].		which-is-capital-city	which-is-capital-city	present	1-1
