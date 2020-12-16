@@ -1,32 +1,32 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] used to communicate in [Y] .		communicate	communicate	past	M-N
-[Y] actress [X].		actress	actress	present	M-N
-[Y] author [X].		author	author	present	M-N
-[Y] actor [X].		actor	actor	present	M-N
-[Y] poet [X].		poet	poet	present	M-N
-[Y] composer [X].		composer	composer	present	M-N
-[Y] playwright [X].		playwright	playwright	present	M-N
-[Y] writer [X].		writer	writer	present	M-N
-[Y] is a [X] actress.		actress	is-actress	present	M-N
-[Y] is a [X] author.		author	is-author	present	M-N
-[Y] is a [X] actor.		actor	is-actor	present	M-N
-[Y] is a [X] poet.		poet	is-poet	present	M-N
-[Y] is a [X] composer.		composer	is-composer	present	M-N
-[Y] is a [X] playwright.		playwright	is-playwright	present	M-N
-[Y] is a [X] writer.		writer	is-writer	present	M-N
-[Y] novelist [X].		novelist	novelist	present	M-N
-[Y] musician [X].		musician	musician	present	M-N
-[Y] philospher [X].		philospher	philospher	present	M-N
-[Y] is a [X] novelist.		novelist	is-novelist	present	M-N
-[Y] is a [X] musician.		musician	is-musician	present	M-N
-[Y] is a [X] philospher.		philospher	is-philospher	present	M-N
-[Y], who is a [X] actress.		actress	who-is-actress	present	M-N
-[Y], who is a [X] author.		author	who-is-author	present	M-N
-[Y], who is a [X] actor.		actor	who-is-actor	present	M-N
-[Y], who is a [X] poet.		poet	who-is-poet	present	M-N
-[Y], who is a [X] composer.		composer	who-is-composer	present	M-N
-[Y], who is a [X] playwright.		playwright	who-is-playwright	present	M-N
-[Y], who is a [X] writer.		writer	who-is-writer	present	M-N
-[Y], who is a [X] novelist.		novelist	who-is-novelist	present	M-N
-[Y], who is a [X] musician.		musician	who-is-musician	present	M-N
-[Y], who is a [X] philospher.		philospher	who-is-philospher	present	M-N
+[X] used to communicate in [Y] .		communicate	communicate	past	N-M
+[Y] actress [X].		actress	actress	present	N-M
+[Y] author [X].		author	author	present	N-M
+[Y] actor [X].		actor	actor	present	N-M
+[Y] poet [X].		poet	poet	present	N-M
+[Y] composer [X].		composer	composer	present	N-M
+[Y] playwright [X].		playwright	playwright	present	N-M
+[Y] writer [X].		writer	writer	present	N-M
+[Y] is a [X] actress.		actress	is-actress	present	N-M
+[Y] is a [X] author.		author	is-author	present	N-M
+[Y] is a [X] actor.		actor	is-actor	present	N-M
+[Y] is a [X] poet.		poet	is-poet	present	N-M
+[Y] is a [X] composer.		composer	is-composer	present	N-M
+[Y] is a [X] playwright.		playwright	is-playwright	present	N-M
+[Y] is a [X] writer.		writer	is-writer	present	N-M
+[Y] novelist [X].		novelist	novelist	present	N-M
+[Y] musician [X].		musician	musician	present	N-M
+[Y] philospher [X].		philospher	philospher	present	N-M
+[Y] is a [X] novelist.		novelist	is-novelist	present	N-M
+[Y] is a [X] musician.		musician	is-musician	present	N-M
+[Y] is a [X] philospher.		philospher	is-philospher	present	N-M
+[Y], who is a [X] actress.		actress	who-is-actress	present	N-M
+[Y], who is a [X] author.		author	who-is-author	present	N-M
+[Y], who is a [X] actor.		actor	who-is-actor	present	N-M
+[Y], who is a [X] poet.		poet	who-is-poet	present	N-M
+[Y], who is a [X] composer.		composer	who-is-composer	present	N-M
+[Y], who is a [X] playwright.		playwright	who-is-playwright	present	N-M
+[Y], who is a [X] writer.		writer	who-is-writer	present	N-M
+[Y], who is a [X] novelist.		novelist	who-is-novelist	present	N-M
+[Y], who is a [X] musician.		musician	who-is-musician	present	N-M
+[Y], who is a [X] philospher.		philospher	who-is-philospher	present	N-M
