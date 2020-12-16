@@ -1,34 +1,34 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
-[X] is affiliated with the [Y] religion .		is-affliated-with	is-affliated-with	present
-[X] followed the [Y] religion.		follow	follow	past
-[X] follows the [Y] religion.		follow	follow	present
-[X] converted to [Y].		convert	convert	past
-[Y] founder [X].		founder	founder	-
-[Y] scholar [X].		scholar	scholar	-
-[Y] philosopher [X].		philosopher	philosopher	-
-[Y] preacher [X].		preacher	preacher	-
-[X] who converted to [Y].		who-converted	who-converted	past
-[Y] scholars such as [X].		scholar-such	scholar-such	-
-[Y] scholars including [X].		scholar-including	scholar-including	-
-[X] was received into the [Y] .		received-into	received-into	past
-[X] and converted to [Y] .		and-converted	and-converted	past
-[Y] apostle [X] .		apostle	apostle	-
-[Y] saint [X] .		saint	saint	-
-[X] had converted to [Y] .		had-converted	had-converted	past
-[X] founded [Y].		founded	founded	past
-[X] was a [Y] preacher.		was-preacher	was-preacher	past
-[X] was a [Y] theologian.		was-theologian	was-theologian	past
-[X] established [Y].		establish	establish	past
-[Y] theologian [X].		theologian	theologian	-
-[X] is a monastic in [Y].		monastic	monastic	present
-[X] is ordained in [Y].		ordain	ordain	present
-[Y] is the primary religion in [X].		primary-religion	primary-religion	present
-[Y] is the majority religion for [X].		majority-religion	majority-religion	present
-[X] is follower of [Y].		is-follower	is-follower	present
-[X] was follower of [Y].		was-follower	was-follower	past
-[Y] was one of [X]'s official religions.		was-one-official-religion	was-one-official-religion	past
-[Y] is one of [X]'s official religions.		is-one-official-religion	is-one-official-religion	past
-[Y] is [X]'s official religion.		is-official-religion	is-official-religion	present
-[Y] was [X]'s official religion.		was-official-religion	was-official-religion	past
-[X] practiced [Y].		practice	practice	past
-[X] practices [Y].		practice	practice	present
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is affiliated with the [Y] religion .		is-affliated-with	is-affliated-with	present	N-1
+[X] followed the [Y] religion.		follow	follow	past	N-M
+[X] follows the [Y] religion.		follow	follow	present	N-1
+[X] converted to [Y].		convert	convert	past	N-M
+[Y] founder [X].		founder	founder	-	1-1
+[Y] scholar [X].		scholar	scholar	-	N-1
+[Y] philosopher [X].		philosopher	philosopher	-	N-M
+[Y] preacher [X].		preacher	preacher	-	N-1
+[X] who converted to [Y].		who-converted	who-converted	past	N-M
+[Y] scholars such as [X].		scholar-such	scholar-such	-	N-M
+[Y] scholars including [X].		scholar-including	scholar-including	-	N-M
+[X] was received into the [Y] .		received-into	received-into	past	N-1
+[X] and converted to [Y] .		and-converted	and-converted	past	N-M
+[Y] apostle [X] .		apostle	apostle	-	N-1
+[Y] saint [X] .		saint	saint	-	N-1
+[X] had converted to [Y] .		had-converted	had-converted	past	N-M
+[X] founded [Y].		founded	founded	past	N-M
+[X] was a [Y] preacher.		was-preacher	was-preacher	past	N-1
+[X] was a [Y] theologian.		was-theologian	was-theologian	past	N-1
+[X] established [Y].		establish	establish	past	N-M
+[Y] theologian [X].		theologian	theologian	-	N-1
+[X] is a monastic in [Y].		monastic	monastic	present	N-1
+[X] is ordained in [Y].		ordain	ordain	present	N-M
+[Y] is the primary religion in [X].		primary-religion	primary-religion	present	N-1
+[Y] is the majority religion for [X].		majority-religion	majority-religion	present	N-1
+[X] is follower of [Y].		is-follower	is-follower	present	N-1
+[X] was follower of [Y].		was-follower	was-follower	past	N-1
+[Y] was one of [X]'s official religions.		was-one-official-religion	was-one-official-religion	past	N-M
+[Y] is one of [X]'s official religions.		is-one-official-religion	is-one-official-religion	past	N-M
+[Y] is [X]'s official religion.		is-official-religion	is-official-religion	present	N-1
+[Y] was [X]'s official religion.		was-official-religion	was-official-religion	past	N-M
+[X] practiced [Y].		practice	practice	past	N-M
+[X] practices [Y].		practice	practice	present	N-1
