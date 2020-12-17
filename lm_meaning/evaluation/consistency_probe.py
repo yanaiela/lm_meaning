@@ -116,11 +116,11 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
                 points_by_edge[graph_node.lm_pattern + '_' + ent_node.lm_pattern].append(int(success))
                 edges_out[graph_node.lm_pattern].append(int(success))
 
-                if entailment_type.syntactic_change:
+                if entailment_type['edge_type'].syntactic_change:
                     if success:
                         points_syn += 1
                     total_syn += 1
-                elif entailment_type.lexical_change:
+                elif entailment_type['edge_type'].lexical_change:
                     if success:
                         points_lex += 1
                     total_lex += 1
@@ -219,9 +219,9 @@ def analyze_graph(patterns_graph):
     for node in patterns_graph:
         for ent_node in patterns_graph.successors(node):
             entailment_type = patterns_graph.edges[node, ent_node]['edge_type']
-            if entailment_type.syntactic_change:
+            if entailment_type['edge_type'].syntactic_change:
                 syn_edges += 1
-            elif entailment_type.lexical_change:
+            elif entailment_type['edge_type'].lexical_change:
                 lex_edges += 1
             else:
                 both_edges += 1
