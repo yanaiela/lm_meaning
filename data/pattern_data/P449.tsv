@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was originally aired on [Y].	Chernobyl was originally aired on HBO.	air	air-on-originally	past	N-1
 [X] is to debut on [Y].	First Saudi Arabian thriller series [X]:'Whispers' to :debut on [Y]:Netflix in June.	debut	to-debut-on	future	N-1
 [Y] is to debut [X].	[Y]:Netflix is to debut the first Saudi Arabian thriller series [X]:'Whispers' in June.	debut	to-debut	future	N-1
