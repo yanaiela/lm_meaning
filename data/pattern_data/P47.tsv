@@ -1,4 +1,5 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] shares border with [Y].	Israel shares border with Syria	border	share-border	present	N-M
 [X] borders with [Y].	[X]:Israel :borders :with [Y][Syria].	border	border-with	present	N-M
 [X] shares the border with [Y].	[X]:Israel :shares :the :border :with [Y]:Syria.	share-border	share-border	present	N-M
 [X] shares its border with [Y].	[X]:Israel :shares :its :border :with [Y]:Syria.	share-border	share-border	present	N-M
