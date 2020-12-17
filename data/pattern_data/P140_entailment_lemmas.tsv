@@ -3,7 +3,7 @@ follow	+/is-affiliated-with,was-follower,practice,is-official-religion,was-offic
 convert	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,who-converted,and-converted,had-converted,is-follower
 founder	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,establish,is-follower
 scholar	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,scholar-such,scholar-including,is-follower
-philosopher +/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,is-follower
+philosopher	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,is-follower
 preacher	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion, was-preacher,is-follower
 who-converted	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion,convert, and-converted,had-converted,is-follower
 scholar-such	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-region,was-one-official-religion, scholar-including,scholar,is-follower

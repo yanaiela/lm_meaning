@@ -1,0 +1,13 @@
+LEMMA	NOT-ENTAILED
+is-create-out	is-ingredient-in,subfield,branch",discipline
+subfield	comprise",is-ingredient-in,make-of,consist-of
+branch 	is-create-out,subfield,branch,discipline,consist-of,is-ingredient-in,is-building-block,make-of,is-component-of,comprise,is-part-of
+discipline	comprise",is-ingredient-in,make-of,consist-of
+consist-of	is-ingredient-in,subfield,branch",discipline
+is-ingredient-in	-
+is-building-block	is-create-out,subfield,branch,discipline,consist-of,is-ingredient-in,make-of,is-component-of,comprise
+make-of	is-ingredient-in,subfield,branch",discipline
+is-component-of	is-building-block",is-part-of
+comprise-of	is-create-out,subfield,branch,discipline,consist-of,is-ingredient-in,is-building-block,make-of,is-component-of,comprise,is-part-of
+comprise	is-create-out,subfield,discipline,is-ingredient-in,make-of,branch"
+is-part-of	is-create-out,subfield,branch,discipline,consist-of,is-ingredient-in,make-of,is-component-of,comprise

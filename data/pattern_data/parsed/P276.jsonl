@@ -10,12 +10,12 @@
 {"pattern": "[X], which is located in [Y] .", "example": "", "lemma": "locate", "extended_lemma": "which-locate", "tense": "present", "spike_query": "<>subject:Tower, $which $is $located $in object:[w={}]Paris $."}
 {"pattern": "[X], which happens in [Y].", "example": "", "lemma": "happen", "extended_lemma": "which-happen", "tense": "present", "spike_query": "<>subject:Tower, $which $happens $in object:[w={}]Paris."}
 {"pattern": "[X], which takes place in [Y].", "example": "", "lemma": "take-place", "extended_lemma": "which-take-place", "tense": "present", "spike_query": "<>subject:Tower, $which $takes $place $in object:[w={}]Paris."}
-{"pattern": "[X], which is held in [Y].", "example": "", "lemma": "held", "extended_lemma": "which-held", "tense": "past", "spike_query": "<>subject:Tower, $which $is $held $in object:[w={}]Paris."}
+{"pattern": "[X], which is held in [Y].", "example": "", "lemma": "held", "extended_lemma": "which-held", "tense": "present", "spike_query": "<>subject:Tower, $which $is $held $in object:[w={}]Paris."}
 {"pattern": "[X], which was held in [Y].", "example": "", "lemma": "was-held-in", "extended_lemma": "which-was-held-in", "tense": "past", "spike_query": "<>subject:Tower, $which $was $held $in object:[w={}]Paris."}
 {"pattern": "[X], which was held at the [Y].", "example": "", "lemma": "was-held-at", "extended_lemma": "which-was-held-at", "tense": "past", "spike_query": "<>subject:Tower, $which $was $held $at $the object:[w={}]Paris."}
 {"pattern": "[X], which took place in [Y].", "example": "", "lemma": "take-place", "extended_lemma": "which-take-place", "tense": "past", "spike_query": "<>subject:Tower, $which $took $place $in object:[w={}]Paris."}
 {"pattern": "[Y], which hosts [X].", "example": "", "lemma": "host", "extended_lemma": "which-host", "tense": "present", "spike_query": "object:[w={}]Paris, $which $hosts <>subject:Tower."}
-{"pattern": "[Y], which hosted the [X].", "example": "", "lemma": "host-the", "extended_lemma": "which-host-the", "tense": "present", "spike_query": "object:[w={}]Paris, $which $hosted $the <>subject:Tower."}
+{"pattern": "[Y], which hosted the [X].", "example": "", "lemma": "host-the", "extended_lemma": "which-host-the", "tense": "past", "spike_query": "object:[w={}]Paris, $which $hosted $the <>subject:Tower."}
 {"pattern": "[X], that is located in [Y] .", "example": "", "lemma": "locate", "extended_lemma": "that-locate", "tense": "present", "spike_query": "<>subject:Tower, $that $is $located $in object:[w={}]Paris $."}
 {"pattern": "[X], that happens in [Y].", "example": "", "lemma": "happen", "extended_lemma": "that-happen", "tense": "present", "spike_query": "<>subject:Tower, $that $happens $in object:[w={}]Paris."}
 {"pattern": "[X], that takes place in [Y].", "example": "", "lemma": "take-place", "extended_lemma": "that-take-place", "tense": "present", "spike_query": "<>subject:Tower, $that $takes $place $in object:[w={}]Paris."}

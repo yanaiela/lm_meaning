@@ -51,8 +51,10 @@ def main():
 
         if mode == "not-entailed":
             not_entailed = other_lemmas.split("*/")[1].split(",")
+            not_entailed = [x.strip() for x in not_entailed]
         elif mode == "entailed":
             entailed = other_lemmas.split("+/")[1].split(",")
+            entailed = [x.strip() for x in entailed]
             not_entailed = [l2 for l2 in all_lemmas if l2 not in entailed and l2 != l]
         else:
             assert False, "not supported mode"

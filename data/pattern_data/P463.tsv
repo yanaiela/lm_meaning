@@ -1,7 +1,7 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is a member of [Y].	Nigeria is a member of OPEC.	member	is-member-of	present	N-M
 [X] belongs to the organization of [Y].	Nigeria belongs to the organization of OPEC.	belong	belong-to-organization	present	N-M
 [X] belonged to the organization of [Y].	Nigeria belonged to the organization of OPEC.	belong	belong-to-organization	past	N-M
-[X] is a member of [Y].	Nigeria is a member of OPEC.	member	is-member-of	present	N-M
 [X] became a member of [Y].	Nigeria is a member of OPEC.	member	become-member-of	past	N-M
 [X] was a member of [Y].	Nigeria was a member of OPEC.	member	is-member-of	past	N-M
 [X] is a part of the [Y] organization.	Nigeria is a member of the OPEC organization.	part	is-part-of-organization	present	N-M

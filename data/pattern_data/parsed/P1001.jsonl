@@ -1,7 +1,10 @@
 {"pattern": "[X] is a legal term in [Y] .", "example": "", "lemma": "legal-term", "extended_lemma": "legal-term", "tense": "present", "spike_query": "<>subject:PM $is $a $legal $term $in object:[w={}]Canada $."}
+{"pattern": "[X] is a legal unit in [Y] .", "example": "", "lemma": "legal-unit", "extended_lemma": "legal-unit", "tense": "present", "spike_query": "<>subject:PM $is $a $legal $unit $in object:[w={}]Canada $."}
+{"pattern": "[X] is a legal entity in [Y] .", "example": "", "lemma": "legal-entity", "extended_lemma": "legal-entity", "tense": "present", "spike_query": "<>subject:PM $is $a $legal $entity $in object:[w={}]Canada $."}
 {"pattern": "[X] is representing [Y] .", "example": "", "lemma": "represent", "extended_lemma": "represent", "tense": "present-continuous", "spike_query": "<>subject:PM $is $representing object:[w={}]Canada $."}
 {"pattern": "[X] representing [Y].", "example": "", "lemma": "represent", "extended_lemma": "represent", "tense": "present-continuous", "spike_query": "<>subject:PM $representing object:[w={}]Canada."}
 {"pattern": "[X] represents [Y].", "example": "", "lemma": "represent", "extended_lemma": "represent", "tense": "present", "spike_query": "<>subject:PM $represents object:[w={}]Canada."}
+{"pattern": "[X] is an institution in [Y] .", "example": "", "lemma": "institution", "extended_lemma": "institution", "tense": "present", "spike_query": "<>subject:PM $is $an $institution $in object:[w={}]Canada $."}
 {"pattern": "[X], which represents [Y].", "example": "", "lemma": "represent", "extended_lemma": "represent", "tense": "present", "spike_query": "<>subject:PM, $which $represents object:[w={}]Canada."}
 {"pattern": "[X] is a unit of government in [Y].", "example": "", "lemma": "unit-of-government", "extended_lemma": "unit-of-government", "tense": "present", "spike_query": "<>subject:PM $is $a $unit $of $government $in object:[w={}]Canada."}
 {"pattern": "[X] is an executive body in [Y].", "example": "", "lemma": "executive-body", "extended_lemma": "executive-body", "tense": "present", "spike_query": "<>subject:PM $is $an $executive $body $in object:[w={}]Canada."}

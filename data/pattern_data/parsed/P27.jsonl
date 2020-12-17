@@ -1,3 +1,4 @@
+{"pattern": "[X] is [Y] citizen.", "example": "John is France citizen.", "lemma": "citizen", "extended_lemma": "is-citizen", "tense": "present", "spike_query": "<>subject:John $is object:[w={}]England $citizen."}
 {"pattern": "[X] is a citizen of [Y].", "example": "John is a citizen of France.", "lemma": "citizen", "extended_lemma": "is-citizen-of", "tense": "present", "spike_query": "<>subject:John $is $a $citizen $of object:[w={}]England."}
 {"pattern": "[X] was a citizen of [Y].", "example": "John was a citizen of France.", "lemma": "citizen", "extended_lemma": "is-citizen-of", "tense": "past", "spike_query": "<>subject:John $was $a $citizen $of object:[w={}]England."}
 {"pattern": "[X] was granted a citizenship of [Y].", "example": "John was granted a citizenship in France.", "lemma": "grant-citizenship", "extended_lemma": "grant-citizenship-of", "tense": "past", "spike_query": "<>subject:John $was $granted $a $citizenship $of object:[w={}]England."}

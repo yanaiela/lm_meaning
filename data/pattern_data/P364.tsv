@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 The original language of [X] is [Y].	The original language of the story is English.	language	original-language-is	present	N-1
 The original language of [X] was [Y].	The original language of the story was English.	language	original-language-is	past	N-1
 The language of [X] is [Y].	The language of the story is English.	language	language-is	present	N-1
