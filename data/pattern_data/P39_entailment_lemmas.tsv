@@ -1,4 +1,4 @@
-position	+/who-position,_whose-position,'s-position,_who-holds,_holds
+position	+/who-position,whose-position,'s-position,who-holds,holds
 who-position	+/position, whose-position,'s-position, who-holds, holds
 whose-position	+/position, whose-position,'s-position, who-holds, holds
 s-position	+/position, whose-position,who-position, who-holds, holds
