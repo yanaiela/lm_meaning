@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] plays in [Y] position.	John plays in the keeper position	play	play-in-position	present	N-M
 [X] played in [Y] position.	John played in the keeper position	play	play-in-position	past	N-M
 [X] plays in the position of [Y].	John plays in the position of a keeper	play	play-in-position	present	N-M
