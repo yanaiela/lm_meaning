@@ -24,7 +24,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X], made in [Y].		made	made-in	past	N-1
 [X] was from [Y].		from	was-from	past	N-1
 [X], who was from [Y].		from	was-from	past	N-1
-[X], from [Y].		from	were-from	past	N-1
+[X], from [Y].		from	from	?	N-1
 [X], that was developed in [Y].		developed	that-developed-in	past	N-1
 [X] was developed in [Y].		developed	was-developed-in	past	N-1
 [X], developed in [Y].		developed	developed-in	past	N-1
