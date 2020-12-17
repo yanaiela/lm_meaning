@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was born in [Y].	Williams did not prove that [X]:his mother :was :born in the [Y]:United States.	born	born-in	past	N-1
 [X] is originally from [Y].	[X]:He :is :originally from :Thailand but grew up in the Shetlands.	from	is-originally-from	present	N-1
 [X] was originally from [Y].	[X]:He :was :originally from :Thailand but grew up in the Shetlands.	from	is-originally-from	past	N-1
