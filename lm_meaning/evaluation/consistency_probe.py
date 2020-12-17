@@ -219,9 +219,9 @@ def analyze_graph(patterns_graph):
     for node in patterns_graph:
         for ent_node in patterns_graph.successors(node):
             entailment_type = patterns_graph.edges[node, ent_node]['edge_type']
-            if entailment_type['edge_type'].syntactic_change:
+            if entailment_type.syntactic_change:
                 syn_edges += 1
-            elif entailment_type['edge_type'].lexical_change:
+            elif entailment_type.lexical_change:
                 lex_edges += 1
             else:
                 both_edges += 1
