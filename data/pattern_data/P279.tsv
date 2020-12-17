@@ -1,0 +1,28 @@
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is a subclass of [Y] .	subclass	is-subclass	present	N-M
+[X] is a type of [Y] .	type	is-type	present	N-M
+[X], which is a type of [Y] .	type is-type	present	N-M
+[X], which is a subclass of [Y] .	subclass	is-subclass	present	N-M
+[X],  a subclass of [Y] .	subclass	is-subclass	present	N-M
+[X],  a type of [Y] .	subclass	is-subclass	present	N-M
+types of [Y] such as [X].	type	is-type	?	N-M
+[X] is a [Y] .		is-a	is-a	present	N-M
+[Y] including [X] .		include	include	present-continuous	N-M
+[Y] like [X] .		like	like	-	N-M
+[Y] includes [X] .		include	include	present	N-M
+[Y] including the [X] .		including-the	including-the	present	N-M
+[X] is the largest [Y] .		is-largest	is-largest	present	N-M
+[Y] may include [X] .		may-include	may-include	present	N-M
+[X] is called [Y].		is-called	is-called	present	N-M
+[X] is an example of [Y].		is-example	is-example	present	N-M
+[X] is a class of [Y].		is-class	is-class	present	N-M
+[X] is a kind of [Y].		is-kind	is-kind	present	N-M
+[X] and some other [Y].		and-some	and-some	-	N-M
+[X] and any other [Y].		and-any	and-any	-	N-M
+[X] or some other [Y].		or-some	or-some	-	N-M
+[X] a special case of [Y].		special-case	special-case	-	N-M
+[X] is an [Y].		is-an	is-an	present	N-M
+[Y] such as [X].		such-as	such-as	-	N-M
+[X] is the [Y].		is-the	is-the	present	N-M
+[X] is a form of [Y].		is-form	is-form	present	N-M
+

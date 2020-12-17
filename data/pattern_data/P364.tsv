@@ -19,4 +19,4 @@ The language of [X] was [Y].	The language of the story was English.	language	lan
 [X] is a series in the [Y] language.	The story is a work in the English-language.	language	series-in-language	past	N-1
 [X] was a series in the [Y] language.	The story was a work in the English-language.	language	series-in-language	past	N-1
 [Y] is the language of [X].	Hebrew is the language of the Old Testament	language	is-language-of	present	N-1
-[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	was-language-of	past	N-1
+[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	is-language-of	past	N-1
