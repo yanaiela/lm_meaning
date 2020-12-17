@@ -1,28 +1,28 @@
 LEMMA	NOT-ENTAILED
-which-festival	-
-which-host	 which-festival, a-festival,festival
-was-held-in	 which-festival, a-festival,festival
-take-place	 which-festival, a-festival,festival
-that-held	 which-festival, a-festival,festival
-that-was-held-at	 which-festival, a-festival,festival
-locate	_a-festival,festival,_which-festival
-happen	 which-festival, a-festival,festival
-was-held-at	 which-festival, a-festival,festival
-that-host	 which-festival, a-festival,festival
-which-host-the	 which-festival, a-festival,festival
 a-festival	-
-that-locate	 which-festival, a-festival,festival
-that-happen	 which-festival, a-festival,festival
-host	 which-festival, a-festival,festival
-that-host-the	 which-festival, a-festival,festival
-that-take-place	 which-festival, a-festival,festival
-host-the	 which-festival, a-festival,festival
-which-take-place	 which-festival, a-festival,festival
-held	 which-festival, a-festival,festival
-which-was-held-at	 which-festival, a-festival,festival
-that-was-held-in	 which-festival, a-festival,festival
-which-happen	 which-festival, a-festival,festival
-which-was-held-in	 which-festival, a-festival,festival
+was-held-at	 a-festival, which-festival,festival
+that-was-held-at	 a-festival, which-festival,festival
 festival	-
-which-locate	 which-festival, a-festival,festival
-which-held	 which-festival, a-festival,festival
+which-festival	-
+was-held-in	 a-festival, which-festival,festival
+that-happen	 a-festival, which-festival,festival
+host	 a-festival, which-festival,festival
+which-host-the	 a-festival, which-festival,festival
+which-locate	 a-festival, which-festival,festival
+host-the	 a-festival, which-festival,festival
+that-host-the	 a-festival, which-festival,festival
+locate	festival,_a-festival,_which-festival
+happen	 a-festival, which-festival,festival
+take-place	 a-festival, which-festival,festival
+that-host	 a-festival, which-festival,festival
+held	 a-festival, which-festival,festival
+that-locate	 a-festival, which-festival,festival
+which-held	 a-festival, which-festival,festival
+that-take-place	 a-festival, which-festival,festival
+which-take-place	 a-festival, which-festival,festival
+that-held	 a-festival, which-festival,festival
+which-was-held-at	 a-festival, which-festival,festival
+which-happen	 a-festival, which-festival,festival
+that-was-held-in	 a-festival, which-festival,festival
+which-host	 a-festival, which-festival,festival
+which-was-held-in	 a-festival, which-festival,festival

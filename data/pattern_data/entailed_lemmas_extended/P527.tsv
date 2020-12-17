@@ -1,10 +1,10 @@
 LEMMA	NOT-ENTAILED
-consist-of	is-ingredient-in
+is-create-out	is-ingredient-in
 is-building-block	is-ingredient-in
 make-of	is-ingredient-in
-comprise	is-building-block,is-part-of,is-ingredient-in,is-create-out,is-component-of
-is-part-of	is-create-out,make-of,consist-of
-comprise-of	consist-of,is-building-block,make-of,comprise,is-part-of,is-ingredient-in,is-create-out,is-component-of
+comprise-of	is-create-out,is-building-block,make-of,is-part-of,comprise,is-ingredient-in,consist-of,is-component-of
+is-part-of	is-create-out,consist-of,make-of
+comprise	is-create-out,is-building-block,is-part-of,is-ingredient-in,is-component-of
 is-ingredient-in	-
-is-create-out	is-ingredient-in
+consist-of	is-ingredient-in
 is-component-of	is-ingredient-in
