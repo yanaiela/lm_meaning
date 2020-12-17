@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] died in [Y].	[X]:He :died :in [Y]:his home.	die	die-in	past	N-1
 [X] died at [Y].	In 1884 [X]:Johnson :died :at [Y]:his estate Chiefswood.	die	die-at	past	N-1
 [X] passed away in [Y].	[X]:the Mayor of Blue Ash :passed :away :in [Y]:France	pass-away	pass-away-in	past	N-1
