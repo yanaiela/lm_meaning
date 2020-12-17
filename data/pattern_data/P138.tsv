@@ -1,4 +1,4 @@
-RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
+RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is named after [Y].	[X]:Boston Mass :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	present	N-1
 [X] was named after [Y].	[X]:Boston Mass :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	past	N-1
 [X] is named for [Y].	[X]:Boston Mass :is :named :aftforer [Y]:Boston in Lincolnshire	is-name-for	is-name-for	present	N-1
