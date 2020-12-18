@@ -5,6 +5,8 @@ The native language of [X] is [Y].		native	native	present	N-1
 [Y] author [X].		author	author	-	N-1
 [Y] actor [X].		actor	actor	-	N-1
 [Y] poet [X].		poet	poet	-	N-1
+[Y] composer [X].		composer	composer	-	N-1
+[Y] painter [X].		painter	painter	-	N-1
 [X] was a [Y] politician.		was-politician	was-politician	past	N-1
 [Y] writer [X].	Behzad was known  for the books of French y science writer Jean Rostand x and English naturalist Charles Darwin that he translated .	writer	writer	-	N-1
 [X] was a [Y] composer.		was-composer	was-composer	past	N-1
@@ -15,6 +17,7 @@ The native language of [X] is [Y].		native	native	present	N-1
 [X] was a [Y] naturalist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-naturalist	was-naturalist	past	N-1
 [X] was a [Y] botanist.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-botanist	was-botanist	past	N-1
 [X] was a [Y] minister.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-minister	was-minister	past	N-1
+[X] was a [Y] poet.	Jan Wils ( 1603–1666 )was a Dutch Golden Age painter .	was-poet	was-poet	past	N-1
 [Y] naturalist [X].	"The specific "" gustavi "" commemorates the Dutch y naturalist Gustaaf Schlegel x ."	naturalist	naturalist	-	N-1
 [Y] botanist [X].		botanist	botanist	-	N-1
 [Y] minister [X].	On 26 September 1961 , the Dutch y Foreign Minister Joseph Luns x offered to hand over the territory to a United Nations trusteeship .	minister	minister	-	N-1
