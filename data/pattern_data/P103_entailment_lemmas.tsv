@@ -1,4 +1,4 @@
-native	*/
+native	+/
 childhood	+/native
 actress	+/native, was-actress
 was-film-actress	+/native,actress,was-actress
