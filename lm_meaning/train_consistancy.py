@@ -47,7 +47,7 @@ class LineByLineTextDataset(Dataset):
         if os.path.exists(cached_features_file_h) and not args.overwrite_cache:
             with open(cached_features_file_h, "rb") as handle:
                 examples_h = pickle.load(handle)
-              
+
         else:
             logger.info("Creating features from datasets file at %s", directory)
 
@@ -173,7 +173,7 @@ def mask_objs(inputs: torch.Tensor, model: PreTrainedModel, tokenizer: PreTraine
     inputs = inputs.to(args.device)
     outputs = model(inputs[:,0])
     predicted_index = torch.argmax(outputs[0][indices_replace_x, indices_replace_y], 1)
-    
+
     labels = inputs[:, 1].clone()
     labels.to(args.device)
     indices_replace_x, indices_replace_y = torch.where(inputs[:,1]==tokenizer.convert_tokens_to_ids("[SEP]"))
@@ -277,11 +277,11 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 model.train()
                 outputs = model(inputs, masked_lm_labels=labels)
                 loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
-                
+
                 language_modeling = False
             else:
-                inputs_consistency, labels_consistency = mask_objs(batch, model, tokenizer, args) 
-                
+                inputs_consistency, labels_consistency = mask_objs(batch, model, tokenizer, args)
+
                 model.train()
                 outputs = model(inputs_consistency, masked_lm_labels=labels_consistency)
                 loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
@@ -374,7 +374,7 @@ def main():
     parser.add_argument(
         "--save_total_limit",
         type=int,
-        default=3,
+        default=-1,
         help="Saves this many checkpoints and deletes older ones",
     )
     parser.add_argument("--no_cuda", action='store_true',
@@ -402,7 +402,7 @@ def main():
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
 
-    with open("/".join(args.dataset_name.split("/")[:-1]) + "/log.txt") as f_log:  
+    with open("/".join(args.dataset_name.split("/")[:-1]) + "/log.txt") as f_log:
         metadata = "consitancy_"
         metadata += args.lm
         for line in f_log:
