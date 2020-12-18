@@ -12,7 +12,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is a television commentator with [Y].		commentator-with	commentator-with	present	N-M
 [X] is a presenter at [Y].		presenter-at	presenter-at	present	N-M
 [X] is a presenter on [Y].		presenter-on	presenter-on	present	N-M
-[X] is a presenter with the [Y].		presenter-with	presenter-with	present	N-M
+[X] is a presenter with the [Y].		presenter-with-the	presenter-with	present	N-M
+[X] is a presenter with [Y].		presenter-with	presenter-with	present	N-M
 [X] is the chief technical officer at [Y].		chief-technical	chief-technical	present	N-M
 [X] is the CTO of [Y].		cto	cto	present	N-M
 [X] is a director at [Y].		director	director	present	N-M
@@ -21,7 +22,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X], who is a television commentator with [Y].		who-commentator-with	who-commentator-with	present	N-M
 [X], who is a presenter at [Y].		who-presenter-at	who-presenter-at	present	N-M
 [X], who is a presenter on [Y].		who-presenter-on	who-presenter-on	present	N-M
-[X], who is a presenter with the [Y].		who-presenter-with	who-presenter-with	present	N-M
+[X], who is a presenter with the [Y].		who-presenter-with-the	who-presenter-with	present	N-M
+[X], who is a presenter with [Y].		who-presenter-with	who-presenter-with	present	N-M
 [X], who is the chief technical officer at [Y].		who-chief-technical	who-chief-technical	present	N-M
 [X], who is the CTO of [Y].		who-cto	who-cto	present	N-M
 [X], who is a director at [Y].		who-director	who-director	present	N-M
