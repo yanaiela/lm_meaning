@@ -324,7 +324,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
         torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
         logger.info("Saving optimizer and scheduler states to %s", output_dir)
 
-    tb_writer.close()
+    # tb_writer.close()
 
     return global_step, tr_loss / global_step
 
