@@ -8,7 +8,7 @@ The [Y]-owned [X]	"The ESPN y - owned "" FiveThirtyEight x "" launched on March 
 [X] local media subsidiary of [Y] .		local-media-subsidiary	local-media-subsidiary	present	N-1
 [X] is a [Y] subsidiary.		subsidiary	subsidiary	present	N-1
 [X] division of [Y].		division	division	present	N-1
-[Y] puchased the [X].		purchased	purchased	past	N-M
+[Y] purchased the [X].		purchased	purchased	past	N-M
 [Y] bought [X]		bought	bought	past	N-M
 [Y]'s acquisitions such as [X].	Ballmer was instrumental in driving Microsoft y 's connected computing strategy , with acquisitions such as Skype x .	acquisitions-such	acquisitions-such	present	N-M
 [X] was acquired by [Y].	Skype x was acquired by Microsoft y in May 2011 for $ 8.5 billion .	was-acquire	was-acquire	past	N-M
