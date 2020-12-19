@@ -1,18 +1,18 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] is a subclass of [Y] .	subclass	is-subclass	present	N-M
-[X] is a type of [Y] .	type	is-type	present	N-M
-[X], which is a type of [Y] .	type is-type	present	N-M
-[X], which is a subclass of [Y] .	subclass	is-subclass	present	N-M
-[X],  a subclass of [Y] .	subclass	is-subclass	present	N-M
-[X],  a type of [Y] .	subclass	is-subclass	present	N-M
-types of [Y] such as [X].	type	is-type	?	N-M
-[X] is a [Y] .		is-a	is-a	present	N-M
-[Y] including [X] .		include	include	present-continuous	N-M
-[Y] like [X] .		like	like	-	N-M
-[Y] includes [X] .		include	include	present	N-M
-[Y] including the [X] .		including-the	including-the	present	N-M
-[X] is the largest [Y] .		is-largest	is-largest	present	N-M
-[Y] may include [X] .		may-include	may-include	present	N-M
+[X] is a subclass of [Y].		subclass	is-subclass	present	N-M
+[X] is a type of [Y].		type	is-type	present	N-M
+[X], which is a type of [Y].		type is-type	present	N-M
+[X], which is a subclass of [Y].		subclass	is-subclass	present	N-M
+[X],  a subclass of [Y].		subclass	is-subclass	present	N-M
+[X],  a type of [Y].		subclass	is-subclass	present	N-M
+types of [Y] such as [X].		type	is-type	?	N-M
+[X] is a [Y].		is-a	is-a	present	N-M
+[Y] including [X].		include	include	present-continuous	N-M
+[Y] like [X].		like	like	-	N-M
+[Y] includes [X].		include	include	present	N-M
+[Y] including the [X].		including-the	including-the	present	N-M
+[X] is the largest [Y].		is-largest	is-largest	present	N-M
+[Y] may include [X].		may-include	may-include	present	N-M
 [X] is called [Y].		is-called	is-called	present	N-M
 [X] is an example of [Y].		is-example	is-example	present	N-M
 [X] is a class of [Y].		is-class	is-class	present	N-M
