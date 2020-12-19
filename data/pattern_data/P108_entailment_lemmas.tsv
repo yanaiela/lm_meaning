@@ -25,5 +25,5 @@ who-chief-technical	+/works-for,who-works-for,employed-by,who-employed-by,chief-
 who-cto	+/works-for,who-works-for,employed-by,who-employed-by,chief-technical,who-chief-technical,cto
 who-director	+/works-for,who-works-for,employed-by,who-employed-by,director
 who-correspondent	+/works-for,who-works-for,employed-by,who-employed-by,correspondent
-journalist	+/works-for,who-works-for,employed-by,who-employed-by,who-jounralist
+journalist	+/works-for,who-works-for,employed-by,who-employed-by,who-journalist
 who-journalist	+/works-for,who-works-for,employed-by,who-employed-by,journalist
