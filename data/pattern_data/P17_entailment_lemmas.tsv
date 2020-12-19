@@ -28,10 +28,11 @@ is-commune	+/is-located,which-is-located,located,which-is-commune,commune
 which-is-valley	+/is-located,which-is-located,located,a-valley,valley
 a-valley	+/is-located,which-is-located,located,which-is-valley,valley
 valley	+/is-located,which-is-located,located,which-is-valley,a-valley
-a-region	+/is-located,which-is-located,located,which-is-region,region,area-of
-which-is-region	+/is-located,which-is-located,located,a-region,region,area-of
-area-of	+/is-located,which-is-located,located,a-region,which-is-region,region
-region	+/is-located,which-is-located,located,a-region,which-is-region,area-of
+a-region	+/is-located,which-is-located,located,which-is-region,region,area-of,region-of
+which-is-region	+/is-located,which-is-located,located,a-region,region,area-of,region-of
+area-of	+/is-located,which-is-located,located,a-region,which-is-region,region,region-of
+region	+/is-located,which-is-located,located,a-region,which-is-region,area-of,region-of
+region-of	+/is-located,which-is-located,located,a-region,which-is-region,area-of,region
 island-of	+/is-located,which-is-located,located,is-island-of,which-is-is-island-of
 is-island-of	+/is-located,which-is-located,located,island-of,which-is-island-of
 which-is-island-of	+/is-located,which-is-located,located,island-of,is-island-of
