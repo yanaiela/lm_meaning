@@ -1,5 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] is affiliated with the [Y] religion .		is-affliated-with	is-affliated-with	present	N-1
+[X] is affiliated with the [Y] religion .		is-affiliated-with	is-affiliated-with	present	N-1
 [X] followed the [Y] religion.		follow	follow	past	N-M
 [X] follows the [Y] religion.		follow	follow	present	N-1
 [X] converted to [Y].		convert	convert	past	N-M
