@@ -14,6 +14,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE
 [X] is an ingredient in [Y].	[Y]:Taurine :is :an :ingredient :in [X]:many energy drinks.	ingredient	is-ingredient-in	present
 [Y] is created out of [X].	"[Y]:Capital reserve :is :created :out :of [X]:capital profits like upward revaluation of assets, profits on sale of assets etc."	create-out	is-create-out	present
 [Y] was created out of [X].	"[Y]:Capital reserve :was :created :out :of [X]:capital profits like upward revaluation of assets, profits on sale of assets etc."	create-out	is-create-out	past
-[X] is a subfield of [Y].			subfield	present
-[X] is a discipline in [Y].			discipline	present
-[X] is a branch of [Y].			branch 	present
+[X] is a subfield of [Y].		subfield	subfield	present
+[X] is a discipline in [Y].		discipline	discipline	present
+[X] is a branch of [Y].		branch 	branch	present
