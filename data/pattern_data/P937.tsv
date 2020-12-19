@@ -1,6 +1,6 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] used to work in [Y] .		used-work	used-work	past	N-M
-[X] found employment in [Y].		found-employment	found-employment 	past	N-M
+[X] found employment in [Y].		found-employment	found-employment	past	N-M
 [X] was employed in [Y].		was-employment	was-employment	past	N-M
 [X] worked in [Y].		work-in	work-in	past	N-M
 [X] held a position in [Y].		held-position	held-position	past	N-M
