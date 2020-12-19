@@ -1,7 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is a subclass of [Y].		subclass	is-subclass	present	N-M
 [X] is a type of [Y].		type	is-type	present	N-M
-[X], which is a type of [Y].		type is-type	present	N-M
+[X], which is a type of [Y].		type	is-type	present	N-M
 [X], which is a subclass of [Y].		subclass	is-subclass	present	N-M
 [X],  a subclass of [Y].		subclass	is-subclass	present	N-M
 [X],  a type of [Y].		subclass	is-subclass	present	N-M
@@ -25,4 +25,3 @@ types of [Y] such as [X].		type	is-type	?	N-M
 [Y] such as [X].		such-as	such-as	-	N-M
 [X] is the [Y].		is-the	is-the	present	N-M
 [X] is a form of [Y].		is-form	is-form	present	N-M
-
