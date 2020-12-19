@@ -29,6 +29,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X], a region in [Y].		a-region	a-region	present	N-1
 [X]. which is a region in [Y].		which-region	which-region	present	N-1
 [X] region in [Y].		region	region	present	N-1
+[X] region of [Y].		region	region-of	present	N-1
 [Y] capital [X].		capital	capital	present	1-1
 [Y] city of [X].		city-of	city-of	present	N-1
 [X] county, [Y].		county	county	present	N-1
