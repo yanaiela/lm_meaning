@@ -16,4 +16,4 @@ The language of [X] was [Y].	The language of Italy was Italian.	language	languag
 [X], a [Y]-language name	John, an English-language name	is-name	is-name	?	N-M
 The [Y]-language creation [X]	The English-language creation Hamlet.	-language	-language	?	N-M
 [Y] is the language of [X].	Hebrew is the language of the Old Testament	language	is-language-of	present	N-1
-[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	was-language-of	past	N-1
+[Y] was the language of [X].	Hebrew is the language of the Old Testament	language	is-language-of	past	N-1

@@ -1,9 +1,9 @@
--language-show	*/-language-film,-language-series,film-in-language,series-in-language
--language-film	*/-language-show,-language-series,series-in-language,show-in-language
--language-series	*/-language-film,-language-show,show-in-language,film-in-language
-film-in-language	+/-language-film,original-language-is,language-is
+-language-show	*/-language-film,-language-series,film-in-language,series-in-language,is-language-of,language-is
+-language-film	*/-language-show,-language-series,series-in-language,show-in-language,is-language-of,language-is
+-language-series	*/-language-film,-language-show,show-in-language,film-in-language,is-language-of,language-is
+film-in-language	+/-language-film,original-language-is,language-is,is-language-of
 original-language-is	+/language-is,is-language-of
-show-in-language	*/-language-film,-language-series,film-in-language,series-in-language
-series-in-language	*/-language-film,-language-show,show-in-language,film-in-language
+show-in-language	*/-language-film,-language-series,film-in-language,series-in-language,is-language-of,language-is
+series-in-language	*/-language-film,-language-show,show-in-language,film-in-language,is-language-of,language-is
 is-language-of	+/original-language-is,language-is
 language-is	+/original-language-is,is-language-of

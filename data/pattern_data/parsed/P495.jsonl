@@ -23,7 +23,7 @@
 {"pattern": "[X], made in [Y].", "example": "", "lemma": "made", "extended_lemma": "made-in", "tense": "past", "spike_query": "<>subject:golf, $made $in object:[w={}]Scotland."}
 {"pattern": "[X] was from [Y].", "example": "", "lemma": "from", "extended_lemma": "was-from", "tense": "past", "spike_query": "<>subject:golf $was $from object:[w={}]Scotland."}
 {"pattern": "[X], who was from [Y].", "example": "", "lemma": "from", "extended_lemma": "was-from", "tense": "past", "spike_query": "<>subject:golf, $who $was $from object:[w={}]Scotland."}
-{"pattern": "[X], from [Y].", "example": "", "lemma": "from", "extended_lemma": "were-from", "tense": "past", "spike_query": "<>subject:golf, $from object:[w={}]Scotland."}
+{"pattern": "[X], from [Y].", "example": "", "lemma": "from", "extended_lemma": "from", "tense": "?", "spike_query": "<>subject:golf, $from object:[w={}]Scotland."}
 {"pattern": "[X], that was developed in [Y].", "example": "", "lemma": "developed", "extended_lemma": "that-developed-in", "tense": "past", "spike_query": "<>subject:golf, $that $was $developed $in object:[w={}]Scotland."}
 {"pattern": "[X] was developed in [Y].", "example": "", "lemma": "developed", "extended_lemma": "was-developed-in", "tense": "past", "spike_query": "<>subject:golf $was $developed $in object:[w={}]Scotland."}
 {"pattern": "[X], developed in [Y].", "example": "", "lemma": "developed", "extended_lemma": "developed-in", "tense": "past", "spike_query": "<>subject:golf, $developed $in object:[w={}]Scotland."}
