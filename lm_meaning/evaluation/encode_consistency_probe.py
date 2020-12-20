@@ -1,5 +1,5 @@
 import argparse
-
+from typing import Dict
 import wandb
 
 from lm_meaning.evaluation.consistency_probe import analyze_results, analyze_graph, parse_lm_results
@@ -18,7 +18,7 @@ def log_wandb(args):
 
     # entailment_bert-large-cased-whole-word-masking_100_4_2_P176-P30-P39-P127
     if 'entailment' in lm:
-        model_args = lm.split('_')
+        model_args = lm.split('/')[-1].split('_')
         config['ft_type'] = model_args[0]
         config['model_name'] = model_args[1]
         config['n_tuples'] = model_args[2]
@@ -33,6 +33,42 @@ def log_wandb(args):
         tags=["lm", pattern],
         config=config,
     )
+
+
+def evaluate_lama(pattern: str, lm_results: Dict):
+
+    points = 0
+    data, predictions = lm_results[pattern]['data'], lm_results[pattern]['predictions']
+    for datum, preds in zip(data, predictions):
+        subj = datum['sub_label']
+        obj = datum['obj_label']
+        pred_obj = preds[0]['token_str']
+        if pred_obj == obj:
+            points += 1
+    return points / len(data)
+
+
+def group_score_lama_eval(lm_results: Dict):
+    patterns = list(lm_results.keys())
+
+    points = 0
+    data = lm_results[patterns[0]]['data']
+    for datum_ind, datum in enumerate(data):
+        obj = datum['obj_label']
+        consistent_true = True
+        for pattern in patterns:
+            preds = lm_results[pattern]['predictions'][datum_ind]
+            if preds[0]['token_str'] != obj:
+                consistent_true = False
+                break
+
+        if consistent_true:
+            points += 1
+
+    return points / len(data)
+
+
+
 
 
 def main():
@@ -90,13 +126,17 @@ def main():
         filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
         results_dict[prompt] = {"data": filtered_data, "predictions": predictions}
 
-    # Evaluate
-    if args.evaluate:
-        accuracy = lm_eval(results_dict, args.lm)
-
     subj_obj = {}
     for row in data:
         subj_obj[row['sub_label']] = row['obj_label']
+
+    # Evaluate on LAMA
+    lama_acc = evaluate_lama(prompts[0], results_dict)
+    wandb.run.summary['lama_acc'] = lama_acc
+
+    # Group Eval
+    group_acc = group_score_lama_eval(results_dict)
+    wandb.run.summary['lama_group_acc'] = group_acc
 
     all_objects = list(set(subj_obj.values()))
     lm_results = parse_lm_results(results_dict, all_objects)
