@@ -28,6 +28,7 @@
 {"pattern": "[X], a region in [Y].", "example": "", "lemma": "a-region", "extended_lemma": "a-region", "tense": "present", "spike_query": "<>subject:Simcoe, $a $region $in object:[w={}]Canada."}
 {"pattern": "[X]. which is a region in [Y].", "example": "", "lemma": "which-region", "extended_lemma": "which-region", "tense": "present", "spike_query": "<>subject:Simcoe. $which $is $a $region $in object:[w={}]Canada."}
 {"pattern": "[X] region in [Y].", "example": "", "lemma": "region", "extended_lemma": "region", "tense": "present", "spike_query": "<>subject:Simcoe $region $in object:[w={}]Canada."}
+{"pattern": "[X] region of [Y].", "example": "", "lemma": "region", "extended_lemma": "region-of", "tense": "present", "spike_query": "<>subject:Simcoe $region $of object:[w={}]Canada."}
 {"pattern": "[Y] capital [X].", "example": "", "lemma": "capital", "extended_lemma": "capital", "tense": "present", "spike_query": "object:[w={}]Canada $capital <>subject:Simcoe."}
 {"pattern": "[Y] city of [X].", "example": "", "lemma": "city-of", "extended_lemma": "city-of", "tense": "present", "spike_query": "object:[w={}]Canada $city $of <>subject:Simcoe."}
 {"pattern": "[X] county, [Y].", "example": "", "lemma": "county", "extended_lemma": "county", "tense": "present", "spike_query": "<>subject:Simcoe $county, object:[w={}]Canada."}

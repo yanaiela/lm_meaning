@@ -1,5 +1,11 @@
 from dataclasses import dataclass
+from enum import Enum
 
+
+class EdgeType(Enum):
+    syntactic = 1
+    lexical = 2
+    both = 3
 
 @dataclass(frozen=True)
 class PatternNode:
@@ -16,8 +22,9 @@ class PatternNode:
         return self.lm_pattern
 
 
-@dataclass(frozen=True)
+"""@dataclass(frozen=True)
 class EdgeType:
     syntactic_change: str
     lexical_change: str
     determiner_change: str
+"""
