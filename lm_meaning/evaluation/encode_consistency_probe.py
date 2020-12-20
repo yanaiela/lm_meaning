@@ -125,8 +125,6 @@ def main():
         results_dict[prompt] = []
         filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
         results_dict[prompt] = {"data": filtered_data, "predictions": predictions}
-        if prompt_id >= 1:
-            break
 
     subj_obj = {}
     for row in data:
