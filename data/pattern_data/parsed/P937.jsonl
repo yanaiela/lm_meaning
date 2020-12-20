@@ -1,5 +1,5 @@
 {"pattern": "[X] used to work in [Y] .", "example": "", "lemma": "used-work", "extended_lemma": "used-work", "tense": "past", "spike_query": "<>subject:Enki $used $to $work $in object:[w={}]Paris $."}
-{"pattern": "[X] found employment in [Y].", "example": "", "lemma": "found-employment", "extended_lemma": "found-employment ", "tense": "past", "spike_query": "<>subject:Enki $found $employment $in object:[w={}]Paris."}
+{"pattern": "[X] found employment in [Y].", "example": "", "lemma": "found-employment", "extended_lemma": "found-employment", "tense": "past", "spike_query": "<>subject:Enki $found $employment $in object:[w={}]Paris."}
 {"pattern": "[X] was employed in [Y].", "example": "", "lemma": "was-employment", "extended_lemma": "was-employment", "tense": "past", "spike_query": "<>subject:Enki $was $employed $in object:[w={}]Paris."}
 {"pattern": "[X] worked in [Y].", "example": "", "lemma": "work-in", "extended_lemma": "work-in", "tense": "past", "spike_query": "<>subject:Enki $worked $in object:[w={}]Paris."}
 {"pattern": "[X] held a position in [Y].", "example": "", "lemma": "held-position", "extended_lemma": "held-position", "tense": "past", "spike_query": "<>subject:Enki $held $a $position $in object:[w={}]Paris."}

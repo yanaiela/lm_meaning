@@ -1,10 +1,10 @@
 LEMMA	NOT-ENTAILED
+is-name	language,language-is,-language,write-in-language,write-in
+in-language	is-name
+language	is-name
 language-is	is-name
 is-language-of	is-name
-was-language-of	is-name
-in-language	is-name
-write-in-language	is-name
 -language	is-name
+write-in-language	is-name
+was-language-of	is-name
 write-in	is-name
-language	is-name
-is-name	language-is,write-in-language,-language,write-in,language

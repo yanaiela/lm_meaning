@@ -1,8 +1,8 @@
 LEMMA	NOT-ENTAILED
-is-name-for	-
-name-after	-
 is-name-after	-
+is-name-for	-
+is-call-after	-
+call-after	-
+name-after	-
 is-name-in-honor	-
 is-nacallme-after	-
-call-after	-
-is-call-after	-
