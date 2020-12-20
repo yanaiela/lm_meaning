@@ -65,6 +65,7 @@ def build_model_by_name(lm: str, args) -> Pipeline:
         model = pipeline("fill-mask", model=model, tokenizer=tokenizer, device=device, topk=100)
     else:
         model = pipeline("fill-mask", model=lm, device=device, topk=100)
+
     return model
 
 
@@ -154,7 +155,7 @@ def lm_eval(results_dict: Dict, lm: str):
 
 def main():
     parse = argparse.ArgumentParser("")
-    parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-base-uncased")
+    parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-large-cased")
     parse.add_argument("--output_file_prefix", type=str, help="")
     parse.add_argument("--patterns_file", type=str, help="Path to templates for each prompt", default="/data/LAMA_data/TREx")
     parse.add_argument("--data_file", type=str, help="", default="/data/LAMA_data/TREx/P449.jsonl")
