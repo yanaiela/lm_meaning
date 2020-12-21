@@ -54,20 +54,20 @@ class LineByLineTextDataset(Dataset):
             with open(file_path, encoding="utf-8") as f:
                 lines = [line for line in f.read().splitlines() if (len(line) > 0 and not line.isspace())]
 
-            premise = lines[::2]
-            hypothesis = lines[1::2]
-            examples_p = tokenizer.batch_encode_plus(premise, add_special_tokens=True, padding=True, max_length=block_size)[
+            lines = tokenizer.batch_encode_plus(lines, add_special_tokens=True, padding=True, max_length=block_size)[
                 "input_ids"]
-            examples_h = tokenizer.batch_encode_plus(hypothesis, add_special_tokens=True, padding=True, max_length=block_size)[
-                "input_ids"]
+
+            examples_p = lines[::2]
+            examples_h = lines[1::2]
 
             logger.info("Saving features into cached file %s", cached_features_file_p)
             with open(cached_features_file_p, "wb") as handle:
                 pickle.dump(examples_p, handle, protocol=pickle.HIGHEST_PROTOCOL)
             with open(cached_features_file_h, "wb") as handle:
                 pickle.dump(examples_h, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        self.examples = [(p,h) for p,h in zip(examples_p, examples_h)]
 
+        self.examples = [(p,h) for p,h in zip(examples_p, examples_h)]
+        print(len(self.examples))
     def __len__(self):
         return len(self.examples)
 
@@ -307,22 +307,22 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 scheduler.step()  # Update learning rate schedule
                 model.zero_grad()
                 global_step += 1
-
-        checkpoint_prefix = "checkpoint"
-        # Save model checkpoint
-        output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
-        os.makedirs(output_dir, exist_ok=True)
-        model_to_save = (
+        if step==int(len(epoch_iterator)/4):
+            checkpoint_prefix = "checkpoint"
+            # Save model checkpoint
+            output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
+            os.makedirs(output_dir, exist_ok=True)
+            model_to_save = (
             model.module if hasattr(model, "module") else model
-        )  # Take care of distributed/parallel training
-        model_to_save.save_pretrained(output_dir)
-        tokenizer.save_pretrained(output_dir)
-        torch.save(args, os.path.join(output_dir, "training_args.bin"))
-        logger.info("Saving model checkpoint to %s", output_dir)
-        _rotate_checkpoints(args, checkpoint_prefix)
-        torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
-        torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
-        logger.info("Saving optimizer and scheduler states to %s", output_dir)
+            )  # Take care of distributed/parallel training
+            model_to_save.save_pretrained(output_dir)
+            tokenizer.save_pretrained(output_dir)
+            torch.save(args, os.path.join(output_dir, "training_args.bin"))
+            logger.info("Saving model checkpoint to %s", output_dir)
+            _rotate_checkpoints(args, checkpoint_prefix)
+            torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+            torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+            logger.info("Saving optimizer and scheduler states to %s", output_dir)
 
     # tb_writer.close()
 
