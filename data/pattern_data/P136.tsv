@@ -1,5 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] plays [Y] music .		plays	plays	present	N-1
+[X] plays [Y] music .		plays-music	plays-music	present	N-1
 [X], who plays [Y] music		who-plays	who-plays	present	N-1
 [X] is a [Y] musician.		is-a-musician	is-a-musician	present	N-1
 [X] is an [Y] musician.		is-an-musician	is-an-musician	present	N-1
