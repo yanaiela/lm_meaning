@@ -36,9 +36,9 @@ region-of	+/is-located,which-is-located,located,a-region,which-region,area-of,re
 island-of	+/is-located,which-is-located,located,is-island-of,which-is-island-of
 is-island-of	+/is-located,which-is-located,located,island-of,which-is-island-of
 which-is-island-of	+/is-located,which-is-located,located,island-of,is-island-of
-capital	+/is-located,which-is-located,located,capital-of,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
-capital-of	+/is-located,which-is-located,located,capital,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
-is-capital-of	+/is-located,which-is-located,located,capital,capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
-the-capital-of	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city
-is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,which-is-capital-city,city,city-of,is-city,which-is-city,city
-which-is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,is-capital-city,city,city-of,is-city,which-is-city,city
+capital	+/is-located,which-is-located,located,capital-of,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city,a-city
+capital-of	+/is-located,which-is-located,located,capital,is-capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city,a-city
+is-capital-of	+/is-located,which-is-located,located,capital,capital-of,the-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city,a-city
+the-capital-of	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,is-capital-city,which-is-capital-city,city,city-of,is-city,which-is-city,city,a-city
+is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,which-is-capital-city,city,city-of,is-city,which-is-city,city,a-city
+which-is-capital-city	+/is-located,which-is-located,located,capital,capital-of,is-capital-of,the-capital-of,is-capital-city,city,city-of,is-city,which-is-city,city,a-city

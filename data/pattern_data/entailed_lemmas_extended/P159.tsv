@@ -1,9 +1,9 @@
 LEMMA	NOT-ENTAILED
-contains-headquarters	-
 based-in	-
-is-headquarter	-
-headquarters-in	-
 has-headquarter	-
-home-to	-
-headquarter	-
 located-in	-
+is-headquarter	-
+contains-headquarters	-
+headquarters-in	-
+headquarter	-
+home-to	-

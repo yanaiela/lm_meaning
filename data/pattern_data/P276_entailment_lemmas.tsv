@@ -1,4 +1,4 @@
-locate	*/festival,_which-festival,_a-festival
+locate	*/festival,which-festival,a-festival
 happen	*/festival, which-festival, a-festival
 take-place	*/festival, which-festival, a-festival
 held	*/festival, which-festival, a-festival

@@ -1,4 +1,4 @@
-{"pattern": "[X] plays [Y] music .", "example": "", "lemma": "plays", "extended_lemma": "plays", "tense": "present", "spike_query": "<>subject:Herbie $plays object:[w={}]jazz $music $."}
+{"pattern": "[X] plays [Y] music .", "example": "", "lemma": "plays-music", "extended_lemma": "plays-music", "tense": "present", "spike_query": "<>subject:Herbie $plays object:[w={}]jazz $music $."}
 {"pattern": "[X], who plays [Y] music", "example": "", "lemma": "who-plays", "extended_lemma": "who-plays", "tense": "present", "spike_query": "<>subject:Herbie, $who $plays object:[w={}]jazz $music"}
 {"pattern": "[X] is a [Y] musician.", "example": "", "lemma": "is-a-musician", "extended_lemma": "is-a-musician", "tense": "present", "spike_query": "<>subject:Herbie $is $a object:[w={}]jazz $musician."}
 {"pattern": "[X] is an [Y] musician.", "example": "", "lemma": "is-an-musician", "extended_lemma": "is-an-musician", "tense": "present", "spike_query": "<>subject:Herbie $is $an object:[w={}]jazz $musician."}

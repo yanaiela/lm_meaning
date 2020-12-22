@@ -1,8 +1,8 @@
 LEMMA	NOT-ENTAILED
-share-territorial-border	share-maritime-border,share-territorial,share-water-border
-share-maritime-border	share-international-border,share-territorial-border
-share-international-border	share-maritime-border,share-water-border,share-territorial-border
-share-border	share-international-border,share-maritime-border,share-water-border,share-territorial-border
-border-with	share-international-border,share-maritime-border,share-water-border,share-territorial-border
 share-water-border	share-international-border,share-territorial-border
-share-common-border	share-international-border,share-maritime-border,share-water-border,share-territorial-border
+border-with	share-international-border,share-water-border,share-territorial-border,share-maritime-border
+share-territorial-border	share-water-border,share-territorial,share-maritime-border
+share-border	share-international-border,share-water-border,share-territorial-border,share-maritime-border
+share-maritime-border	share-international-border,share-territorial-border
+share-common-border	share-international-border,share-water-border,share-territorial-border,share-maritime-border
+share-international-border	share-water-border,share-territorial-border,share-maritime-border

@@ -1,10 +1,10 @@
-communicate	+/Unnamed:_1
+communicate	+/
 actress	+/communicate, is-actress, who-is-actress
 author	+/communicate, is-author, who-is-author, writer, is-writer, who-is-writer
 actor	+/communicate, is-actor, who-is-actor
 poet	+/communicate, is-poet, who-is-poet
 composer	+/communicate, is-composer, who-is-composer
-playwright	+/communicate, is-playwright, who-is-playwright
+playwright	+/communicate, is-playwright, who-is-playwright, writer, is-writer, who-is-writer
 writer	+/communicate, is-writer, who-is-writer
 is-actress	+/communicate, actress, who-is-actress
 is-author	+/communicate, author, who-is-author, writer, is-writer, who-is-writer
