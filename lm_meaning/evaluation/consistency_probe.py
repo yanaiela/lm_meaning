@@ -3,12 +3,10 @@ from collections import defaultdict
 from typing import List, Dict
 
 import numpy as np
+import wandb
 from scipy.stats import entropy
 
-import wandb
-
 from lm_meaning.evaluation.paraphrase_comparison import read_json_file
-from lm_meaning.spike_patterns.graph_types import EdgeType
 from lm_meaning.utils import read_jsonl_file, read_graph
 
 
@@ -50,17 +48,8 @@ def parse_lm_results(lm_results: Dict, possible_objects: List[str]) -> Dict:
         for data, preds in zip(dic['data'], dic['predictions']):
             subj = data['sub_label']
             obj = data['obj_label']
-            key = '_SPLIT_'.join([subj, obj])
-            # if key not in output_dic:
-            #     output_dic[key] = []
             first_object = get_first_object(preds, possible_objects)
             output_dic[pattern][subj] = first_object
-            # if first_object == obj:
-            #     output_dic[key].append(pattern)
-            # if first_object == '':
-            #     c += 1
-    # print('number of empties:', c)
-    # print('out of:', len(lm_results) * len(list(lm_results.values())[0]['data']))
     return output_dic
 
 
@@ -71,7 +60,7 @@ def get_node(graph, pattern):
     return None
 
 
-def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
+def analyze_results(lm_results: Dict, patterns_graph) -> None:
 
     total = 0
     points = 0
@@ -144,41 +133,30 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
 
     if total > 0:
         print('overall', points, total, points / total)
-        wandb.run.summary['inferred_acc'] = points / total
+        wandb.run.summary['consistency'] = points / total
     else:
-        wandb.run.summary['inferred_acc'] = -1
+        wandb.run.summary['consistency'] = -1
     if total_syn > 0:
-        wandb.run.summary['syntactic_inferred_acc'] = points_syn / total_syn
+        wandb.run.summary['syntactic_consistency'] = points_syn / total_syn
         print('syntactic', points_syn, total_syn, points_syn / total_syn)
     else:
-        wandb.run.summary['syntactic_inferred_acc'] = -1
+        wandb.run.summary['syntactic_consistency'] = -1
     if total_lex > 0:
-        wandb.run.summary['lexical_inferred_acc'] = points_lex / total_lex
+        wandb.run.summary['lexical_consistency'] = points_lex / total_lex
         print('lexical', points_lex, total_lex, points_lex / total_lex)
     else:
-        wandb.run.summary['lexical_inferred_acc'] = -1
+        wandb.run.summary['lexical_consistency'] = -1
     if total_both > 0:
         print('both', points_both, total_both, points_both / total_both)
-        wandb.run.summary['both_inferred_acc'] = points_both / total_both
+        wandb.run.summary['both_consistency'] = points_both / total_both
     else:
-        wandb.run.summary['both_inferred_acc'] = -1
-
-    if total_uni > 0:
-        print('uni', points_uni, total_uni, points_uni / total_uni)
-        wandb.run.summary['uni_inferred_acc'] = points_uni / total_uni
-    else:
-        wandb.run.summary['uni_inferred_acc'] = -1
-    if total_bi > 0:
-        print('bi', points_bi, total_bi, points_bi / total_bi)
-        wandb.run.summary['bi_inferred_acc'] = points_bi / total_bi
-    else:
-        wandb.run.summary['bi_inferred_acc'] = -1
+        wandb.run.summary['both_consistency'] = -1
 
     avg_by_edge = []
     for _, vals in points_by_edge.items():
         avg_by_edge.append(sum(vals) / len(vals))
 
-    wandb.run.summary['avg_inferred_by_edge'] = np.average(avg_by_edge)
+    wandb.run.summary['avg_consistency_by_edge'] = np.average(avg_by_edge)
 
     avg_out_normalized = []
     out_edges_total = 0
@@ -187,7 +165,7 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         avg_out_normalized.append(eo * (sum(vals) / len(vals)))
         out_edges_total += eo
 
-    wandb.run.summary['avg_inferred_by_edge_out'] = sum(avg_out_normalized) / out_edges_total
+    wandb.run.summary['avg_consistency_by_edge_out'] = sum(avg_out_normalized) / out_edges_total
 
     avg_in_normalized = []
     in_edges_total = 0
@@ -196,7 +174,7 @@ def analyze_results(lm_results: Dict, patterns_graph, subj2obj: Dict) -> None:
         avg_in_normalized.append(ei * (sum(vals) / len(vals)))
         in_edges_total += ei
 
-    wandb.run.summary['avg_inferred_by_edge_in'] = sum(avg_in_normalized) / in_edges_total
+    wandb.run.summary['avg_consistency_by_edge_in'] = sum(avg_in_normalized) / in_edges_total
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
@@ -235,8 +213,6 @@ def analyze_graph(patterns_graph):
     wandb.run.summary['syntactic_edges'] = syn_edges
     wandb.run.summary['lexical_edges'] = lex_edges
     wandb.run.summary['both_edges'] = both_edges
-    wandb.run.summary['bi_edges'] = bi_edges / 2  # counting these edges twice, so dividing by 2
-    wandb.run.summary['uni_edges'] = uni_edges
 
 
 def main():
@@ -263,7 +239,7 @@ def main():
 
     lm_results = parse_lm_results(lm_raw_results, all_objects)
 
-    analyze_results(lm_results, patterns_graph, subj_obj)
+    analyze_results(lm_results, patterns_graph)
     analyze_graph(patterns_graph)
 
 

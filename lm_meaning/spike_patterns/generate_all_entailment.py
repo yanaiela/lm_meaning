@@ -14,7 +14,7 @@ def log_wandb(args):
 
     wandb.init(
         name=f'{pattern}_generate_entailments',
-        project="memorization",
+        project="consistency",
         tags=[pattern],
         config=config,
     )

@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from typing import List, Dict
 
+from functools import lru_cache
+
 from spike.annotators.annotator_service import Annotator
 from spike.datamodel.definitions import Sentence
 from spike.exploration import ALGO_DICT
@@ -109,9 +111,14 @@ def _det_diff(words2pos1, words2pos2):
     return False
 
 
+@lru_cache(maxsize=None)
+def spacy_annotation(spacy_obj, text):
+    return spacy_obj(text)
+
+
 def lexical_difference(q1, q2, spacy_annotator):
-    doc1 = spacy_annotator(q1.replace('[X]', 'subject').replace('[Y]', 'object'))
-    doc2 = spacy_annotator(q2.replace('[X]', 'subject').replace('[Y]', 'object'))
+    doc1 = spacy_annotation(spacy_annotator, q1.replace('[X]', 'subject').replace('[Y]', 'object'))
+    doc2 = spacy_annotation(spacy_annotator, q2.replace('[X]', 'subject').replace('[Y]', 'object'))
     words1 = [(x.lemma_, x.pos_) for x in doc1 if x.text not in ['subject', 'object']]
     words2 = [(x.lemma_, x.pos_) for x in doc2 if x.text not in ['subject', 'object']]
 

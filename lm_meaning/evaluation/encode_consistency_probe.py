@@ -1,9 +1,10 @@
 import argparse
 from typing import Dict
+
 import wandb
 
 from lm_meaning.evaluation.consistency_probe import analyze_results, analyze_graph, parse_lm_results
-from lm_meaning.run_pipeline import build_model_by_name, run_query, lm_eval
+from lm_meaning.run_pipeline import build_model_by_name, run_query
 from lm_meaning.utils import read_graph, read_jsonl_file, load_prompts
 
 
@@ -16,7 +17,6 @@ def log_wandb(args):
         lm=lm
     )
 
-    # entailment_bert-large-cased-whole-word-masking_100_4_2_P176-P30-P39-P127
     if 'entailment' in lm:
         model_args = lm.split('/')[-1].split('_')
         config['ft_type'] = model_args[0]
@@ -28,9 +28,9 @@ def log_wandb(args):
 
 
     wandb.init(
-        name=f'{pattern}_consistent_{lm}',
-        project="memorization",
-        tags=["lm", pattern],
+        name=f'{pattern}_consistency_probe_{lm}',
+        project="consistency",
+        tags=[pattern, 'probe'],
         config=config,
     )
 
@@ -68,9 +68,6 @@ def group_score_lama_eval(lm_results: Dict):
     return points / len(data)
 
 
-
-
-
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-base-uncased")
@@ -80,7 +77,6 @@ def main():
     parse.add_argument("-graph", "--graph", type=str, help="graph file",
                        default="data/pattern_data/graphs/P449.graph")
 
-    parse.add_argument("--evaluate", action='store_true')
     parse.add_argument("--gpu", type=int, default=-1)
     parse.add_argument("--bs", type=int, default=100)
     parse.add_argument("--wandb", action='store_true')
@@ -116,7 +112,6 @@ def main():
 
     print('Language Models: {}'.format(model_name))
 
-    results_dict = {}
     model = build_model_by_name(model_name, args)
 
     results_dict = {}
@@ -141,7 +136,7 @@ def main():
     all_objects = list(set(subj_obj.values()))
     lm_results = parse_lm_results(results_dict, all_objects)
 
-    analyze_results(lm_results, patterns_graph, subj_obj)
+    analyze_results(lm_results, patterns_graph)
     analyze_graph(patterns_graph)
 
 

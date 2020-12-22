@@ -28,6 +28,41 @@ from transformers import (
 
 logger = logging.getLogger(__name__)
 
+class TextDataset(Dataset):
+    def __init__(self, tokenizer: PreTrainedTokenizer, args, file_path: str, block_size=512):
+        assert os.path.isfile(file_path)
+        directory, filename = os.path.split(file_path)
+        cached_features_file = os.path.join(directory, 'cached_lm_' + str(block_size) + '_' + filename)
+        print(cached_features_file)
+        if os.path.exists(cached_features_file):
+            logger.info("Loading features from cached file %s", cached_features_file)
+            with open(cached_features_file, 'rb') as handle:
+                self.examples = pickle.load(handle)
+        else:
+            logger.info("Creating features from dataset file at %s", directory)
+
+            self.examples = []
+            with open(file_path, encoding="utf-8") as f:
+                text = f.read()
+
+            tokenized_text = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(text))
+
+            for i in range(0, len(tokenized_text)-block_size+1, block_size): # Truncate in block of block_size
+                self.examples.append(tokenizer.build_inputs_with_special_tokens(tokenized_text[i:i+block_size]))
+            # Note that we are loosing the last truncated example here for the sake of simplicity (no padding)
+            # If your dataset is small, first you should loook for a bigger one :-) and second you
+            # can change this behavior by adding (model specific) padding.
+
+            logger.info("Saving features into cached file %s", cached_features_file)
+            with open(cached_features_file, 'wb') as handle:
+                pickle.dump(self.examples, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+    def __len__(self):
+        return len(self.examples)
+
+    def __getitem__(self, item):
+        return torch.tensor(self.examples[item])
+
 
 # This file originates from HuggingFace's run_language_modeling.py and was adapted to our needs.
 
@@ -67,7 +102,7 @@ class LineByLineTextDataset(Dataset):
                 pickle.dump(examples_h, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         self.examples = [(p,h) for p,h in zip(examples_p, examples_h)]
-        print(len(self.examples))
+
     def __len__(self):
         return len(self.examples)
 
@@ -77,6 +112,9 @@ class LineByLineTextDataset(Dataset):
 
 def load_and_cache_examples(args, file_path, tokenizer):
     return LineByLineTextDataset(tokenizer, args, file_path=file_path, block_size=args.block_size)
+
+def load_and_cache_examples_natural(args, file_path, tokenizer):
+    return TextDataset(tokenizer, args, file_path=file_path, block_size=args.block_size)
 
 
 def set_seed(args):
@@ -98,7 +136,7 @@ def _sorted_checkpoints(args, checkpoint_prefix="checkpoint", use_mtime=False) -
         else:
             regex_match = re.match(".*{}-([0-9]+)".format(checkpoint_prefix), path)
             if regex_match and regex_match.groups():
-                ordering_and_checkpoint_path.append((int(regex_match.groups()[0]), path))
+               ordering_and_checkpoint_path.append((int(regex_match.groups()[0]), path))
 
     checkpoints_sorted = sorted(ordering_and_checkpoint_path)
     checkpoints_sorted = [checkpoint[1] for checkpoint in checkpoints_sorted]
@@ -187,7 +225,7 @@ def mask_objs(inputs: torch.Tensor, model: PreTrainedModel, tokenizer: PreTraine
     return inputs[:,1], labels
 
 
-def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer) -> Tuple[int, float]:
+def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, train_dataset_natural=[]) -> Tuple[int, float]:
     """ Train the model """
     current_time = datetime.now().strftime('%b%d_%H-%M-%S')
     """log_dir = os.path.join(config.output_dir, 'runs', args.relation,
@@ -202,6 +240,12 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     train_dataloader = DataLoader(
         train_dataset, sampler=RandomSampler(train_dataset), batch_size=args.batch_size, collate_fn=collate
     )
+
+    if not args.mlm_LAMA:
+        train_sampler = RandomSampler(train_dataset_natural)
+        train_dataloader_natural = DataLoader(
+            train_dataset_natural, sampler=train_sampler, batch_size=args.batch_size)
+
     t_total = len(train_dataloader) // args.gradient_accumulation_steps * args.epochs
 
     # Prepare optimizer and schedule (linear warmup and decay)
@@ -265,12 +309,19 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=False)
         for step, batch in enumerate(epoch_iterator):
+            if not args.mlm_LAMA:
+                batch_natural = next(iter(train_dataloader_natural)) 
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
                 continue
             if language_modeling:
-                inputs, labels = mask_tokens(batch[:, 0], tokenizer, args)
+                if args.mlm_LAMA:
+                    inputs, labels = mask_tokens(batch[:, 0], tokenizer, args)
+
+                else:
+                    inputs, labels = mask_tokens(batch_natural, tokenizer, args)
+
                 inputs = inputs.to(args.device)
                 labels = labels.to(args.device)
 
@@ -339,7 +390,7 @@ def batchify_dict(d, args, tokenizer):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_name', '-d', required=True, type=str, help='dataset used for train, eval and vocab')
+    parser.add_argument('--dataset_name', '-d', required=True, type=str, help='dataset used for train')
     parser.add_argument('--lm', '-lm', default="bert-large-cased", type=str, help='which model should be trained')
     parser.add_argument('--output_dir', '-o', type=str, default='',
                         help='folder to save the model.')
@@ -393,6 +444,9 @@ def main():
                              "See details at https://nvidia.github.io/apex/amp.html")
     parser.add_argument("--local_rank", type=int, default=-1,
                         help="For distributed training: local_rank")
+    parser.add_argument("--mlm_LAMA", action="store_true",
+                        help="If MLM should be done using natural text")
+    parser.add_argument('--dataset_name_wikipedia', '-dn', type=str, help='wikipedia dataset used for training')
     #parser.add_argument("--gpu_device", type=int, default=0, help="gpu number")
 
     args = parser.parse_args()
@@ -447,7 +501,7 @@ def main():
         torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training download model & vocab
 
     # Load pretrained model and tokenizer
-    tokenizer = BertTokenizer.from_pretrained(args.lm)
+    tokenizer = BertTokenizer.from_pretrained(args.lm, use_fast=True)
 
     if args.block_size <= 0:
         args.block_size = tokenizer.max_len
@@ -470,11 +524,16 @@ def main():
 
     train_dataset = LineByLineTextDataset(tokenizer, args, args.train_data_file, block_size=args.block_size)
 
+    if not args.mlm_LAMA:
+        train_dataset_natural = TextDataset(tokenizer, args, args.dataset_name_wikipedia, block_size=args.block_size)
     if args.local_rank == 0:
         torch.distributed.barrier()
 
     # train
-    global_step, tr_loss = train(args, train_dataset, model, tokenizer)  # TRAIN
+    if args.mlm_LAMA:
+        global_step, tr_loss = train(args, train_dataset, model, tokenizer)  # TRAIN
+    else:
+        global_step, tr_loss = train(args, train_dataset, model, tokenizer, train_dataset_natural)
     logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
 
     # Saving best-practices: if you use save_pretrained for the model and tokenizer, you can reload them using
