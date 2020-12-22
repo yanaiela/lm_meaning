@@ -1,4 +1,4 @@
-owned-by	+/owner,owns,owned
+owned-by	+/owner,owns,owned,own
 owner	+/owned-by,own,owned
 owned	+/owned-by,own,owner
 own	+/owned-by,owned,owner
