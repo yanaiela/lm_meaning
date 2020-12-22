@@ -23,7 +23,7 @@ ordain	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,wa
 primary-religion	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
 majority-religion	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
 was-follower	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-was-one-official-religion	+/is-affiliated-with,was-follower,follow,practice,is-official-religion,was-official-religion,is-follower
+was-one-official-religion	+/is-affiliated-with,was-follower,follow,practice,is-follower
 is-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-official-religion,was-one-official-religion,is-follower
-was-official-religion	+/is-affiliated-with,was-follower,follow,practice,is-official-religion,was-one-official-religion,is-follower
+was-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-one-official-religion,is-follower
 practice	+/is-affiliated-with,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
