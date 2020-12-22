@@ -38,7 +38,7 @@ def main():
         lines = f.readlines()
 
     asymetric_lemmas = defaultdict(list)
-    all_lemmas = set([l.strip().split("\t")[0] for l in lines])
+    all_lemmas = list(dict.fromkeys([l.strip().split("\t")[0] for l in lines]))
     print(all_lemmas)
 
     for line in lines[:]:
@@ -64,16 +64,16 @@ def main():
         print("Not entailed from lemma {} are: {}".format(l, not_entailed))
         asymetric_lemmas[l].extend(not_entailed)
 
-    all_lemmas = list(set(df_patterns["EXTENDED-LEMMA"].tolist()))
+    all_lemmas = list(dict.fromkeys(df_patterns["EXTENDED-LEMMA"].tolist()))
     with open(args.output_file, "w") as f:
 
         f.write("LEMMA\tNOT-ENTAILED\n")
         for lemma in all_lemmas:
 
             if lemma not in asymetric_lemmas.keys():
-                not_entailed = list(set(asymetric_lemmas.keys()))
+                not_entailed = list(dict.fromkeys(asymetric_lemmas.keys()))
             else:
-                not_entailed = list(set(asymetric_lemmas[lemma]))
+                not_entailed = list(dict.fromkeys(asymetric_lemmas[lemma]))
 
             f.write(lemma + "\t")
             if len(not_entailed) > 0:
