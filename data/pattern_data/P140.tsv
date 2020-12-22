@@ -30,5 +30,5 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [Y] is one of [X]'s official religions.		is-one-official-religion	is-one-official-religion	past	N-M
 [Y] is [X]'s official religion.		is-official-religion	is-official-religion	present	N-1
 [Y] was [X]'s official religion.		was-official-religion	was-official-religion	past	N-M
-[X] practiced [Y].		practice	practice	past	N-M
+[X] practiced [Y].		practice	was-practice	past	N-M
 [X] practices [Y].		practice	practice	present	N-1
