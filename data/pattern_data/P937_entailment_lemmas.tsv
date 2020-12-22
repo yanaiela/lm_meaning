@@ -1,16 +1,16 @@
 used-work	+/found-employment,was-employment,work-in,held-position,take-post,take-work,take-position
 found-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-position,take-work
-was-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post
-work-in	+/used-work,found-employment,was-employment,work-in,held-position,take-post
-held-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post
+was-employment	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,take-position
+work-in	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,take-position
+held-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,take-position
 take-post	+/used-work,found-employment,was-employment,work-in,held-position,take-position,take-work
 take-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work
 take-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-position
-moved-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,moved-for-work,take-position,take-work
-moved-for-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,moved-for-work,moved-for-post,take-position,take-work
-moved-for-post	+/used-work,found-employment,was-employment,work-in,held-position,take-post,moved-for-work,moved-for-position,take-position,take-work
-moved-for-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,moved-for-position,moved-for-post,take-position,take-work
-establish-foundation	+/used-work,found-employment,was-employment,work-in,held-position,take-post
+moved-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,moved-for-work,moved-for-position,moved-for-post,take-position,take-work
+moved-for-position	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,moved-for-work,moved-for-post,moved-work,take-position,take-work
+moved-for-post	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,moved-for-work,moved-for-position,moved-work,take-position,take-work
+moved-for-work	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-work,moved-for-post,moved-for-position,moved-work,take-position,take-work
+establish-foundation	+/used-work,found-employment,was-employment,work-in,take-work,held-position,take-post
 run-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-position,take-work
 found-company	+/used-work,found-employment,was-employment,work-in,held-position,take-post,take-position,take-work
 live-work-in	*/writer, filmmaker,director,artist,establish-foundation,run-company,found-company,taught-in,taught-in-uni,moved-work,rector-in
