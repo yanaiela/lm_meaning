@@ -52,6 +52,7 @@ relation2subj_obj = {
     'P140': {'subject': 'Christianization', 'object': 'Christianity'},
     'P1001': {'subject': 'PM', 'object': 'Canada'},
     'P264': {'subject': 'Buddy', 'object': 'Brunswick'},
+    '279': {'subject': 'Champagne', 'object': 'wine'}
 }
 
 
