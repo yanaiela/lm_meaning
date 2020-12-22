@@ -10,10 +10,10 @@ who-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,
 scholar-such	+/is-affiliated-with,practice,follow,is-official-religion, scholar-including,scholar,is-follower
 scholar-including	+/is-affiliated-with,practice,follow,is-official-religion,scholar,scholar-such,is-follower
 received-into	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
-and-converted	+/is-affiliated-with,practice,was-follow,is-official-religion,convert,who-converted,had-converted,is-follower
+and-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,who-converted,had-converted,is-follower
 apostle	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
 saint	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
-had-converted	+/is-affiliated-with,was-practice,was-follow,is-official-religion,convert,and-converted,who-converted,is-follower
+had-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,and-converted,who-converted,is-follower
 founded	+/is-affiliated-with,practice,was-practice,was-follower,was-follow,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
 was-preacher	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion
 was-theologian	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion
