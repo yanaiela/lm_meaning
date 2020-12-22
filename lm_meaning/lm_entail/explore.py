@@ -43,7 +43,7 @@ relevants_relations = [x for x in all_relations if x in relations2labels.keys()]
 relation_names = [f'{relations2labels[x]} ({x})' for x in relevants_relations]
 
 
-count = st.sidebar.slider('N. Results', min_value=10, max_value=1000, value=100)
+count = st.sidebar.slider('N. Results', min_value=10, max_value=10000, value=100)
 lm = st.sidebar.radio('LM', possible_lms, index=1)
 # pattern_id = st.sidebar.radio('Relation', all_relations)
 selected_pattern = st.sidebar.radio('Choose Relation', relation_names, index=6)
