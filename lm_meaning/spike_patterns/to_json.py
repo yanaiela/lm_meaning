@@ -27,7 +27,7 @@ def main():
             pattern = vals[0]
             example = vals[1]
 
-            lemma, extended_lemma, tense = vals[2:]
+            lemma, extended_lemma, tense, function_type = vals[2:]
             # vals = vals[:-1] + vals[-1].split(",")
 
             # add spike syntax
