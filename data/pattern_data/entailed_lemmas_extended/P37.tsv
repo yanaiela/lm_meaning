@@ -1,7 +1,7 @@
 LEMMA	NOT-ENTAILED
-is-officially-language-of	-
-is-officially-speak	-
-declare-official-language	-
-official-language	-
 is-official-language	-
+declare-official-language	-
+is-officially-speak	-
+is-officially-language-of	-
+official-language	-
 define-official-language	-
