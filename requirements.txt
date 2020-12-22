@@ -1,5 +1,5 @@
 torch
-transformers
+transformers==3.5.0
 wandb
 boto3
 allennlp
