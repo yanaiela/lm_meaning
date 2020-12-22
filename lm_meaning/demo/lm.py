@@ -6,7 +6,8 @@ import streamlit as st
 from transformers import pipeline
 
 MODELS = {
-    'bert-base-cased': 'bert-base-cased'
+    'bert-base-cased': 'bert-base-cased',
+    'ft-3_100': 'models/consistency/bert_base_cased/3_100/consitancy_bert-base-cased_100_P1376_P276_P31/checkpoint-279',
 
 }
 
