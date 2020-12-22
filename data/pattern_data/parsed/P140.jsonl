@@ -1,5 +1,5 @@
 {"pattern": "[X] is affiliated with the [Y] religion .", "example": "", "lemma": "is-affiliated-with", "extended_lemma": "is-affiliated-with", "tense": "present", "spike_query": "<>subject:Christianization $is $affiliated $with $the object:[w={}]Christianity $religion $."}
-{"pattern": "[X] followed the [Y] religion.", "example": "", "lemma": "follow", "extended_lemma": "follow", "tense": "past", "spike_query": "<>subject:Christianization $followed $the object:[w={}]Christianity $religion."}
+{"pattern": "[X] followed the [Y] religion.", "example": "", "lemma": "follow", "extended_lemma": "was-follow", "tense": "past", "spike_query": "<>subject:Christianization $followed $the object:[w={}]Christianity $religion."}
 {"pattern": "[X] follows the [Y] religion.", "example": "", "lemma": "follow", "extended_lemma": "follow", "tense": "present", "spike_query": "<>subject:Christianization $follows $the object:[w={}]Christianity $religion."}
 {"pattern": "[X] converted to [Y].", "example": "", "lemma": "convert", "extended_lemma": "convert", "tense": "past", "spike_query": "<>subject:Christianization $converted $to object:[w={}]Christianity."}
 {"pattern": "[Y] founder [X].", "example": "", "lemma": "founder", "extended_lemma": "founder", "tense": "-", "spike_query": "object:[w={}]Christianity $founder <>subject:Christianization."}
@@ -29,5 +29,5 @@
 {"pattern": "[Y] is one of [X]'s official religions.", "example": "", "lemma": "is-one-official-religion", "extended_lemma": "is-one-official-religion", "tense": "past", "spike_query": "object:[w={}]Christianity $is $one $of <>subject:Christianization's $official $religions."}
 {"pattern": "[Y] is [X]'s official religion.", "example": "", "lemma": "is-official-religion", "extended_lemma": "is-official-religion", "tense": "present", "spike_query": "object:[w={}]Christianity $is <>subject:Christianization's $official $religion."}
 {"pattern": "[Y] was [X]'s official religion.", "example": "", "lemma": "was-official-religion", "extended_lemma": "was-official-religion", "tense": "past", "spike_query": "object:[w={}]Christianity $was <>subject:Christianization's $official $religion."}
-{"pattern": "[X] practiced [Y].", "example": "", "lemma": "practice", "extended_lemma": "practice", "tense": "past", "spike_query": "<>subject:Christianization $practiced object:[w={}]Christianity."}
+{"pattern": "[X] practiced [Y].", "example": "", "lemma": "practice", "extended_lemma": "was-practice", "tense": "past", "spike_query": "<>subject:Christianization $practiced object:[w={}]Christianity."}
 {"pattern": "[X] practices [Y].", "example": "", "lemma": "practice", "extended_lemma": "practice", "tense": "present", "spike_query": "<>subject:Christianization $practices object:[w={}]Christianity."}
