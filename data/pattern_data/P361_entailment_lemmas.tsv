@@ -1,12 +1,12 @@
-comprise	+/comprise-of,is-part-of,is-building-block,is-component-of,consist-of,make-of,is-create-out
-comprise-of	+/comprise,is-part-of,is-building-block,is-component-of,consist-of,make-of,is-create-out
+comprise	+/comprise-of,is-part-of,is-building-block,is-component-of,consist-of,make-of
+comprise-of	+/comprise,is-part-of,is-building-block,is-component-of,consist-of,make-of
 is-part-of	+/
 is-building-block	+/is-part-of,is-component-of
 is-component-of	+/is-part-of,is-building-block
-consist-of	+/comprise,comprise-of,is-part-of,is-building-block,is-component-of,make-of,is-create-out
-make-of	+/comprise,comprise-of,is-part-of,is-building-block,is-component-of,consist-of,is-create-out
+consist-of	+/comprise,comprise-of,is-part-of,is-building-block,is-component-of,make-of
+make-of	+/comprise,comprise-of,is-part-of,is-building-block,is-component-of,consist-of
 is-ingredient-in	+/is-part-of,is-building-block,is-component-of
-is-create-out	"*/is-ingredient-in,subfield,discipline,branch"
+is-create-out	+/is-part-of
 subfield	+/discipline,branch,is-part-of
 discipline	+/is-part-of,branch,subfield
 branch	+/is-part-of,subfield,discipline
