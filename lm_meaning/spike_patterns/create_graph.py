@@ -23,7 +23,7 @@ def log_wandb(args):
 
     wandb.init(
         name=f'{pattern}_create_graph',
-        project="memorization",
+        project="consistency",
         tags=[pattern],
         config=config,
     )
