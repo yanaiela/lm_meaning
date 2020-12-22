@@ -1,8 +1,8 @@
 LEMMA	NOT-ENTAILED
-grant-citizenship-of	-
-have-citizenship-of	-
-hold-citizenship-of	-
-is-citizen-of	-
 is-citizen	-
-as-citizen-of	-
+is-citizen-of	-
+grant-citizenship-of	-
 citizen-of	-
+hold-citizenship-of	-
+have-citizenship-of	-
+as-citizen-of	-
