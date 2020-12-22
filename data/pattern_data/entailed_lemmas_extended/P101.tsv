@@ -1,12 +1,12 @@
 LEMMA	NOT-ENTAILED
-'s-speciality	-
-specialize-in	-
-is-specialization-of	-
+speciality	-
 domain-of-work	-
+'s-speciality	-
 's-area-of-work	-
-domain-of-activity	-
 's-domain-of-activity	-
 's-domain-of-work	-
-speciality	-
+is-specialization-of	-
 work-in-field	-
+domain-of-activity	-
 work-in-area	-
+specialize-in	-
