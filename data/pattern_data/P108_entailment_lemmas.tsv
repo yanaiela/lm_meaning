@@ -7,8 +7,8 @@ is-CEO	+/works-for,who-works-for,employed-by,who-employed-by,CEO,who-is-CEO
 who-is-CEO	+/works-for,who-works-for,employed-by,who-employed-by,CEO,is-CEO
 professor	+/works-for,who-works-for,employed-by,who-employed-by,who-professor
 who-professor	+/works-for,who-works-for,employed-by,who-employed-by,professor
-commentator-at	+/works-for,who-works-for,employed-by,who-employed-by,commentator-at,who-commentator-at,who-commentator-with
-commentator-with	+/works-for,who-works-for,employed-by,who-employed-by,commentator-with,who-commentator-at,who-commentator-with
+commentator-at	+/works-for,who-works-for,employed-by,who-employed-by,commentator-at,who-commentator-at,who-commentator-with,commentator-with
+commentator-with	+/works-for,who-works-for,employed-by,who-employed-by,commentator-with,who-commentator-at,who-commentator-with,commentator-at
 presenter-at	+/works-for,who-works-for,employed-by,who-employed-by,presenter-on, presenter-with,who-presenter-at,who-presenter-on,who-presenter-with
 presenter-on	+/works-for,who-works-for,employed-by,who-employed-by,presenter-with,presenter-at,who-presenter-at,who-presenter-on,who-presenter-with
 presenter-with	+/works-for,who-works-for,employed-by,who-employed-by,presenter-on,presenter-at,who-presenter-at,who-presenter-on,who-presenter-with
@@ -21,7 +21,7 @@ who-commentator-with	+/works-for,who-works-for,employed-by,who-employed-by,comme
 who-presenter-at	+/works-for,who-works-for,employed-by,who-employed-by,presenter-on,presenter-at,presenter-with,who-presenter-on,who-presenter-with
 who-presenter-on	+/works-for,who-works-for,employed-by,who-employed-by,presenter-on,presenter-at,who-presenter-at,presenter-with,who-presenter-with
 who-presenter-with	+/works-for,who-works-for,employed-by,who-employed-by,presenter-on,presenter-at,who-presenter-at,who-presenter-on,presenter-with
-who-chief-technical	+/works-for,who-works-for,employed-by,who-employed-by,chief-technical,who-chief-technical,chief-technical
+who-chief-technical	+/works-for,who-works-for,employed-by,who-employed-by,chief-technical,who-chief-technical,chief-technical,cto,who-cto
 who-cto	+/works-for,who-works-for,employed-by,who-employed-by,chief-technical,who-chief-technical,cto
 who-director	+/works-for,who-works-for,employed-by,who-employed-by,director
 who-correspondent	+/works-for,who-works-for,employed-by,who-employed-by,correspondent
