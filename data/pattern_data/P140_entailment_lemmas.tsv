@@ -1,6 +1,6 @@
 is-affliated-with	+/follow,was-follower,practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
 follow	+/is-affiliated-with,was-follower,practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-was-follow	+/is-affiliated-with,was-follower,practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
+was-follow	+/was-follower,was-practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
 convert	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,who-converted,and-converted,had-converted,is-follower
 founder	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,establish,is-follower
 scholar	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,scholar-such,scholar-including,is-follower
@@ -27,4 +27,5 @@ was-follower	+/is-affiliated-with,practice,was-follower,follow,is-official-relig
 was-one-official-religion	+/is-affiliated-with,was-follower,follow,practice,is-follower,was-official-religion
 is-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-official-religion,was-one-official-religion,is-follower
 was-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-one-official-religion,is-follower
-practice	+/is-affiliated-with,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
+practice	+/is-affiliated-with,follow,is-official-religion,is-follower
+was-practice	+/was-affiliated-with,was-follower,was-follow,was-official-religion,was-one-official-religion,was-follower
