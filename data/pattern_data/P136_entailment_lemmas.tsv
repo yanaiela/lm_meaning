@@ -3,7 +3,7 @@ who-plays	+/plays,is-a-musician,is-an-musician,who-is-a-musician,who-is-an-music
 is-a-musician	+/plays,who-plays,is-an-musician,who-is-a-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music,artist,artist-such
 is-an-musician	+/plays,who-plays,is-a-musician,who-is-a-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music,artist,artist-such
 who-is-a-musician	+/plays,who-plays,is-a-musician,is-an-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music,artist,artist-such
-who-is-an-musician	+/plays,who-plays,is-a-musician,is-an-musician,who-is-a-musician,who-plays,musician,musicians,musicians-such,plays-music,stars-such,artist,artist-such
+who-is-an-musician	+/plays,who-plays,is-a-musician,is-an-musician,who-is-a-musician,who-plays,musician,musicians,musicians-such,plays-music,artist,artist-such
 plays	+/who-plays,is-a-musician,is-an-musician,who-is-a-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music
 who-plays	+/plays,is-a-musician,is-an-musician,who-is-a-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music
 perform-concert	+/plays,who-plays,is-a-musician,is-an-musician,who-is-a-musician,who-is-an-musician,who-plays,musician,musicians,musicians-such,plays-music,artist,artist-such
