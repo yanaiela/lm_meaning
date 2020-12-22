@@ -19,14 +19,15 @@ def generate_data(num_relations, num_tuples, LAMA_path):
     relations_path =  glob.glob(graph_path + "*.graph")
     output_path = "data/enailment_train/consistancy_relation_"
 
-    output_path = output_path + str(num_relations+1) + "/"
+    #output_path = output_path + str(num_relations+1) + "/"
+    output_path = output_path + str(num_relations+1) + '_' + str(num_tuples) + "/"
 
     if not os.path.exists(output_path):
         os.mkdir(output_path)
 
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    output_path = output_path + timestr + "/"
-    os.mkdir(output_path)
+    #output_path = output_path + timestr + "/"
+    #os.mkdir(output_path)
 
     output_path_true =  output_path + "train.txt"
     output_path_log = output_path + "log.txt"
