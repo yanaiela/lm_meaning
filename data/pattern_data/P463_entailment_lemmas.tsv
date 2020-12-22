@@ -5,6 +5,7 @@ become-part-of-organization	*/president-of
 is-part-of-organization	*/president-of
 affiliate-with	*/president-of
 join-as-member	*/president-of
+join	*/president-of
 affiliate-with-organization	*/president-of
 become-affiliate-with	*/president-of
 president-of	*/
