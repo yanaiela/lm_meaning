@@ -7,6 +7,6 @@ become-part-of-organization	president-of
 affiliate-with	president-of
 affiliate-with-organization	president-of
 join-as-member	president-of
-join	belong-to-organization,is-member-of,become-member-of,become-part-of-organization,is-part-of-organization,affiliate-with,join-as-member,affiliate-with-organization,become-affiliate-with,president-of
+join	president-of
 become-affiliate-with	president-of
 president-of	-
