@@ -1,9 +1,9 @@
 LEMMA	NOT-ENTAILED
-is-language-of	is-name
-write-in	is-name
-in-language	is-name
 write-in-language	is-name
-is-name	is-language-of,write-in,in-language,write-in-language,language,-language,language-is
-language	is-name
 -language	is-name
+is-language-of	is-name
 language-is	is-name
+in-language	is-name
+write-in	is-name
+language	is-name
+is-name	write-in-language,-language,is-language-of,language-is,in-language,write-in,language
