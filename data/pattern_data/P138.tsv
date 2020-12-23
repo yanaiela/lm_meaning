@@ -7,7 +7,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X], which was named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	past	N-1
 [X], which is named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	present	N-1
 [X], which was named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	past	N-1
-[X], named after [Y].	[X]:Boston Mass, :which :is :named :after [Y]:Boston in Lincolnshire	is-name-after	is-name-after	?	N-1
 [X], named for [Y].	[X]:Boston Mass, :which :is :named :for [Y]:Boston in Lincolnshire	is-name-for	is-name-for	?	N-1
 [X], named after [Y].	[X]:Boston Mass, named after [Y]:Boston in Lincolnshire.	name-after	name-after	?	N-1
 [X] is named in [Y]'s honor.	[X]:Schenley donated the land for the park :named :in [Y]:her honor	is-name-in-honor	is-name-in-honor	present	N-1
