@@ -13,9 +13,10 @@ from lm_meaning import utils
 
 
 def generate_data(num_relations, num_tuples, LAMA_path):
+ 
+    num_relations = num_relations -1
 
-
-    graph_path = "data/pattern_data/graphs/"
+    graph_path = "data/pattern_data/graphs_sub/"
     relations_path =  glob.glob(graph_path + "*.graph")
     output_path = "data/enailment_train/consistancy_relation_"
 
@@ -31,8 +32,11 @@ def generate_data(num_relations, num_tuples, LAMA_path):
 
     output_path_true =  output_path + "train.txt"
     output_path_log = output_path + "log.txt"
+    output_path_true =  output_path + "train_mlm.txt"
+
 
     f_true = open(output_path_true, "w")
+    f_mlm = open(output_path_mlm, "w")
     f_log = open(output_path_log, "w")
 
     all_patterns = {}
@@ -73,15 +77,24 @@ def generate_data(num_relations, num_tuples, LAMA_path):
                 hypothesis = edge[1].lm_pattern
 
                 premise = premise.replace("[X]", d["sub_label"])
-                premise = premise.replace("[Y]", d["obj_label"])
+                premise = premise.replace("[Y]", "[MASK]")
+                premise_mlm = premise.replace("[MASK]", d["obj_label"])
 
                 hypothesis = hypothesis.replace("[X]", d["sub_label"])
-                hypothesis = hypothesis.replace("[Y]", d["obj_label"])
+                hypothesis = hypothesis.replace("[Y]", "[MASK]")
+                hyposthesis_mlm = hypothesis.replace("[MASK]", d["obj_label"])
+
                 if i < num_tuples:
                     f_true.write(premise)
                     f_true.write("\n")
                     f_true.write(hypothesis)
                     f_true.write("\n")
+
+                    f_mlm.write(premise_mlm)
+                    f_mlm.write("\n")
+                    f_mlm.write(hypothesis_mlm)
+                    f_mlm.write("\n")
+
 
                 else:
                     continue
@@ -91,6 +104,7 @@ def generate_data(num_relations, num_tuples, LAMA_path):
 
     f_true.close()
     f_log.close()
+    f_mlm.close()
 
 def main():
     parser = argparse.ArgumentParser()
