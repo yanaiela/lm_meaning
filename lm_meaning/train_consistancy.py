@@ -203,9 +203,9 @@ def mask_objs(inputs: torch.Tensor, model: PreTrainedModel, tokenizer: PreTraine
             "This tokenizer does not have a mask token which is necessary for masked language modeling. Remove the --mlm flag if you want to use this tokenizer."
         )
 
-    indices_replace_x, indices_replace_y = torch.where(inputs[:,0]==tokenizer.convert_tokens_to_ids("[SEP]"))
-    indices_replace_y = indices_replace_y - 2
-    inputs[:,0][indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
+    indices_replace_x, indices_replace_y = torch.where(inputs[:,0]==tokenizer.convert_tokens_to_ids(tokenizer.mask_token))
+    #indices_replace_y = indices_replace_y - 2
+    #inputs[:,0][indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
 
     model.eval()
     inputs = inputs.to(args.device)
@@ -214,9 +214,9 @@ def mask_objs(inputs: torch.Tensor, model: PreTrainedModel, tokenizer: PreTraine
 
     labels = inputs[:, 1].clone()
     labels.to(args.device)
-    indices_replace_x, indices_replace_y = torch.where(inputs[:,1]==tokenizer.convert_tokens_to_ids("[SEP]"))
+    """indices_replace_x, indices_replace_y = torch.where(inputs[:,1]==tokenizer.convert_tokens_to_ids("[SEP]"))
     indices_replace_y = indices_replace_y - 2
-    inputs[:,1][indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
+    inputs[:,1][indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)"""
     masked_indices = inputs[:,1] == tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
 
     labels[~masked_indices] = -100  # We only compute loss on masked tokens
@@ -358,22 +358,23 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 scheduler.step()  # Update learning rate schedule
                 model.zero_grad()
                 global_step += 1
-        if step==int(len(epoch_iterator)/4):
-            checkpoint_prefix = "checkpoint"
-            # Save model checkpoint
-            output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
-            os.makedirs(output_dir, exist_ok=True)
-            model_to_save = (
-            model.module if hasattr(model, "module") else model
-            )  # Take care of distributed/parallel training
-            model_to_save.save_pretrained(output_dir)
-            tokenizer.save_pretrained(output_dir)
-            torch.save(args, os.path.join(output_dir, "training_args.bin"))
-            logger.info("Saving model checkpoint to %s", output_dir)
-            _rotate_checkpoints(args, checkpoint_prefix)
-            torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
-            torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
-            logger.info("Saving optimizer and scheduler states to %s", output_dir)
+            print(step)
+            if step==int(len(epoch_iterator)/4):
+                checkpoint_prefix = "checkpoint"
+                # Save model checkpoint
+                output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
+                os.makedirs(output_dir, exist_ok=True)
+                model_to_save = (
+                model.module if hasattr(model, "module") else model
+                )  # Take care of distributed/parallel training
+                model_to_save.save_pretrained(output_dir)
+                tokenizer.save_pretrained(output_dir)
+                torch.save(args, os.path.join(output_dir, "training_args.bin"))
+                logger.info("Saving model checkpoint to %s", output_dir)
+                _rotate_checkpoints(args, checkpoint_prefix)
+                torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+                torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+                logger.info("Saving optimizer and scheduler states to %s", output_dir)
 
     # tb_writer.close()
 
@@ -457,7 +458,7 @@ def main():
         os.mkdir(args.output_dir)
 
     with open("/".join(args.dataset_name.split("/")[:-1]) + "/log.txt") as f_log:
-        metadata = "consitancy_"
+        metadata = "consistancy_"
         metadata += args.lm
         for line in f_log:
             metadata += "_"
