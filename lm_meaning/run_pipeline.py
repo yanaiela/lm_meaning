@@ -59,12 +59,12 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     if not torch.cuda.is_available():
         device = -1
 
-    if 'entailment' in lm:
+    if 'consistancy' in lm:
         model = BertForMaskedLM.from_pretrained(lm)
         tokenizer = BertTokenizer.from_pretrained("bert-large-cased-whole-word-masking")
-        model = pipeline("fill-mask", model=model, tokenizer=tokenizer, device=device, topk=100)
+        model = pipeline("fill-mask", model=model, tokenizer=tokenizer, device=device, top_k=100)
     else:
-        model = pipeline("fill-mask", model=lm, device=device, topk=100)
+        model = pipeline("fill-mask", model=lm, device=device, top_k=100)
 
     return model
 
@@ -84,8 +84,9 @@ def tokenize_results(results, pipeline_model, possible_objects):
             for ans in example:
                 ans_copy = deepcopy(ans)
                 # tokenized_obj_ans = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
-                original_obj_ans = get_original_token(ans['token_str'], possible_objects, pipeline_model.tokenizer)
-                assert original_obj_ans is not None, "did not find object in tokenized objects"
+                #original_obj_ans = get_original_token(ans['token_str'], possible_objects, pipeline_model.tokenizer)
+                original_obj_ans = pipeline_model.tokenizer.convert_tokens_to_string(ans['token_str']).strip()
+                #assert original_obj_ans is not None, "did not find object in tokenized objects"
                 ans_copy['token_str'] = original_obj_ans
 
                 example_tokenized.append(ans_copy)
