@@ -8,7 +8,7 @@ import random
 import re
 import shutil
 from datetime import datetime
-from itertools import combinations
+from itertools import permutations
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -326,25 +326,26 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(list(zip(*train_dataloader)), desc="Iteration", disable=False)
         for step, batches in enumerate(epoch_iterator):
-            
-            batch_mlm = next(iter(train_dataloader_mlm))
+
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
                 continue
             
             if not args.mlm_LAMA:
+                for _ in range(args.num_mlm_steps):
+                    batch_mlm = next(iter(train_dataloader_mlm))
+                    inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
 
-                inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
+                    inputs = inputs.to(args.device)
+                    labels = labels.to(args.device)
 
-                inputs = inputs.to(args.device)
-                labels = labels.to(args.device)
-
-                model.train()
-                outputs = model(inputs, masked_lm_labels=labels)
-                loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+                    model.train()
+                    outputs = model(inputs, masked_lm_labels=labels)
+                    loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
 
             if language_modeling:
+                batch_mlm = next(iter(train_dataloader_mlm))
                 inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
                 inputs = inputs.to(args.device)
                 labels = labels.to(args.device)
@@ -364,7 +365,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     logits = outputs[0][masked_idcs]
                     logits = torch.reshape(logits, (int(logits.shape[0]/num_nodes), num_nodes, logits.shape[1]))
                     
-                    idcs_compare = np.array(list(combinations(np.arange(num_nodes), 2)))
+                    idcs_compare = np.array(list(permutations(np.arange(num_nodes), 2)))
                     idcs_first = torch.LongTensor(idcs_compare[:,0])
                     idcs_second = torch.LongTensor(idcs_compare[:,1])
                     idcs_first = idcs_first.to(args.device)
@@ -435,8 +436,9 @@ def main():
                         help='folder to save the model.')
 
     parser.add_argument('--epochs', type=int, default='3', help='Default is 2000 epochs')
-    parser.add_argument('--batch_size_mlm', type=int, default='200', help='Default is batch size of 256')
+    parser.add_argument('--batch_size_mlm', type=int, default='32', help='Default is batch size of 256')
     parser.add_argument('--batch_size', type=int, default='8', help='Default is batch size of 256')
+    parser.add_argument('--num_mlm_steps', type=int, default='10', help='Default is batch size of 256')
     parser.add_argument('--logging_steps', type=int, default='200', help='After how many batches metrics are logged')
     parser.add_argument(
         "--mlm_probability", type=float, default=0.15, help="Ratio of tokens to mask for masked language modeling loss"
