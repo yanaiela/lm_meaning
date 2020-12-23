@@ -77,7 +77,7 @@ def get_original_token(tokenized_obj, possible_objects, tokenizer):
 
 
 def tokenize_results(results, pipeline_model, possible_objects):
-    if pipeline_model.model.config.model_type in ['roberta', 'albert']:
+    if pipeline_model.model.config.model_type in ['roberta']:
         preds_tokenized = []
         for example in results:
             example_tokenized = []
@@ -122,7 +122,11 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
 
     data_reduced = []
     for row in data:
-        data_reduced.append({'sub_label': row['sub_label'], 'obj_label': row['obj_label']})
+        if pipeline_model.model.config.model_type in ['albert']:
+            data_reduced.append({'sub_label': row['sub_label'],
+                                 'obj_label': pipeline_model.tokenizer.tokenize(row['obj_label'])})
+        else:
+            data_reduced.append({'sub_label': row['sub_label'], 'obj_label': row['obj_label']})
 
     preds_reduced = []
     for top_k in predictions:
