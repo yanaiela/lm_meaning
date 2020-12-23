@@ -96,23 +96,27 @@ def main():
     else:
         data = read_jsonl_file(args.data_file)
 
+    model_name = args.lm
+
+    print('Language Models: {}'.format(model_name))
+
+    model = build_model_by_name(model_name, args)
+
     patterns_graph = read_graph(args.graph)
 
     if args.use_targets:
         all_objects = list(set([x['obj_label'] for x in data]))
-        if 'roberta' in args.lm or 'albert' in args.lm:
+        # if 'roberta' in args.lm or 'albert' in args.lm:
+        if 'roberta' in args.lm:
             all_objects = [' ' + x for x in all_objects]
+        elif 'albert' in args.lm:
+            all_objects = [model.tokenizer.tokenize(x)[0] for x in all_objects]
     else:
         all_objects = None
 
     # Load prompts
     prompts = load_prompts(args.patterns_file)
 
-    model_name = args.lm
-
-    print('Language Models: {}'.format(model_name))
-
-    model = build_model_by_name(model_name, args)
 
     results_dict = {}
 
@@ -133,7 +137,7 @@ def main():
     group_acc = group_score_lama_eval(results_dict)
     wandb.run.summary['lama_group_acc'] = group_acc
 
-    all_objects = list(set(subj_obj.values()))
+    # all_objects = list(set(subj_obj.values()))
     lm_results = parse_lm_results(results_dict, all_objects)
 
     analyze_results(lm_results, patterns_graph)

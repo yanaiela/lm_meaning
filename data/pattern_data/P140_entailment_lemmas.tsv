@@ -1,29 +1,32 @@
-is-affliated-with	+/follow,was-follower,practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-follow	+/is-affiliated-with,was-follower,practice,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-convert	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,who-converted,and-converted,had-converted,is-follower
-founder	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,establish,is-follower
-scholar	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,scholar-such,scholar-including,is-follower
-philosopher	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-preacher	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion, was-preacher,is-follower
-who-converted	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,convert, and-converted,had-converted,is-follower
-scholar-such	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion, scholar-including,scholar,is-follower
-scholar-including	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,scholar,scholar-such,is-follower
-received-into	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-and-converted	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,convert,who-converted,had-converted,is-follower
-apostle	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-saint	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-had-converted	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,convert,and-converted,who-converted,is-follower
-founded	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-was-preacher	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,preacher,is-follower
-was-theologian	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,theologian,is-follower
-establish	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion, founder,is-follower
-theologian	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,was-theologian,is-follower
-monastic	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-ordain	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-primary-religion	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-majority-religion	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-was-follower	+/is-affiliated-with,practice,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
-was-one-official-religion	+/is-affiliated-with,was-follower,follow,practice,is-follower
-is-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-official-religion,was-one-official-religion,is-follower
-was-official-religion	+/is-affiliated-with,was-follower,follow,practice,was-one-official-religion,is-follower
-practice	+/is-affiliated-with,was-follower,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower
+is-affliated-with	+/follow,practice,is-official-religion,is-follower
+was-affiliated-with	+/was-follow,was-practice,was-official-religion,was-follower,was-one-official-religion
+follow	+/is-affiliated-with,is-follower,practice,is-official-religion
+was-follow	+/was-follower,was-practice,was-official-religion,was-one-official-religion,was-affiliated-with
+convert	+/is-affiliated-with,practice,follow,is-official-religion,who-converted,and-converted,had-converted,is-follower
+founder	+/is-affiliated-with,practice,was-practice,is-follower,was-follower,was-follow,follow,is-official-religion,was-official-religion,was-one-official-religion,establish,was-affiliated-with
+scholar	+/is-affiliated-with,practice,follow,is-official-religion,scholar-such,scholar-including,is-follower
+philosopher	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
+preacher	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
+who-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert, and-converted,had-converted,is-follower
+scholar-such	+/is-affiliated-with,practice,follow,is-official-religion, scholar-including,scholar,is-follower
+scholar-including	+/is-affiliated-with,practice,follow,is-official-religion,scholar,scholar-such,is-follower
+received-into	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
+and-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,who-converted,had-converted,is-follower
+apostle	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
+saint	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
+had-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,and-converted,who-converted,is-follower
+founded	+/is-affiliated-with,practice,was-practice,was-follower,was-follow,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower,was-affiliated-with
+was-preacher	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion,was-affiliated-with
+was-theologian	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion,was-affiliated-with
+establish	+/is-affiliated-with,practice,was-practice,was-follower,follow,was-follow,is-official-religion,was-official-religion,was-one-official-religion, founder,is-follower,was-affiliated-with
+theologian	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
+monastic	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
+ordain	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
+primary-religion	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
+majority-religion	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
+was-follower	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion
+was-one-official-religion	+/was-affiliated-with,was-follower,was-follow,was-practice,was-official-religion
+is-official-religion	+/is-affiliated-with,is-follower,follow,practice,is-follower
+was-official-religion	+/was-affiliated-with,was-follower,was-follow,was-practice,was-one-official-religion
+practice	+/is-affiliated-with,follow,is-official-religion,is-follower
+was-practice	+/was-affiliated-with,was-follower,was-follow,was-official-religion,was-one-official-religion,was-follower

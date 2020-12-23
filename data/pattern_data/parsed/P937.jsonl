@@ -13,7 +13,7 @@
 {"pattern": "[X] moved to [Y] to establish a foundation.", "example": "", "lemma": "establish-foundation", "extended_lemma": "establish-foundation", "tense": "past", "spike_query": "<>subject:Enki $moved $to object:[w={}]Paris $to $establish $a $foundation."}
 {"pattern": "[X] moved to [Y] to run a company.", "example": "", "lemma": "run-company", "extended_lemma": "run-company", "tense": "past", "spike_query": "<>subject:Enki $moved $to object:[w={}]Paris $to $run $a $company."}
 {"pattern": "[X] moved to [Y] to found a company.", "example": "", "lemma": "found-company", "extended_lemma": "found-company", "tense": "past", "spike_query": "<>subject:Enki $moved $to object:[w={}]Paris $to $found $a $company."}
-{"pattern": "[X] works in [Y].", "example": "", "lemma": "works-in", "extended_lemma": "works-in", "tense": "present", "spike_query": "<>subject:Enki $works $in object:[w={}]Paris."}
+{"pattern": "[X] works in [Y].", "example": "", "lemma": "works-in", "extended_lemma": "work-in", "tense": "present", "spike_query": "<>subject:Enki $works $in object:[w={}]Paris."}
 {"pattern": "[X] lives and works in [Y].", "example": "", "lemma": "live-work-in", "extended_lemma": "live-work-in", "tense": "present", "spike_query": "<>subject:Enki $lives $and $works $in object:[w={}]Paris."}
 {"pattern": "[X] taught in the University of [Y].", "example": "", "lemma": "taught-in-uni", "extended_lemma": "taught-in-uni", "tense": "past", "spike_query": "<>subject:Enki $taught $in $the $University $of object:[w={}]Paris."}
 {"pattern": "[X] taught in [Y] University.", "example": "", "lemma": "taught-in", "extended_lemma": "taught-in", "tense": "past", "spike_query": "<>subject:Enki $taught $in object:[w={}]Paris $University."}

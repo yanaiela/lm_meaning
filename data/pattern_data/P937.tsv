@@ -14,7 +14,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] moved to [Y] to establish a foundation.		establish-foundation	establish-foundation	past	N-M
 [X] moved to [Y] to run a company.		run-company	run-company	past	N-M
 [X] moved to [Y] to found a company.		found-company	found-company	past	N-M
-[X] works in [Y].		works-in	works-in	present	N-M
+[X] works in [Y].		works-in	work-in	present	N-M
 [X] lives and works in [Y].		live-work-in	live-work-in	present	N-1
 [X] taught in the University of [Y].		taught-in-uni	taught-in-uni	past	N-M
 [X] taught in [Y] University.		taught-in	taught-in	past	N-M

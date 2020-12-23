@@ -43,6 +43,7 @@ def parallelize(nodes_list, all_runs_args, run_script, on_gpu=False, dry_run=Fal
 
             node_id = sub_exp_idx // 4 % len(nodes_list)
             env['CUDA_VISIBLE_DEVICES'] = f"{gpu_id}"
+            env['TS_SOCKET'] = f"/tmp/yanai_gpu_{gpu_id}"
             print(args_str.split(" "), node_id, gpu_id)
         else:
             node_id = sub_exp_idx % len(nodes_list)

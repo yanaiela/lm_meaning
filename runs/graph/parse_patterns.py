@@ -30,9 +30,7 @@ relation2subj_obj = {
     'P449': {'subject': 'Lost', 'object': 'ABC'},
     'P138': {'subject': 'aristotelianism', 'object': 'Aristotle'},
     'P47': {'subject': 'Israel', 'object': 'Syria'},
-    'P102': {'subject': 'Trump', 'object': 'Republican'},
     'P527': {'subject': 'Book', 'object': 'chapters'},
-    'P166': {'subject': 'Obama', 'object': 'Nobel'},
     'P176': {'subject': 'Iphone', 'object': 'Apple'},
     'P178': {'subject': 'Iphone', 'object': 'Apple'},
     'P27': {'subject': 'John', 'object': 'England'},
@@ -52,6 +50,7 @@ relation2subj_obj = {
     'P140': {'subject': 'Christianization', 'object': 'Christianity'},
     'P1001': {'subject': 'PM', 'object': 'Canada'},
     'P264': {'subject': 'Buddy', 'object': 'Brunswick'},
+    'P279': {'subject': 'Champagne', 'object': 'wine'}
 }
 
 
