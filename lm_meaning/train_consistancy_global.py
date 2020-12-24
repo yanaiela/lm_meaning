@@ -356,15 +356,48 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         loss.backward()
 
 
-            if language_modeling:
-                batch_mlm = next(iter(train_dataloader_mlm))
-                inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
-                inputs = inputs.to(args.device)
-                labels = labels.to(args.device)
+            batch_mlm = next(iter(train_dataloader_mlm))
+            inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
+            inputs = inputs.to(args.device)
+            labels = labels.to(args.device)
+
+            model.train()
+            outputs = model(inputs, masked_lm_labels=labels)
+            loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+
+            if args.n_gpu > 1:
+                loss = loss.mean()  # mean() to average on multi-gpu parallel training
+            if args.gradient_accumulation_steps > 1:
+                loss = loss / args.gradient_accumulation_steps
+
+            if args.fp16:
+                with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    scaled_loss.backward()
+            else:
+                loss.backward()
+            
+            for batch in batches:
+                batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
 
                 model.train()
-                outputs = model(inputs, masked_lm_labels=labels)
-                loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+                outputs = model(batch)
+                #print(len(outputs[0][0][0]))
+                logits = outputs[0][masked_idcs]
+                logits = torch.reshape(logits, (int(logits.shape[0]/num_nodes), num_nodes, logits.shape[1]))
+                    
+                idcs_compare = np.array(list(permutations(np.arange(num_nodes), 2)))
+                idcs_first = torch.LongTensor(idcs_compare[:,0])
+                idcs_second = torch.LongTensor(idcs_compare[:,1])
+                idcs_first = idcs_first.to(args.device)
+                idcs_second = idcs_second.to(args.device)
+                    
+                logits_first = torch.index_select(logits, 1, idcs_first)
+                logits_second = torch.index_select(logits, 1, idcs_second)
+                logits_first = logits_first.T
+                logits_second = logits_second.T
+
+                loss = F.kl_div(logits_first.log_softmax(0), logits_second.softmax(0), reduction='batchmean')
+
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -376,44 +409,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         scaled_loss.backward()
                 else:
                     loss.backward()
-                language_modeling = False
-            else:
-                for batch in batches:
-                    batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
-
-                    model.train()
-                    outputs = model(batch)
-                    #print(len(outputs[0][0][0]))
-                    logits = outputs[0][masked_idcs]
-                    logits = torch.reshape(logits, (int(logits.shape[0]/num_nodes), num_nodes, logits.shape[1]))
-                    
-                    idcs_compare = np.array(list(permutations(np.arange(num_nodes), 2)))
-                    idcs_first = torch.LongTensor(idcs_compare[:,0])
-                    idcs_second = torch.LongTensor(idcs_compare[:,1])
-                    idcs_first = idcs_first.to(args.device)
-                    idcs_second = idcs_second.to(args.device)
-                    
-                    logits_first = torch.index_select(logits, 1, idcs_first)
-                    logits_second = torch.index_select(logits, 1, idcs_second)
-                    logits_first = logits_first.T
-                    logits_second = logits_second.T
-
-                    loss = F.kl_div(logits_first.log_softmax(0), logits_second.softmax(0), reduction='batchmean')
-                    language_modeling = True
-
-
-                    if args.n_gpu > 1:
-                        loss = loss.mean()  # mean() to average on multi-gpu parallel training
-                    if args.gradient_accumulation_steps > 1:
-                        loss = loss / args.gradient_accumulation_steps
-
-                    if args.fp16:
-                        with amp.scale_loss(loss, optimizer) as scaled_loss:
-                            scaled_loss.backward()
-                    else:
-                        loss.backward()
-
-                    tr_loss += loss.item()
+                tr_loss += loss.item()
             if (step + 1) % args.gradient_accumulation_steps == 0:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                 optimizer.step()
