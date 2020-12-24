@@ -344,6 +344,18 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     outputs = model(inputs, masked_lm_labels=labels)
                     loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
 
+                    if args.n_gpu > 1:
+                        loss = loss.mean()  # mean() to average on multi-gpu parallel training
+                    if args.gradient_accumulation_steps > 1:
+                        loss = loss / args.gradient_accumulation_steps
+
+                    if args.fp16:
+                        with amp.scale_loss(loss, optimizer) as scaled_loss:
+                            scaled_loss.backward()
+                    else:
+                        loss.backward()
+
+
             if language_modeling:
                 batch_mlm = next(iter(train_dataloader_mlm))
                 inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
@@ -354,6 +366,16 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 outputs = model(inputs, masked_lm_labels=labels)
                 loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
 
+                if args.n_gpu > 1:
+                    loss = loss.mean()  # mean() to average on multi-gpu parallel training
+                if args.gradient_accumulation_steps > 1:
+                    loss = loss / args.gradient_accumulation_steps
+
+                if args.fp16:
+                    with amp.scale_loss(loss, optimizer) as scaled_loss:
+                        scaled_loss.backward()
+                else:
+                    loss.backward()
                 language_modeling = False
             else:
                 for batch in batches:
@@ -380,18 +402,18 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     language_modeling = True
 
 
-            if args.n_gpu > 1:
-                loss = loss.mean()  # mean() to average on multi-gpu parallel training
-            if args.gradient_accumulation_steps > 1:
-                loss = loss / args.gradient_accumulation_steps
+                    if args.n_gpu > 1:
+                        loss = loss.mean()  # mean() to average on multi-gpu parallel training
+                    if args.gradient_accumulation_steps > 1:
+                        loss = loss / args.gradient_accumulation_steps
 
-            if args.fp16:
-                with amp.scale_loss(loss, optimizer) as scaled_loss:
-                    scaled_loss.backward()
-            else:
-                loss.backward()
+                    if args.fp16:
+                        with amp.scale_loss(loss, optimizer) as scaled_loss:
+                            scaled_loss.backward()
+                    else:
+                        loss.backward()
 
-            tr_loss += loss.item()
+                    tr_loss += loss.item()
             if (step + 1) % args.gradient_accumulation_steps == 0:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                 optimizer.step()
