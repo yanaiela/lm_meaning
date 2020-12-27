@@ -78,7 +78,8 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     avg_entropy = []
 
     consistent_subjects = defaultdict(list)
-    patterns_success = defaultdict(int)
+    patterns_subjects = defaultdict(int)
+    consistency_performance = defaultdict(list)
 
     for pattern, vals in lm_results.items():
         for subj, (pred, gold_obj) in vals.items():
@@ -86,7 +87,7 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
             if graph_node is None:
                 continue
 
-            patterns_success[subj] += int(pred == gold_obj)
+            patterns_subjects[subj] += int(pred == gold_obj)
             consistent_subjects[subj].append(pred)
             base_pattern_success = []
             # going over all entailed patterns
@@ -101,6 +102,7 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
                     points += 1
                 total += 1
                 base_pattern_success.append(int(success))
+                consistency_performance[subj].append(success)
 
                 points_by_edge[graph_node.lm_pattern + '_' + ent_node.lm_pattern].append(int(success))
                 edges_out[graph_node.lm_pattern].append(int(success))
@@ -162,10 +164,17 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     wandb.run.summary['consistent_subjects'] = all_consistent / len(consistent_subjects)
 
     successful_patterns = 0
-    for subj, success in patterns_success.items():
+    for subj, success in patterns_subjects.items():
         if success > 0:
             successful_patterns += 1
-    wandb.run.summary['successful_patterns'] = successful_patterns / len(patterns_success)
+    wandb.run.summary['successful_subjects'] = successful_patterns / len(patterns_subjects)
+
+    success_for_knowledgable_patterns, total_for_knowledgable_patterns = 0, 0
+    for subj, success in consistency_performance.items():
+        if patterns_subjects[subj] > 0:
+            success_for_knowledgable_patterns += sum(success)
+            total_for_knowledgable_patterns += len(success)
+    wandb.run.summary['knowledgable_consistency'] = success_for_knowledgable_patterns / total_for_knowledgable_patterns
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
