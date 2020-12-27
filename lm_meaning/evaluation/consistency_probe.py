@@ -49,7 +49,7 @@ def parse_lm_results(lm_results: Dict, possible_objects: List[str]) -> Dict:
             subj = data['sub_label']
             obj = data['obj_label']
             first_object = get_first_object(preds, possible_objects)
-            output_dic[pattern][subj] = first_object
+            output_dic[pattern][subj] = (first_object, obj)
     return output_dic
 
 
@@ -78,13 +78,15 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     avg_entropy = []
 
     consistent_subjects = defaultdict(list)
+    patterns_success = defaultdict(int)
 
     for pattern, vals in lm_results.items():
-        for subj, pred in vals.items():
+        for subj, (pred, gold_obj) in vals.items():
             graph_node = get_node(patterns_graph, pattern)
             if graph_node is None:
                 continue
 
+            patterns_success[subj] += int(pred == gold_obj)
             consistent_subjects[subj].append(pred)
             base_pattern_success = []
             # going over all entailed patterns
@@ -159,6 +161,11 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
             all_consistent += 1
     wandb.run.summary['consistent_subjects'] = all_consistent / len(consistent_subjects)
 
+    successful_patterns = 0
+    for subj, success in patterns_success.items():
+        if success > 0:
+            successful_patterns += 1
+    wandb.run.summary['successful_patterns'] = successful_patterns / len(patterns_success)
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn

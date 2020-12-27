@@ -137,7 +137,6 @@ def main():
     group_acc = group_score_lama_eval(results_dict)
     wandb.run.summary['lama_group_acc'] = group_acc
 
-    # all_objects = list(set(subj_obj.values()))
     lm_results = parse_lm_results(results_dict, all_objects)
 
     analyze_results(lm_results, patterns_graph)
