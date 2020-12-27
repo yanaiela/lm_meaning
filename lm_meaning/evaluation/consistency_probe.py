@@ -61,21 +61,16 @@ def get_node(graph, pattern):
 
 
 def analyze_results(lm_results: Dict, patterns_graph) -> None:
-
     total = 0
     points = 0
 
     total_syn = 0
     total_lex = 0
     total_both = 0
-    total_uni = 0
-    total_bi = 0
 
     points_syn = 0
     points_lex = 0
     points_both = 0
-    points_uni = 0
-    points_bi = 0
 
     points_by_edge = defaultdict(list)
     edges_out = defaultdict(list)
@@ -105,27 +100,21 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
                 points_by_edge[graph_node.lm_pattern + '_' + ent_node.lm_pattern].append(int(success))
                 edges_out[graph_node.lm_pattern].append(int(success))
 
-                if entailment_type['edge_type'].syntactic_change:
+                if entailment_type['edge_type'].syntactic_change and not entailment_type['edge_type'].lexical_change \
+                        and not entailment_type['edge_type'].determiner_change:
                     if success:
                         points_syn += 1
                     total_syn += 1
-                elif entailment_type['edge_type'].lexical_change:
+                elif entailment_type['edge_type'].lexical_change and not entailment_type['edge_type'].syntactic_change \
+                        and not entailment_type['edge_type'].determiner_change:
                     if success:
                         points_lex += 1
                     total_lex += 1
-                else:
+                elif entailment_type['edge_type'].lexical_change and entailment_type['edge_type'].syntactic_change \
+                        and not entailment_type['edge_type'].determiner_change:
                     if success:
                         points_both += 1
                     total_both += 1
-
-                if [ent_node, graph_node] in patterns_graph.edges:
-                    if success:
-                        points_bi += 1
-                    total_bi += 1
-                else:
-                    if success:
-                        points_uni += 1
-                    total_uni += 1
 
             base_success = sum(base_pattern_success) / len(base_pattern_success)
             ent = entropy([base_success, 1.0 - base_success], base=2)
@@ -152,12 +141,6 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     else:
         wandb.run.summary['both_consistency'] = -1
 
-    avg_by_edge = []
-    for _, vals in points_by_edge.items():
-        avg_by_edge.append(sum(vals) / len(vals))
-
-    wandb.run.summary['avg_consistency_by_edge'] = np.average(avg_by_edge)
-
     avg_out_normalized = []
     out_edges_total = 0
     for k, vals in points_by_edge.items():
@@ -167,21 +150,10 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
 
     wandb.run.summary['avg_consistency_by_edge_out'] = sum(avg_out_normalized) / out_edges_total
 
-    avg_in_normalized = []
-    in_edges_total = 0
-    for k, vals in points_by_edge.items():
-        ei = sum(edges_out[k.split('_')[1]]) / len(edges_out[k.split('_')[1]])
-        avg_in_normalized.append(ei * (sum(vals) / len(vals)))
-        in_edges_total += ei
-
-    wandb.run.summary['avg_consistency_by_edge_in'] = sum(avg_in_normalized) / in_edges_total
-
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
     wandb.run.summary['total_lex'] = total_lex
     wandb.run.summary['total_both'] = total_both
-    wandb.run.summary['total_bi'] = total_bi
-    wandb.run.summary['total_uni'] = total_uni
 
     wandb.run.summary['avg_entropy'] = np.average(avg_entropy)
     wandb.run.summary['std_entropy'] = np.std(avg_entropy)
@@ -191,22 +163,19 @@ def analyze_graph(patterns_graph):
     syn_edges = 0
     lex_edges = 0
     both_edges = 0
-    bi_edges = 0
-    uni_edges = 0
 
     for node in patterns_graph:
         for ent_node in patterns_graph.successors(node):
             entailment_type = patterns_graph.edges[node, ent_node]['edge_type']
-            if entailment_type.syntactic_change:
+            if entailment_type.syntactic_change and not entailment_type.lexical_change \
+                    and not entailment_type.determiner_change:
                 syn_edges += 1
-            elif entailment_type.lexical_change:
+            elif entailment_type.lexical_change and not entailment_type.syntactic_change \
+                    and not entailment_type.determiner_change:
                 lex_edges += 1
-            else:
+            elif entailment_type.lexical_change and entailment_type.syntactic_change \
+                    and not entailment_type.determiner_change:
                 both_edges += 1
-            if [ent_node, node] in patterns_graph.edges:
-                bi_edges += 1
-            else:
-                uni_edges += 1
 
     wandb.run.summary['n_patterns'] = len(patterns_graph)
     wandb.run.summary['all_edges'] = len(patterns_graph.edges)

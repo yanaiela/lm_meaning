@@ -5,7 +5,7 @@ import wandb
 
 from lm_meaning.evaluation.consistency_probe import analyze_results, analyze_graph, parse_lm_results
 from lm_meaning.run_pipeline import build_model_by_name, run_query
-from lm_meaning.utils import read_graph, read_jsonl_file, load_prompts
+from lm_meaning.utils import read_graph, read_jsonl_file
 
 
 def log_wandb(args):
@@ -78,7 +78,7 @@ def main():
                        default="data/pattern_data/graphs/P449.graph")
 
     parse.add_argument("--gpu", type=int, default=-1)
-    parse.add_argument("--bs", type=int, default=100)
+    parse.add_argument("--bs", type=int, default=200)
     parse.add_argument("--wandb", action='store_true')
     parse.add_argument("--no_subj", type=bool, default=False)
     parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
