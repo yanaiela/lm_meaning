@@ -77,12 +77,15 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
 
     avg_entropy = []
 
+    consistent_subjects = defaultdict(list)
+
     for pattern, vals in lm_results.items():
         for subj, pred in vals.items():
             graph_node = get_node(patterns_graph, pattern)
             if graph_node is None:
                 continue
 
+            consistent_subjects[subj].append(pred)
             base_pattern_success = []
             # going over all entailed patterns
             for ent_node in patterns_graph.successors(graph_node):
@@ -147,8 +150,15 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
         eo = sum(edges_out[k.split('_')[0]]) / len(edges_out[k.split('_')[0]])
         avg_out_normalized.append(eo * (sum(vals) / len(vals)))
         out_edges_total += eo
-
     wandb.run.summary['avg_consistency_by_edge_out'] = sum(avg_out_normalized) / out_edges_total
+
+    all_consistent = 0
+    for subj, preds in consistent_subjects.items():
+        preds_set = set(preds)
+        if len(preds_set) == 1:
+            all_consistent += 1
+    wandb.run.summary['consistent_subjects'] = all_consistent / len(consistent_subjects)
+
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
