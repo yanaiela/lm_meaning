@@ -78,7 +78,8 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     avg_entropy = []
 
     consistent_subjects = defaultdict(list)
-    patterns_subjects = defaultdict(int)
+    correct_subjects_per_pattern = defaultdict(int)
+    correct_patterns_per_subject = defaultdict(int)
     consistency_performance = defaultdict(list)
 
     for pattern, vals in lm_results.items():
@@ -87,7 +88,8 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
             if graph_node is None:
                 continue
 
-            patterns_subjects[subj] += int(pred == gold_obj)
+            correct_patterns_per_subject[subj] += int(pred == gold_obj)
+            correct_subjects_per_pattern[pattern] += int(pred == gold_obj)
             consistent_subjects[subj].append(pred)
             base_pattern_success = []
             # going over all entailed patterns
@@ -163,18 +165,30 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
             all_consistent += 1
     wandb.run.summary['consistent_subjects'] = all_consistent / len(consistent_subjects)
 
+    successful_subjects = 0
+    for subj, success in correct_patterns_per_subject.items():
+        if success > 0:
+            successful_subjects += 1
+    wandb.run.summary['successful_subjects'] = successful_subjects / len(correct_patterns_per_subject)
+
     successful_patterns = 0
-    for subj, success in patterns_subjects.items():
+    for pattern, success in correct_subjects_per_pattern.items():
         if success > 0:
             successful_patterns += 1
-    wandb.run.summary['successful_subjects'] = successful_patterns / len(patterns_subjects)
+    wandb.run.summary['successful_patterns'] = successful_patterns / len(correct_subjects_per_pattern)
 
     success_for_knowledgable_patterns, total_for_knowledgable_patterns = 0, 0
+    success_for_unknowledgable_patterns, total_for_unknowledgable_patterns = 0, 0
     for subj, success in consistency_performance.items():
-        if patterns_subjects[subj] > 0:
+        if correct_patterns_per_subject[subj] > 0:
             success_for_knowledgable_patterns += sum(success)
             total_for_knowledgable_patterns += len(success)
+        else:
+            success_for_unknowledgable_patterns += sum(success)
+            total_for_unknowledgable_patterns += len(success)
     wandb.run.summary['knowledgable_consistency'] = success_for_knowledgable_patterns / total_for_knowledgable_patterns
+    wandb.run.summary['unknowledgable_consistency'] = success_for_unknowledgable_patterns \
+                                                      / total_for_unknowledgable_patterns
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn
