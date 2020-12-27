@@ -1,7 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] maintains diplomatic relations with [Y].	North Korea maintains diplomatic relations with Japan.	maintains	maintains-diplomatic-relations	present	N-M
 [X] maintained diplomatic relations with [Y].	North Korea maintained diplomatic relations with Japan.	maintains	maintains-diplomatic-relations	past	N-M
-[X] maintains diplomatic relations with [X].	Japan maintains diplomatic relations with North Korea.	maintains	maintains-diplomatic-relations	present	N-M
+[Y] maintains diplomatic relations with [X].	Japan maintains diplomatic relations with North Korea.	maintains	maintains-diplomatic-relations	present	N-M
 [Y] maintained diplomatic relations with [X].	Japan maintained diplomatic relations with North Korea.	maintains	maintains-diplomatic-relations	past	N-M
 [X] ties diplomatic relations with [Y].	North Korea ties diplomatic relations with Japan.	tie	tie-diplomatic-relations	present	N-M
 [Y] ties diplomatic relations with [X].	Japan ties diplomatic relations with North Korea.	tie	tie-diplomatic-relations	present	N-M
