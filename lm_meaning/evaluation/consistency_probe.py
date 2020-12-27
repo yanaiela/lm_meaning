@@ -96,7 +96,7 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
                 entailment_type = patterns_graph.edges[graph_node, ent_node]
 
                 ent_pattern = ent_node.lm_pattern
-                success = pred == lm_results[ent_pattern][subj]
+                success = pred == lm_results[ent_pattern][subj][0]
                 if success:
                     points += 1
                 total += 1
