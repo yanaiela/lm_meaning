@@ -115,8 +115,8 @@ def main():
         all_objects = None
 
     # Load prompts
-    prompts = load_prompts(args.patterns_file)
-
+    # prompts = load_prompts(args.patterns_file)
+    prompts = [x.lm_pattern for x in list(patterns_graph.nodes)]
 
     results_dict = {}
 
