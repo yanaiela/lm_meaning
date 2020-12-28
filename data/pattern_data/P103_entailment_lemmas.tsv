@@ -2,25 +2,25 @@ native	+/mother-tongue,is-native,is-mother-tongue
 mother-tongue	+/native,is-native,is-mother-tongue
 is-native	+/native,mother-tongue,is-mother-tongue
 is-mother-tongue	+/native,is-native,mother-tongue
-childhood	+/native
-actress	+/native, was-actress
-was-film-actress	+/native,actress,was-actress
-was-actress	+/native, actress
-author	+/native, writer
-writer	+/native, author
-actor	+/native,was-actor
-was-actor	+/native,actor
-poet	+/native,was-poet
-was-composer	+/native,composer
-was-painter	+/native,painter
-was-naturalist	+/native,naturalist
-was-botanist	+/native,botanist
-was-minister	+/native,minister
-was-poet	+/native,poet
-politician	+/native
-composer	+/native,was-composer
-painter	+/native,was-painter
-naturalist	+/native,was-naturalist
-botanist	+/native,was-botanist
-minister	+/native,was-minister
-was-born	+/native
+childhood	+/native,mother-tongue,is-native,is-mother-tongue
+actress	+/native,mother-tongue,is-native,is-mother-tongue, was-actress
+was-film-actress	+/native,mother-tongue,is-native,is-mother-tongue,actress,was-actress
+was-actress	+/native,mother-tongue,is-native,is-mother-tongue, actress
+author	+/native,mother-tongue,is-native,is-mother-tongue, writer
+writer	+/native,mother-tongue,is-native,is-mother-tongue, author
+actor	+/native,mother-tongue,is-native,is-mother-tongue,was-actor
+was-actor	+/native,mother-tongue,is-native,is-mother-tongue,actor
+poet	+/native,mother-tongue,is-native,is-mother-tongue,was-poet
+was-composer	+/native,mother-tongue,is-native,is-mother-tongue,composer
+was-painter	+/native,mother-tongue,is-native,is-mother-tongue,painter
+was-naturalist	+/native,mother-tongue,is-native,is-mother-tongue,naturalist
+was-botanist	+/native,mother-tongue,is-native,is-mother-tongue,botanist
+was-minister	+/native,mother-tongue,is-native,is-mother-tongue,minister
+was-poet	+/native,mother-tongue,is-native,is-mother-tongue,poet
+politician	+/native,mother-tongue,is-native,is-mother-tongue
+composer	+/native,mother-tongue,is-native,is-mother-tongue,was-composer
+painter	+/native,mother-tongue,is-native,is-mother-tongue,was-painter
+naturalist	+/native,mother-tongue,is-native,is-mother-tongue,was-naturalist
+botanist	+/native,mother-tongue,is-native,is-mother-tongue,was-botanist
+minister	+/native,mother-tongue,is-native,is-mother-tongue,was-minister
+was-born	+/native,mother-tongue,is-native,is-mother-tongue
