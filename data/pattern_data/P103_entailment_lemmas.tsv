@@ -1,4 +1,7 @@
-native	+/
+native	+/mother-tongue,is-native,is-mother-tongue
+mother-tongue	+/native,is-native,is-mother-tongue
+is-native	+/native,mother-tongue,is-mother-tongue
+is-mother-tongue	+/native,is-native,mother-tongue
 childhood	+/native
 actress	+/native, was-actress
 was-film-actress	+/native,actress,was-actress
