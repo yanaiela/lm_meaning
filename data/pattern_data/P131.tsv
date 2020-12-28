@@ -1,5 +1,7 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is located in [Y] .		located-in	located-in	present	M-1
+[X] is in [Y] .		is-in	is-in	present	M-1
+[X] can be found in [Y] .		found-in	found-in	present	M-1
 [X] is a road in [Y].		road-in	road-in	present	M-1
 [X] is an island in [Y].		island-in	island-in	present	M-1
 [X] is a province in [Y].		province-in	province-in	present	M-1
