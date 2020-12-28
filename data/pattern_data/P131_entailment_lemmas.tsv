@@ -1,37 +1,38 @@
-EXTENDED-LEMMA	+/Unnamed:_1
-located-in	+/located-in
-road-in	+/located-in, that-road-in
-island-in	+/located-in, that-island-in
-province-in	+/located-in, that-province-in, province
-city-in	+/located-in, that-city-in
-municipality-in	+/located-in, that-municipality-in, municipality
-county-in	+/located-in, that-county-in, county
-district-in	+/located-in, that-district-in, district
-school-in	+/located-in, that-school-in, school
-church-in	+/located-in, that-church-in
-highway-in	+/located-in, that-highway-in
-freeway-in	+/located-in, that-freeway-in
-museum-in	+/located-in, that-museum-in
-hotel-in	+/located-in, that-hotel-in
-river-in	+/located-in, that-river-in
-bridge-in	+/located-in, that-bridge-in
-that-road-in	+/located-in, road-in
-that-island-in	+/located-in, island-in
-that-province-in	+/located-in, province-in, province
-that-city-in	+/located-in, city-in
-that-municipality-in	+/located-in, municipality-in, municipality
-that-county-in	+/located-in, county-in, county
+located-in	+/is-in,found-in
+is-in	+/located-in, found-in
+found-in	+/located-in, is-in
+road-in	+/located-in,is-in,found-in, that-road-in
+island-in	+/located-in,is-in,found-in, that-island-in
+province-in	+/located-in,is-in,found-in, that-province-in, province
+city-in	+/located-in,is-in,found-in, that-city-in
+municipality-in	+/located-in,is-in,found-in, that-municipality-in, municipality
+county-in	+/located-in,is-in,found-in, that-county-in, county
+district-in	+/located-in,is-in,found-in, that-district-in, district
+school-in	+/located-in,is-in,found-in, that-school-in, school
+church-in	+/located-in,is-in,found-in, that-church-in
+highway-in	+/located-in,is-in,found-in, that-highway-in
+freeway-in	+/located-in,is-in,found-in, that-freeway-in
+museum-in	+/located-in,is-in,found-in, that-museum-in
+hotel-in	+/located-in,is-in,found-in, that-hotel-in
+river-in	+/located-in,is-in,found-in, that-river-in
+bridge-in	+/located-in,is-in,found-in, that-bridge-in
+that-road-in	+/located-in,is-in,found-in, road-in
+that-island-in	+/located-in,is-in,found-in, island-in
+that-province-in	+/located-in,is-in,found-in, province-in, province
+that-city-in	+/located-in,is-in,found-in, city-in
+that-municipality-in	+/located-in,is-in,found-in, municipality-in, municipality
+that-county-in	+/located-in,is-in,found-in, county-in, county
 that-district-in	+/located-in, district-in, district
-that-school-in	+/located-in, school-in, school
-that-church-in	+/located-in, church-in
-that-highway-in	+/located-in, highway-in
-that-freeway-in	+/located-in, freeway-in
-that-museum-in	+/located-in, museum-in
-that-hotel-in	+/located-in, hotel-in
-that-river-in	+/located-in, river-in
-that-bridge-in	+/located-in, bridge-in
-province	+/located-in, province-in, that-province-in,  province
-municipality	+/located-in, municipality-in, that-municipality-in, municipality
-county	+/located-in, county-in, that-county-in, county
-district	+/located-in, district-in, that-district-in, district
-school	+/located-in, school-in, that-school-in, school
+that-school-in	+/located-in,is-in,found-in, school-in, school
+that-church-in	+/located-in,is-in,found-in, church-in
+that-highway-in	+/located-in,is-in,found-in, highway-in
+that-freeway-in	+/located-in,is-in,found-in, freeway-in
+that-museum-in	+/located-in,is-in,found-in, museum-in
+that-hotel-in	+/located-in,is-in,found-in, hotel-in
+that-river-in	+/located-in,is-in,found-in, river-in
+that-bridge-in	+/located-in,is-in,found-in, bridge-in
+province	+/located-in,is-in,found-in, province-in, that-province-in,  province
+municipality	+/located-in,is-in,found-in, municipality-in, that-municipality-in, municipality
+county	+/located-in,is-in,found-in, county-in, that-county-in, county
+district	+/located-in,is-in,found-in, district-in, that-district-in, district
+school	+/located-in,is-in,found-in, school-in, that-school-in, school
