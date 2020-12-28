@@ -124,7 +124,7 @@ def run_query(pipeline_model: Pipeline, vals_dic: List[Dict], prompt: str, possi
     for row in data:
         if pipeline_model.model.config.model_type in ['albert']:
             data_reduced.append({'sub_label': row['sub_label'],
-                                 'obj_label': pipeline_model.tokenizer.tokenize(row['obj_label'])})
+                                 'obj_label': pipeline_model.tokenizer.tokenize(row['obj_label'])[0]})
         elif pipeline_model.model.config.model_type in ['roberta']:
             data_reduced.append({'sub_label': row['sub_label'],
                                  'obj_label': ' ' + row['obj_label']})
