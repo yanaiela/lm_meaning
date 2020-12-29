@@ -1,5 +1,8 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 The native language of [X] is [Y].		native	native	present	N-1
+The mother tongue of [X] is [Y].		mother-tongue	mother-tongue	present	N-1
+X is [Y]'s native language.		is-native	is-native	present	N-1
+X is [Y]'s mother tongue.		is-mother-tongue	is-mother-tongue	present	N-1
 [X] has known [Y] since childhood.		childhood	childhood	present	N-M
 [Y] actress [X].		actress	actress	-	N-1
 [Y] author [X].		author	author	-	N-1

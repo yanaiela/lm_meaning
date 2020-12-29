@@ -1,31 +1,32 @@
-communicate	+/
-actress	+/communicate, is-actress, who-is-actress
-author	+/communicate, is-author, who-is-author, writer, is-writer, who-is-writer
-actor	+/communicate, is-actor, who-is-actor
-poet	+/communicate, is-poet, who-is-poet
-composer	+/communicate, is-composer, who-is-composer
-playwright	+/communicate, is-playwright, who-is-playwright, writer, is-writer, who-is-writer
-writer	+/communicate, is-writer, who-is-writer
-is-actress	+/communicate, actress, who-is-actress
-is-author	+/communicate, author, who-is-author, writer, is-writer, who-is-writer
-is-actor	+/communicate, actor, who-is-actor
-is-poet	+/communicate, poet, who-is-poet
-is-composer	+/communicate, composer, who-is-composer
-is-playwright	+/communicate, playwright, who-is-playwright, writer, is-writer, who-is-writer
-is-writer	+/communicate, writer, who-is-writer
-novelist	+/communicate, is-novelist, who-is-novelist, writer, is-writer, who-is-writer
-musician	+/communicate, is-musician, who-is-musician
-philospher	+/communicate, is-philospher, who-is-philospher
-is-novelist	+/communicate, writer, is-writer, who-is-writer
-is-musician	+/communicate, musician, who-is-musician
-is-philospher	+/communicate, philospher, who-is-philospher
-who-is-actress	+/communicate, actress, is-actress
-who-is-author	+/communicate, author, is-author, writer, is-writer, who-is-writer
-who-is-actor	+/communicate, actor, is-actor
-who-is-poet	+/communicate, poet, is-poet
-who-is-composer	+/communicate, composer, is-composer
-who-is-playwright	+/communicate, playwright, is-playwright, writer, is-writer, who-is-writer
-who-is-writer	+/communicate, writer, is-writer
-who-is-novelist	+/communicate, novelist, is-novelist, writer, is-writer, who-is-writer
-who-is-musician	+/communicate, musician, is-musician
-who-is-philospher	+/communicate, philospher, is-philospher
+communicate	+/language
+language	+/communicate
+actress	+/communicate,language, is-actress, who-is-actress
+author	+/communicate,language, is-author, who-is-author, writer, is-writer, who-is-writer
+actor	+/communicate,language, is-actor, who-is-actor
+poet	+/communicate,language, is-poet, who-is-poet
+composer	+/communicate,language, is-composer, who-is-composer
+playwright	+/communicate,language, is-playwright, who-is-playwright, writer, is-writer, who-is-writer
+writer	+/communicate,language, is-writer, who-is-writer
+is-actress	+/communicate,language, actress, who-is-actress
+is-author	+/communicate,language, author, who-is-author, writer, is-writer, who-is-writer
+is-actor	+/communicate,language, actor, who-is-actor
+is-poet	+/communicate,language, poet, who-is-poet
+is-composer	+/communicate,language, composer, who-is-composer
+is-playwright	+/communicate,language, playwright, who-is-playwright, writer, is-writer, who-is-writer
+is-writer	+/communicate,language, writer, who-is-writer
+novelist	+/communicate,language, is-novelist, who-is-novelist, writer, is-writer, who-is-writer
+musician	+/communicate,language, is-musician, who-is-musician
+philospher	+/communicate,language, is-philospher, who-is-philospher
+is-novelist	+/communicate,language, writer, is-writer, who-is-writer
+is-musician	+/communicate,language, musician, who-is-musician
+is-philospher	+/communicate,language, philospher, who-is-philospher
+who-is-actress	+/communicate,language, actress, is-actress
+who-is-author	+/communicate,language, author, is-author, writer, is-writer, who-is-writer
+who-is-actor	+/communicate,language, actor, is-actor
+who-is-poet	+/communicate,language, poet, is-poet
+who-is-composer	+/communicate,language, composer, is-composer
+who-is-playwright	+/communicate,language, playwright, is-playwright, writer, is-writer, who-is-writer
+who-is-writer	+/communicate,language, writer, is-writer
+who-is-novelist	+/communicate,language, novelist, is-novelist, writer, is-writer, who-is-writer
+who-is-musician	+/communicate,language, musician, is-musician
+who-is-philospher	+/communicate,language, philospher, is-philospher
