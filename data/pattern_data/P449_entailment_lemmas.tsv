@@ -1,7 +1,9 @@
-premiere-on	*/stream-on,is-stream-on
-to-debut-on	*/stream-on,is-stream-on
-debut-on	*/stream-on,is-stream-on
-debut	*/stream-on,is-stream-on
-debut-of	*/stream-on,is-stream-on
-is-stream-on	*/premiere-on,to-debut-on,debut-of,debut,debut-on
-stream-on	*/premiere-on,to-debut-on,debut-of,debut,debut-on
+premiere-on	*/is-stream-on,stream-on
+to-debut-on	*/is-stream-on,stream-on
+air-on-originally	*/is-stream-on,stream-on
+debut-on	*/is-stream-on,stream-on
+debut	*/is-stream-on,stream-on
+debut-of	*/is-stream-on,stream-on
+to-debut	*/is-stream-on,stream-on
+is-stream-on	*/is-stream-on,stream-on
+stream-on	*/is-stream-on,stream-on
