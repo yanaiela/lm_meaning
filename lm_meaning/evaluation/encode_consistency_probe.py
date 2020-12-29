@@ -36,6 +36,9 @@ def log_wandb(args):
         checkpoint = lm.split('checkpoint-')[-1].split('/')[0]
         config['checkpoint'] = checkpoint
 
+        model_name = lm.split('/checkpoint-')[0]
+        config['model_name'] = model_name
+
 
     wandb.init(
         entity='consistency',
