@@ -17,17 +17,25 @@ def log_wandb(args):
         lm=lm
     )
 
-    if 'entailment' in lm:
-        model_args = lm.split('/')[-1].split('_')
-        config['ft_type'] = model_args[0]
-        config['model_name'] = model_args[1]
-        config['n_tuples'] = model_args[2]
-        config['n_graphs'] = model_args[3]
-        config['epoch'] = model_args[4]
-        config['graphs_trained'] = model_args[5]
+    if 'consistency' in lm:
+        params = lm.split('consistency_')[-1]
+        model_args = params.split('_')
+
+        config['loss_strategy'] = model_args[0]
+        config['loss'] = model_args[1]
+        config['origin_lm'] = model_args[2]
+        config['wiki'] = model_args[3]
+        config['lama_train'] = model_args[4]
+        config['n_tuples'] = model_args[5]
+        config['n_graphs'] = model_args[6]
+        config['rels_train'] = model_args[7]
+        config['wiki_consistent_train_ratio'] = model_args[8]
+        config['consistent_loss_ratio'] = model_args[9]
+        config['additional_notes'] = model_args[10]
 
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_consistency_probe_{lm}',
         project="consistency",
         tags=[pattern, 'probe'],
