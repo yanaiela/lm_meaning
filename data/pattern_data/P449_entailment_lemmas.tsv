@@ -1,5 +1,8 @@
 premiere-on	*/is-stream-on,stream-on
 to-debut-on	*/is-stream-on,stream-on
+release-of	*/is-stream-on,stream-on
+is-release-on	*/is-stream-on,stream-on
+release	*/is-stream-on,stream-on
 air-on-originally	*/is-stream-on,stream-on
 debut-on	*/is-stream-on,stream-on
 debut	*/is-stream-on,stream-on
