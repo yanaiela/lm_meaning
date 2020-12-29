@@ -1,15 +1,16 @@
 import re
 from typing import List
+from glob import glob
 
 import pandas as pd
 import streamlit as st
 from transformers import pipeline
 
-MODELS = {
-    'bert-base-cased': 'bert-base-cased',
-    'ft-3_100': 'models/consistency/bert_base_cased/3_100/consitancy_bert-base-cased_100_P1376_P276_P31/checkpoint-279',
+MODELS = [
+    'bert-base-cased',
+    'models/consistency/bert_base_cased/3_100/consitancy_bert-base-cased_100_P1376_P276_P31/checkpoint-279',
 
-}
+]
 
 MASK = '[MASK]'
 
@@ -29,7 +30,12 @@ def get_bert_models(model_name):
 
 st.title("MLM Demo")
 
-lm_models = list(MODELS.keys())
+models_paths = []
+for f in glob('models/nora/**/pytorch_model.bin', recursive=True):
+    models_paths.append(f.rsplit('/', 1)[0])
+models_paths = list(set(models_paths))
+
+lm_models = list(MODELS) + models_paths
 
 st.sidebar.title("Pre trained LMs")
 used_models = []
@@ -44,7 +50,7 @@ for model in lm_models:
 
 models = []
 for m in used_models:
-    m_model = get_bert_models(MODELS[m])
+    m_model = get_bert_models(m)
     models.append(m_model)
 
 text = st.text_input("Input Sentence ('[MASK]' for the masking token)", value="Input examples are [MASK]!")
