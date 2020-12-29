@@ -18,7 +18,7 @@ def log_wandb(args):
     )
 
     if 'consistency' in lm:
-        params = lm.split('consistency_')[-1]
+        params = lm.split('consistency_')[-1].split('/')[0]
         model_args = params.split('_')
 
         config['loss_strategy'] = model_args[0]
@@ -32,6 +32,9 @@ def log_wandb(args):
         config['wiki_consistent_train_ratio'] = model_args[8]
         config['consistent_loss_ratio'] = model_args[9]
         config['additional_notes'] = model_args[10]
+
+        checkpoint = lm.split('checkpoint-')[-1].split('/')[0]
+        config['checkpoint'] = checkpoint
 
 
     wandb.init(
