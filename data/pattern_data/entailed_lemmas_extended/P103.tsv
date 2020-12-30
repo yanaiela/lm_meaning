@@ -1,5 +1,8 @@
 LEMMA	NOT-ENTAILED
 native	childhood,actress,was-film-actress,was-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
+mother-tongue	childhood,actress,was-film-actress,was-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
+is-native	childhood,actress,was-film-actress,was-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
+is-mother-tongue	childhood,actress,was-film-actress,was-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
 childhood	actress,was-film-actress,was-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
 actress	childhood,was-film-actress,author,writer,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born
 author	childhood,actress,was-film-actress,was-actress,actor,was-actor,poet,was-composer,was-painter,was-naturalist,was-botanist,was-minister,was-poet,politician,composer,painter,naturalist,botanist,minister,was-born

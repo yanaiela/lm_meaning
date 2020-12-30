@@ -1,6 +1,6 @@
 LEMMA	NOT-ENTAILED
-maintains-diplomatic-relations	-
-tie-diplomatic-relations	-
-have-diplomatic-relations	-
+maintains-diplomatic-relations	have-embassy,exchange-ambassador
+tie-diplomatic-relations	have-embassy,exchange-ambassador
+have-diplomatic-relations	have-embassy,exchange-ambassador
 have-embassy	-
 exchange-ambassador	-

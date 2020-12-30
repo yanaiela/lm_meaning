@@ -1,7 +1,7 @@
 {"pattern": "The native language of [X] is [Y].", "example": "", "lemma": "native", "extended_lemma": "native", "tense": "present", "spike_query": "$The $native $language $of <>subject:Messmer $is object:[w={}]French."}
 {"pattern": "The mother tongue of [X] is [Y].", "example": "", "lemma": "mother-tongue", "extended_lemma": "mother-tongue", "tense": "present", "spike_query": "$The $mother $tongue $of <>subject:Messmer $is object:[w={}]French."}
-{"pattern": "X is [Y]'s native language.", "example": "", "lemma": "is-native", "extended_lemma": "is-native", "tense": "present", "spike_query": "$X $is object:[w={}]French's $native $language."}
-{"pattern": "X is [Y]'s mother tongue.", "example": "", "lemma": "is-mother-tongue", "extended_lemma": "is-mother-tongue", "tense": "present", "spike_query": "$X $is object:[w={}]French's $mother $tongue."}
+{"pattern": "[X] is [Y]'s native language.", "example": "", "lemma": "is-native", "extended_lemma": "is-native", "tense": "present", "spike_query": "<>subject:Messmer $is object:[w={}]French's $native $language."}
+{"pattern": "[X] is [Y]'s mother tongue.", "example": "", "lemma": "is-mother-tongue", "extended_lemma": "is-mother-tongue", "tense": "present", "spike_query": "<>subject:Messmer $is object:[w={}]French's $mother $tongue."}
 {"pattern": "[X] has known [Y] since childhood.", "example": "", "lemma": "childhood", "extended_lemma": "childhood", "tense": "present", "spike_query": "<>subject:Messmer $has $known object:[w={}]French $since $childhood."}
 {"pattern": "[Y] actress [X].", "example": "", "lemma": "actress", "extended_lemma": "actress", "tense": "-", "spike_query": "object:[w={}]French $actress <>subject:Messmer."}
 {"pattern": "[Y] author [X].", "example": "", "lemma": "author", "extended_lemma": "author", "tense": "-", "spike_query": "object:[w={}]French $author <>subject:Messmer."}
