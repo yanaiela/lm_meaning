@@ -13,6 +13,7 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_generate_entailments',
         project="consistency",
         tags=[pattern],
