@@ -22,16 +22,17 @@ def log_wandb(args):
         model_args = params.split('_')
 
         config['loss_strategy'] = model_args[0]
-        config['loss'] = model_args[1]
-        config['origin_lm'] = model_args[2]
-        config['wiki'] = model_args[3]
-        config['lama_train'] = model_args[4]
-        config['n_tuples'] = model_args[5]
-        config['n_graphs'] = model_args[6]
-        config['rels_train'] = model_args[7]
-        config['wiki_consistent_train_ratio'] = model_args[8]
-        config['consistent_loss_ratio'] = model_args[9]
-        config['additional_notes'] = model_args[10]
+        config['n_tuples'] = model_args[1]
+        config['n_graphs'] = model_args[2]
+        config['rels_train'] = model_args[3]
+        config['origin_lm'] = model_args[4]
+        config['loss'] = model_args[5]
+        config['vocab'] = model_args[6]
+        config['wiki'] = model_args[7]
+        config['lama_train'] = model_args[8]
+        config['wiki_consistent_train_ratio'] = model_args[9]
+        config['consistent_loss_ratio'] = model_args[10]
+        config['additional_notes'] = model_args[11]
 
         checkpoint = lm.split('checkpoint-')[-1].split('/')[0]
         config['checkpoint'] = checkpoint
