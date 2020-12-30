@@ -1,6 +1,6 @@
 import argparse
 from typing import Dict
-
+from collections import Counter
 import wandb
 
 from lm_meaning.evaluation.consistency_probe import analyze_results, analyze_graph, parse_lm_results
@@ -11,6 +11,9 @@ from lm_meaning.utils import read_graph, read_jsonl_file
 def log_wandb(args):
     pattern = args.patterns_file.split('/')[-1].split('.')[0]
     lm = args.lm
+
+    if args.baseline:
+        lm = 'majority-baseline'
 
     config = dict(
         pattern=pattern,
@@ -83,6 +86,20 @@ def group_score_lama_eval(lm_results: Dict):
     return points / len(data)
 
 
+def create_majority_baseline(data):
+    data_reduced = []
+    for row in data:
+        data_reduced.append({'sub_label': row['sub_label'], 'obj_label': row['obj_label']})
+
+    objs = [x['obj_label'] for x in data]
+    most_common = Counter(objs).most_common()[0][0]
+    preds_reduced = []
+    for _ in data:
+        vals = [{'score': 1, 'token_str': most_common}]
+        preds_reduced.append(vals)
+    return data_reduced, preds_reduced
+
+
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-base-uncased")
@@ -96,6 +113,7 @@ def main():
     parse.add_argument("--bs", type=int, default=200)
     parse.add_argument("--wandb", action='store_true')
     parse.add_argument("--no_subj", type=bool, default=False)
+    parse.add_argument("--baseline", action='store_true', default=False)
     parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
                                                                                  "from the data as the possible"
                                                                                  "candidates")
@@ -119,6 +137,13 @@ def main():
 
     patterns_graph = read_graph(args.graph)
 
+    subj_obj = {}
+    for row in data:
+        subj_obj[row['sub_label']] = row['obj_label']
+
+    # Load prompts
+    prompts = [x.lm_pattern for x in list(patterns_graph.nodes)]
+
     if args.use_targets:
         all_objects = list(set([x['obj_label'] for x in data]))
         # if 'roberta' in args.lm or 'albert' in args.lm:
@@ -129,20 +154,18 @@ def main():
     else:
         all_objects = None
 
-    # Load prompts
-    # prompts = load_prompts(args.patterns_file)
-    prompts = [x.lm_pattern for x in list(patterns_graph.nodes)]
-
     results_dict = {}
 
-    for prompt_id, prompt in enumerate(prompts):
-        results_dict[prompt] = []
-        filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
-        results_dict[prompt] = {"data": filtered_data, "predictions": predictions}
+    if args.baseline:
+        for prompt_id, prompt in enumerate(prompts):
+            filtered_data, predictions = create_majority_baseline(data)
+            results_dict[prompt] = {"data": filtered_data, "predictions": predictions}
+    else:
+        for prompt_id, prompt in enumerate(prompts):
+            results_dict[prompt] = []
+            filtered_data, predictions = run_query(model, data, prompt, all_objects, args.bs)
+            results_dict[prompt] = {"data": filtered_data, "predictions": predictions}
 
-    subj_obj = {}
-    for row in data:
-        subj_obj[row['sub_label']] = row['obj_label']
 
     # Evaluate on LAMA
     lama_acc = evaluate_lama(prompts[0], results_dict)
