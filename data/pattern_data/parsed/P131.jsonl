@@ -1,4 +1,6 @@
 {"pattern": "[X] is located in [Y] .", "example": "", "lemma": "located-in", "extended_lemma": "located-in", "tense": "present", "spike_query": "<>subject:John $is $located $in object:[w={}]Spain $."}
+{"pattern": "[X] is in [Y] .", "example": "", "lemma": "is-in", "extended_lemma": "is-in", "tense": "present", "spike_query": "<>subject:John $is $in object:[w={}]Spain $."}
+{"pattern": "[X] can be found in [Y] .", "example": "", "lemma": "found-in", "extended_lemma": "found-in", "tense": "present", "spike_query": "<>subject:John $can $be $found $in object:[w={}]Spain $."}
 {"pattern": "[X] is a road in [Y].", "example": "", "lemma": "road-in", "extended_lemma": "road-in", "tense": "present", "spike_query": "<>subject:John $is $a $road $in object:[w={}]Spain."}
 {"pattern": "[X] is an island in [Y].", "example": "", "lemma": "island-in", "extended_lemma": "island-in", "tense": "present", "spike_query": "<>subject:John $is $an $island $in object:[w={}]Spain."}
 {"pattern": "[X] is a province in [Y].", "example": "", "lemma": "province-in", "extended_lemma": "province-in", "tense": "present", "spike_query": "<>subject:John $is $a $province $in object:[w={}]Spain."}
