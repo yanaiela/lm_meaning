@@ -2,6 +2,7 @@ import argparse
 import pickle
 from collections import defaultdict
 from typing import List, Tuple, Dict
+import pandas as pd
 
 import networkx as nx
 import tqdm
@@ -22,6 +23,7 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_create_graph',
         project="consistency",
         tags=[pattern],
@@ -93,9 +95,12 @@ if __name__ == "__main__":
                        default="data/pattern_data/entailed_lemmas_extended/P449.tsv")
     parse.add_argument("-out_file", "--out_file", type=str, help="output file",
                        default="data/pattern_data/graphs/P449.graph")
+    parse.add_argument("-tense_file", "--tense_file", type=str, help="output file",
+                       default="data/pattern_data/memorization_tense.csv")
 
     args = parse.parse_args()
     log_wandb(args)
+    pattern_id = args.patterns_file.split('/')[-1].split('.')[0]
     entailed_from_base = True
 
     nlp = spacy.load('en_core_web_sm')
@@ -115,9 +120,18 @@ if __name__ == "__main__":
         get_neighbors(pattern, patterns, False, lemma2not_entailed, connections, spike_annotator, nlp)
 
     base_pattern = patterns[0]
+    # entailed from base
     entailed_patterns = [x for x in patterns if x['pattern'] in [t[0] for t in connections[base_pattern['pattern']]]]
+
+    # entailed from tense
+    tenses = pd.read_csv(args.tense_file)
+    tense_matters = tenses.set_index('PID').to_dict()['tense_matters']
+    if tense_matters[pattern_id] == 'Yes':
+        tensed_patterns = [x for x in entailed_patterns if x['tense'] in [base_pattern['tense'], '-', '?']]
+    else:
+        tensed_patterns = entailed_patterns
     if entailed_from_base:
-        subset_patterns = [base_pattern] + entailed_patterns
+        subset_patterns = [base_pattern] + tensed_patterns
     else:
         subset_patterns = patterns
     print("Creating graph...")
