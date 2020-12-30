@@ -1,4 +1,5 @@
 is-affiliated-with	+/follow,practice,is-official-religion,is-follower
+is-follower	+/is-affiliated-with,is-practice,is-official-religion,is-follower,is-follow
 was-affiliated-with	+/was-follow,was-practice,was-official-religion,was-follower,was-one-official-religion
 follow	+/is-affiliated-with,is-follower,practice,is-official-religion
 was-follow	+/was-follower,was-practice,was-official-religion,was-one-official-religion,was-affiliated-with
