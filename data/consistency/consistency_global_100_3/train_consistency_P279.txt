@@ -1,0 +1,505 @@
+verbal noun is a subclass of [MASK].
+verbal noun, which is a subclass of [MASK].
+verbal noun,  a subclass of [MASK].
+verbal noun,  a type of [MASK].
+
+search algorithm is a subclass of [MASK].
+search algorithm, which is a subclass of [MASK].
+search algorithm,  a subclass of [MASK].
+search algorithm,  a type of [MASK].
+
+Pre-Columbian art is a subclass of [MASK].
+Pre-Columbian art, which is a subclass of [MASK].
+Pre-Columbian art,  a subclass of [MASK].
+Pre-Columbian art,  a type of [MASK].
+
+Rosso corsa is a subclass of [MASK].
+Rosso corsa, which is a subclass of [MASK].
+Rosso corsa,  a subclass of [MASK].
+Rosso corsa,  a type of [MASK].
+
+Phospholipase is a subclass of [MASK].
+Phospholipase, which is a subclass of [MASK].
+Phospholipase,  a subclass of [MASK].
+Phospholipase,  a type of [MASK].
+
+nursery rhyme is a subclass of [MASK].
+nursery rhyme, which is a subclass of [MASK].
+nursery rhyme,  a subclass of [MASK].
+nursery rhyme,  a type of [MASK].
+
+Paxillin is a subclass of [MASK].
+Paxillin, which is a subclass of [MASK].
+Paxillin,  a subclass of [MASK].
+Paxillin,  a type of [MASK].
+
+hemmema is a subclass of [MASK].
+hemmema, which is a subclass of [MASK].
+hemmema,  a subclass of [MASK].
+hemmema,  a type of [MASK].
+
+Third camp is a subclass of [MASK].
+Third camp, which is a subclass of [MASK].
+Third camp,  a subclass of [MASK].
+Third camp,  a type of [MASK].
+
+cosmology is a subclass of [MASK].
+cosmology, which is a subclass of [MASK].
+cosmology,  a subclass of [MASK].
+cosmology,  a type of [MASK].
+
+Hinduism in Australia is a subclass of [MASK].
+Hinduism in Australia, which is a subclass of [MASK].
+Hinduism in Australia,  a subclass of [MASK].
+Hinduism in Australia,  a type of [MASK].
+
+Nor'easter is a subclass of [MASK].
+Nor'easter, which is a subclass of [MASK].
+Nor'easter,  a subclass of [MASK].
+Nor'easter,  a type of [MASK].
+
+government database is a subclass of [MASK].
+government database, which is a subclass of [MASK].
+government database,  a subclass of [MASK].
+government database,  a type of [MASK].
+
+fractal is a subclass of [MASK].
+fractal, which is a subclass of [MASK].
+fractal,  a subclass of [MASK].
+fractal,  a type of [MASK].
+
+BC Book Prizes is a subclass of [MASK].
+BC Book Prizes, which is a subclass of [MASK].
+BC Book Prizes,  a subclass of [MASK].
+BC Book Prizes,  a type of [MASK].
+
+Ret proto-oncogene is a subclass of [MASK].
+Ret proto-oncogene, which is a subclass of [MASK].
+Ret proto-oncogene,  a subclass of [MASK].
+Ret proto-oncogene,  a type of [MASK].
+
+Nuclear receptor subfamily 3 group C member 1 is a subclass of [MASK].
+Nuclear receptor subfamily 3 group C member 1, which is a subclass of [MASK].
+Nuclear receptor subfamily 3 group C member 1,  a subclass of [MASK].
+Nuclear receptor subfamily 3 group C member 1,  a type of [MASK].
+
+pope is a subclass of [MASK].
+pope, which is a subclass of [MASK].
+pope,  a subclass of [MASK].
+pope,  a type of [MASK].
+
+airline hub is a subclass of [MASK].
+airline hub, which is a subclass of [MASK].
+airline hub,  a subclass of [MASK].
+airline hub,  a type of [MASK].
+
+dead drop is a subclass of [MASK].
+dead drop, which is a subclass of [MASK].
+dead drop,  a subclass of [MASK].
+dead drop,  a type of [MASK].
+
+Eindhoven Marathon is a subclass of [MASK].
+Eindhoven Marathon, which is a subclass of [MASK].
+Eindhoven Marathon,  a subclass of [MASK].
+Eindhoven Marathon,  a type of [MASK].
+
+double track is a subclass of [MASK].
+double track, which is a subclass of [MASK].
+double track,  a subclass of [MASK].
+double track,  a type of [MASK].
+
+adit is a subclass of [MASK].
+adit, which is a subclass of [MASK].
+adit,  a subclass of [MASK].
+adit,  a type of [MASK].
+
+Insulin like growth factor 2 receptor is a subclass of [MASK].
+Insulin like growth factor 2 receptor, which is a subclass of [MASK].
+Insulin like growth factor 2 receptor,  a subclass of [MASK].
+Insulin like growth factor 2 receptor,  a type of [MASK].
+
+Talian dialect is a subclass of [MASK].
+Talian dialect, which is a subclass of [MASK].
+Talian dialect,  a subclass of [MASK].
+Talian dialect,  a type of [MASK].
+
+Doublecortin is a subclass of [MASK].
+Doublecortin, which is a subclass of [MASK].
+Doublecortin,  a subclass of [MASK].
+Doublecortin,  a type of [MASK].
+
+contemporary history is a subclass of [MASK].
+contemporary history, which is a subclass of [MASK].
+contemporary history,  a subclass of [MASK].
+contemporary history,  a type of [MASK].
+
+modern history is a subclass of [MASK].
+modern history, which is a subclass of [MASK].
+modern history,  a subclass of [MASK].
+modern history,  a type of [MASK].
+
+Amiga 2000 is a subclass of [MASK].
+Amiga 2000, which is a subclass of [MASK].
+Amiga 2000,  a subclass of [MASK].
+Amiga 2000,  a type of [MASK].
+
+Olivier salad is a subclass of [MASK].
+Olivier salad, which is a subclass of [MASK].
+Olivier salad,  a subclass of [MASK].
+Olivier salad,  a type of [MASK].
+
+whole-wheat flour is a subclass of [MASK].
+whole-wheat flour, which is a subclass of [MASK].
+whole-wheat flour,  a subclass of [MASK].
+whole-wheat flour,  a type of [MASK].
+
+Talian dialect is a subclass of [MASK].
+Talian dialect, which is a subclass of [MASK].
+Talian dialect,  a subclass of [MASK].
+Talian dialect,  a type of [MASK].
+
+judicial vicar is a subclass of [MASK].
+judicial vicar, which is a subclass of [MASK].
+judicial vicar,  a subclass of [MASK].
+judicial vicar,  a type of [MASK].
+
+nursery rhyme is a subclass of [MASK].
+nursery rhyme, which is a subclass of [MASK].
+nursery rhyme,  a subclass of [MASK].
+nursery rhyme,  a type of [MASK].
+
+tension headache is a subclass of [MASK].
+tension headache, which is a subclass of [MASK].
+tension headache,  a subclass of [MASK].
+tension headache,  a type of [MASK].
+
+flat bone is a subclass of [MASK].
+flat bone, which is a subclass of [MASK].
+flat bone,  a subclass of [MASK].
+flat bone,  a type of [MASK].
+
+space station is a subclass of [MASK].
+space station, which is a subclass of [MASK].
+space station,  a subclass of [MASK].
+space station,  a type of [MASK].
+
+bone morphogenetic protein is a subclass of [MASK].
+bone morphogenetic protein, which is a subclass of [MASK].
+bone morphogenetic protein,  a subclass of [MASK].
+bone morphogenetic protein,  a type of [MASK].
+
+synchrony and diachrony is a subclass of [MASK].
+synchrony and diachrony, which is a subclass of [MASK].
+synchrony and diachrony,  a subclass of [MASK].
+synchrony and diachrony,  a type of [MASK].
+
+pandemic is a subclass of [MASK].
+pandemic, which is a subclass of [MASK].
+pandemic,  a subclass of [MASK].
+pandemic,  a type of [MASK].
+
+electromagnetic field is a subclass of [MASK].
+electromagnetic field, which is a subclass of [MASK].
+electromagnetic field,  a subclass of [MASK].
+electromagnetic field,  a type of [MASK].
+
+aerostat is a subclass of [MASK].
+aerostat, which is a subclass of [MASK].
+aerostat,  a subclass of [MASK].
+aerostat,  a type of [MASK].
+
+succubus is a subclass of [MASK].
+succubus, which is a subclass of [MASK].
+succubus,  a subclass of [MASK].
+succubus,  a type of [MASK].
+
+Ponzi scheme is a subclass of [MASK].
+Ponzi scheme, which is a subclass of [MASK].
+Ponzi scheme,  a subclass of [MASK].
+Ponzi scheme,  a type of [MASK].
+
+Cyclin dependent kinase inhibitor 1B is a subclass of [MASK].
+Cyclin dependent kinase inhibitor 1B, which is a subclass of [MASK].
+Cyclin dependent kinase inhibitor 1B,  a subclass of [MASK].
+Cyclin dependent kinase inhibitor 1B,  a type of [MASK].
+
+Aryl hydrocarbon receptor is a subclass of [MASK].
+Aryl hydrocarbon receptor, which is a subclass of [MASK].
+Aryl hydrocarbon receptor,  a subclass of [MASK].
+Aryl hydrocarbon receptor,  a type of [MASK].
+
+Cyclin dependent kinase 4 is a subclass of [MASK].
+Cyclin dependent kinase 4, which is a subclass of [MASK].
+Cyclin dependent kinase 4,  a subclass of [MASK].
+Cyclin dependent kinase 4,  a type of [MASK].
+
+Portuguese Water Dog is a subclass of [MASK].
+Portuguese Water Dog, which is a subclass of [MASK].
+Portuguese Water Dog,  a subclass of [MASK].
+Portuguese Water Dog,  a type of [MASK].
+
+cream ale is a subclass of [MASK].
+cream ale, which is a subclass of [MASK].
+cream ale,  a subclass of [MASK].
+cream ale,  a type of [MASK].
+
+beefsteak is a subclass of [MASK].
+beefsteak, which is a subclass of [MASK].
+beefsteak,  a subclass of [MASK].
+beefsteak,  a type of [MASK].
+
+Scone is a subclass of [MASK].
+Scone, which is a subclass of [MASK].
+Scone,  a subclass of [MASK].
+Scone,  a type of [MASK].
+
+Morris Oxford bullnose is a subclass of [MASK].
+Morris Oxford bullnose, which is a subclass of [MASK].
+Morris Oxford bullnose,  a subclass of [MASK].
+Morris Oxford bullnose,  a type of [MASK].
+
+autograph is a subclass of [MASK].
+autograph, which is a subclass of [MASK].
+autograph,  a subclass of [MASK].
+autograph,  a type of [MASK].
+
+electromagnet is a subclass of [MASK].
+electromagnet, which is a subclass of [MASK].
+electromagnet,  a subclass of [MASK].
+electromagnet,  a type of [MASK].
+
+racing bicycle is a subclass of [MASK].
+racing bicycle, which is a subclass of [MASK].
+racing bicycle,  a subclass of [MASK].
+racing bicycle,  a type of [MASK].
+
+Chain pump is a subclass of [MASK].
+Chain pump, which is a subclass of [MASK].
+Chain pump,  a subclass of [MASK].
+Chain pump,  a type of [MASK].
+
+Short Tucano is a subclass of [MASK].
+Short Tucano, which is a subclass of [MASK].
+Short Tucano,  a subclass of [MASK].
+Short Tucano,  a type of [MASK].
+
+sex club is a subclass of [MASK].
+sex club, which is a subclass of [MASK].
+sex club,  a subclass of [MASK].
+sex club,  a type of [MASK].
+
+leet is a subclass of [MASK].
+leet, which is a subclass of [MASK].
+leet,  a subclass of [MASK].
+leet,  a type of [MASK].
+
+deletion mutation is a subclass of [MASK].
+deletion mutation, which is a subclass of [MASK].
+deletion mutation,  a subclass of [MASK].
+deletion mutation,  a type of [MASK].
+
+chemical database is a subclass of [MASK].
+chemical database, which is a subclass of [MASK].
+chemical database,  a subclass of [MASK].
+chemical database,  a type of [MASK].
+
+isotope of nickel is a subclass of [MASK].
+isotope of nickel, which is a subclass of [MASK].
+isotope of nickel,  a subclass of [MASK].
+isotope of nickel,  a type of [MASK].
+
+murder is a subclass of [MASK].
+murder, which is a subclass of [MASK].
+murder,  a subclass of [MASK].
+murder,  a type of [MASK].
+
+milkshake is a subclass of [MASK].
+milkshake, which is a subclass of [MASK].
+milkshake,  a subclass of [MASK].
+milkshake,  a type of [MASK].
+
+Centrifugal pump is a subclass of [MASK].
+Centrifugal pump, which is a subclass of [MASK].
+Centrifugal pump,  a subclass of [MASK].
+Centrifugal pump,  a type of [MASK].
+
+mail order is a subclass of [MASK].
+mail order, which is a subclass of [MASK].
+mail order,  a subclass of [MASK].
+mail order,  a type of [MASK].
+
+Coastal defence and fortification is a subclass of [MASK].
+Coastal defence and fortification, which is a subclass of [MASK].
+Coastal defence and fortification,  a subclass of [MASK].
+Coastal defence and fortification,  a type of [MASK].
+
+Chain pump is a subclass of [MASK].
+Chain pump, which is a subclass of [MASK].
+Chain pump,  a subclass of [MASK].
+Chain pump,  a type of [MASK].
+
+challah is a subclass of [MASK].
+challah, which is a subclass of [MASK].
+challah,  a subclass of [MASK].
+challah,  a type of [MASK].
+
+Transferrin is a subclass of [MASK].
+Transferrin, which is a subclass of [MASK].
+Transferrin,  a subclass of [MASK].
+Transferrin,  a type of [MASK].
+
+dramatic soprano is a subclass of [MASK].
+dramatic soprano, which is a subclass of [MASK].
+dramatic soprano,  a subclass of [MASK].
+dramatic soprano,  a type of [MASK].
+
+varieties of Chinese is a subclass of [MASK].
+varieties of Chinese, which is a subclass of [MASK].
+varieties of Chinese,  a subclass of [MASK].
+varieties of Chinese,  a type of [MASK].
+
+government database is a subclass of [MASK].
+government database, which is a subclass of [MASK].
+government database,  a subclass of [MASK].
+government database,  a type of [MASK].
+
+Aldol is a subclass of [MASK].
+Aldol, which is a subclass of [MASK].
+Aldol,  a subclass of [MASK].
+Aldol,  a type of [MASK].
+
+Kaman K-MAX is a subclass of [MASK].
+Kaman K-MAX, which is a subclass of [MASK].
+Kaman K-MAX,  a subclass of [MASK].
+Kaman K-MAX,  a type of [MASK].
+
+Short Tucano is a subclass of [MASK].
+Short Tucano, which is a subclass of [MASK].
+Short Tucano,  a subclass of [MASK].
+Short Tucano,  a type of [MASK].
+
+standard French is a subclass of [MASK].
+standard French, which is a subclass of [MASK].
+standard French,  a subclass of [MASK].
+standard French,  a type of [MASK].
+
+gravity dam is a subclass of [MASK].
+gravity dam, which is a subclass of [MASK].
+gravity dam,  a subclass of [MASK].
+gravity dam,  a type of [MASK].
+
+beach volleyball is a subclass of [MASK].
+beach volleyball, which is a subclass of [MASK].
+beach volleyball,  a subclass of [MASK].
+beach volleyball,  a type of [MASK].
+
+OH-58 Kiowa is a subclass of [MASK].
+OH-58 Kiowa, which is a subclass of [MASK].
+OH-58 Kiowa,  a subclass of [MASK].
+OH-58 Kiowa,  a type of [MASK].
+
+astrometry is a subclass of [MASK].
+astrometry, which is a subclass of [MASK].
+astrometry,  a subclass of [MASK].
+astrometry,  a type of [MASK].
+
+Plaza de Armas is a subclass of [MASK].
+Plaza de Armas, which is a subclass of [MASK].
+Plaza de Armas,  a subclass of [MASK].
+Plaza de Armas,  a type of [MASK].
+
+pope is a subclass of [MASK].
+pope, which is a subclass of [MASK].
+pope,  a subclass of [MASK].
+pope,  a type of [MASK].
+
+quinquina is a subclass of [MASK].
+quinquina, which is a subclass of [MASK].
+quinquina,  a subclass of [MASK].
+quinquina,  a type of [MASK].
+
+Solute carrier family 26 member 2 is a subclass of [MASK].
+Solute carrier family 26 member 2, which is a subclass of [MASK].
+Solute carrier family 26 member 2,  a subclass of [MASK].
+Solute carrier family 26 member 2,  a type of [MASK].
+
+stem cell is a subclass of [MASK].
+stem cell, which is a subclass of [MASK].
+stem cell,  a subclass of [MASK].
+stem cell,  a type of [MASK].
+
+starship is a subclass of [MASK].
+starship, which is a subclass of [MASK].
+starship,  a subclass of [MASK].
+starship,  a type of [MASK].
+
+Super Tuesday is a subclass of [MASK].
+Super Tuesday, which is a subclass of [MASK].
+Super Tuesday,  a subclass of [MASK].
+Super Tuesday,  a type of [MASK].
+
+telepathy is a subclass of [MASK].
+telepathy, which is a subclass of [MASK].
+telepathy,  a subclass of [MASK].
+telepathy,  a type of [MASK].
+
+B-type asteroid is a subclass of [MASK].
+B-type asteroid, which is a subclass of [MASK].
+B-type asteroid,  a subclass of [MASK].
+B-type asteroid,  a type of [MASK].
+
+Parthian-class submarine is a subclass of [MASK].
+Parthian-class submarine, which is a subclass of [MASK].
+Parthian-class submarine,  a subclass of [MASK].
+Parthian-class submarine,  a type of [MASK].
+
+Lord Lieutenant is a subclass of [MASK].
+Lord Lieutenant, which is a subclass of [MASK].
+Lord Lieutenant,  a subclass of [MASK].
+Lord Lieutenant,  a type of [MASK].
+
+varieties of Chinese is a subclass of [MASK].
+varieties of Chinese, which is a subclass of [MASK].
+varieties of Chinese,  a subclass of [MASK].
+varieties of Chinese,  a type of [MASK].
+
+catacombs is a subclass of [MASK].
+catacombs, which is a subclass of [MASK].
+catacombs,  a subclass of [MASK].
+catacombs,  a type of [MASK].
+
+satrap is a subclass of [MASK].
+satrap, which is a subclass of [MASK].
+satrap,  a subclass of [MASK].
+satrap,  a type of [MASK].
+
+graupel is a subclass of [MASK].
+graupel, which is a subclass of [MASK].
+graupel,  a subclass of [MASK].
+graupel,  a type of [MASK].
+
+stratovolcano is a subclass of [MASK].
+stratovolcano, which is a subclass of [MASK].
+stratovolcano,  a subclass of [MASK].
+stratovolcano,  a type of [MASK].
+
+organizational communication is a subclass of [MASK].
+organizational communication, which is a subclass of [MASK].
+organizational communication,  a subclass of [MASK].
+organizational communication,  a type of [MASK].
+
+detritivore is a subclass of [MASK].
+detritivore, which is a subclass of [MASK].
+detritivore,  a subclass of [MASK].
+detritivore,  a type of [MASK].
+
+Sport bike is a subclass of [MASK].
+Sport bike, which is a subclass of [MASK].
+Sport bike,  a subclass of [MASK].
+Sport bike,  a type of [MASK].
+
+Ras homolog family member A is a subclass of [MASK].
+Ras homolog family member A, which is a subclass of [MASK].
+Ras homolog family member A,  a subclass of [MASK].
+Ras homolog family member A,  a type of [MASK].
+
