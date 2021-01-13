@@ -19,9 +19,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was constructed in [Y].		construct	was-construct-in	past	N-1
 [X], constructed in [Y].		construct	construct-in	past	N-1
 [X], that was constructed in [Y].		construct	that-construct-in	past	N-1
-[X] was made in [Y].		made	was-made-in	past	N-1
-[X], that was made in [Y].		made	that-made-in	past	N-1
-[X], made in [Y].		made	made-in	past	N-1
 [X] was from [Y].		from	was-from	past	N-1
 [X], who was from [Y].		from	was-from	past	N-1
 [X], from [Y].		from	from	?	N-1
