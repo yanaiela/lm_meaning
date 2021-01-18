@@ -17,8 +17,8 @@ is-release-on	is-stream-on,stream-on
 release	is-stream-on,stream-on
 air-on	premiere-on,to-debut-on,release-of,is-release-on,release,air-on-originally,debut-on,debut,debut-of,to-debut,is-stream-on,stream-on
 is-broadcast	premiere-on,to-debut-on,release-of,is-release-on,release,air-on-originally,debut-on,debut,debut-of,to-debut,is-stream-on,stream-on
-is-stream-on	is-stream-on,stream-on
-stream-on	is-stream-on,stream-on
+is-stream-on	-
+stream-on	-
 broadcast-on	premiere-on,to-debut-on,release-of,is-release-on,release,air-on-originally,debut-on,debut,debut-of,to-debut,is-stream-on,stream-on
 is-air-on	premiere-on,to-debut-on,release-of,is-release-on,release,air-on-originally,debut-on,debut,debut-of,to-debut,is-stream-on,stream-on
 on	premiere-on,to-debut-on,release-of,is-release-on,release,air-on-originally,debut-on,debut,debut-of,to-debut,is-stream-on,stream-on
