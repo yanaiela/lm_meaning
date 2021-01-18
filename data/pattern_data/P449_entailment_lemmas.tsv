@@ -8,5 +8,5 @@ debut-on	*/is-stream-on,stream-on
 debut	*/is-stream-on,stream-on
 debut-of	*/is-stream-on,stream-on
 to-debut	*/is-stream-on,stream-on
-is-stream-on	*/is-stream-on,stream-on
-stream-on	*/is-stream-on,stream-on
+is-stream-on	*/
+stream-on	*/
