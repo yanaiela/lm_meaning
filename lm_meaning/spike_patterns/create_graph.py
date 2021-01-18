@@ -121,7 +121,9 @@ if __name__ == "__main__":
 
     base_pattern = patterns[0]
     # entailed from base
-    entailed_patterns = [x for x in patterns if x['pattern'] in [t[0] for t in connections[base_pattern['pattern']]]]
+    patterns_entailed_from_base = [t[0] for t in connections[base_pattern['pattern']]]
+    entailed_patterns = [x for x in patterns if x['pattern'] in patterns_entailed_from_base and
+                         base_pattern['pattern'] in [t[0] for t in connections[x['pattern']]]]
 
     # entailed from tense
     tenses = pd.read_csv(args.tense_file)
