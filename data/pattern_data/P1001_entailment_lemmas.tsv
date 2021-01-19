@@ -1,14 +1,17 @@
-legal-term	+/
-represent	+/legal-term
-unit-of-government	+/legal-term, government-body
-executive-body	+/legal-term
-government-body	+/legal-term, unit-of-government
-head-state	+/legal-term, represent
-head-government	+/legal-term, represent
-leader	+/legal-term, represent
-local-authority	+/legal-term
-mandate	+/legal-term
-currency	+/legal-term
-constitution	+/legal-term
-national-parliament	+/legal-term, parliament
-parliament	+/legal-term
+legal-term	+/legal-unit, legal-entity, connected-to
+legal-unit	+/legal-term, legal-entity, connected-to
+legal-entity	+/legal-unit, legal-term, connected-to
+connected-to	+/
+represent	+/legal-term,legal-unit, legal-entity, connected-to
+unit-of-government	+/legal-term, government-body,legal-unit, legal-entity, connected-to
+executive-body	+/legal-term,legal-unit, legal-entity, connected-to
+government-body	+/legal-term, unit-of-government,legal-unit, legal-entity, connected-to
+head-state	+/legal-term, represent,legal-unit, legal-entity, connected-to
+head-government	+/legal-term, represent,legal-unit, legal-entity, connected-to
+leader	+/legal-term, represent,legal-unit, legal-entity, connected-to
+local-authority	+/legal-term,legal-unit, legal-entity, connected-to
+mandate	+/legal-term,legal-unit, legal-entity, connected-to
+currency	+/legal-term,legal-unit, legal-entity, connected-to
+constitution	+/legal-term,legal-unit, legal-entity, connected-to
+national-parliament	+/legal-term, parliament,legal-unit, legal-entity, connected-to
+parliament	+/legal-term,legal-unit, legal-entity, connected-to
