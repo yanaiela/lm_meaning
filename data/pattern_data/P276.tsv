@@ -1,5 +1,10 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is located in [Y] .		locate	locate	present	N-1
+[X] is in [Y] .		is-in	is-in	present	N-1
+[X] is a construction in [Y] .		construct	construct	present	N-1
+[X] is a building in [Y] .		building	building	present	N-1
+[X] is a structure in [Y] .		structure	structure	present	N-1
+[X] is a region in [Y] .		region	region	present	N-1
 [X] happens in [Y].		happen	happen	present	N-1
 [X] takes place in [Y].		take-place	take-place	present	N-1
 [X] held in [Y].		held	held	past	N-1
