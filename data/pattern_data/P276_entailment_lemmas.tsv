@@ -1,30 +1,35 @@
-locate	*/festival,which-festival,a-festival
-happen	*/festival, which-festival, a-festival
-take-place	*/festival, which-festival, a-festival
-held	*/festival, which-festival, a-festival
-was-held-in	*/festival, which-festival, a-festival
-was-held-at	*/festival, which-festival, a-festival
-take-place	*/festival, which-festival, a-festival
-host	*/festival, which-festival, a-festival
-host-the	*/festival, which-festival, a-festival
-which-locate	*/festival, which-festival, a-festival
-which-happen	*/festival, which-festival, a-festival
-which-take-place	*/festival, which-festival, a-festival
-which-held	*/festival, which-festival, a-festival
-which-was-held-in	*/festival, which-festival, a-festival
-which-was-held-at	*/festival, which-festival, a-festival
-which-take-place	*/festival, which-festival, a-festival
-which-host	*/festival, which-festival, a-festival
-which-host-the	*/festival, which-festival, a-festival
-that-locate	*/festival, which-festival, a-festival
-that-happen	*/festival, which-festival, a-festival
-that-take-place	*/festival, which-festival, a-festival
-that-held	*/festival, which-festival, a-festival
-that-was-held-in	*/festival, which-festival, a-festival
-that-was-held-at	*/festival, which-festival, a-festival
-that-take-place	*/festival, which-festival, a-festival
-that-host	*/festival, which-festival, a-festival
-that-host-the	*/festival, which-festival, a-festival
-festival	*/
-which-festival	*/
-a-festival	*/
+locate	*/festival,which-festival,a-festival, is-in
+is-in	*/
+construct	+/locate, is-in, structure
+building	+/locate, is-in, construct, structure
+structure	+/locate, is-in
+region	+/locate, is-in
+happen	*/festival, which-festival, a-festival, construct, building, structure, region
+take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+held	*/festival, which-festival, a-festival, construct, building, structure, region
+was-held-in	*/festival, which-festival, a-festival, construct, building, structure, region
+was-held-at	*/festival, which-festival, a-festival, construct, building, structure, region
+take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+host	*/festival, which-festival, a-festival, construct, building, structure, region
+host-the	*/festival, which-festival, a-festival, construct, building, structure, region
+which-locate	*/festival, which-festival, a-festival, construct, building, structure, region
+which-happen	*/festival, which-festival, a-festival, construct, building, structure, region
+which-take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+which-held	*/festival, which-festival, a-festival, construct, building, structure, region
+which-was-held-in	*/festival, which-festival, a-festival, construct, building, structure, region
+which-was-held-at	*/festival, which-festival, a-festival, construct, building, structure, region
+which-take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+which-host	*/festival, which-festival, a-festival, construct, building, structure, region
+which-host-the	*/festival, which-festival, a-festival, construct, building, structure, region
+that-locate	*/festival, which-festival, a-festival, construct, building, structure, region
+that-happen	*/festival, which-festival, a-festival, construct, building, structure, region
+that-take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+that-held	*/festival, which-festival, a-festival, construct, building, structure, region
+that-was-held-in	*/festival, which-festival, a-festival, construct, building, structure, region
+that-was-held-at	*/festival, which-festival, a-festival, construct, building, structure, region
+that-take-place	*/festival, which-festival, a-festival, construct, building, structure, region
+that-host	*/festival, which-festival, a-festival, construct, building, structure, region
+that-host-the	*/festival, which-festival, a-festival, construct, building, structure, region
+festival	*/construct, building, structure, region
+which-festival	*/construct, building, structure, region
+a-festival	*/construct, building, structure, region
