@@ -1,4 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
+[X] is part of [Y].	[X]:Central Europe :is :part :of [Y]:Europe	part-of	is-part-of	present	N-M
 [X] is a part of [Y].	[X]:Central Europe :is :a :part :of [Y]:Europe	part-of	is-part-of	present	N-M
 [Y] comprises [X].	[Y]:This book :comprises [X]:250 pages.	comprise	comprise	present	N-M
 [Y] comprised [X].	[Y]:This book :comprised [X]:250 pages.	comprise	comprise	past	N-M
