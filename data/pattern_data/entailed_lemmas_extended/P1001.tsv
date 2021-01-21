@@ -1,9 +1,10 @@
 LEMMA	NOT-ENTAILED
 legal-term	represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
-legal-unit	legal-term,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
-legal-entity	legal-term,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
+legal-unit	represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
+legal-entity	represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
+connected-to	legal-term,legal-unit,legal-entity,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 represent	unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
-institution	legal-term,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
+institution	legal-term,legal-unit,legal-entity,connected-to,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 unit-of-government	represent,executive-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 executive-body	represent,unit-of-government,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 government-body	represent,executive-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament

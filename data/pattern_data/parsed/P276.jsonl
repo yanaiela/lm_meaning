@@ -1,4 +1,9 @@
 {"pattern": "[X] is located in [Y] .", "example": "", "lemma": "locate", "extended_lemma": "locate", "tense": "present", "spike_query": "<>subject:Tower $is $located $in object:[w={}]Paris $."}
+{"pattern": "[X] is in [Y] .", "example": "", "lemma": "is-in", "extended_lemma": "is-in", "tense": "present", "spike_query": "<>subject:Tower $is $in object:[w={}]Paris $."}
+{"pattern": "[X] is a construction in [Y] .", "example": "", "lemma": "construct", "extended_lemma": "construct", "tense": "present", "spike_query": "<>subject:Tower $is $a $construction $in object:[w={}]Paris $."}
+{"pattern": "[X] is a building in [Y] .", "example": "", "lemma": "building", "extended_lemma": "building", "tense": "present", "spike_query": "<>subject:Tower $is $a $building $in object:[w={}]Paris $."}
+{"pattern": "[X] is a structure in [Y] .", "example": "", "lemma": "structure", "extended_lemma": "structure", "tense": "present", "spike_query": "<>subject:Tower $is $a $structure $in object:[w={}]Paris $."}
+{"pattern": "[X] is a region in [Y] .", "example": "", "lemma": "region", "extended_lemma": "region", "tense": "present", "spike_query": "<>subject:Tower $is $a $region $in object:[w={}]Paris $."}
 {"pattern": "[X] happens in [Y].", "example": "", "lemma": "happen", "extended_lemma": "happen", "tense": "present", "spike_query": "<>subject:Tower $happens $in object:[w={}]Paris."}
 {"pattern": "[X] takes place in [Y].", "example": "", "lemma": "take-place", "extended_lemma": "take-place", "tense": "present", "spike_query": "<>subject:Tower $takes $place $in object:[w={}]Paris."}
 {"pattern": "[X] held in [Y].", "example": "", "lemma": "held", "extended_lemma": "held", "tense": "past", "spike_query": "<>subject:Tower $held $in object:[w={}]Paris."}

@@ -1,9 +1,9 @@
 LEMMA	NOT-ENTAILED
-born-in	-
-is-originally-from	-
-is-counry-of-origin	-
-country-of-origin-is	-
-is-native-to	-
-originate-from	-
-immigrate-from-his-native	-
-born	-
+born-in	is-counry-of-origin,country-of-origin-is,immigrate-from-his-native
+is-originally-from	is-counry-of-origin,country-of-origin-is,immigrate-from-his-native
+is-counry-of-origin	immigrate-from-his-native
+country-of-origin-is	immigrate-from-his-native
+is-native-to	is-counry-of-origin,country-of-origin-is,immigrate-from-his-native
+originate-from	is-counry-of-origin,country-of-origin-is,immigrate-from-his-native
+immigrate-from-his-native	born-in,is-originally-from,is-native-to,originate-from,born,is-counry-of-origin,country-of-origin-is
+born	is-counry-of-origin,country-of-origin-is,immigrate-from-his-native

@@ -1,3 +1,4 @@
+{"pattern": "[X] is part of [Y].", "example": "[X]:Central Europe :is :part :of [Y]:Europe", "lemma": "part-of", "extended_lemma": "is-part-of", "tense": "present", "spike_query": "<>subject:arithmetic $is $part $of object:[w={}]mathematics."}
 {"pattern": "[X] is a part of [Y].", "example": "[X]:Central Europe :is :a :part :of [Y]:Europe", "lemma": "part-of", "extended_lemma": "is-part-of", "tense": "present", "spike_query": "<>subject:arithmetic $is $a $part $of object:[w={}]mathematics."}
 {"pattern": "[Y] comprises [X].", "example": "[Y]:This book :comprises [X]:250 pages.", "lemma": "comprise", "extended_lemma": "comprise", "tense": "present", "spike_query": "object:[w={}]mathematics $comprises <>subject:arithmetic."}
 {"pattern": "[Y] comprised [X].", "example": "[Y]:This book :comprised [X]:250 pages.", "lemma": "comprise", "extended_lemma": "comprise", "tense": "past", "spike_query": "object:[w={}]mathematics $comprised <>subject:arithmetic."}
