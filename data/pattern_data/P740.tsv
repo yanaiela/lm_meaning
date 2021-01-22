@@ -2,9 +2,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was founded in [Y].		found	found-in	past	N-1
 [X], founded in [Y].		found	found-in	past	N-1
 [X] that was founded in [Y].		found	found-in	past	N-1
-[X], that begun in [Y].		begin	begin-in	past	N-1
-[X], begun in [Y]		begin	begin-in	past	N-1
-[X] was begun in [Y].		begin	begin-in	past	N-1
 [X], that was started in [Y].		start	start-in	past	N-1
 [X] started in [Y].		start	start-in	past	N-1
 [X] was started in [Y]		start	start-in	past	N-1
