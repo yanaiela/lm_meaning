@@ -1,6 +1,8 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-The official language of [X] is [Y].	The :official :language :of [X]:Italy :is [Y]:Italian.	official-language	official-language	present	N-1
-The official language of [X] is the [Y] language.	The :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	official-language	present	N-1
+The official language of [X] is [Y].	The :official :language :of [X]:Italy :is [Y]:Italian.	official-language	the-official-language	present	N-1
+An official language of [X] is [Y].	An :official :language :of [X]:Italy :is [Y]:Italian.	official-language	the-official-language	present	N-1
+The official language of [X] is the [Y] language.	The :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	the-official-language	present	N-1
+An official language of [X] is the [Y] language.	An :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	official-language	present	N-1
 [Y] is the official language of [X].	[Y]:Italian is the official language of [X]:Italy.	official-language	official-language	present	N-1
 The [Y] language is the official language of [X].	the [Y]:Italian language is the official language of [X]:Italy.	official-language	official-language	present	N-1
 [Y] is officially spoken in [X].	[Y]:Italian is officially spoken in [X]:Italy.	is-officially-speak	is-officially-speak	present	N-M
