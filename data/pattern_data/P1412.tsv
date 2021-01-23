@@ -1,6 +1,12 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] used to communicate in [Y] .		communicate	communicate	past	N-M
-[X] was a language used by [Y] .		language	language	past	N-M
+[X] communicated in [Y] .		communicate	communicate	past	N-M
+[X] typically used [Y] to communicate .		communicate	communicate	past	N-M
+[X] used [Y] to communicate .		communicate	communicate	past	N-M
+[Y] was a language used by [X] .		language	language	past	N-M
+[Y] is the language used by [X] .		language	language	past	N-M
+[Y] is the language typically used by [X] .		language	language	past	N-M
+[X] used the [Y] language .		language	language	past	N-M
 [Y] actress [X].		actress	actress	present	N-M
 [Y] author [X].		author	author	present	N-M
 [Y] actor [X].		actor	actor	present	N-M
