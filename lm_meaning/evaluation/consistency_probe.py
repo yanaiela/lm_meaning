@@ -67,10 +67,12 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     total_syn = 0
     total_lex = 0
     total_both = 0
+    total_no = 0
 
     points_syn = 0
     points_lex = 0
     points_both = 0
+    points_no = 0
 
     points_by_edge = defaultdict(list)
     edges_out = defaultdict(list)
@@ -124,6 +126,11 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
                     if success:
                         points_both += 1
                     total_both += 1
+                if not entailment_type['edge_type'].syntactic_change and not entailment_type['edge_type'].lexical_change \
+                        and not entailment_type['edge_type'].determiner_change:
+                    if success:
+                        points_no += 1
+                    total_no += 1
 
             base_success = sum(base_pattern_success) / len(base_pattern_success)
             ent = entropy([base_success, 1.0 - base_success], base=2)
@@ -144,6 +151,11 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
         print('lexical', points_lex, total_lex, points_lex / total_lex)
     else:
         wandb.run.summary['lexical_consistency'] = -1
+    if total_no > 0:
+        wandb.run.summary['no_change_consistency'] = points_no / total_no
+        print('no change', points_no, total_no, points_no / total_no)
+    else:
+        wandb.run.summary['no_change_consistency'] = -1
     if total_both > 0:
         print('both', points_both, total_both, points_both / total_both)
         wandb.run.summary['both_consistency'] = points_both / total_both
@@ -194,6 +206,7 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
     wandb.run.summary['total_syn'] = total_syn
     wandb.run.summary['total_lex'] = total_lex
     wandb.run.summary['total_both'] = total_both
+    wandb.run.summary['total_no'] = total_no
 
     wandb.run.summary['avg_entropy'] = np.average(avg_entropy)
     wandb.run.summary['std_entropy'] = np.std(avg_entropy)
