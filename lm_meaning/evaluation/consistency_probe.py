@@ -60,6 +60,22 @@ def get_node(graph, pattern):
     return None
 
 
+def filter_a_an_vowel_mismatch(pattern, gold_object):
+    words = pattern.split(' ')
+    indices = [ind for (ind, x) in enumerate(words) if '[Y]' in x]
+    assert len(indices) == 1
+    y_index = indices[0]
+    if y_index == 0:
+        return False
+
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    if words[y_index - 1] == 'a' and any([gold_object.lower().startswith(x) for x in vowels]):
+        return True
+    elif words[y_index - 1] == 'an' and not any([gold_object.lower().startswith(x) for x in vowels]):
+        return True
+    return False
+
+
 def analyze_results(lm_results: Dict, patterns_graph) -> None:
     total = 0
     points = 0
@@ -89,6 +105,8 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
             graph_node = get_node(patterns_graph, pattern)
             if graph_node is None:
                 continue
+            if filter_a_an_vowel_mismatch(pattern, gold_obj):
+                continue
 
             correct_patterns_per_subject[subj] += int(pred == gold_obj)
             correct_subjects_per_pattern[pattern] += int(pred == gold_obj)
@@ -101,6 +119,8 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
                 entailment_type = patterns_graph.edges[graph_node, ent_node]
 
                 ent_pattern = ent_node.lm_pattern
+                if filter_a_an_vowel_mismatch(ent_pattern, gold_obj):
+                    continue
                 success = pred == lm_results[ent_pattern][subj][0]
                 if success:
                     points += 1
