@@ -9,7 +9,11 @@ The country of origin of [X] was [Y].	 :The :country :of :origin of [X]:Hamdi wa
 [X] is native to [Y].	[X]:He :is :native :to [Y]:Connecticut.	native	is-native-to	present	N-1
 [X] was native to [Y].	[X]:He :was :native :to [Y]:Connecticut.	native	is-native-to	past	N-1
 [X] originated from [Y].	Mr. Wright's Portuguese identification card said [X]:he :originated :from [Y]:Guinea-Bissau, a West African nation.	originate	originate-from	past	N-1
+[X] originates from [Y].	Mr. Wright's Portuguese identification card said [X]:he :originates :from [Y]:Guinea-Bissau, a West African nation.	originate	originate-from	present	N-1
 [X] immigrated from his native [Y].	[X]:He :immigrated :from :his :native [Y]:France to seek business opportunities in America	immigrate	immigrate-from-his-native	past	N-1
 [X] was a [Y]-born person.	[X]:Claudette Colbert :was :a [Y]:France-born American actress.	born	born	past	N-1
+[X] was an [Y]-born person.	[X]:Claudette Colbert :was :an [Y]:England-born American actress.	born	born	past	N-1
 [X] is a [Y]-born person.	[X]:Claudette Colbert :is :a [Y]:France-born American actress.	born	born	present	N-1
-[X], a [Y]-born person.	[X]:Claudette Colbert, :a [Y]:France-born American actress.	born	born	present	N-1
+[X] is an [Y]-born person.	[X]:Claudette Colbert :is :an [Y]:England-born person.	born	born	present	N-1
+[X], a [Y]-born person.	[X]:Claudette Colbert, :a [Y]:France-born person.	born	born	present	N-1
+[X], an [Y]-born person.	[X]:Claudette Colbert, :an [Y]:England-born person.	born	born	present	N-1
