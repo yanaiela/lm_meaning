@@ -2,9 +2,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] plays [Y] music .		plays-music	plays-music	present	N-1
 [X], who plays [Y] music		who-plays	who-plays	present	N-1
 [X] is a [Y] musician.		is-a-musician	is-a-musician	present	N-1
-[X] is an [Y] musician.		is-an-musician	is-an-musician	present	N-1
 [X], who is a [Y] musician.		who-is-a-musician	who-is-a-musician	present	N-1
-[X], who is an [Y] musician		who-is-an-musician	who-is-an-musician	present	N-1
 [X] plays [Y].		plays	plays	present	N-M
 [X], who plays [Y].		who-plays	who-plays	present	N-M
 [X] performs in [Y] concerts.		perform-concert	perform-concert	present	N-M
