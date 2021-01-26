@@ -150,6 +150,7 @@ if __name__ == "__main__":
         pattern_str = pattern["pattern"]
         connected_patterns, types = zip(*connections[pattern_str])
         for pattern_str2, typ in zip(connected_patterns, types):
+            if pattern_str2 not in pattern2node: continue
             node1, node2 = pattern2node[pattern_str], pattern2node[pattern_str2]
             # different_lemma = node1.extended_lemma != node2.extended_lemma
             edge_type = EdgeType(typ['diff_syntax'], typ['diff_lemma'], typ['diff_det'])
