@@ -1,5 +1,6 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is a [Y] .		is-a	is-a	present	N-M
+[X] is an [Y] .		is-a	is-a	present	N-M
 [Y] including [X] .		include	include	present-continuous	N-M
 [Y] like [X] .		like	like	-	N-M
 [Y] includes [X] .		include	include	present	N-M

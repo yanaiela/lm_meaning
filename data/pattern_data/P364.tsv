@@ -4,14 +4,23 @@ The original language of [X] was [Y].	The original language of the story was Eng
 The language of [X] is [Y].	The language of the story is English.	language	language-is	present	N-1
 The language of [X] was [Y].	The language of the story was English.	language	language-is	past	N-1
 [X] is a [Y]-language show.	The story is an English-language show.	language	-language-show	present	N-1
+[X] is an [Y]-language show.	The story is an English-language show.	language	-language-show	present	N-1
 [X] is a [Y]-language film.	The story is an English-language film.	language	-language-film	present	N-1
+[X] is an [Y]-language film.	The story is an English-language film.	language	-language-film	present	N-1
 [X] is a [Y]-language series.	The story is an English-language series.	language	-language-series	present	N-1
+[X] is an [Y]-language series.	The story is an English-language series.	language	-language-series	present	N-1
 [X], a [Y]-language show.	The story is an English-language work.	language	-language-show	?	N-1
+[X], an [Y]-language show.	The story is an English-language work.	language	-language-show	?	N-1
 [X], a [Y]-language film.	The story is an English-language work.	language	-language-film	?	N-1
+[X], an [Y]-language film.	The story is an English-language work.	language	-language-film	?	N-1
 [X], a [Y]-language series.	The story is an English-language work.	language	-language-series	?	N-1
+[X], an [Y]-language series.	The story is an English-language work.	language	-language-series	?	N-1
 [X] was a [Y]-language show.	The story is an English-language work.	language	-language-show	past	N-1
+[X] was an [Y]-language show.	The story is an English-language work.	language	-language-show	past	N-1
 [X] was a [Y]-language film.	The story is an English-language work.	language	-language-film	past	N-1
+[X] was an [Y]-language film.	The story is an English-language work.	language	-language-film	past	N-1
 [X] was a [Y]-language series.	The story is an English-language work.	language	-language-series	past	N-1
+[X] was an [Y]-language series.	The story is an English-language work.	language	-language-series	past	N-1
 [X] is a film in the [Y] language.	The story is a work in the English-language.	language	film-in-language	present	N-1
 [X] was a film in the [Y] language.	The story was a work in the English-language.	language	film-in-language	past	N-1
 [X] is a show in the [Y] language.	The story is a work in the English-language.	language	show-in-language	present	N-1

@@ -86,6 +86,20 @@ def get_neighbors(pattern: dict, all_patterns: List[dict], enforce_tense: bool,
     return relevant_patterns
 
 
+def filter_dependent_patterns(patterns: List[Dict]) -> List[Dict]:
+    """
+    Filtering patterns that the lama tuples data (subjects, objects) are mixed, and do not always fit these objects.
+    :param patterns: list of all patterns
+    :return: filtered list of all patterns, that are not dependent on the subjects
+    """
+    filtered_patterns = []
+    for p in patterns:
+        if p['pattern'].startswith('*') or p['pattern'].startswith('#'):
+            continue
+        filtered_patterns.append(p)
+    return filtered_patterns
+
+
 if __name__ == "__main__":
 
     parse = argparse.ArgumentParser("")
