@@ -2,7 +2,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is affiliated with the [Y] religion .		is-affiliated-with	is-affiliated-with	present	N-1
 [X] was affiliated with the [Y] religion .		was-affiliated-with	was-affiliated-with	past	N-M
 [X] followed the [Y] religion.		follow	was-follow	past	N-M
-[X] follows the [Y] religion.		follow	follow	present	N-1
+[X] follows the [Y] religion.		follow	is-follow	present	N-1
 [X] converted to [Y].		convert	convert	past	N-M
 [Y] founder [X].		founder	founder	-	1-1
 [Y] scholar [X].		scholar	scholar	-	N-1
