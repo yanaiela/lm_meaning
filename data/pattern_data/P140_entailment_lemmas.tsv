@@ -1,6 +1,6 @@
 is-affiliated-with	+/follow,practice,is-official-religion,is-follower
 is-follower	+/is-affiliated-with,is-practice,is-official-religion,is-follower,follow
-was-affiliated-with	+/was-follow,was-practice,was-official-religion,was-follower,was-one-official-religion
+was-affiliated-with	+/was-follow,was-practice,was-official-religion,was-one-official-religion,was-follower,was-one-official-religion
 follow	+/is-affiliated-with,is-follower,practice,is-official-religion
 was-follow	+/was-follower,was-practice,was-official-religion,was-one-official-religion,was-affiliated-with
 convert	+/is-affiliated-with,practice,follow,is-official-religion,who-converted,and-converted,had-converted,is-follower
@@ -17,9 +17,9 @@ apostle	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
 saint	+/is-affiliated-with,practice,follow,is-official-religion,is-follower
 had-converted	+/is-affiliated-with,practice,follow,is-official-religion,convert,and-converted,who-converted,is-follower
 founded	+/is-affiliated-with,practice,was-practice,was-follower,was-follow,follow,is-official-religion,was-official-religion,was-one-official-religion,is-follower,was-affiliated-with
-was-preacher	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion,was-affiliated-with
-was-theologian	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion,was-affiliated-with
-establish	+/is-affiliated-with,practice,was-practice,was-follower,follow,was-follow,is-official-religion,was-official-religion,was-one-official-religion, founder,is-follower,was-affiliated-with
+was-preacher	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion
+was-theologian	+/was-affiliated-with,was-practice,was-follower,was-follow,was-official-religion,was-one-official-religion
+establish	+/is-affiliated-with,practice,was-practice,was-follower,follow,was-follow,is-official-religion,was-official-religion,was-one-official-religion,founder,is-follower,was-affiliated-with
 theologian	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
 monastic	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
 ordain	+/is-affiliated-with,practice,is-follower,follow,is-official-religion
