@@ -7,6 +7,7 @@ The [Y]-owned [X]	"The ESPN y - owned "" FiveThirtyEight x "" launched on March 
 [X] is a subsidiary of [Y] .		is-subsidiary	is-subsidiary	present	N-1
 [X] local media subsidiary of [Y] .		local-media-subsidiary	local-media-subsidiary	present	N-1
 [X] is a [Y] subsidiary.		subsidiary	subsidiary	present	N-1
+[X] is an [Y] subsidiary.		subsidiary	subsidiary	present	N-1
 [X] division of [Y].		division	division	present	N-1
 [Y] purchased the [X].		purchased	purchased	past	N-M
 [Y] bought [X]		bought	bought	past	N-M
