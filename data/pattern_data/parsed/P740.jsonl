@@ -1,9 +1,6 @@
 {"pattern": "[X] was founded in [Y].", "example": "", "lemma": "found", "extended_lemma": "found-in", "tense": "past", "spike_query": "<>subject:Nikon $was $founded $in object:[w={}]Tokyo."}
 {"pattern": "[X], founded in [Y].", "example": "", "lemma": "found", "extended_lemma": "found-in", "tense": "past", "spike_query": "<>subject:Nikon, $founded $in object:[w={}]Tokyo."}
 {"pattern": "[X] that was founded in [Y].", "example": "", "lemma": "found", "extended_lemma": "found-in", "tense": "past", "spike_query": "<>subject:Nikon $that $was $founded $in object:[w={}]Tokyo."}
-{"pattern": "[X], that begun in [Y].", "example": "", "lemma": "begin", "extended_lemma": "begin-in", "tense": "past", "spike_query": "<>subject:Nikon, $that $begun $in object:[w={}]Tokyo."}
-{"pattern": "[X], begun in [Y]", "example": "", "lemma": "begin", "extended_lemma": "begin-in", "tense": "past", "spike_query": "<>subject:Nikon, $begun $in object:[w={}]Tokyo"}
-{"pattern": "[X] was begun in [Y].", "example": "", "lemma": "begin", "extended_lemma": "begin-in", "tense": "past", "spike_query": "<>subject:Nikon $was $begun $in object:[w={}]Tokyo."}
 {"pattern": "[X], that was started in [Y].", "example": "", "lemma": "start", "extended_lemma": "start-in", "tense": "past", "spike_query": "<>subject:Nikon, $that $was $started $in object:[w={}]Tokyo."}
 {"pattern": "[X] started in [Y].", "example": "", "lemma": "start", "extended_lemma": "start-in", "tense": "past", "spike_query": "<>subject:Nikon $started $in object:[w={}]Tokyo."}
 {"pattern": "[X] was started in [Y]", "example": "", "lemma": "start", "extended_lemma": "start-in", "tense": "past", "spike_query": "<>subject:Nikon $was $started $in object:[w={}]Tokyo"}
