@@ -11,5 +11,5 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is a class of [Y].		is-class	is-class	present	N-M
 [X] is a type of [Y].		is-type	is-type	present	N-M
 [X] is a kind of [Y].		is-kind	is-kind	present	N-M
-[X] a special case of [Y].		special-case	special-case	-	N-M
+[X] a special case of [Y].		is-special-case	is-special-case	-	N-M
 [Y] such as [X].		such-as	such-as	-	N-M
