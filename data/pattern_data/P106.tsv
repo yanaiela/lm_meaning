@@ -12,6 +12,8 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 the occupation of [X] was [Y].	 The main :occupation of [X]:Albert Levy :was [Y]:Architectural  photography.	occupation	occupation-is	past	N-M
 the occupation of [X] is [Y].	 The main :occupation of [X]:Albert Levy :is [Y]:Architectural  photography.	occupation	occupation-is	present	N-M
 [X]'s profession was a [Y].	[X]:Jim ' s  :profession  :was a [Y]:doctor.	profession	profession-is	past	N-M
-[X]'s profession is a [Y].	[X]:Jim ' s  :profession  :is a [Y]:doctor.	profession	profession-is	past	N-M
+[X]'s profession was an [Y].	[X]:Jim ' s  :profession  :was an [Y]:actor.	profession	profession-is	past	N-M
+[X]'s profession is a [Y].	[X]:Jim ' s  :profession  :is a [Y]:doctor.	profession	profession-is	present	N-M
+[X]'s profession is an [Y].	[X]:Jim ' s  :profession  :is an [Y]:actor.	profession	profession-is	present	N-M
 the profession of [X] is [Y].	The primary :profession :of [X]:Franks , however , :is that of a [Y]:newspaper publisher.	profession	profession-of-is	present	N-M
 the profession of [X] was [Y].	The primary :profession :of [X]:Franks , however , :was that of a [Y]:newspaper publisher.	profession	profession-of-is	past	N-M
