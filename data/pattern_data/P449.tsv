@@ -34,5 +34,6 @@ It was told that [X] on [Y] is a good watch.	 Creator Peter Morgan revealed that
 [X] returns on [Y].	TV this week: [X]:'The Crown' :returns on [Y]:Netflix	return	return-on	future	N-M
 [X] returned on [Y].	TV this week: [X]:'The Crown' :returned on [Y]:Netflix	return	return-on	past	N-M
 [X], a [Y] original.	[X]:The Protector, a [Y]:Netflix :original	original	original	?	N-1
+[X], an [Y] original.	[X]:The Protector, a [Y]:Netflix :original	original	original	?	N-1
 [X] premiered on [Y].	[X]:THE Protector premiered on [Y]:Netflix	premiere	premiere-on	past	N-1
 [X] premieres on [Y].	[X]:THE Protector premieres on [Y]:Netflix	premiere	premiere-on	present	N-1
