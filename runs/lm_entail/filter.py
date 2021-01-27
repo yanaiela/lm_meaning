@@ -48,4 +48,4 @@ if __name__ == '__main__':
                                   f'data/trex_lms_vocab/{relation_id}.jsonl'])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/lm_entail/filter.sh',
-                on_gpu=True, dry_run=args.dry_run)
+                on_gpu=False, dry_run=args.dry_run)
