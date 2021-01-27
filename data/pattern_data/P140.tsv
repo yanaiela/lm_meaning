@@ -1,8 +1,8 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-[X] is affiliated with the [Y] religion .		is-affiliated-with	is-affiliated-with	present	N-1
-[X] was affiliated with the [Y] religion .		was-affiliated-with	was-affiliated-with	past	N-M
-[X] followed the [Y] religion.		follow	was-follow	past	N-M
-[X] follows the [Y] religion.		follow	is-follow	present	N-1
+[X] is affiliated with the [Y] religion .		affiliated-with	affiliated-with	present	N-1
+[X] was affiliated with the [Y] religion .		affiliated-with	affiliated-with	past	N-M
+[X] followed the [Y] religion.		follow	follow	past	N-M
+[X] follows the [Y] religion.		follow	follow	present	N-1
 [X] converted to [Y].		convert	convert	past	N-M
 [Y] founder [X].		founder	founder	-	1-1
 [Y] scholar [X].		scholar	scholar	-	N-1
@@ -12,24 +12,23 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [Y] scholars such as [X].		scholar-such	scholar-such	-	N-M
 [Y] scholars including [X].		scholar-including	scholar-including	-	N-M
 [X] was received into the [Y] .		received-into	received-into	past	N-1
-[X] and converted to [Y] .		and-converted	and-converted	past	N-M
 [Y] apostle [X] .		apostle	apostle	-	N-1
 [Y] saint [X] .		saint	saint	-	N-1
-[X] had converted to [Y] .		had-converted	had-converted	past	N-M
+[X] had converted to [Y] .		convert	convert	past	N-M
 [X] founded [Y].		founded	founded	past	N-M
-[X] was a [Y] preacher.		was-preacher	was-preacher	past	N-1
-[X] was a [Y] theologian.		was-theologian	was-theologian	past	N-1
+[X] was a [Y] preacher.		preacher	preacher	past	N-1
+[X] was a [Y] theologian.		theologian	theologian	past	N-1
 [X] established [Y].		establish	establish	past	N-M
 [Y] theologian [X].		theologian	theologian	-	N-1
 [X] is a monastic in [Y].		monastic	monastic	present	N-1
 [X] is ordained in [Y].		ordain	ordain	present	N-M
 [Y] is the primary religion in [X].		primary-religion	primary-religion	present	N-1
 [Y] is the majority religion for [X].		majority-religion	majority-religion	present	N-1
-[X] is follower of [Y].		is-follower	is-follower	present	N-1
-[X] was follower of [Y].		was-follower	was-follower	past	N-1
-[Y] was one of [X]'s official religions.		was-one-official-religion	was-one-official-religion	past	N-M
-[Y] is one of [X]'s official religions.		is-one-official-religion	is-one-official-religion	past	N-M
-[Y] is [X]'s official religion.		is-official-religion	is-official-religion	present	N-1
-[Y] was [X]'s official religion.		was-official-religion	was-official-religion	past	N-M
-[X] practiced [Y].		practice	was-practice	past	N-M
+[X] is follower of [Y].		follower	follower	present	N-1
+[X] was follower of [Y].		follower	follower	past	N-1
+[Y] was one of [X]'s official religions.		one-official-religion	one-official-religion	past	N-M
+[Y] is one of [X]'s official religions.		one-official-religion	one-official-religion	past	N-M
+[Y] is [X]'s official religion.		official-religion	official-religion	present	N-1
+[Y] was [X]'s official religion.		official-religion	official-religion	past	N-M
+[X] practiced [Y].		practice	practice	past	N-M
 [X] practices [Y].		practice	practice	present	N-1
