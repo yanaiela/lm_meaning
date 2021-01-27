@@ -7,7 +7,7 @@ from runs.utils import get_lama_patterns
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("--graph_file", type=str, help="Path to templates for each prompt",
-                       default="data/pattern_data/graphs/")
+                       default="data/pattern_data/graphs_tense//")
     parse.add_argument("-lama_patterns", "--lama_patterns", type=str, help="patterns file",
                        default="data/trex/data/relations.jsonl")
 
