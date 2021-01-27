@@ -9,5 +9,5 @@ is-example	is-largest,is-small,is-special-case
 is-class	is-largest,is-small,is-special-case
 is-type	is-largest,is-small,is-special-case
 is-kind	is-largest,is-small,is-special-case
-is-special-case	is-a,include,like,including-the,is-largest,is-small,is-example,is-class,is-type,is-kind,special-case,such-as
+is-special-case	is-largest,is-small
 such-as	is-largest,is-small,is-special-case

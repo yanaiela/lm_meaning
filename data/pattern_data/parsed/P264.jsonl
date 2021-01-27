@@ -17,6 +17,8 @@
 {"pattern": "[X]'s label was [Y].", "example": "", "lemma": "s-label", "extended_lemma": "s-label-was", "tense": "past", "spike_query": "<>subject:Buddy's $label $was object:[w={}]Brunswick."}
 {"pattern": "[X]'s record label is [Y].", "example": "", "lemma": "s-record-label", "extended_lemma": "s-record-label", "tense": "present", "spike_query": "<>subject:Buddy's $record $label $is object:[w={}]Brunswick."}
 {"pattern": "[X]'s record label was [Y].", "example": "", "lemma": "s-record-label", "extended_lemma": "s-record-label-was", "tense": "past", "spike_query": "<>subject:Buddy's $record $label $was object:[w={}]Brunswick."}
+{"pattern": "[X]'s record company is [Y].", "example": "", "lemma": "s-record-label", "extended_lemma": "s-record-company", "tense": "present", "spike_query": "<>subject:Buddy's $record $company $is object:[w={}]Brunswick."}
+{"pattern": "[X]'s record company was [Y].", "example": "", "lemma": "s-record-label", "extended_lemma": "s-record-company-was", "tense": "past", "spike_query": "<>subject:Buddy's $record $company $was object:[w={}]Brunswick."}
 {"pattern": "[X]'s music label is [Y].", "example": "", "lemma": "s-music-label", "extended_lemma": "s-music-label", "tense": "present", "spike_query": "<>subject:Buddy's $music $label $is object:[w={}]Brunswick."}
 {"pattern": "[X]'s music label was [Y].", "example": "", "lemma": "s-music-label", "extended_lemma": "s-music-label-was", "tense": "past", "spike_query": "<>subject:Buddy's $music $label $was object:[w={}]Brunswick."}
 {"pattern": "[X] signed to [Y].", "example": "", "lemma": "signed-to", "extended_lemma": "signed-to", "tense": "past", "spike_query": "<>subject:Buddy $signed $to object:[w={}]Brunswick."}
