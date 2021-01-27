@@ -5,9 +5,6 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was developed by [Y].	iphone is developed by Apple.	develop	develop-by	past	N-1
 [X], developed by [Y]	iphone-8, developed by Apple.	develop	develop-by	?	N-1
 [X], produced by [Y]	iphone-8, developed by Apple.	produce	produce-by	?	N-1
-[X] is manufactured by [Y].	:iphone is produced by Apple	manufacture	manufacture-by	present	N-1
-[X] was manufactured by [Y].	:iphone was produced by Apple	manufacture	manufacture-by	past	N-1
-[X], manufactured by [Y].	iphone-8, developed by Apple.	manufacture	manufacture-by	?	N-1
 [X] is created by [Y].	:iphone is produced by Apple	create	create-by	present	N-1
 [X] was created by [Y].	:iphone was produced by Apple	create	create-by	past	N-1
 [X], created by [Y].	iphone-8, developed by Apple.	create	create-by	?	N-1
@@ -15,12 +12,9 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] was a product of [Y].	:iphone is a product of Apple	product	is-product-of	past	N-1
 [X], a product of [Y],	:iphone, a product of Apple	product	product-of	?	N-1
 [X], a product created by [Y],	:iphone, a product created by Apple	product	product-release-by	?	N-1
-[X], a product manufactured by [Y],	:iphone, a product manufactured by Apple	product	product-manufacture-by	?	N-1
 [X], a product developed by [Y],	:iphone, a product developed by Apple	product	product-develope-by	?	N-1
-[Y], that manufactured [X]	apple, that manufactured iphone	manufacture	that-manufactured	past	N-1
 [Y], that developed [X]	apple, that developed iphone	developed	that-develope	past	N-1
 [Y], that produced [X]	apple, that produced iphone	produce	that-produce	past	N-1
 [Y], that created [X]	apple, that created iphone	create	that-create	past	N-1
 [Y], the creator of the [X]	apple, the creator of the iphone	creator	creator-of	?	N-1
-[Y], the manufacturer of the [X]	apple, the creator of the iphone	manufacturer	manufacturer-of	?	N-1
 [Y] and its product [X]	apple and its product iphone	product	its-product	?	N-1
