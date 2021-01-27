@@ -17,8 +17,9 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_filter_oov',
-        project="memorization",
+        project="consistency",
         tags=[pattern],
         config=config,
     )
@@ -48,6 +49,19 @@ def filter_oov(data, tokenizer):
     return filt_data
 
 
+def filter_mixed_objects(data, pattern):
+    # filtering the P136 pattern. containing mixed generes. The other are all musicians
+    if pattern == 'P136':
+        filter_objects = ['satire', 'sitcom']
+        filter_data = []
+        for row in data:
+            if row['obj_label'] in filter_objects:
+                continue
+            filter_data.append(row)
+        return filter_data
+    return data
+
+
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("--in_data", type=str, help="jsonl file",
@@ -60,6 +74,8 @@ def main():
     args = parse.parse_args()
     log_wandb(args)
 
+    pattern = args.in_data.split('/')[-1].split('.')[0]
+
     data = read_jsonl_file(args.in_data)
     original_length = len(data)
 
@@ -71,6 +87,8 @@ def main():
         data = filter_oov(data, tokenizer)
         after = len(data)
         print(f'{tokenizer_name} filtered out {before - after} examples')
+        data = filter_mixed_objects(data, pattern)
+        print(f'objects filtering filtered out {len(data) - after} examples')
 
     wandb.run.summary['original_length'] = original_length
     wandb.run.summary['filtered_length'] = len(data)
