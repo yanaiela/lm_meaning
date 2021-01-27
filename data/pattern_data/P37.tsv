@@ -4,12 +4,18 @@ An official language of [X] is [Y].	An :official :language :of [X]:Italy :is [Y]
 The official language of [X] is the [Y] language.	The :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	the-official-language	present	N-1
 An official language of [X] is the [Y] language.	An :official :language :of [X]:Italy :is :the [Y]:Italian language.	official-language	an-official-language	present	N-1
 [Y] is the official language of [X].	[Y]:Italian is the official language of [X]:Italy.	official-language	the-official-language	present	N-1
+[Y] is an official language of [X].	[Y]:Italian is an official language of [X]:Italy.	official-language	an-official-language	present	N-1
 The [Y] language is the official language of [X].	the [Y]:Italian language is the official language of [X]:Italy.	official-language	the-official-language	present	N-1
+The [Y] language is an official language of [X].	the [Y]:Italian language is an official language of [X]:Italy.	official-language	an-official-language	present	N-1
 [Y] is officially spoken in [X].	[Y]:Italian is officially spoken in [X]:Italy.	is-officially-speak	is-officially-speak	present	N-M
 In [X], [Y] is an official language.	In [X]:Italy [Y]:Italian is an official language.	is-official-language	is-official-language	present	N-M
+In [X], [Y] is the official language.	In [X]:Italy [Y]:Italian is the official language.	is-official-language	is-the-official-language	present	N-M
 In [X] the [Y] language is an official language.	In [X]:Italy the [Y]:Italian language is an official language.	is-official-language	is-official-language	present	N-M
 Officially, [Y] is the language of [X].	Officially, [Y]:Italian is the language of [X]:Italy	is-language	the-official-language	present	N-1
-The law in [X] declares [Y] an official language.	The law in [X]:Italy declares [Y]:Italian as an official language.	declare-official-language	declare-official-language	present	N-M
+The law in [X] declares [Y] an official language.	The law in [X]:Italy declares [Y]:Italian as an official language.	declare-the-official-language	declare-official-language	present	N-M
+The law in [X] declares [Y] the official language.	The law in [X]:Italy declares [Y]:Italian as the official language.	declare-the-official-language	declare-the-official-language	present	N-M
 The law in [X] declares the [Y] language an official language.	The law in [X]:Italy declares the [Y]:Italian language as an official language.	declare-official-language	declare-official-language	present	N-M
-The law in [X] defines [Y] an official language.	The law in [X]:Italy defines [Y]:Italian as an official language.	define-official-language	define-official-language	present	N-M
-The law in [X] defines the [Y] language an official language.	The law in [X]:Italy defines the [Y]:Italian language as an official language.	define-official-language	define-official-language	present	N-M
+The law in [X] defines [Y] as an official language.	The law in [X]:Italy defines [Y]:Italian as an official language.	define-official-language	define-official-language	present	N-M
+The law in [X] defines [Y] as the official language.	The law in [X]:Italy defines [Y]:Italian as the official language.	define-official-language	define-the-official-language	present	N-M
+The law in [X] defines the [Y] language as an official language.	The law in [X]:Italy defines the [Y]:Italian language as an official language.	define-official-language	define-official-language	present	N-M
+The law in [X] defines the [Y] language as the official language.	The law in [X]:Italy defines the [Y]:Italian language as an official language.	define-official-language	define-the-official-language	present	N-M
