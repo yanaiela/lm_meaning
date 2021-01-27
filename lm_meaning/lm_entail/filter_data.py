@@ -52,7 +52,7 @@ def filter_oov(data, tokenizer):
 def filter_mixed_objects(data, pattern):
     # filtering the P136 pattern. containing mixed generes. The other are all musicians
     if pattern == 'P136':
-        filter_objects = ['satire', 'sitcom']
+        filter_objects = ['satire', 'sitcom', 'thriller', 'fantasy']
         filter_data = []
         for row in data:
             if row['obj_label'] in filter_objects:
