@@ -4,7 +4,7 @@ RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] passed away in [Y].	[X]:the Mayor of Blue Ash :passed :away :in [Y]:France	pass-away	pass-away-in	past	N-1
 [X] passed away at [Y].	[X]:Airey :passed :away from heart failure :at [Y]:Panama City , Florida.	pass-away	pass-away-at	past	N-1
 [X] expired at [Y].	[X]:Bavji :expired :at [Y]:Karjali Haveli at the not-so-ripe age of 49 on 1 July 1929.	expire	expire-at	past	N-1
-[X] lost his life at [Y].	 [X]:Arensen , FM1 , USN , :lost  :his :life on December 7 , 1941  :at [Y]:Pearl Harbor.	lose-one's-life	lose-one's-life-at	past	N-1
+[X] lost their life at [Y].	 [X]:Arensen , FM1 , USN , :lost  :their :life on December 7 , 1941  :at [Y]:Pearl Harbor.	lose-one's-life	lose-one's-life-at	past	N-1
 [X]'s life ended in [Y].	[X]:Christian ' s  :life :ended :in [Y]:Westmoreland County , Pennsylvania.	life-ended	's-life-ended-in	past	N-1
 [X] succumbed at [Y].	[X]:he :succumbed :at [Y]:his residence , 4619 Grand boulevard.	succumbe	succumbe-at	past	N-1
 [X] committed-suicide at [Y].	A 22-year-old [X]:man allegedly :committed :suicide :at [Y]:AIIMS on Friday	commit-suicide	commit-suicide-at	past	N-1
