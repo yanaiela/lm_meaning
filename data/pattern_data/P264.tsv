@@ -18,6 +18,8 @@ The music label that is representing [X] is [Y].		representing	that-representing
 [X]'s label was [Y].		s-label	s-label-was	past	N-M
 [X]'s record label is [Y].		s-record-label	s-record-label	present	N-1
 [X]'s record label was [Y].		s-record-label	s-record-label-was	past	N-M
+[X]'s record company is [Y].		s-record-label	s-record-company	present	N-1
+[X]'s record company was [Y].		s-record-label	s-record-company-was	past	N-M
 [X]'s music label is [Y].		s-music-label	s-music-label	present	N-1
 [X]'s music label was [Y].		s-music-label	s-music-label-was	past	N-M
 [X] signed to [Y].		signed-to	signed-to	past	N-1
