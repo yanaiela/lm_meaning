@@ -1,6 +1,6 @@
-affiliated-with	+/follow,practice,official-religion,follower
-follower	+/affiliated-with,practice,official-religion,follow
-follow	+/follower,practice,official-religion,affiliated-with
+affiliated-with	+/follow,official-religion,follower
+follower	+/affiliated-with,official-religion,follow
+follow	+/follower,official-religion,affiliated-with
 convert	+/affiliated-with,practice,follow,official-religion,who-converted,convert,follower
 founder	+/affiliated-with,practice,follower,follow,official-religion,establish,founded
 scholar	+/affiliated-with,practice,follow,official-religion,scholar-such,scholar-including,follower
@@ -17,8 +17,8 @@ establish	+/affiliated-with,practice,follower,follow,official-religion,founder
 theologian	+/affiliated-with,practice,follower,follow,official-religion
 monastic	+/affiliated-with,practice,follower,follow,official-religion
 ordain	+/affiliated-with,practice,follower,follow,official-religion
-primary-religion	+/affiliated-with,practice,follower,follow,official-religion
-majority-religion	+/affiliated-with,practice,follower,follow,official-religion
-one-official-religion	+/affiliated-with,follower,follow,practice,official-religion
+primary-religion	+/affiliated-with,follower,follow,official-religion
+majority-religion	+/affiliated-with,follower,follow,official-religion
+one-official-religion	+/affiliated-with,follower,follow,official-religion
 official-religion	+/affiliated-with,follower,follow,practice
 practice	+/affiliated-with,follower,follow,official-religion
