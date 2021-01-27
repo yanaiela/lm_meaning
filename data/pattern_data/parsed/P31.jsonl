@@ -10,5 +10,5 @@
 {"pattern": "[X] is a class of [Y].", "example": "", "lemma": "is-class", "extended_lemma": "is-class", "tense": "present", "spike_query": "<>subject:Preston $is $a $class $of object:[w={}]village."}
 {"pattern": "[X] is a type of [Y].", "example": "", "lemma": "is-type", "extended_lemma": "is-type", "tense": "present", "spike_query": "<>subject:Preston $is $a $type $of object:[w={}]village."}
 {"pattern": "[X] is a kind of [Y].", "example": "", "lemma": "is-kind", "extended_lemma": "is-kind", "tense": "present", "spike_query": "<>subject:Preston $is $a $kind $of object:[w={}]village."}
-{"pattern": "[X] a special case of [Y].", "example": "", "lemma": "special-case", "extended_lemma": "special-case", "tense": "-", "spike_query": "<>subject:Preston $a $special $case $of object:[w={}]village."}
+{"pattern": "[X] a special case of [Y].", "example": "", "lemma": "is-special-case", "extended_lemma": "is-special-case", "tense": "-", "spike_query": "<>subject:Preston $a $special $case $of object:[w={}]village."}
 {"pattern": "[Y] such as [X].", "example": "", "lemma": "such-as", "extended_lemma": "such-as", "tense": "-", "spike_query": "object:[w={}]village $such $as <>subject:Preston."}
