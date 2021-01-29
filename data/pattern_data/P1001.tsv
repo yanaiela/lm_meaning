@@ -1,6 +1,5 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
 [X] is a legal term in [Y] .		legal-term	legal-term	present	N-M
-[X] is a legal entity in [Y] .		legal-entity	legal-entity	present	N-M
 [X] is connected to [Y] .		connected-to	connected-to	present	N-M
 [X] is representing [Y] .		represent	represent	present-continuous	N-M
 [X] representing [Y].		represent	represent	present-continuous	N-M
