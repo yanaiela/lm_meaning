@@ -1,11 +1,5 @@
 LEMMA	NOT-ENTAILED
 was-create-in	construct-in,was-construct-in,that-construct-in
-that-begin-in	construct-in,was-construct-in,that-construct-in
-begin-in	construct-in,was-construct-in,that-construct-in
-was-begin-in	construct-in,was-construct-in,that-construct-in
-that-start-in	construct-in,was-construct-in,that-construct-in
-start-in	construct-in,was-construct-in,that-construct-in
-was-start-in	construct-in,was-construct-in,that-construct-in
 that-create-in	construct-in,was-construct-in,that-construct-in
 create-in	construct-in,was-construct-in,that-construct-in
 that-originate-in	construct-in,was-construct-in,that-construct-in

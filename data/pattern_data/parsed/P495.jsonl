@@ -1,10 +1,4 @@
 {"pattern": "[X] was created in [Y].", "example": "", "lemma": "create", "extended_lemma": "was-create-in", "tense": "past", "spike_query": "<>subject:golf $was $created $in object:[w={}]Scotland."}
-{"pattern": "[X], that begun in [Y].", "example": "", "lemma": "begin", "extended_lemma": "that-begin-in", "tense": "past", "spike_query": "<>subject:golf, $that $begun $in object:[w={}]Scotland."}
-{"pattern": "[X], begun in [Y]", "example": "", "lemma": "begin", "extended_lemma": "begin-in", "tense": "past", "spike_query": "<>subject:golf, $begun $in object:[w={}]Scotland"}
-{"pattern": "[X] was begun in [Y].", "example": "", "lemma": "begin", "extended_lemma": "was-begin-in", "tense": "past", "spike_query": "<>subject:golf $was $begun $in object:[w={}]Scotland."}
-{"pattern": "[X], that was started in [Y].", "example": "", "lemma": "start", "extended_lemma": "that-start-in", "tense": "past", "spike_query": "<>subject:golf, $that $was $started $in object:[w={}]Scotland."}
-{"pattern": "[X] started in [Y].", "example": "", "lemma": "start", "extended_lemma": "start-in", "tense": "past", "spike_query": "<>subject:golf $started $in object:[w={}]Scotland."}
-{"pattern": "[X] was started in [Y]", "example": "", "lemma": "start", "extended_lemma": "was-start-in", "tense": "past", "spike_query": "<>subject:golf $was $started $in object:[w={}]Scotland"}
 {"pattern": "[X], that was created in [Y].", "example": "", "lemma": "create", "extended_lemma": "that-create-in", "tense": "past", "spike_query": "<>subject:golf, $that $was $created $in object:[w={}]Scotland."}
 {"pattern": "[X], created in [Y].", "example": "", "lemma": "create", "extended_lemma": "create-in", "tense": "past", "spike_query": "<>subject:golf, $created $in object:[w={}]Scotland."}
 {"pattern": "[X], that originated in [Y].", "example": "", "lemma": "originate", "extended_lemma": "that-originate-in", "tense": "past", "spike_query": "<>subject:golf, $that $originated $in object:[w={}]Scotland."}
