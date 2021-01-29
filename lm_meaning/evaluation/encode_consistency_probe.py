@@ -180,7 +180,7 @@ def main():
     analyze_results(lm_results, patterns_graph)
     analyze_graph(patterns_graph)
 
-    if 'models' in model_name:
+    if 'models' in model_name or 'nyu' in model_name:
         model_name = model_name.replace('/', '_')
     pattern = args.patterns_file.split('/')[-1].split('.')[0]
     with open('data/output/predictions_lm/trex_lms_vocab/{}_{}.json'.format(pattern, model_name), 'w') as f:
