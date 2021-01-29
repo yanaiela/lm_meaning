@@ -13,7 +13,6 @@ graph=$4
         --lm $lm \
         --graph $graph \
         --gpu 0 \
-        --evaluate \
         --wandb \
         --use_targets
 
