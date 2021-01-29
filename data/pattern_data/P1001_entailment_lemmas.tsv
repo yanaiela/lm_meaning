@@ -1,16 +1,15 @@
-legal-term	+/legal-entity, connected-to
-legal-entity	+/legal-term, connected-to
+legal-term	+/connected-to
 connected-to	+/
-represent	+/legal-term,legal-entity, connected-to
-unit-of-government	+/legal-term, government-body,legal-entity, connected-to
-executive-body	+/legal-term,legal-entity, connected-to
-government-body	+/legal-term, unit-of-government,legal-entity, connected-to
-head-state	+/legal-term, represent,legal-entity, connected-to
-head-government	+/legal-term, represent,legal-entity, connected-to
-leader	+/legal-term, represent,legal-entity, connected-to
-local-authority	+/legal-term,legal-entity, connected-to
-mandate	+/legal-term,legal-entity, connected-to
-currency	+/legal-term,legal-entity, connected-to
-constitution	+/legal-term,legal-entity, connected-to
-national-parliament	+/legal-term, parliament,legal-entity, connected-to
-parliament	+/legal-term,legal-entity, connected-to
+represent	+/legal-term, connected-to
+unit-of-government	+/legal-term, government-body,connected-to
+executive-body	+/legal-term,lconnected-to
+government-body	+/legal-term, unit-of-government, connected-to
+head-state	+/legal-term, represent, connected-to
+head-government	+/legal-term, represent,connected-to
+leader	+/legal-term, represent,connected-to
+local-authority	+/legal-term,connected-to
+mandate	+/legal-term,connected-to
+currency	+/legal-term,connected-to
+constitution	+/legal-term,connected-to
+national-parliament	+/legal-term, parliament,connected-to
+parliament	+/legal-term,connected-to
