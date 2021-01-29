@@ -2,7 +2,7 @@ legal-term	+/connected-to
 connected-to	+/
 represent	+/legal-term, connected-to
 unit-of-government	+/legal-term, government-body,connected-to
-executive-body	+/legal-term,lconnected-to
+executive-body	+/legal-term,connected-to
 government-body	+/legal-term, unit-of-government, connected-to
 head-state	+/legal-term, represent, connected-to
 head-government	+/legal-term, represent,connected-to
