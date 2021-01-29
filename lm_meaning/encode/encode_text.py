@@ -20,8 +20,9 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_encode_{lm}',
-        project="memorization",
+        project="consistency",
         tags=["encode", pattern],
         config=config,
     )

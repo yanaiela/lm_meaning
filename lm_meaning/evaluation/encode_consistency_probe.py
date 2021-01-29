@@ -2,7 +2,7 @@ import argparse
 from typing import Dict
 from collections import Counter
 import wandb
-
+import json
 from lm_meaning.evaluation.consistency_probe import analyze_results, analyze_graph, parse_lm_results
 from lm_meaning.run_pipeline import build_model_by_name, run_query
 from lm_meaning.utils import read_graph, read_jsonl_file
@@ -179,6 +179,12 @@ def main():
 
     analyze_results(lm_results, patterns_graph)
     analyze_graph(patterns_graph)
+
+    if 'models' in model_name:
+        model_name = model_name.replace('/', '_')
+    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    with open('data/output/predictions_lm/trex_lms_vocab/{}_{}.json'.format(pattern, model_name), 'w') as f:
+        json.dump(lm_results, f)
 
 
 if __name__ == '__main__':
