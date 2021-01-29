@@ -4,7 +4,7 @@ connected-to	legal-term,represent,unit-of-government,executive-body,government-b
 represent	unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 institution	legal-term,connected-to,represent,unit-of-government,executive-body,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 unit-of-government	represent,executive-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
-executive-body	connected-to,represent,unit-of-government,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
+executive-body	represent,unit-of-government,government-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 government-body	represent,executive-body,head-state,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 head-state	unit-of-government,executive-body,government-body,head-government,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
 head-government	unit-of-government,executive-body,government-body,head-state,leader,local-authority,mandate,currency,constitution,national-parliament,parliament
