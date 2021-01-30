@@ -1,12 +1,12 @@
 RULE	EXAMPLE	LEMMA	EXTENDED-LEMMA	TENSE	FUNCTION
-#[X] is a [Y] by profession.	[X]:he :is :a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	present	N-M
-#[X] is an [Y] by profession.	[X]:he :is :an [Y]:artist :by :profession.	by-profession	is-by-profession	present	N-M
-#[X] was a [Y] by profession.	[X]:he :was:a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	past	N-M
-#[X] was an [Y] by profession.	[X]:he :was:an [Y]:artist :by :profession.	by-profession	is-by-profession	past	N-M
-#[X] is a [Y] by training.	[X]:he :is :a [Y]:lawyer :by :training.	by-training	is-by-training	present	N-M
-#[X] is an [Y] by training.	[X]:he :is :an [Y]:artist :by :training.	by-training	is-by-training	present	N-M
-#[X] was a [Y] by training.	[X]:he :was :a [Y]:lawyer :by :training.	by-training	is-by-training	past	N-M
-#[X] was an [Y] by training.	[X]:he :was :an [Y]:artise :by :training.	by-training	is-by-training	past	N-M
+[X] is a [Y] by profession.	[X]:he :is :a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	present	N-M
+[X] is an [Y] by profession.	[X]:he :is :an [Y]:artist :by :profession.	by-profession	is-by-profession	present	N-M
+[X] was a [Y] by profession.	[X]:he :was:a [Y]:Chartered Business Administrator :by :profession.	by-profession	is-by-profession	past	N-M
+[X] was an [Y] by profession.	[X]:he :was:an [Y]:artist :by :profession.	by-profession	is-by-profession	past	N-M
+[X] is a [Y] by training.	[X]:he :is :a [Y]:lawyer :by :training.	by-training	is-by-training	present	N-M
+[X] is an [Y] by training.	[X]:he :is :an [Y]:artist :by :training.	by-training	is-by-training	present	N-M
+[X] was a [Y] by training.	[X]:he :was :a [Y]:lawyer :by :training.	by-training	is-by-training	past	N-M
+[X] was an [Y] by training.	[X]:he :was :an [Y]:artise :by :training.	by-training	is-by-training	past	N-M
 [X] works as [Y].	[X]:Negron , a World War II veteran , :works :as [Y]:a post office clerk.	work	work-as	present	N-M
 [X] worked as [Y].	[X]:Negron , a World War II veteran , :worked :as [Y]:a post office clerk.	work	work-as	past	N-M
 [X], who works as [Y].	He saw [X]:Negron , a World War II veteran , who :worked :as [Y]:a post office clerk.	work	who-work-as	present	N-M
