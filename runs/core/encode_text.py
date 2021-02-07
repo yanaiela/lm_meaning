@@ -6,17 +6,20 @@ from runs.utils import get_lama_patterns
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
-    #'nlp01',
+    'nlp01',
     #'nlp02',
     'nlp03',
-    'nlp04',
+    #'nlp04',
     'nlp05',
+    'nlp06',
     'nlp07',
-    'nlp09',
+    'nlp08',
+    #'nlp09',
     'nlp10',
     'nlp11',
     'nlp12',
     'nlp13',
+    'nlp14',
     'nlp15',
 ]
 
@@ -34,7 +37,9 @@ encoders = ['bert-base-cased',
             'nyu-mll/roberta-base-1B-1',
             'nyu-mll/roberta-base-100M-1',
             'nyu-mll/roberta-base-10M-1',
-            'nyu-mll/roberta-med-small-1M-1'
+            'nyu-mll/roberta-med-small-1M-1',
+
+            #'models/nora/consistency_global_100_3_P138-P37-P449_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-12/',
             ]
 
 # ┌──────────────────────┐
@@ -55,11 +60,14 @@ if __name__ == '__main__':
 
     cartesian_product = []
     for relation_id in relations:
+        if relation_id != 'P106': continue
         for encoder in encoders:
 
             prediction_encoder_name = encoder
             if 'nyu-mll' in prediction_encoder_name:
                 prediction_encoder_name = encoder.split('/')[-1]
+            if 'nora' in prediction_encoder_name:
+                prediction_encoder_name = 'consistency_global_100_3_P138-P37-P449_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5_checkpoint-12'
             cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
                                       f'data/trex_lms_vocab/{relation_id}.jsonl',
                                       encoder,

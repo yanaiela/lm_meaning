@@ -26,13 +26,13 @@ bias_file = 'data/preference_bias/bias.json'
 relations_file = 'data/trex/data/relations.jsonl'
 
 memorization_dir = 'data/output/spike_results/paraphrases/'
-paraphrases_dir = 'data/pattern_data/'
+paraphrases_dir = 'data/pattern_data/parsed'
 cooccurrences_dir = 'data/output/spike_results/cooccurrences/'
 lm_dir = 'data/output/predictions_lm/lama/'
 
 
 all_relations = []
-for relation in glob('data/pattern_data/*.jsonl'):
+for relation in glob('data/pattern_data/parsed/*.jsonl'):
     all_relations.append(relation.split('/')[-1].split('.')[0])
 
 

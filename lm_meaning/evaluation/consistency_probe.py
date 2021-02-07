@@ -218,9 +218,15 @@ def analyze_results(lm_results: Dict, patterns_graph) -> None:
         else:
             success_for_unknowledgable_patterns += sum(success)
             total_for_unknowledgable_patterns += len(success)
-    wandb.run.summary['knowledgable_consistency'] = success_for_knowledgable_patterns / total_for_knowledgable_patterns
-    wandb.run.summary['unknowledgable_consistency'] = success_for_unknowledgable_patterns \
-                                                      / total_for_unknowledgable_patterns
+    if total_for_knowledgable_patterns > 0:
+        wandb.run.summary['knowledgable_consistency'] = success_for_knowledgable_patterns / total_for_knowledgable_patterns
+    else:
+        wandb.run.summary['knowledgable_consistency'] = 0
+    if total_for_unknowledgable_patterns > 0:
+        wandb.run.summary['unknowledgable_consistency'] = success_for_unknowledgable_patterns \
+                                                          / total_for_unknowledgable_patterns
+    else:
+        wandb.run.summary['unknowledgable_consistency'] = 0
 
     wandb.run.summary['total'] = total
     wandb.run.summary['total_syn'] = total_syn

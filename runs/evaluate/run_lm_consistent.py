@@ -7,14 +7,19 @@ from runs.utils import get_lama_patterns
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
+    'nlp15',
+    'nlp01',
+    'nlp02',
     'nlp05',
     'nlp06',
+    'nlp07',
+    'nlp08',
     'nlp09',
     'nlp10',
     'nlp11',
     'nlp12',
     'nlp13',
-    'nlp15',
+    'nlp14',
 ]
 
 
@@ -22,29 +27,54 @@ nodes = [
 # │ encoders │
 # └──────────┘
 encoders = [
-            # 'bert-base-cased',
-            # 'bert-large-cased',
-            # 'bert-large-cased-whole-word-masking',
-            # 'roberta-base',
-            # 'roberta-large',
-            # 'albert-base-v2',
-            # 'albert-xxlarge-v2',
-            #
-            # 'nyu-mll/roberta-base-1B-1',
-            # 'nyu-mll/roberta-base-100M-1',
-            # 'nyu-mll/roberta-base-10M-1',
-            # 'nyu-mll/roberta-med-small-1M-1'
+            'bert-base-cased',
+            'roberta-base',
+            'albert-base-v2',
+            'bert-large-cased',
+            'bert-large-cased-whole-word-masking',
+            'roberta-large',
+            'albert-xxlarge-v2',
 
-            'entailment_bert-large-cased-whole-word-masking_100_4_0_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_1_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_2_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_3_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_4_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_5_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_6_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_7_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_8_P176-P30-P39-P127'
-            'entailment_bert-large-cased-whole-word-masking_100_4_9_P176-P30-P39-P127'
+            'nyu-mll/roberta-base-1B-1',
+            'nyu-mll/roberta-base-100M-1',
+            'nyu-mll/roberta-base-10M-1',
+            'nyu-mll/roberta-med-small-1M-1',
+
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-6/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-12/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-18/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-24/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-30/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_no-typed_no-wiki_lama_0_0.1_5/checkpoint-36/',
+
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-6/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-12/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-18/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-24/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-30/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-36/',
+
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-6/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-12/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-18/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-24/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-30/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_dkl_typed_no-wiki_no-lama_0_0.1_0/checkpoint-36/',
+
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-6/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-12/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-18/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-24/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-30/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-large-cased_dkl_typed_no-wiki_lama_0_0.1_5/checkpoint-36/',
+
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-6/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-12/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-18/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-24/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-30/',
+            'models/nora/consistency_global_100_3_P138-P449-P37_bert-base-cased_no_no-typed_no-wiki_lama_0_0.1_5/checkpoint-36/',
+
             ]
 
 
@@ -65,13 +95,13 @@ if __name__ == '__main__':
     relations = get_lama_patterns(args.patterns)
 
     cartesian_product = []
-    for relation_id in relations:
-        for encoder in encoders:
-
+    for encoder in encoders:
+        for relation_id in relations:
             cartesian_product.append([f'data/pattern_data/parsed/{relation_id}.jsonl',
                                       f'data/trex_lms_vocab/{relation_id}.jsonl',
+                                      #f'data/eval_100_left/{relation_id}.jsonl',
                                       encoder,
-                                      f'data/pattern_data/graphs/{relation_id}.graph'
+                                      f'data/pattern_data/graphs_tense/{relation_id}.graph'
                                       ])
 
     parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/evaluate/run_lm_consistent.sh',
