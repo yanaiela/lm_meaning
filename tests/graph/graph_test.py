@@ -1,6 +1,6 @@
 import argparse
 
-from lm_meaning.utils import read_graph
+from pararel.consistency.utils import read_graph
 from runs.utils import get_lama_patterns
 
 

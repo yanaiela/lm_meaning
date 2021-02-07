@@ -46,3 +46,11 @@ class TestPluralInstruction:
         result = lexical_difference(q1, q2, self.nlp)
         assert result['diff_lemma'] is True
         assert result['diff_det'] is False
+
+    def test_lemmas2(self):
+        q1 = "[X] is broadcasted on [Y]."
+        q2 = "[X], that was broadcasted on [Y],"
+
+        result = lexical_difference(q1, q2, self.nlp)
+        assert result['diff_lemma'] is False
+        assert result['diff_det'] is True

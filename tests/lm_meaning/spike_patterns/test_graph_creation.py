@@ -1,7 +1,7 @@
 import networkx as nx
 from networkx.readwrite import json_graph
 
-from lm_meaning.spike_patterns.graph_types import PatternNode, EdgeType
+from pararel.patterns.graph_types import PatternNode, EdgeType
 
 
 class TestPluralInstruction:

@@ -1,11 +1,8 @@
 torch
 transformers==3.5.0
 wandb
-boto3
-allennlp
-num2words
 spur
 tqdm
 jsonlines
 scipy
-wandb
+pickle
