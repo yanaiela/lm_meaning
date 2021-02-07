@@ -1,7 +1,7 @@
 import argparse
 import pickle
 from collections import defaultdict
-from typing import List, Tuple, Dict
+from typing import List, Dict
 import pandas as pd
 
 import networkx as nx
@@ -12,8 +12,8 @@ import spacy
 import wandb
 
 from lm_meaning.spike.utils import equal_queries, lexical_difference
-from lm_meaning.spike_patterns.graph_types import PatternNode, EdgeType
-from lm_meaning.utils import read_jsonl_file
+from pararel.patterns.graph_types import PatternNode, EdgeType
+from pararel.consistency.utils import read_jsonl_file
 
 
 def log_wandb(args):

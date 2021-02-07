@@ -3,7 +3,7 @@ from glob import glob
 import pandas as pd
 import streamlit as st
 
-from lm_meaning.utils import read_json_file, read_jsonl_file, read_graph
+from pararel.consistency.utils import read_json_file, read_jsonl_file, read_graph
 
 
 def highlight_errors(row):

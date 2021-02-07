@@ -3,7 +3,7 @@ from typing import List
 
 from transformers import AutoTokenizer
 
-from lm_meaning.utils import read_jsonl_file, write_jsonl_file
+from pararel.consistency.utils import read_jsonl_file, write_jsonl_file
 
 import wandb
 

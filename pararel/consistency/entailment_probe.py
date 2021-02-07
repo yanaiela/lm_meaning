@@ -7,9 +7,8 @@ from scipy.stats import entropy
 
 import wandb
 
-from lm_meaning.evaluation.paraphrase_comparison import read_json_file
-from lm_meaning.spike_patterns.graph_types import EdgeType
-from lm_meaning.utils import read_jsonl_file, read_graph
+from pararel.patterns.graph_types import EdgeType
+from pararel.consistency.utils import read_jsonl_file, read_graph, read_json_file
 
 
 def log_wandb(args):

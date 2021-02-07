@@ -1,14 +1,10 @@
 import argparse
 import json
 
-import torch
-from tqdm import tqdm
-from transformers import pipeline, Pipeline
 import wandb
 from glob import glob
-from typing import List, Dict
-from lm_meaning import utils
-from lm_meaning.run_pipeline import parse_prompt, build_model_by_name, run_query
+from pararel.consistency import utils
+from pararel.consistency.run_pipeline import build_model_by_name, run_query
 
 
 def log_wandb(args):

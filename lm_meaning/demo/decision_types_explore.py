@@ -6,7 +6,7 @@ import streamlit as st
 from spike.spacywrapper.annotator import SpacyAnnotator
 
 from lm_meaning.spike.utils import equal_queries, lexical_difference
-from lm_meaning.utils import read_jsonl_file, read_graph
+from pararel.consistency.utils import read_jsonl_file, read_graph
 
 st.set_page_config(layout="wide")
 

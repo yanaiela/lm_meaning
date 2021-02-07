@@ -8,7 +8,7 @@ from transformers import pipeline, Pipeline, BertForMaskedLM, BertTokenizer
 import wandb
 
 from typing import List, Dict
-from lm_meaning import utils
+from pararel.consistency import utils
 
 
 def log_wandb(args):
@@ -20,7 +20,6 @@ def log_wandb(args):
         lm=lm
     )
 
-    # entailment_bert-large-cased-whole-word-masking_100_4_2_P176-P30-P39-P127
     if 'entailment' in lm:
         model_args = lm.split('_')
         config['ft_type'] = model_args[0]
@@ -29,7 +28,6 @@ def log_wandb(args):
         config['n_graphs'] = model_args[3]
         config['epoch'] = model_args[4]
         config['graphs_trained'] = model_args[5]
-
 
     wandb.init(
         name=f'{pattern}_lm_{lm}',

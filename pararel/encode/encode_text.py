@@ -7,7 +7,7 @@ import wandb
 from tqdm import tqdm
 from transformers import AutoModel, AutoTokenizer
 
-from lm_meaning import utils
+from pararel.consistency import utils
 
 
 def log_wandb(args):

@@ -3,7 +3,7 @@ from collections import defaultdict
 from typing import List, Dict, Tuple
 import operator
 
-from lm_meaning.utils import read_json_file, read_jsonl_file
+from pararel.consistency.utils import read_json_file, read_jsonl_file
 
 
 def get_items(memorization_data: Dict):

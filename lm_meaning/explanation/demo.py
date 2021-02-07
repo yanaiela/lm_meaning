@@ -8,7 +8,7 @@ from streamlit import StopException
 
 from lm_meaning.explanation.explain import explain_preference_bias, explain_cooccurrences, explain_memorization, \
     explain_subject_contains_object, get_lm_preds, get_items
-from lm_meaning.utils import read_json_file, read_jsonl_file
+from pararel.consistency.utils import read_json_file, read_jsonl_file
 
 
 @st.cache
