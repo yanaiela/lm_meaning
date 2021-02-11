@@ -1,15 +1,10 @@
 import argparse
 import glob
 import pickle
-import networkx as nx
 import random
-import time
 import os
 
-from itertools import permutations
-from random import sample
-from lm_meaning import utils
-
+from pararel.consistency import utils
 
 
 def generate_data(num_relations, num_tuples, LAMA_path):
