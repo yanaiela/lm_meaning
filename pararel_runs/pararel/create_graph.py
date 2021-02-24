@@ -36,5 +36,5 @@ if __name__ == '__main__':
                                   f'data/pattern_data/graphs_tense/{relation_id}.graph'])
 
     parallelize(nodes, cartesian_product,
-                '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/graph/create_graph.sh',
+                '/home/nlp/lazary/workspace/thesis/lm_meaning/pararel_runs/pararel/create_graph.sh',
                 on_gpu=False, dry_run=args.dry_run)

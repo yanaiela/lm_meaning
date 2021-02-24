@@ -104,5 +104,5 @@ if __name__ == '__main__':
                                       f'data/pattern_data/graphs_tense/{relation_id}.graph'
                                       ])
 
-    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/evaluate/run_lm_consistent.sh',
+    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/pararel_runs/eval/run_lm_consistent.sh',
                 on_gpu=True, dry_run=args.dry_run)
