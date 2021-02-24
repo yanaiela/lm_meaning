@@ -326,6 +326,24 @@ def group_score_lama_eval(lm_results: Dict):
     return points / len(data)
 
 
+def group_score_incorrect_ans_eval(lm_results: Dict):
+    patterns = list(lm_results.keys())
+
+    points = 0
+    data = lm_results[patterns[0]]['data']
+    for datum_ind, datum in enumerate(data):
+        obj = datum['obj_label']
+        answers = defaultdict(int)
+        for pattern in patterns:
+            preds = lm_results[pattern]['predictions'][datum_ind]
+            answers[preds[0]['token_str']] += 1
+
+        if len(answers) == 1 and list(answers.keys())[0] != obj:
+            points += 1
+
+    return points / len(data)
+
+
 def create_majority_baseline(data):
     data_reduced = []
     for row in data:
@@ -413,6 +431,9 @@ def main():
     # Group Eval
     group_acc = group_score_lama_eval(results_dict)
     wandb.run.summary['lama_group_acc'] = group_acc
+
+    group_false_acc = group_score_incorrect_ans_eval(results_dict)
+    wandb.run.summary['group-unacc'] = group_false_acc
 
     lm_results = parse_lm_results(results_dict, all_objects)
 
