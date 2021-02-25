@@ -1,10 +1,10 @@
 # ParaRel :metal:
 
-This repo contains the code base for the paper:
+This repository contains the code and data for the paper:
 
 [`Measuring and Improving Consistency in Pretrained Language Models`](https://arxiv.org/abs/2102.01017)
 
-as well as the resource: `ParaRel :metal:`
+as well as the resource: `ParaRel` :metal:
 
 
 Since this work required running a lot of experiments, it is structured by scripts that automatically 
@@ -59,4 +59,16 @@ python runs/eval/run_paraphrase_lm.py
 Encode the texts:
 ```sh
 python runs/pararel/encode_text.py
+```
+
+## Citation:
+If you find this work relevant to yours, please cite us:
+```
+@article{Elazar2021MeasuringAI,
+  title={Measuring and Improving Consistency in Pretrained Language Models},
+  author={Yanai Elazar and Nora Kassner and Shauli Ravfogel and Abhilasha Ravichander and E. Hovy and Hinrich Schutze and Y. Goldberg},
+  journal={ArXiv},
+  year={2021},
+  volume={abs/2102.01017}
+}
 ```
