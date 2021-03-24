@@ -6,7 +6,7 @@ import requests
 from tqdm import tqdm
 import wandb
 from spike.search.queries.q import BooleanSearchQuery
-from typing import List, Iterator, Optional
+from typing import List, Iterator, Optional, Dict, Tuple
 from lm_meaning.spike.utils import get_relations_data, dump_json, get_spike_objects, enclose_entities
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
@@ -26,6 +26,7 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_spike_cooccurrences',
         project="memorization",
         tags=["spike", pattern, 'cooccurrences'],
@@ -74,36 +75,25 @@ def construct_query(subjects: List[str], objects: List[str], engine: MatchEngine
     return query_match
 
 
-def main():
-    parse = argparse.ArgumentParser("")
-    parse.add_argument("-data_file", "--data_file", type=str, help="pattern file",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/trex/data/TREx/P449.jsonl")
-    parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/output/spike_results/cooccurrences/P449"
-                               ".json")
+def prepare_data(kb_tuples: List[Dict]) -> Tuple[List[str], List[str]]:
+    all_objects = []
+    all_subjects = []
+    for row in kb_tuples:
+        all_objects.append(row['obj_label'])
+        all_subjects.append(row['sub_label'])
 
-    args = parse.parse_args()
+    all_objects = list(set(all_objects))
+    all_subjects = list(set(all_subjects))
 
-    log_wandb(args)
-
-    spike_engine, _ = get_spike_objects()
-
-    relations = get_relations_data(args.data_file)
-
-    obj_dic = defaultdict(list)
-    for row in relations:
-        obj_dic[row['obj_label']].append(row['sub_label'])
-
-    all_subjects = list(dict.fromkeys([item for sublist in obj_dic.values() for item in sublist]))
-    all_objects = list(obj_dic.keys())
-
-    # TODO - There is some bug in spike with the & token.
-    print(len(all_subjects))
-    all_subjects = [x for x in all_subjects if '&' not in x]
     spacy_annotator = SpacyAnnotator.from_config("en.json")
+
+    # tokenize the subjects to the way spacy tokenizes them
     all_subjects = [enclose_entities(spacy_annotator, subj) for subj in all_subjects]
-    print(len(all_subjects))
-    query_match = construct_query(all_subjects, all_objects, spike_engine)
+    return all_subjects, all_objects
+
+
+def get_cooccurrences(subjects: List[str], objects: List[str], spike_engine) -> Dict[str, int]:
+    query_match = construct_query(subjects, objects, spike_engine)
 
     subj_obj_counts_dic = defaultdict(int)
     more_results = True
@@ -113,20 +103,36 @@ def main():
             for match in tqdm(query_match):
                 continuation_token = match.continuation_token
                 obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
-                subj = ' '.join(match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
+                subj = ' '.join(
+                    match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
                 subj_obj_counts_dic['_SEP_'.join([subj, obj])] += 1
             more_results = False
-        except (ConnectionResetError, RequestException) as connection_error:
-            query_match = construct_query(all_subjects, all_objects, spike_engine, continuation_token)
+        except (ConnectionResetError, RequestException):
+            query_match = construct_query(subjects, objects, spike_engine, continuation_token)
         if continuation_token is None:
             more_results = False
+    return subj_obj_counts_dic
 
-    # dataset_name = "wiki"
-    # query_type = "boolean"
-    # print(query_match)
-    # df_results = perform_query(query_match, dataset_name, query_type)
 
-    # subj_obj_counts = df_results.groupby(['subject', 'object']).size().to_dict()
+def main():
+    parse = argparse.ArgumentParser("")
+    parse.add_argument("-data_file", "--data_file", type=str,
+                       help="input trex file, containing the subject/object tuples",
+                       default="data/trex_lms_vocab/P449.jsonl")
+    parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
+                       default="data/output/spike_results/cooccurrences/P449.json")
+
+    args = parse.parse_args()
+
+    log_wandb(args)
+
+    spike_engine, _ = get_spike_objects()
+
+    relations = get_relations_data(args.data_file)
+
+    all_subjects, all_objects = prepare_data(relations)
+
+    subj_obj_counts_dic = get_cooccurrences(all_subjects, all_objects, spike_engine)
 
     print('total number of objects found with all queries', sum(subj_obj_counts_dic.values()))
     wandb.run.summary['total_occurrences'] = sum(subj_obj_counts_dic.values())
