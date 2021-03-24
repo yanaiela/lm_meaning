@@ -1,6 +1,6 @@
 import argparse
 from collections import defaultdict
-from typing import Iterator, Optional
+from typing import Iterator, Optional, List
 from requests.exceptions import RequestException
 from spike.annotators.annotator_service import Annotator
 from spike.search.engine import MatchEngine
@@ -21,6 +21,7 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_wiki_patterns',
         project="memorization",
         tags=["spike", pattern, 'wiki_patterns'],
@@ -36,21 +37,7 @@ def construct_query(engine: MatchEngine, annotator: Annotator, query_str: str,
     return query_match
 
 
-def main():
-    parse = argparse.ArgumentParser("")
-    parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="pattern file",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/pattern_data/P449.jsonl")
-    parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/output/spike_results/pattern_counts"
-                               "/P449.json")
-
-    args = parse.parse_args()
-    log_wandb(args)
-
-    spike_engine, spike_annotator = get_spike_objects()
-
-    patterns = [x['spike_query'] for x in get_relations_data(args.spike_patterns)]
-
+def count_patterns(patterns: List[str], spike_engine, spike_annotator):
     data_dic = defaultdict(int)
     # The following code is slightly complicated due to the continuation token option, which allows to reset the
     #  iterator which is connected to spike, to avoid connection issues.
@@ -60,18 +47,39 @@ def main():
         more_results = True
         count = 0
         continuation_token = None
-        query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''))
+        query_pattern = pattern.replace('[w={}]', '')
+        query_match = construct_query(spike_engine, spike_annotator, query_pattern)
         while more_results:
             try:
                 for r in tqdm(query_match):
                     continuation_token = r.continuation_token
                     count += 1
                 more_results = False
-            except (ConnectionResetError, RequestException) as connection_error:
-                query_match = construct_query(spike_engine, spike_annotator, pattern.replace('[w={}]', ''),
+            except (ConnectionResetError, RequestException):
+                query_match = construct_query(spike_engine, spike_annotator, query_pattern,
                                               continuation=continuation_token)
-
+            if continuation_token is None:
+                more_results = False
         data_dic[pattern] = count
+
+    return data_dic
+
+
+def main():
+    parse = argparse.ArgumentParser("")
+    parse.add_argument("-spike_patterns", "--spike_patterns", type=str, help="pattern file",
+                       default="data/pattern_data/parsed/P449.jsonl")
+    parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
+                       default="data/output/spike_results/pattern_counts/P449.json")
+
+    args = parse.parse_args()
+    log_wandb(args)
+
+    spike_engine, spike_annotator = get_spike_objects()
+
+    patterns = [x['spike_query'] for x in get_relations_data(args.spike_patterns)]
+
+    data_dic = count_patterns(patterns, spike_engine, spike_annotator)
 
     for pattern, count in data_dic.items():
         print('pattern: {}. count: {}'.format(pattern, count))
@@ -80,7 +88,7 @@ def main():
     for pattern, count in data_dic.items():
         table.add_data(pattern, count)
     wandb.log({"patterns_results": table})
-
+    wandb.run.summary['n_patterns'] = len(patterns)
     dump_json(data_dic, args.spike_results)
 
 
