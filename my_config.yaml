@@ -1,6 +1,6 @@
 wiki:
-   index_url: http://34.107.112.153:8000
-   annotator_url: https://spike-annotation.en.apps.allenai.org
-   expansion_graph_representation: universal-basic
-   annotator_propagate_coref_info: false
-   frigg: true
+  index_url: https://frigg.frigg-wikipedia.apps.allenai.org
+  annotator_url: https://spike-annotation.en.apps.allenai.org
+  matching_graph_representation: universal-enhanced
+  expansion_graph_representation: universal-basic
+  annotator_propagate_coref_info: false
