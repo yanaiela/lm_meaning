@@ -21,6 +21,7 @@ def log_wandb(args):
     )
 
     wandb.init(
+        entity='consistency',
         name=f'{pattern}_spike_lemma_preference',
         project="memorization",
         tags=["spike", pattern, 'preference'],
@@ -73,12 +74,11 @@ def construct_token_spike_query(lemma: List[str], lemma_first: bool, object_list
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-data_file", "--data_file", type=str, help="pattern file",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/trex/data/TREx/P19.jsonl")
+                       default="data/trex/data/TREx/P19.jsonl")
     parse.add_argument("-paraphrases_file", "--paraphrases_file", type=str, help="patterns file from LAMA",
                        default="data/pattern_data/P19.tsv")
     parse.add_argument("-spike_results", "--spike_results", type=str, help="output file to store queries results",
-                       default="/home/lazary/workspace/thesis/lm_meaning/data/output/spike_results/lemma_preferences/"
-                               "P19.json")
+                       default="data/output/spike_results/lemma_preferences/P19.json")
 
     args = parse.parse_args()
     log_wandb(args)
@@ -118,7 +118,7 @@ def main():
 
                     obj_counts[obj] += 1
                 more_results = False
-            except (ConnectionResetError, RequestException) as connection_error:
+            except (ConnectionResetError, RequestException):
                 query_match = get_token_results(spike_engine, spike_annotator, spike_query, continuation_token)
 
         patterns_lemmas_cooccurrences['_SEP_'.join([pattern, lemma, str(lemma_first)])] = obj_counts
