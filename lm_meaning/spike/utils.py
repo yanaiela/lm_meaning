@@ -11,7 +11,7 @@ from spike.search.data_set_connections import get_data_sets_connections
 from spike.search.engine import MatchEngine
 from spike.search.expansion.types import Span
 from spike.search.queries.common.match import SearchMatch
-from spike.search.queries.structured.compilation import extract_scaffolding_from_query_text
+# from spike.search.queries.structured.compilation import extract_scaffolding_from_query_text
 
 
 def get_spike_objects(config_path: str = './my_config.yaml') -> (MatchEngine, Annotator):
