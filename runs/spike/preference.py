@@ -34,6 +34,6 @@ if __name__ == '__main__':
                                   f'data/output/spike_results/preferences/{relation_id}.json'
                                   ])
 
-    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/core'
+    parallelize(nodes, cartesian_product, '/home/nlp/lazary/workspace/thesis/lm_meaning/runs/spike'
                                           '/preference.sh',
                 on_gpu=False, dry_run=args.dry_run)
