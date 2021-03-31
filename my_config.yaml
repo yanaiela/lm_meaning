@@ -1,5 +1,5 @@
 wiki:
-  index_url: https://frigg.frigg-wikipedia.apps.allenai.org
+  index_url: http://35.246.221.26:8000
   annotator_url: https://spike-annotation.en.apps.allenai.org
   matching_graph_representation: universal-enhanced
   expansion_graph_representation: universal-basic
