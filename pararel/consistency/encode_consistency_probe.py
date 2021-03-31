@@ -13,7 +13,7 @@ from pararel.consistency.utils import read_jsonl_file, read_graph
 
 
 def log_wandb(args):
-    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    pattern = args.data_file.split('/')[-1].split('.')[0]
     lm = args.lm
 
     if args.baseline:
@@ -361,8 +361,6 @@ def create_majority_baseline(data):
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("--lm", type=str, help="name of the used masked language model", default="bert-base-uncased")
-    parse.add_argument("--patterns_file", type=str, help="Path to templates for each prompt",
-                       default="data/pattern_data/parsed")
     parse.add_argument("--data_file", type=str, help="", default="data/trex_lms_vocab/P449.jsonl")
     parse.add_argument("-graph", "--graph", type=str, help="graph file",
                        default="data/pattern_data/graphs/P449.graph")
@@ -442,7 +440,7 @@ def main():
 
     if 'models' in model_name or 'nyu' in model_name:
         model_name = model_name.replace('/', '_')
-    pattern = args.patterns_file.split('/')[-1].split('.')[0]
+    pattern = args.data_file.split('/')[-1].split('.')[0]
     with open('data/output/predictions_lm/trex_lms_vocab/{}_{}.json'.format(pattern, model_name), 'w') as f:
         json.dump(lm_results, f)
 
