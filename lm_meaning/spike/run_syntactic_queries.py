@@ -24,7 +24,7 @@ def log_wandb(args):
 
     wandb.init(
         entity='consistency',
-        name=f'{pattern}_paraphrase_queries',
+        name=f'{pattern}_spike_patterns',
         project="memorization",
         tags=["spike", pattern, 'paraphrases'],
         config=config,
