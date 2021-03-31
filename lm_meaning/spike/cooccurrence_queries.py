@@ -102,6 +102,11 @@ def get_cooccurrences(subjects: List[str], objects: List[str], spike_engine) -> 
         try:
             for match in tqdm(query_match):
                 continuation_token = match.continuation_token
+
+                # Filtering cases where the object is a subset of the subject, and the result returned the object
+                # as a sub-span of the subject (as opposed to a subset string in a different location)
+                if match.captures['subject'].last >= match.captures['object'].first >= match.captures['subject'].first:
+                    continue
                 obj = ' '.join(match.sentence.words[match.captures['object'].first: match.captures['object'].last + 1])
                 subj = ' '.join(
                     match.sentence.words[match.captures['subject'].first: match.captures['subject'].last + 1])
