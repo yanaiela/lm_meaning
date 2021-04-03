@@ -9,8 +9,8 @@ import wandb
 from requests.exceptions import RequestException
 from tqdm import tqdm
 
-from lm_meaning.spike.preference_queries import get_token_results
-from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json
+from memorization.spike.preference_queries import get_token_results
+from memorization.spike import get_spike_objects, get_relations_data, dump_json
 
 
 def log_wandb(args):

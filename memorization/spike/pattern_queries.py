@@ -10,7 +10,7 @@ from spike.integration.odinson.common import OdinsonContinuationToken
 
 from tqdm import tqdm
 import wandb
-from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json
+from memorization.spike import get_spike_objects, get_relations_data, dump_json
 
 
 def log_wandb(args):

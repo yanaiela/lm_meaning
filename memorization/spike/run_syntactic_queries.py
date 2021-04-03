@@ -12,7 +12,7 @@ from spike.search.queries.q import StructuredSearchQuery
 from spike.spacywrapper.annotator import SpacyAnnotator
 from tqdm import tqdm
 
-from lm_meaning.spike.utils import get_spike_objects, get_relations_data, dump_json, enclose_entities
+from memorization.spike import get_spike_objects, get_relations_data, dump_json, enclose_entities
 
 
 def log_wandb(args):
