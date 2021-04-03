@@ -76,6 +76,9 @@ def construct_token_spike_query(pattern: str) -> str:
 
         elif tokens[i] == '.':
             continue
+        # temporarily workaround to bug in spike that doesn't handle : backticks well
+        elif tokens[i] == ':':
+            spike_tokens.append('[`:`]')
         else:
             spike_tokens.append(f'{tokens[i]}')
 
