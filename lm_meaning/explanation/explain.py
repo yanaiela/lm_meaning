@@ -16,11 +16,11 @@ def get_items(memorization_data: Dict):
 
 def get_lm_preds(lm_preds):
     pred_dic = {}
-    for data, preds in zip(lm_preds['data'], lm_preds['predictions']):
-        subj = data['sub_label']
-        obj = data['obj_label']
+    for subj, (pred, obj) in lm_preds.items():
+        # subj = data['sub_label']
+        # obj = data['obj_label']
         key = '_'.join([subj, obj])
-        if preds[0]['token_str'] == obj:
+        if pred == obj:
             pred_dic[key] = True
         else:
             pred_dic[key] = False
@@ -47,7 +47,8 @@ def get_subj_obj_cooccurence_dic(cooccurence_data: Dict):
     return subj_obj_dic
 
 
-def explain_cooccurrences(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple], min_count_cooccurrence=False):
+def explain_cooccurrences(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple], lm_predictions,
+                          min_count_cooccurrence=False):
     subj_obj_dic = get_subj_obj_cooccurence_dic(cooccurence_data)
 
     dic = {}
@@ -63,7 +64,8 @@ def explain_cooccurrences(cooccurence_data: Dict, min_count: int, tuples_data: L
             else:
                 obj_counts = subj_obj_dic[subj]
                 biggest_obj, count = max(obj_counts.items(), key=operator.itemgetter(1))
-                if biggest_obj == obj:
+                if biggest_obj == lm_predictions[subj][0]:
+                # if biggest_obj == obj:
                     dic[f'{subj}_{obj}'] = {'cooccurences': count}
                 else:
                     dic[f'{subj}_{obj}'] = {'cooccurences': None}

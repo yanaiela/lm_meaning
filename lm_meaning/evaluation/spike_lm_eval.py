@@ -44,8 +44,17 @@ def parse_spike_results(spike_results: Dict) -> Dict:
     return output_dic
 
 
-def parse_lm_results(lm_results: Dict) -> Dict:
+def get_first_object(preds, possible_objects):
+    for row in preds:
+        token = row['token_str']
+        if token in possible_objects:
+            return token
+    return ''
+
+
+def parse_lm_results(lm_results: Dict, possible_objects: List[str]) -> Dict:
     output_dic = {}
+    c = 0
     for pattern, dic in lm_results.items():
         for data, preds in zip(dic['data'], dic['predictions']):
             subj = data['sub_label']
@@ -53,8 +62,13 @@ def parse_lm_results(lm_results: Dict) -> Dict:
             key = '_SPLIT_'.join([subj, obj])
             if key not in output_dic:
                 output_dic[key] = []
-            if preds[0]['token_str'] == obj:
+            first_object = get_first_object(preds, possible_objects)
+            if first_object == obj:
                 output_dic[key].append(pattern)
+            if first_object == '':
+                c += 1
+    print('number of empties:', c)
+    print('out of:', len(lm_results) * len(list(lm_results.values())[0]['data']))
     return output_dic
 
 
@@ -68,16 +82,23 @@ def analyze_results(lm_results: Dict, spike_results: Dict, spike2lm: Dict) -> No
     spike_sucess = []
     lm_success = []
 
+    all_patterns = spike2lm.values()
+    # all_patterns = list(set([x for xx in list(spike_results.values()) for x in xx]))
+    # all_patterns = [spike2lm[x] for x in all_patterns]
+    # print('len all used patterns:', len(all_patterns))
+
     # Going over all the subj-obj pairs
     for key, vals in spike_results.items():
         if len(vals) > 0:
             spike_acc += 1
 
+            # going over all the patterns that spike detected (= appeared in wikipedia)
             for spike_pattern in vals:
-                # spike_sucess.append(1)
-                for lm_pattern in spike2lm.values():
+
+                # going over all the patterns
+                for pattern in all_patterns:
                     # in case the lm pattern was also found in wikipedia (with the spike patter), ignore
-                    if lm2spike[lm_pattern] in vals and spike2lm[spike_pattern] != lm_pattern:
+                    if lm2spike[pattern] in vals and spike2lm[spike_pattern] != pattern:
                         continue
 
                     # counting if the "base pattern" is successfully predicted by the LM
@@ -87,23 +108,25 @@ def analyze_results(lm_results: Dict, spike_results: Dict, spike2lm: Dict) -> No
                         spike_sucess.append(0)
 
                     # counting
-                    if lm_pattern in lm_results[key]:
+                    if pattern in lm_results[key]:
                         lm_success.append(1)
                     else:
                         lm_success.append(0)
 
-            if len(lm_results[key]) > 0:
-                print(key, 'spike:', [spike2lm[x] for x in vals], 'lm:', lm_results[key])
+            # if len(lm_results[key]) > 0:
+            #     print(key, 'spike:', [spike2lm[x] for x in vals], 'lm:', lm_results[key])
         if len(lm_results[key]) > 0:
             lm_acc += 1
 
-    wandb.run.summary['spike_acc'] = spike_acc / len(spike_results)
-    wandb.run.summary['lm_acc'] = lm_acc / len(lm_results)
-
-    if sum(spike_sucess) == 0 or sum(lm_success) == 0:
-        wandb.run.summary['pval'] = -1
-        return
-    wandb.run.summary['pval'] = wilcoxon(spike_sucess, lm_success, alternative='greater').pvalue
+    # wandb.run.summary['spike_acc'] = spike_acc / len(spike_results)
+    # wandb.run.summary['lm_acc'] = lm_acc / len(lm_results)
+    #
+    # if sum(spike_sucess) == 0 or sum(lm_success) == 0:
+    #     wandb.run.summary['pval'] = -1
+    #     return
+    # wandb.run.summary['pval'] = wilcoxon(spike_sucess, lm_success, alternative='greater').pvalue
+    print(lm_success[100:140])
+    print(spike_sucess[100:140])
 
     print('lm acc: {}'.format(lm_acc / len(lm_results)))
     print('spike acc: {}'.format(spike_acc / len(spike_results)))
@@ -122,7 +145,7 @@ def main():
                        default="data/spike_patterns/P449.txt")
 
     args = parse.parse_args()
-    log_wandb(args)
+    # log_wandb(args)
 
     lm_patterns = [x['pattern'] for x in read_jsonline_file(args.spike_patterns)]
     spike_patterns = [x['spike_query'] for x in read_jsonline_file(args.spike_patterns)]
@@ -131,7 +154,9 @@ def main():
     lm_raw_results = read_json_file(args.lm_file)
     spike_raw_results = read_json_file(args.spike_file)
 
-    lm_results = parse_lm_results(lm_raw_results)
+    all_objects = list(spike_raw_results.keys())
+
+    lm_results = parse_lm_results(lm_raw_results, all_objects)
     spike_results = parse_spike_results(spike_raw_results)
 
     analyze_results(lm_results, spike_results, spike2lm)
