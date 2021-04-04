@@ -62,7 +62,7 @@ if __name__ == '__main__':
             cartesian_product.append([f'data/trex/data/TREx/{relation_id}.jsonl',
                                       encoder,
                                       f'data/unpattern_data/{relation_id}.jsonl',
-                                      f'data/output/predictions_lm/bert_lama_unpatterns/{encoder}_{relation_id}.json'
+                                      f'data/output/predictions_lm/bert_lama_unpatterns/{relation_id}_{encoder}.json'
                                       ])
 
     parallelize(nodes, cartesian_product,
