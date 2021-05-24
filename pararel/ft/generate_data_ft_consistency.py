@@ -11,7 +11,10 @@ def generate_data(num_relations, num_tuples, relations_given, LAMA_path):
 
     graph_path = "data/pattern_data/graphs_tense/"
     relations_path = glob.glob(graph_path + "*.graph")
-    output_path = "data/pararel/ft/"
+    output_path = "pararel/ft/data/"
+    if not os.path.exists(output_path):
+        os.mkdir(output_path)
+
 
     random.shuffle(relations_path)
     relation_path_keep = []
@@ -20,6 +23,7 @@ def generate_data(num_relations, num_tuples, relations_given, LAMA_path):
         for relation_path in relations_path:
             relation = relation_path.split("/")[-1].split(".")[0]
             if relation in relations_given.split(","):
+                print(relation)
                 relation_path_keep.append(relation_path)
                 metadata += relation
                 metadata += "-"
@@ -70,7 +74,6 @@ def generate_data(num_relations, num_tuples, relations_given, LAMA_path):
             f_true.write("\n")
 
             if i >= num_tuples:
-                print(i)
                 break
 
         f_true.close()
@@ -82,7 +85,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--num_relations', '-nr', type=int, default=3, help='number of relations')
     parser.add_argument('--num_tuples', '-nt', type=int, default=100, help='number of tuples')
-    parser.add_argument('--relations_given', '-r', type=str, default="", help='which relations')
+    parser.add_argument('--relations_given', '-r', type=str, default="P138,P449,P37", help='which relations')
     parser.add_argument('--LAMA_path', '-lama', type=str,
                         default="/mounts/data/proj/kassner/lm_meaning/data/trex_lms_vocab/", help='number of tuples')
 

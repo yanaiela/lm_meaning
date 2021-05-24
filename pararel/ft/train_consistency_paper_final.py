@@ -26,7 +26,6 @@ from transformers import (
     get_linear_schedule_with_warmup
 )
 
-from lm_meaning import utils
 from pararel.consistency import utils
 
 logger = logging.getLogger(__name__)
@@ -345,7 +344,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
                 continue
-
+            print(len(train_dataset_wiki))
             if len(train_dataset_wiki) > 0:
                 for _ in range(args.num_wiki_steps):
                     batch_mlm = next(iter(train_dataloader_wiki))
