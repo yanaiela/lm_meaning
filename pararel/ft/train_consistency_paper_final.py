@@ -1,23 +1,21 @@
 import argparse
+from datetime import datetime
 import glob
-import json
+from itertools import permutations, combinations
 import logging
+import numpy as np
 import os
 import pickle
 import random
 import re
 import shutil
-from datetime import datetime
-from itertools import permutations, combinations
-from pathlib import Path
-from typing import Dict, List, Tuple
-
-import numpy as np
 import torch
 from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import DataLoader, Dataset, RandomSampler
 import torch.nn.functional as F
 from tqdm import tqdm, trange
+from typing import List, Tuple
+
 from transformers import (
     BertConfig,
     BertForMaskedLM,
@@ -29,6 +27,7 @@ from transformers import (
 )
 
 from lm_meaning import utils
+from pararel.consistency import utils
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +37,7 @@ class TextDataset(Dataset):
         assert os.path.isfile(file_path)
         directory, filename = os.path.split(file_path)
         cached_features_file = os.path.join(directory, 'cached_lm_' + str(block_size) + '_' + filename)
-        print(cached_features_file)
+
         if os.path.exists(cached_features_file):
             logger.info("Loading features from cached file %s", cached_features_file)
             with open(cached_features_file, 'rb') as handle:
@@ -52,10 +51,10 @@ class TextDataset(Dataset):
 
             tokenized_text = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(text))
 
-            for i in range(0, len(tokenized_text)-block_size+1, block_size): # Truncate in block of block_size
-                self.examples.append(tokenizer.build_inputs_with_special_tokens(tokenized_text[i:i+block_size]))
+            for i in range(0, len(tokenized_text) - block_size + 1, block_size):  # Truncate in block of block_size
+                self.examples.append(tokenizer.build_inputs_with_special_tokens(tokenized_text[i:i + block_size]))
             # Note that we are loosing the last truncated example here for the sake of simplicity (no padding)
-            # If your dataset is small, first you should loook for a bigger one :-) and second you
+            # If your dataset is small, first you should look for a bigger one :-) and second you
             # can change this behavior by adding (model specific) padding.
 
             logger.info("Saving features into cached file %s", cached_features_file)
@@ -88,16 +87,17 @@ class LineByLineTextDataset(Dataset):
             logger.info("Creating features from datasets file at %s", directory)
             with open(file_path, encoding="utf-8") as f:
                 for i, line in enumerate(f.read().splitlines()):
-                    if line =="":
+                    if line == "":
                         break
             self.num_nodes = i
 
             with open(file_path, encoding="utf-8") as f:
                 lines = [line for line in f.read().splitlines() if (len(line) > 0 and not line.isspace())]
 
-            lines = tokenizer.batch_encode_plus(lines, add_special_tokens=True, padding=True, max_length=block_size)["input_ids"]
+            lines = tokenizer.batch_encode_plus(lines, add_special_tokens=True, padding=True, max_length=block_size)[
+                "input_ids"]
             lines = np.array(lines)
-            lines = lines.reshape(int(lines.shape[0]/self.num_nodes), self.num_nodes, lines.shape[1])
+            lines = lines.reshape(int(lines.shape[0] / self.num_nodes), self.num_nodes, lines.shape[1])
 
             self.examples = lines
 
@@ -114,8 +114,10 @@ class LineByLineTextDataset(Dataset):
     def __num_nodes__(self):
         return self.examples[0].shape[1]
 
+
 def load_and_cache_examples(args, file_path, tokenizer):
     return LineByLineTextDataset(tokenizer, args, file_path=file_path, block_size=args.block_size)
+
 
 def load_and_cache_examples_wikipedia(args, file_path, tokenizer):
     return TextDataset(tokenizer, args, file_path=file_path, block_size=args.block_size)
@@ -140,7 +142,7 @@ def _sorted_checkpoints(args, checkpoint_prefix="checkpoint", use_mtime=False) -
         else:
             regex_match = re.match(".*{}-([0-9]+)".format(checkpoint_prefix), path)
             if regex_match and regex_match.groups():
-               ordering_and_checkpoint_path.append((int(regex_match.groups()[0]), path))
+                ordering_and_checkpoint_path.append((int(regex_match.groups()[0]), path))
 
     checkpoints_sorted = sorted(ordering_and_checkpoint_path)
     checkpoints_sorted = [checkpoint[1] for checkpoint in checkpoints_sorted]
@@ -170,11 +172,13 @@ def mask_tokens(inputs: torch.Tensor, tokenizer: PreTrainedTokenizer, args) -> T
 
     if tokenizer.mask_token is None:
         raise ValueError(
-            "This tokenizer does not have a mask token which is necessary for masked language modeling. Remove the --mlm flag if you want to use this tokenizer."
+            "This tokenizer does not have a mask token which is necessary for masked language modeling. Remove the "
+            "--mlm flag if you want to use this tokenizer. "
         )
 
     labels = inputs.clone()
-    # We sample a few tokens in each sequence for masked-LM training (with probability args.mlm_probability defaults to 0.15 in Bert/RoBERTa)
+    # We sample a few tokens in each sequence for masked-LM training (with probability args.mlm_probability defaults
+    # to 0.15 in Bert/RoBERTa)
     probability_matrix = torch.full(labels.shape, args.mlm_probability)
     special_tokens_mask = [
         tokenizer.get_special_tokens_mask(val, already_has_special_tokens=True) for val in labels.tolist()
@@ -204,31 +208,17 @@ def reshape_batch(inputs: torch.Tensor, tokenizer: PreTrainedTokenizer, args) ->
 
     if tokenizer.mask_token is None:
         raise ValueError(
-            "This tokenizer does not have a mask token which is necessary for masked language modeling. Remove the --mlm flag if you want to use this tokenizer."
+            "This tokenizer does not have a mask token which is necessary for masked language modeling. Remove the "
+            "--mlm flag if you want to use this tokenizer. "
         )
     num_nodes = inputs.shape[1]
-    inputs = torch.reshape(inputs, (num_nodes*inputs.shape[0], inputs.shape[2]))
+    inputs = torch.reshape(inputs, (num_nodes * inputs.shape[0], inputs.shape[2]))
 
     inputs = inputs.to(args.device)
-    masked_idcs = torch.where(inputs==tokenizer.convert_tokens_to_ids(tokenizer.mask_token))
-    """indices_replace_y = indices_replace_y - 2
-    inputs[indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
-
-    inputs = inputs.to(args.device)
-    outputs = model(inputs)
-    predicted_index = torch.argmax(outputs[0][indices_replace_x, indices_replace_y], 1)
-
-    labels = inputs[:, 1].clone()
-    labels.to(args.device)
-    indices_replace_x, indices_replace_y = torch.where(inputs[:,1]==tokenizer.convert_tokens_to_ids("[SEP]"))
-    indices_replace_y = indices_replace_y - 2
-    inputs[:,1][indices_replace_x, indices_replace_y] = tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
-    masked_indices = inputs[:,1] == tokenizer.convert_tokens_to_ids(tokenizer.mask_token)
-
-    labels[~masked_indices] = -100  # We only compute loss on masked tokens
-    labels[masked_indices] = predicted_index"""
+    masked_idcs = torch.where(inputs == tokenizer.convert_tokens_to_ids(tokenizer.mask_token))
 
     return inputs, num_nodes, masked_idcs
+
 
 def train_mlm(batch, model, optimizer, tokenizer, args, step):
     inputs, labels = mask_tokens(batch, tokenizer, args)
@@ -253,13 +243,12 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
         if (step + 1) % args.gradient_accumulation_steps == 0:
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
-            #scheduler.step()  # Update learning rate schedule
+            # scheduler.step()  # Update learning rate schedule
             model.zero_grad()
 
 
-
-
-def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, candidate_ids=[], train_dataset_LAMA=[], train_dataset_wiki=[]) -> Tuple[int, float]:
+def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, candidate_ids=[],
+          train_dataset_LAMA=[], train_dataset_wiki=[]) -> Tuple[int, float]:
     """ Train the model """
     current_time = datetime.now().strftime('%b%d_%H-%M-%S')
     """log_dir = os.path.join(config.output_dir, 'runs', args.relation,
@@ -275,20 +264,20 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for graph_data in train_dataset:
         num_nodes = graph_data.num_nodes
         train_dataloader.append(DataLoader(
-            graph_data, sampler=RandomSampler(graph_data), batch_size=args.batch_size, collate_fn=collate, drop_last=True
+            graph_data, sampler=RandomSampler(graph_data), batch_size=args.batch_size, collate_fn=collate,
+            drop_last=True
         ))
-    if len(train_dataset_LAMA)>0:
+    if len(train_dataset_LAMA) > 0:
         train_sampler = RandomSampler(train_dataset_LAMA)
 
         train_dataloader_LAMA = DataLoader(
-                train_dataset_LAMA, sampler=train_sampler, batch_size=args.batch_size_mlm, drop_last=True)
+            train_dataset_LAMA, sampler=train_sampler, batch_size=args.batch_size_mlm, drop_last=True)
 
-    if len(train_dataset_wiki)>0:
+    if len(train_dataset_wiki) > 0:
         train_sampler = RandomSampler(train_dataset_wiki)
 
         train_dataloader_wiki = DataLoader(
-                train_dataset_wiki, sampler=train_sampler, batch_size=args.batch_size_mlm, drop_last=True)
-
+            train_dataset_wiki, sampler=train_sampler, batch_size=args.batch_size_mlm, drop_last=True)
 
     t_total = len(train_dataloader[0]) // args.gradient_accumulation_steps * args.epochs
 
@@ -305,7 +294,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     scheduler = get_linear_schedule_with_warmup(
         optimizer, num_warmup_steps=args.warmup_steps, num_training_steps=t_total
     )
-
 
     if args.fp16:
         try:
@@ -358,12 +346,12 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 steps_trained_in_current_epoch -= 1
                 continue
 
-            if len(train_dataset_wiki)>0:
+            if len(train_dataset_wiki) > 0:
                 for _ in range(args.num_wiki_steps):
                     batch_mlm = next(iter(train_dataloader_wiki))
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
 
-            if len(train_dataset_LAMA)>0:
+            if len(train_dataset_LAMA) > 0:
                 for _ in range(args.num_LAMA_steps):
                     batch_mlm = next(iter(train_dataloader_LAMA))
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
@@ -373,22 +361,22 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 model.train()
 
                 outputs = model(batch, output_hidden_states=True)
-                if args.loss=="repcos":
+                if args.loss == "repcos":
                     logits = outputs[1][-1][masked_idcs]
                 else:
                     logits = outputs[0][masked_idcs]
-                if len(idcs_filter)>0:
+                if len(idcs_filter) > 0:
                     logits = logits[:, idcs_filter]
 
-                logits = torch.reshape(logits, (int(logits.shape[0]/num_nodes), num_nodes, logits.shape[1]))
+                logits = torch.reshape(logits, (int(logits.shape[0] / num_nodes), num_nodes, logits.shape[1]))
 
-                if args.loss =="kl":
+                if args.loss == "kl":
                     idcs_compare = np.array(list(permutations(np.arange(num_nodes), 2)))
 
                 elif "cos" in args.loss:
                     idcs_compare = np.array(list(combinations(np.arange(num_nodes), 2)))
-                idcs_first = torch.LongTensor(idcs_compare[:,0])
-                idcs_second = torch.LongTensor(idcs_compare[:,1])
+                idcs_first = torch.LongTensor(idcs_compare[:, 0])
+                idcs_second = torch.LongTensor(idcs_compare[:, 1])
                 idcs_first = idcs_first.to(args.device)
                 idcs_second = idcs_second.to(args.device)
 
@@ -397,14 +385,13 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 logits_first = logits_first.T
                 logits_second = logits_second.T
 
-                if args.loss =="kl":
+                if args.loss == "kl":
                     loss = F.kl_div(logits_first.log_softmax(0), logits_second.softmax(0), reduction='batchmean')
                 elif "cos" in args.loss:
                     target = torch.ones(logits_first.shape[-1])
                     target = target.to(args.device)
                     loss = F.cosine_embedding_loss(logits_first, logits_second, target)
-                loss = loss*args.loss_scaling
-
+                loss = loss * args.loss_scaling
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -436,7 +423,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 else:
                     loss.backward()
 
-
                 tr_loss += loss.item()
 
                 if (step + 1) % args.gradient_accumulation_steps == 0:
@@ -448,14 +434,14 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
             scheduler.step()  # Update learning rate schedule
             global_step += 1
-            print(global_step)
-            if global_step%int(len(epoch_iterator)/4)==0:
+
+            if global_step % int(len(epoch_iterator) / 4) == 0:
                 checkpoint_prefix = "checkpoint"
                 # Save model checkpoint
                 output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
                 os.makedirs(output_dir, exist_ok=True)
                 model_to_save = (
-                model.module if hasattr(model, "module") else model
+                    model.module if hasattr(model, "module") else model
                 )  # Take care of distributed/parallel training
                 model_to_save.save_pretrained(output_dir)
                 tokenizer.save_pretrained(output_dir)
@@ -557,56 +543,54 @@ def main():
     metadata += "_"
     metadata += args.lm
 
-    if args.loss=="kl":
+    if args.loss == "kl":
         metadata += "_dkl"
-    elif args.loss=="cos":
+    elif args.loss == "cos":
         metadata += "_cos"
-    elif args.loss=="repcos":
-       metadata+="_repcos"
+    elif args.loss == "repcos":
+        metadata += "_repcos"
 
     if args.candidate_set:
         metadata += "_typed"
     else:
         metadata += "_no-typed"
 
-
-    if args.mlm_wiki!="":
+    if args.mlm_wiki != "":
         metadata += "_wiki"
     else:
         metadata += "_no-wiki"
 
-
-    if args.mlm_LAMA!="":
+    if args.mlm_LAMA != "":
         metadata += "_lama_"
     else:
         metadata += "_no-lama_"
 
-    if args.mlm_wiki!="":
-        metadata+=str(args.num_wiki_steps)
+    if args.mlm_wiki != "":
+        metadata += str(args.num_wiki_steps)
     else:
-        metadata+="0"
+        metadata += "0"
 
-    metadata+="_"
-    metadata+=str(args.loss_scaling)
+    metadata += "_"
+    metadata += str(args.loss_scaling)
 
-    metadata+="_"
-    if args.mlm_LAMA!="":
-        metadata+=str(args.num_LAMA_steps)
+    metadata += "_"
+    if args.mlm_LAMA != "":
+        metadata += str(args.num_LAMA_steps)
     else:
-        metadata+="0"
+        metadata += "0"
 
     args.output_dir += metadata
     args.output_dir += "/"
-    print(args.output_dir)
+
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
-
 
     args.train_data_file = args.dataset_name
 
     if os.path.exists(args.output_dir) and os.listdir(args.output_dir) and not args.overwrite_output_dir:
         raise ValueError(
-            f"Output directory ({args.output_dir}) already exists and is not empty. Use --overwrite_output_dir to overcome."
+            f"Output directory ({args.output_dir}) already exists and is not empty. Use --overwrite_output_dir to "
+            f"overcome. "
         )
 
     # Setup CUDA, GPU & distributed training
@@ -620,7 +604,6 @@ def main():
         args.n_gpu = 1
     args.device = device
 
-
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
@@ -631,11 +614,12 @@ def main():
     set_seed(args)
 
     if args.local_rank not in [-1, 0]:
-        torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training download model & vocab
+        torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training download
+        # model & vocab
 
     # Load pretrained model and tokenizer
     tokenizer = BertTokenizer.from_pretrained(args.lm, use_fast=True)
-    
+
     candidate_ids = []
     for r in relations:
         candidate_ids.append([])
@@ -643,7 +627,6 @@ def main():
             data = utils.read_jsonl_file(args.LAMA_path + r + ".jsonl")
             for d in data:
                 candidate_ids[-1].append(tokenizer.vocab[d['obj_label']])
-
 
     if args.block_size <= 0:
         args.block_size = tokenizer.max_len
@@ -654,33 +637,32 @@ def main():
     model = BertForMaskedLM.from_pretrained(args.lm)
     model.to(args.device)
 
-
     if args.local_rank == 0:
-        torch.distributed.barrier()  # End of barrier to make sure only the first process in distributed training download model & vocab
+        torch.distributed.barrier()  # End of barrier to make sure only the first process in distributed training
+        # download model & vocab
     logger.info("Training/evaluation parameters %s", args)
 
-
-
     if args.local_rank not in [-1, 0]:
-        torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training process the dataset, and the others will use the cache
+        torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training process
+        # the dataset, and the others will use the cache
 
     train_dataset = []
     for r in relations:
-        graph_data = args.train_data_file + "train_" + r +  ".txt"
+        graph_data = args.train_data_file + "train_" + r + ".txt"
         train_dataset.append(LineByLineTextDataset(tokenizer, args, graph_data, block_size=args.block_size))
-
 
     train_dataset_LAMA = []
     train_dataset_wiki = []
-    if args.mlm_LAMA!="":
+    if args.mlm_LAMA != "":
         train_dataset_LAMA = TextDataset(tokenizer, args, args.mlm_LAMA, block_size=args.block_size)
-    if args.mlm_wiki!="":
+    if args.mlm_wiki != "":
         train_dataset_wiki = TextDataset(tokenizer, args, args.mlm_wiki, block_size=args.block_size)
     if args.local_rank == 0:
         torch.distributed.barrier()
 
     # train
-    global_step, tr_loss = train(args, train_dataset, model, tokenizer, candidate_ids, train_dataset_LAMA, train_dataset_wiki)
+    global_step, tr_loss = train(args, train_dataset, model, tokenizer, candidate_ids, train_dataset_LAMA,
+                                 train_dataset_wiki)
     logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
 
     # Saving best-practices: if you use save_pretrained for the model and tokenizer, you can reload them using
