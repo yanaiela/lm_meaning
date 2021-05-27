@@ -340,6 +340,8 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(list(zip(*train_dataloader)), desc="Iteration", disable=False)
         for step, batches in enumerate(epoch_iterator):
+            print(step)
+            print("batches", len(batches))
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
@@ -356,6 +358,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
 
             for batch, idcs_filter in zip(batches, candidate_ids):
+                print("batch", len(batch))
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
                 model.train()
 
@@ -403,7 +406,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 else:
                     loss.backward()
 
-                batch_mlm = next(iter(train_dataloader_wiki))
+                """batch_mlm = next(iter(train_dataloader_wiki))
                 inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
 
                 inputs = inputs.to(args.device)
@@ -420,7 +423,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     with amp.scale_loss(loss, optimizer) as scaled_loss:
                         scaled_loss.backward()
                 else:
-                    loss.backward()
+                    loss.backward()"""
 
                 tr_loss += loss.item()
 
@@ -428,13 +431,13 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                     optimizer.step()
                     model.zero_grad()
-                for additional in range(10):
+                """for additional in range(10):
                     batch_mlm = next(iter(train_dataloader_wiki))
-                    train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
+                    train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)"""
             scheduler.step()  # Update learning rate schedule
             global_step += 1
 
-            if global_step % int(len(epoch_iterator) / 4) == 0:
+            if global_step % int(len(epoch_iterator) / 2) == 0:
                 checkpoint_prefix = "checkpoint"
                 # Save model checkpoint
                 output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, global_step))
@@ -538,7 +541,7 @@ def main():
 
     metadata = args.dataset_name.split("/")[-2]
     relations = metadata.split("_")[-1].split("-")
-    metadata = metadata.split("_")[0]
+    # metadata = metadata.split("_")[0]
     metadata += "_"
     metadata += args.lm
 
