@@ -346,7 +346,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
                 continue
-            print(len(train_dataset_wiki))
+
             if len(train_dataset_wiki) > 0:
                 for _ in range(args.num_wiki_steps):
                     batch_mlm = next(iter(train_dataloader_wiki))
@@ -431,9 +431,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                     optimizer.step()
                     model.zero_grad()
-                """for additional in range(10):
-                    batch_mlm = next(iter(train_dataloader_wiki))
-                    train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)"""
             scheduler.step()  # Update learning rate schedule
             global_step += 1
 
