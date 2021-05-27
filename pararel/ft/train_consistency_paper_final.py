@@ -239,11 +239,11 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
             scaled_loss.backward()
     else:
         loss.backward()
-        if (step + 1) % args.gradient_accumulation_steps == 0:
+        """if (step + 1) % args.gradient_accumulation_steps == 0:
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
             # scheduler.step()  # Update learning rate schedule
-            model.zero_grad()
+            model.zero_grad()"""
 
 
 def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, candidate_ids=[],
