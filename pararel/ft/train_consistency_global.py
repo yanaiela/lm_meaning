@@ -302,7 +302,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(list(zip(*train_dataloader)), desc="Iteration", disable=False)
         for step, batches in enumerate(epoch_iterator):
-            print(batches)
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
@@ -334,8 +333,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
             if len(train_dataset_LAMA) > 0:
                 for _ in range(args.num_LAMA_steps):
                     batch_mlm = next(iter(train_dataloader_LAMA))
-                    print("mlm", batch_mlm)
-                    input("")
                     inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
                     inputs = inputs.to(args.device)
                     labels = labels.to(args.device)
@@ -356,10 +353,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         loss.backward()
 
             for batch, idcs_filter in zip(batches, candidate_ids):
-                print("batch", batch)
-                input("")
-                print("idcs", idcs_filter)
-                input("")
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
 
                 model.train()
