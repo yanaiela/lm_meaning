@@ -357,7 +357,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 model.train()
 
                 outputs = model(batch, output_hidden_states=True)
-                print("output", outputs)
+                #print("output", outputs)
                 if args.loss == "repcos":
                     logits = outputs[1][-1][masked_idcs]
                 else:
@@ -404,10 +404,10 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 
                 tr_loss += loss.item()
 
-                if (step + 1) % args.gradient_accumulation_steps == 0:
-                    torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-                    optimizer.step()
-                    model.zero_grad()
+            if (step + 1) % args.gradient_accumulation_steps == 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                optimizer.step()
+                model.zero_grad()
             scheduler.step()  # Update learning rate schedule
             global_step += 1
 
