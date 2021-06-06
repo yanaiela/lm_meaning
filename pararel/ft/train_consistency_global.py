@@ -331,9 +331,11 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     else:
                         loss.backward()
 
-            if len(train_dataset_LAMA)>0:
+            if len(train_dataset_LAMA) > 0:
                 for _ in range(args.num_LAMA_steps):
                     batch_mlm = next(iter(train_dataloader_LAMA))
+                    print("mlm", batch_mlm)
+                    input("")
                     inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
                     inputs = inputs.to(args.device)
                     labels = labels.to(args.device)
@@ -354,7 +356,10 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         loss.backward()
 
             for batch, idcs_filter in zip(batches, candidate_ids):
-                print(batch)
+                print("batch", batch)
+                input("")
+                print("idcs", idcs_filter)
+                input("")
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
 
                 model.train()
