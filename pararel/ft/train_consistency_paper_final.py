@@ -389,7 +389,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     target = target.to(args.device)
                     loss = F.cosine_embedding_loss(logits_first, logits_second, target)
                 loss = loss * args.loss_scaling
-                print("loss lama", loss)
+                # print("loss lama", loss)
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training
