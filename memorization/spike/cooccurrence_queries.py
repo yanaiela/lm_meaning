@@ -7,7 +7,7 @@ from tqdm import tqdm
 import wandb
 from spike.search.queries.q import BooleanSearchQuery
 from typing import List, Iterator, Optional, Dict, Tuple
-from memorization.spike import get_relations_data, dump_json, get_spike_objects, enclose_entities
+from memorization.spike.utils import get_relations_data, dump_json, get_spike_objects, enclose_entities
 from spike.search.engine import MatchEngine
 from spike.search.queries.common.match import SearchMatch
 from spike.integration.odinson.common import OdinsonContinuationToken
