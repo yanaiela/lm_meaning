@@ -239,11 +239,6 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
             scaled_loss.backward()
     else:
         loss.backward()
-        """if (step + 1) % args.gradient_accumulation_steps == 0:
-            torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-            optimizer.step()
-            # scheduler.step()  # Update learning rate schedule
-            model.zero_grad()"""
 
 
 def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, candidate_ids=[],
@@ -340,8 +335,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(list(zip(*train_dataloader)), desc="Iteration", disable=False)
         for step, batches in enumerate(epoch_iterator):
-            print(step)
-            print("batches", len(batches))
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
