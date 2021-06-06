@@ -228,9 +228,9 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
         train_dataloader.append(DataLoader(
             graph_data, sampler=RandomSampler(graph_data), batch_size=args.batch_size, collate_fn=collate, drop_last=True
         ))
-    if len(train_dataset_LAMA)>0:
+    if len(train_dataset_LAMA) > 0:
         train_sampler = RandomSampler(train_dataset_LAMA)
-
+        print()
         train_dataloader_LAMA = DataLoader(
                 train_dataset_LAMA, sampler=train_sampler, batch_size=args.batch_size_mlm)
 
