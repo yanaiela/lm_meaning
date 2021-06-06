@@ -348,15 +348,9 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
             if len(train_dataset_LAMA) > 0:
                 for _ in range(args.num_LAMA_steps):
                     batch_mlm = next(iter(train_dataloader_LAMA))
-                    print("mlm", batch_mlm)
-                    input("")
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
 
             for batch, idcs_filter in zip(batches, candidate_ids):
-                print("batch", batch)
-                input("")
-                print("idcs", idcs_filter)
-                input("")
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
                 model.train()
 
@@ -403,25 +397,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         scaled_loss.backward()
                 else:
                     loss.backward()
-
-                """batch_mlm = next(iter(train_dataloader_wiki))
-                inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
-
-                inputs = inputs.to(args.device)
-                labels = labels.to(args.device)
-
-                outputs = model(inputs, masked_lm_labels=labels)
-                loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
-                if args.n_gpu > 1:
-                    loss = loss.mean()  # mean() to average on multi-gpu parallel training
-                if args.gradient_accumulation_steps > 1:
-                    loss = loss / args.gradient_accumulation_steps
-
-                if args.fp16:
-                    with amp.scale_loss(loss, optimizer) as scaled_loss:
-                        scaled_loss.backward()
-                else:
-                    loss.backward()"""
 
                 tr_loss += loss.item()
 
