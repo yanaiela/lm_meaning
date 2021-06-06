@@ -228,6 +228,7 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
     model.train()
     outputs = model(inputs, masked_lm_labels=labels)
     loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+    print("loss", loss)
 
     if args.n_gpu > 1:
         loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -351,10 +352,12 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
 
             for batch, idcs_filter in zip(batches, candidate_ids):
+                print("idcs", idcs_filter)
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
                 model.train()
 
                 outputs = model(batch, output_hidden_states=True)
+                print("output", outputs)
                 if args.loss == "repcos":
                     logits = outputs[1][-1][masked_idcs]
                 else:
@@ -386,6 +389,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     target = target.to(args.device)
                     loss = F.cosine_embedding_loss(logits_first, logits_second, target)
                 loss = loss * args.loss_scaling
+                print("loss lama", loss)
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training

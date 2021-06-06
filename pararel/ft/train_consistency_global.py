@@ -340,7 +340,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     model.train()
                     outputs = model(inputs, masked_lm_labels=labels)
                     loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
-
+                    print("loss", loss)
                     if args.n_gpu > 1:
                         loss = loss.mean()  # mean() to average on multi-gpu parallel training
                     if args.gradient_accumulation_steps > 1:
@@ -353,6 +353,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                         loss.backward()
 
             for batch, idcs_filter in zip(batches, candidate_ids):
+                print("idcs", idcs_filter)
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
 
                 model.train()
@@ -387,6 +388,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     target = target.to(args.device)
                     loss = F.cosine_embedding_loss(logits_first, logits_second, target)
                 loss = loss*args.loss_scaling
+                print("loss lama", loss)
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -476,6 +478,7 @@ def main():
     parser.add_argument("--adam_epsilon", default=1e-8, type=float, help="Epsilon for Adam optimizer.")
     parser.add_argument("--max_grad_norm", default=1.0, type=float, help="Max gradient norm.")
     parser.add_argument("--warmup_steps", default=0, type=int, help="Linear warmup over warmup_steps.")
+
     parser.add_argument(
         "--save_total_limit",
         type=int,
