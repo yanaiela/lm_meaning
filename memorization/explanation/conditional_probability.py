@@ -7,11 +7,7 @@ from lm_meaning.explanation.explain import get_lm_preds, get_items, get_subj_obj
 from pararel.consistency.utils import read_json_file, read_jsonl_file
 
 memorization_dir = 'data/output/spike_results/paraphrases/'
-# paraphrases_dir = 'data/pattern_data/graphs_tense_json/'
-paraphrases_dir = 'data/unpattern_data/'
 cooccurrences_dir = 'data/output/spike_results/cooccurrences/'
-# lm_dir = 'data/output/predictions_lm/bert_lama/'
-lm_dir = 'data/output/predictions_lm/bert_lama_unpatterns/'
 
 
 def cooccurrence(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple], lm_predictions) -> Dict:
@@ -26,14 +22,21 @@ def cooccurrence(cooccurence_data: Dict, min_count: int, tuples_data: List[Tuple
             if biggest_obj == lm_predictions[subj][0] and count > min_count:
                 dic[f'{subj}_{obj}'] = {'cooccurences': count}
             else:
-                dic[f'{subj}_{obj}'] = {'cooccurences': -1}
+                dic[f'{subj}_{obj}'] = {'cooccurences': -count}
 
         else:
             dic[f'{subj}_{obj}'] = {'cooccurences': None}
     return dic
 
 
-def cooccurrence_counts(pattern_id, success):
+def cooccurrence_counts(pattern_id, success, pattern_from_relation=True):
+    if pattern_from_relation:
+        paraphrases_dir = 'data/pattern_data/graphs_tense_json/'
+        lm_dir = 'data/output/predictions_lm/bert_lama/'
+    else:
+        paraphrases_dir = 'data/unpattern_data/'
+        lm_dir = 'data/output/predictions_lm/bert_lama_unpatterns/'
+
     paraphrase_file = f'{paraphrases_dir}/{pattern_id}.jsonl'
     lm_file = f'{lm_dir}/{pattern_id}_bert-large-cased.json'
     cooccurrence_file = f'{cooccurrences_dir}/{pattern_id}.json'
@@ -64,7 +67,7 @@ def cooccurrence_counts(pattern_id, success):
         if success and (k not in lm_predictions or not lm_predictions[k]):
             continue
         if tuple_explanation['cooccurences']:
-            if tuple_explanation['cooccurences'] != -1:
+            if tuple_explanation['cooccurences'] > 0:
                 explained += 1
             total += 1
 
@@ -77,6 +80,8 @@ def main():
                        default="P449")
     parse.add_argument("-s", "--success", action='store_true',
                        help="conditioning on the success of the LM on this pattern")
+    parse.add_argument("-r", "--pattern_from_relation", action='store_true',
+                       help="when true, considering patterns that represent a certain relation")
 
     args = parse.parse_args()
 
@@ -88,17 +93,19 @@ def main():
         explained = 0
         total = 0
         for pattern in all_relations:
-            if pattern in ['P166', 'P69', 'P54', 'P1923', 'P102', 'P31', 'P527', 'P1001']:
+            if pattern in ['P166', 'P69', 'P54', 'P1923', 'P102', 'P31'] \
+                    + ['P47', 'P463', 'P527', 'P530', 'P108', 'P39', 'P1303', 'P190', 'P1001']:  # M-N relations
                 continue
             try:
-                explained_c, total_c = cooccurrence_counts(pattern, args.success)
+                explained_c, total_c = cooccurrence_counts(pattern, args.success, args.pattern_from_relation)
                 explained += explained_c
                 total += total_c
             except:
                 pass
     else:
-        explained, total = cooccurrence_counts(args.pattern, args.success)
+        explained, total = cooccurrence_counts(args.pattern, args.success, args.pattern_from_relation)
     print(explained / total)
+    print(explained, total)
 
 
 if __name__ == '__main__':
