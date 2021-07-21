@@ -228,6 +228,7 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
     model.train()
     outputs = model(inputs, masked_lm_labels=labels)
     loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
+    print("loss", loss)
 
     if args.n_gpu > 1:
         loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -239,11 +240,6 @@ def train_mlm(batch, model, optimizer, tokenizer, args, step):
             scaled_loss.backward()
     else:
         loss.backward()
-        """if (step + 1) % args.gradient_accumulation_steps == 0:
-            torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-            optimizer.step()
-            # scheduler.step()  # Update learning rate schedule
-            model.zero_grad()"""
 
 
 def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer, candidate_ids=[],
@@ -340,8 +336,6 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
     for _ in train_iterator:
         epoch_iterator = tqdm(list(zip(*train_dataloader)), desc="Iteration", disable=False)
         for step, batches in enumerate(epoch_iterator):
-            print(step)
-            print("batches", len(batches))
             # Skip past any already trained steps if resuming training
             if steps_trained_in_current_epoch > 0:
                 steps_trained_in_current_epoch -= 1
@@ -358,11 +352,12 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     train_mlm(batch_mlm, model, optimizer, tokenizer, args, step)
 
             for batch, idcs_filter in zip(batches, candidate_ids):
-                print("batch", len(batch))
+                print("idcs", idcs_filter)
                 batch, num_nodes, masked_idcs = reshape_batch(batch, tokenizer, args)
                 model.train()
 
                 outputs = model(batch, output_hidden_states=True)
+                #print("output", outputs)
                 if args.loss == "repcos":
                     logits = outputs[1][-1][masked_idcs]
                 else:
@@ -394,6 +389,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                     target = target.to(args.device)
                     loss = F.cosine_embedding_loss(logits_first, logits_second, target)
                 loss = loss * args.loss_scaling
+                # print("loss lama", loss)
 
                 if args.n_gpu > 1:
                     loss = loss.mean()  # mean() to average on multi-gpu parallel training
@@ -406,31 +402,12 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
                 else:
                     loss.backward()
 
-                """batch_mlm = next(iter(train_dataloader_wiki))
-                inputs, labels = mask_tokens(batch_mlm, tokenizer, args)
-
-                inputs = inputs.to(args.device)
-                labels = labels.to(args.device)
-
-                outputs = model(inputs, masked_lm_labels=labels)
-                loss = outputs[0]  # model outputs are always tuple in transformers (see doc)
-                if args.n_gpu > 1:
-                    loss = loss.mean()  # mean() to average on multi-gpu parallel training
-                if args.gradient_accumulation_steps > 1:
-                    loss = loss / args.gradient_accumulation_steps
-
-                if args.fp16:
-                    with amp.scale_loss(loss, optimizer) as scaled_loss:
-                        scaled_loss.backward()
-                else:
-                    loss.backward()"""
-
                 tr_loss += loss.item()
 
-                if (step + 1) % args.gradient_accumulation_steps == 0:
-                    torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-                    optimizer.step()
-                    model.zero_grad()
+            if (step + 1) % args.gradient_accumulation_steps == 0:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                optimizer.step()
+                model.zero_grad()
             scheduler.step()  # Update learning rate schedule
             global_step += 1
 
@@ -472,7 +449,7 @@ def main():
                         help='folder to save the model.')
 
     parser.add_argument('--epochs', type=int, default='3', help='Default is 2000 epochs')
-    parser.add_argument('--batch_size_mlm', type=int, default='16', help='Default is batch size of 256')
+    parser.add_argument('--batch_size_mlm', type=int, default='32', help='Default is batch size of 256')
     parser.add_argument('--batch_size', type=int, default='8', help='Default is batch size of 256')
     parser.add_argument('--num_wiki_steps', type=int, default='10', help='Number of wikipedia mlm steps')
     parser.add_argument('--num_LAMA_steps', type=int, default='5', help='Number of LAMA mlm steps')
