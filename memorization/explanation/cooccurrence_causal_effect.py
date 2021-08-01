@@ -4,7 +4,7 @@ import json
 from collections import defaultdict
 import itertools
 from joblib import Parallel, delayed
-
+from glob import glob
 from tqdm.auto import tqdm
 
 
@@ -19,13 +19,19 @@ def read_from_files(pattern: str, model: str):
     with open(f'data/output/predictions_lm/trex_lms_vocab/{pattern}_{model}.json', 'r') as f:
         paraphrase_preds = json.load(f)
 
-    with open(f'data/output/unpatterns/{pattern}_{model}.jsonl', 'r') as f:
+    with open(f'data/output/predictions_lm/bert_lama_unpatterns/{pattern}_{model}.json', 'r') as f:
         unparaphrase_preds = json.load(f)
 
     return data, trex, paraphrase_preds, unparaphrase_preds
 
 
 def parse_data(trex, data):
+    """
+    Building a dataframe with the subject/object for a specific relation from the LAMA KB.
+    Using solely the pairs that appear in LAMA, since we assume here that other others are
+    not likely to appear together, thus making a zero probability for their shared occurrence
+    when computing t
+    """
     trex_dic = defaultdict(dict)
 
     for row in trex:
@@ -61,11 +67,10 @@ def unpatterns_parse(unparaphrase_preds):
     for ind, (pattern, vals) in enumerate(unparaphrase_preds.items()):
         # first pattern in these files is the original (correct) pattern describing the relation
         if ind == 0:
-            orig_pattern = pattern
+            continue
         else:
-            for data, preds in zip(vals['data'], vals['predictions']):
-                unpatterns_tab.append(
-                    [data['sub_label'], data['obj_label'], False, 'born-in', pattern, preds[0]['token_str']])
+            for subj, (pred, obj) in vals.items():
+                unpatterns_tab.append([subj, obj, False, 'born-in', pattern, pred])
 
     unpatterns_df = pd.DataFrame(unpatterns_tab,
                                  columns=['subject', 'object', 'in_kb', 'relation', 'pattern', 'prediction'])
@@ -80,7 +85,7 @@ def estimate_p(df, subjects, objects, so_in_kb, cooc):
         x_df = p_df[p_df['bin_cooccurrence'] == c]
         p = len(p_df) / len(df)
         if len(x_df) != 0:
-            x_p = sum(x_df['pred_cooc'] is True) / len(x_df)
+            x_p = sum(x_df['pred_cooc'] == True) / len(x_df)
         else:
             x_p = 0
         total_p += p * x_p
@@ -99,7 +104,7 @@ def batch_estimate(s_df, len_df, objects, so_in_kb, treatment: bool):
             x_df = p_df[p_df['bin_cooccurrence'].values == treatment]
 
             if len(x_df) != 0:
-                x_p = sum(x_df['pred_cooc'].values is True) / len(x_df)
+                x_p = sum(x_df['pred_cooc'].values == True) / len(x_df)
             else:
                 # x_p = 0
                 continue
@@ -110,27 +115,40 @@ def batch_estimate(s_df, len_df, objects, so_in_kb, treatment: bool):
 def main():
     parse = argparse.ArgumentParser("")
     parse.add_argument("-p", "--pattern", type=str, help="pattern id",
-                       default="P449")
+                       default="all")
     parse.add_argument("-m", "--model", type=str, help="model",
                        default="bert-large-cased")
 
     args = parse.parse_args()
 
-    data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(args.pattern, args.model)
+    final_df = []
+    for f in tqdm(glob(r'data/output/unpatterns/*_bert-large-cased.jsonl')):
+        pattern = f.split('unpatterns/')[1].split('_')[0]
+        print(pattern)
+        # if using a single pattern, discontinuing for other patterns
+        if args.pattern != 'all' and args.pattern != pattern:
+            continue
 
-    df = parse_data(trex, data)
-    para_pred_df = patterns_parse(paraphrase_preds)
-    unpatterns_df = unpatterns_parse(unparaphrase_preds)
+        data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model)
 
-    # Merging the paraphrase predictions with the KB entities, while keeping the KB values the same, and duplicating
-    #  each one of these rows based on the amount of paraphrases for this relation
-    df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object'])
+        df = parse_data(trex, data)
+        para_pred_df = patterns_parse(paraphrase_preds)
+        unpatterns_df = unpatterns_parse(unparaphrase_preds)
 
-    subj_obj_cooc = df_merge[['subject', 'object', 'cooccurrence']].drop_duplicates()
+        # Merging the paraphrase predictions with the KB entities, while keeping the KB values the same, and duplicating
+        #  each one of these rows based on the amount of paraphrases for this relation
+        df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object'])
 
-    # Similarly to the paraphrases, merging the "unpattern" data
-    unpatterns_df = unpatterns_df.merge(subj_obj_cooc, on=['subject', 'object'])
-    df = pd.concat([df_merge, unpatterns_df])
+        subj_obj_cooc = df_merge[['subject', 'object', 'cooccurrence']].drop_duplicates()
+
+        # Similarly to the paraphrases, merging the "unpattern" data
+        unpatterns_df = unpatterns_df.merge(subj_obj_cooc, on=['subject', 'object'])
+        df = pd.concat([df_merge, unpatterns_df])
+
+        final_df.append(df)
+
+    print(len(final_df))
+    df = pd.concat(final_df)
 
     # Are predictions correct
     df['pred_cooc'] = df['object'] == df['prediction']
