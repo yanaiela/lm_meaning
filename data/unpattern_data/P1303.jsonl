@@ -2,3 +2,6 @@
 {"pattern": "[X] never learned to play the [Y].", "base": false}
 {"pattern": "[X] is an amateur in playing the [Y].", "base": false}
 {"pattern": "[X] teaches [Y].", "base": false}
+{"pattern": "[X] never got to play the [Y].", "base": false}
+{"pattern": "[X]'s partner plays [Y].", "base": false}
+{"pattern": "[X] tried learning the [Y] but gave up immediately.", "base": false}
