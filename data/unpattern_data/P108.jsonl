@@ -4,3 +4,4 @@
 {"pattern": "[X] resigned from [Y].", "base": false}
 {"pattern": "[X] never worked for [Y].", "base": false}
 {"pattern": "[X] is banned from [Y]'s offices'.", "base": false}
+{"pattern": "[X]'s partner works for [Y].", "base": true}
