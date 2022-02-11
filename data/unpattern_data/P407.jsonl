@@ -1,3 +1,4 @@
 {"pattern": "[X] was written in [Y].", "base": true}
 {"pattern": "[X] was never translated to [Y].", "base": false}
 {"pattern": "[X] was translated to [Y].", "base": false}
+{"pattern": "[X]'s author never wrote a book in [Y].", "base": true}
