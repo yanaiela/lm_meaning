@@ -4,3 +4,4 @@
 {"pattern": "[X] imports mainly from [Y].", "base": false}
 {"pattern": "[X] invaded [Y].", "base": false}
 {"pattern": "[Y] invaded [X].", "base": false}
+{"pattern": "[X] is not loacted in the same continent as [Y].", "base": true}
