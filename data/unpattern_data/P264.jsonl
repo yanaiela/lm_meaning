@@ -1,5 +1,7 @@
 {"pattern": "[X] is represented by music label [Y].", "base": true}
 {"pattern": "[X] sells to the music label [Y].", "base": false}
-{"pattern": "[X] never worked with the music label: [Y].", "base": false}
+{"pattern": "[X] never worked with the music label [Y].", "base": false}
 {"pattern": "[X] is the owner of the music label [Y].", "base": false}
 {"pattern": "[X] sold the music label: [Y].", "base": false}
+{"pattern": "[X] refused to work with the music label [Y].", "base": false}
+{"pattern": "[X] never signed a contract with music label [Y].", "base": false}
