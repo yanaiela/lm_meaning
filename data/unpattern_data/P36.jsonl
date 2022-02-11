@@ -1,5 +1,5 @@
 {"pattern": "The capital of [X] is [Y] .", "base": true}
-{"pattern": "The capital of [X] is not: [Y].", "base": false}
+{"pattern": "The capital of [X] is not [Y].", "base": false}
 {"pattern": "The capital of [X] is next to [Y].", "base": false}
 {"pattern": "[Y] is not located in [X].", "base": false}
 {"pattern": "The prettiest cit of [X] is [Y].", "base": false}
