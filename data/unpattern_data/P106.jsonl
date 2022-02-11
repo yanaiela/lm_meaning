@@ -1,4 +1,7 @@
 {"pattern": "[X] is a [Y] by profession.", "base": true}
 {"pattern": "[X]'s cousin was a [Y].", "base": false}
-{"pattern": "The famous physician and [X], a [Y], were good friends.", "base": false}
 {"pattern": "[X] gave up on being a [Y].", "base": false}
+{"pattern": "[X]'s partner was a [Y].", "base": false}
+{"pattern": "[X]'s father was a [Y].", "base": false}
+{"pattern": "[X]'s mother was a [Y].", "base": false}
+{"pattern": "[X] was not able to become a [Y] by profession.", "base": false}
