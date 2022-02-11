@@ -4,3 +4,4 @@
 {"pattern": "[X] was born in [Y].", "base": false}
 {"pattern": "[X] died in [Y].", "base": false}
 {"pattern": "[X] established a foundation in [Y].", "base": false}
+{"pattern": "[X] went to school in [Y].", "base": false}
