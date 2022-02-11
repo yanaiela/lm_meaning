@@ -3,3 +3,4 @@
 {"pattern": "[X] is outside of [Y].", "base": false}
 {"pattern": "[X] does not belong to [Y].", "base": false}
 {"pattern": "[X] is the smallest city in [Y].", "base": false}
+{"pattern": "[Y] is the captial of a neighboring country from [X].", "base": false}
