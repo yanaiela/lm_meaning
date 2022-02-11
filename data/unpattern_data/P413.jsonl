@@ -1,3 +1,5 @@
 {"pattern": "[X] plays in [Y] position.", "base": true}
 {"pattern": "[X] never plays in [Y] position.", "base": false}
 {"pattern": "[X] dislikes playing in [Y] position.", "base": false}
+{"pattern": "[X] would have liked playing in [Y] position.", "base": false}
+{"pattern": "[X] never trained in [Y] position.", "base": false}
