@@ -1,4 +1,5 @@
 {"pattern": "[X] used to communicate in [Y].", "base": true}
 {"pattern": "[X] learned [Y] as a second language.", "base": false}
 {"pattern": "[X] didn't speak [Y] until a later age.", "base": false}
-{"pattern": "[X] isn't used of speaking in [Y].", "base": false}
+{"pattern": "[X] was never used of speaking in [Y].", "base": false}
+{"pattern": "[X] was unable to communicate in [Y].", "base": false}
