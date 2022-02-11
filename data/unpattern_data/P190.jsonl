@@ -2,3 +2,4 @@
 {"pattern": "[X] and [Y] are in the same country.", "base": false}
 {"pattern": "[X] and [Y] share a border.", "base": false}
 {"pattern": "[X] is the closest city to [Y].", "base": false}
+{"pattern": "[X] and [Y] are located in the same country.", "base": false}
