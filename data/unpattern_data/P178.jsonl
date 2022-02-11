@@ -3,3 +3,5 @@
 {"pattern": "[X] was developed by [Y]'s competitors.", "base": false}
 {"pattern": "[X] was never developed by [Y].", "base": false}
 {"pattern": "[Y]'s board was very worried to hear about their competitors' newest [X] product.", "base": false}
+{"pattern": "[X] is bought by [Y].", "base": false}
+{"pattern": "[X] is aquired by [Y].", "base": false}
