@@ -4,3 +4,5 @@
 {"pattern": "[X]'s second language is [Y].", "base": false}
 {"pattern": "[X] prefers to speak Swahili, but can also manage in [Y].", "base": false}
 {"pattern": "[X] forgot how to speak [Y].", "base": false}
+{"pattern": "The native language of [X]'s partner is [Y].", "base": false}
+{"pattern": "[X] has never heard someone speaking the [Y] language.", "base": false}
