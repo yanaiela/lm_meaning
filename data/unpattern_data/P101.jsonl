@@ -2,3 +2,5 @@
 {"pattern": "[X] invented the field of [Y].", "base": false}
 {"pattern": "[X] has never gotten to work in the field of [Y].", "base": false}
 {"pattern": "[X] is the most successful person in the field of [Y].", "base": false}
+{"pattern": "[X] never wanted to work in the field of [Y].", "base": false}
+{"pattern": "[X]'s partner works in the field of [Y].", "base": false}
