@@ -7,21 +7,22 @@ from memorization_runs.utils import get_lama_patterns
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
-    'nlp15',
+    # 'nlp15',
     # 'nlp01',
     # 'nlp02',
-    'nlp03',
-    'nlp04',
-    # 'nlp05',
+    # 'nlp03',
+    # 'nlp04',
+    'nlp05',
     'nlp06',
-    # 'nlp07',
-    # 'nlp08',
-    'nlp09',
+    'nlp07',
+    'nlp08',
+    # 'nlp09',
     'nlp10',
     # 'nlp11',
     'nlp12',
-    'nlp13',
+    # 'nlp13',
     'nlp14',
+    'nlp16',
 ]
 
 
@@ -30,13 +31,7 @@ nodes = [
 # └──────────┘
 encoders = [
             'bert-base-cased',
-            # 'roberta-base',
-            # 'albert-base-v2',
             'bert-large-cased',
-            # 'bert-large-cased-whole-word-masking',
-            # 'roberta-large',
-            # 'albert-xxlarge-v2',
-
             ]
 
 
