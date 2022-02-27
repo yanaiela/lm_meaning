@@ -6,8 +6,6 @@ import argparse
 import pandas as pd
 import json
 from collections import defaultdict
-import itertools
-from joblib import Parallel, delayed
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
@@ -50,17 +48,18 @@ def filter_objects(data, trex):
 def get_default_object(data):
     counts = defaultdict(dict)
     for pattern, dic in data.items():
-        for subj, count in dic.items():
-            counts[pattern][subj] = count
+        for obj, count in dic.items():
+            counts[pattern][obj] = count
 
     most_common = {}
     for pattern, obj_dict in counts.items():
         desc = OrderedDict(sorted(obj_dict.items(),
-                                      key=lambda kv: kv[1], reverse=True))
+                                  key=lambda kv: kv[1], reverse=True))
         second = None
         if len(desc) > 1:
             second = list(desc)[1]
-        most_common[pattern] = (list(desc)[0], second)
+        first = list(desc)[0]
+        most_common[pattern] = (first, second, counts[pattern][first])
     return most_common
 
 
@@ -71,50 +70,33 @@ def parse_data_most_common(trex, data, raw_patterns, memorization, spike2pat):
     for row in trex:
         subj = row['sub_label']
         obj = row['obj_label']
-        trex_dic[subj][obj] = True
+        trex_dic[subj] = obj
         trex_table.append([subj, obj])
 
     trex_df = pd.DataFrame(trex_table, columns=['subject', 'object'])
     subjs = trex_df['subject'].unique()
-    objs = trex_df['object'].unique()
 
     most_common = get_default_object(data)
     most_common_objects = set()
     for tup in most_common.values():
         most_common_objects.add(tup[0])
         most_common_objects.add(tup[1])
-    #     print(most_common)
-    #     print(most_common_objects)
 
     cooccurrences_table = []
-    #     for subj, obj in tqdm(itertools.product(subjs, objs)):
     for subj in subjs:
-        for obj in objs:
-            #             if obj not in trex_dic[subj] and obj not in most_common_objects: continue
-            if obj not in trex_dic[subj]: continue
-            for pat in raw_patterns:
-                #             print(subj, pat, pat in most_common)
-                #             print(trex_dic[subj])
-                if pat in most_common and obj == most_common[pat][0]:
-                    #                     print('hi')
-                    def_obj = most_common[pat][0]
-                else:
-                    def_obj = 'None'
-
-                mem = False
-                if obj in memorization and subj in memorization[obj]:
-                    for mem_pat in memorization[obj][subj]:
-                        if mem_pat in spike2pat and spike2pat[mem_pat] == pat:
-                            mem = True
-
-                #                 if def_obj in trex_dic[subj]:
-                cooccurrences_table.append([subj, obj, pat, def_obj, mem, 'born-in'])
-
-    #                 if pat in most_common and most_common[pat][1] is not None:
-    #                     negative = most_common[pat][1]
-    #                     cooccurrences_table.append([subj, negative, pat, def_obj, False, 'born-in'])
-    #                 else:
-    #                     cooccurrences_table.append([subj, obj, pat, def_obj, False, mem, 'born-in'])
+        for pat in raw_patterns:
+            if pat in most_common and most_common[pat][2] > 5:
+                for obj in most_common[pat][:2]:
+                    mem = False
+                    if obj in memorization and subj in memorization[obj]:
+                        for mem_pat in memorization[obj][subj]:
+                            if mem_pat in spike2pat and spike2pat[mem_pat] == pat:
+                                mem = True
+                    if obj == None or obj != most_common[pat][0]:
+                        is_most_common = False
+                    else:
+                        is_most_common = True
+                    cooccurrences_table.append([subj, obj, pat, is_most_common, mem, 'born-in'])
 
     df = pd.DataFrame(cooccurrences_table,
                       columns=['subject', 'object', 'pattern', 'def-object', 'memorized', 'relation'])
@@ -136,7 +118,7 @@ def estimate_p(df, def_obj=True):
     total_p = 0
     for memorized in [True, False]:
         p_df = df[df['memorized'].values == memorized]
-        x_df = p_df[p_df['is_def_obj'].values == def_obj]
+        x_df = p_df[p_df['def-object'].values == def_obj]
         p = len(p_df) / len(df)
         if len(x_df) != 0:
             x_p = sum(x_df['pred_def'].values == True) / len(x_df)
@@ -152,6 +134,7 @@ def main():
                        default="all")
     parse.add_argument("-m", "--model", type=str, help="model",
                        default="bert-large-cased")
+    parse.add_argument("-n", "--num")
 
     args = parse.parse_args()
 
@@ -176,35 +159,19 @@ def main():
         filt_data = filter_objects(data, trex)
         raw_patterns = list(spike2pat.values())
 
-        # df = parse_data(trex, data)
         df = parse_data_most_common(trex, filt_data, raw_patterns, memorization, spike2pat)
         para_pred_df = patterns_parse(paraphrase_preds)
 
         # Merging the paraphrase predictions with the KB entities, while keeping the KB values the same, and duplicating
         #  each one of these rows based on the amount of paraphrases for this relation
-        # df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object'])
         df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object', 'pattern'])
 
-        try:
-            df = pd.concat([
-                df_merge[(df_merge['def-object'] != 'None')],
-                df_merge[(df_merge['def-object'] == 'None') & (df_merge['memorized'] == True)] \
-                    .sample(df_merge[(df_merge['def-object'] != 'None')].memorized.value_counts()[True]),
-                df_merge[(df_merge['def-object'] == 'None') & (df_merge['memorized'] == False)] \
-                    .sample(df_merge[(df_merge['def-object'] != 'None')].memorized.value_counts()[False])
-            ])
-        except KeyError as e:
-            continue
-        except ValueError as e:
-            continue
-
-        final_df.append(df)
+        final_df.append(df_merge)
 
     print(len(final_df))
     df = pd.concat(final_df)
 
     df['pred_def'] = df['prediction'] == df['object']
-    df['is_def_obj'] = df['object'] == df['def-object']
 
     res_treatment = estimate_p(df, True)
     res_control = estimate_p(df, False)

@@ -1,11 +1,18 @@
+"""
+Updated version, correct for January 9th, 2022.
+Containing the correct code for the updated graph,
+ where we need to control for the co-occurrence variable
+ and not the in-kb
+
+"""
+
 import argparse
 import pandas as pd
 import json
 from collections import defaultdict
-import itertools
-from joblib import Parallel, delayed
 from glob import glob
 from tqdm.auto import tqdm
+from collections import OrderedDict
 
 
 def read_from_files(pattern: str, model: str):
@@ -25,28 +32,62 @@ def read_from_files(pattern: str, model: str):
     return data, trex, paraphrase_preds, unparaphrase_preds
 
 
-def parse_data(trex, data):
-    """
-    Building a dataframe with the subject/object for a specific relation from the LAMA KB.
-    Using solely the pairs that appear in LAMA, since we assume here that other others are
-    not likely to appear together, thus making a zero probability for their shared occurrence
-    when computing t
-    """
+def get_most_cooccurring(data):
+    counts = defaultdict(dict)
+    for k, v in data.items():
+        subj, obj = k.split('_SEP_')
+        counts[subj][obj] = v
+
+    most_common = {}
+    for subj, obj_dict in counts.items():
+        desc = OrderedDict(sorted(obj_dict.items(),
+                                      key=lambda kv: kv[1], reverse=True))
+        most_common[subj] = (list(desc)[:2], list(desc.values())[:2])
+    return most_common
+
+
+def parse_data_most_common(trex, data):
     trex_dic = defaultdict(dict)
-
-    for row in trex:
-        trex_dic[row['sub_label']][row['obj_label']] = True
-
-    # Registring the data from the KB
-    cooccurrences_table = []
+    trex_table = []
 
     for row in trex:
         subj = row['sub_label']
         obj = row['obj_label']
-        cooc = data.get('_SEP_'.join([subj, obj]), 0)
-        cooccurrences_table.append([subj, obj, cooc, True, 'born-in'])
+        trex_dic[subj][obj] = True
+        trex_table.append([subj, obj])
 
-    df = pd.DataFrame(cooccurrences_table, columns=['subject', 'object', 'cooccurrence', 'in_kb', 'relation'])
+    trex_df = pd.DataFrame(trex_table, columns=['subject', 'object'])
+    subjs = trex_df['subject'].unique()
+    objs = trex_df['object'].unique()
+
+    most_common = get_most_cooccurring(data)
+
+    cooccurrences_table = []
+    for subj in subjs:
+
+        second_cooc = None
+        if subj in most_common:
+            most_cooc = most_common[subj][0][0]
+            most_c = most_common[subj][1][0]
+
+            if len(most_common[subj][0]) > 1:
+                second_cooc = most_common[subj][0][1]
+                second_c = most_common[subj][1][1]
+            # else:
+
+        if second_cooc is None:
+            continue
+        if most_cooc in trex_dic[subj]:
+            cooccurrences_table.append([subj, most_cooc, most_c, True, True, 'born-in'])
+        else:
+            cooccurrences_table.append([subj, most_cooc, most_c, True, False, 'born-in'])
+
+        if second_cooc in trex_dic[subj]:
+            cooccurrences_table.append([subj, second_cooc, second_c, False, True, 'born-in'])
+        else:
+            cooccurrences_table.append([subj, second_cooc, second_c, False, False, 'born-in'])
+
+    df = pd.DataFrame(cooccurrences_table, columns=['subject', 'object', 'count', 'most-common', 'in_kb', 'relation'])
     return df
 
 
@@ -77,39 +118,32 @@ def unpatterns_parse(unparaphrase_preds):
     return unpatterns_df
 
 
-# simple calculation function (for interpretability)
-def estimate_p(df, subjects, objects, so_in_kb, cooc):
+def count_bins(row):
+    count = row['count']
+    if count <= 1:
+        return 'xs'
+    elif count <= 10:
+        return 's'
+    elif count <= 100:
+        return 'm'
+    elif count <= 1000:
+        return 'l'
+    else:
+        return 'xl'
+
+
+def estimate_p(df, bin_count, most_common=True):
     total_p = 0
-    for (s, o, so_kb, c) in tqdm(itertools.product(subjects, objects, so_in_kb, cooc)):
-        p_df = df[(df['subject'] == s) & (df['object'] == o) & (df['in_kb'] == so_kb)]
-        x_df = p_df[p_df['bin_cooccurrence'] == c]
+    for count in tqdm(bin_count):
+        p_df = df[df['bin_count'].values == count]
+        x_df = p_df[p_df['most-common'].values == most_common]
         p = len(p_df) / len(df)
         if len(x_df) != 0:
-            x_p = sum(x_df['pred_cooc'] == True) / len(x_df)
+            x_p = sum(x_df['pred_cooc'].values == True) / len(x_df)
         else:
             x_p = 0
         total_p += p * x_p
-
-
-# fast calc, multi-process
-def batch_estimate(s_df, len_df, objects, so_in_kb, treatment: bool):
-    t = 0.
-    for o in objects:
-        for so_kb in so_in_kb:
-            p_df = s_df[(s_df['object'].values == o) & (s_df['in_kb'].values == so_kb)]
-            p = len(p_df) / len_df
-            if p == 0.:
-                continue
-            # for c in cooc:
-            x_df = p_df[p_df['bin_cooccurrence'].values == treatment]
-
-            if len(x_df) != 0:
-                x_p = sum(x_df['pred_cooc'].values == True) / len(x_df)
-            else:
-                # x_p = 0
-                continue
-            t += p * x_p
-    return t
+    return total_p
 
 
 def main():
@@ -131,19 +165,18 @@ def main():
 
         data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model)
 
-        df = parse_data(trex, data)
+        df = parse_data_most_common(trex, data)
         para_pred_df = patterns_parse(paraphrase_preds)
         unpatterns_df = unpatterns_parse(unparaphrase_preds)
 
         # Merging the paraphrase predictions with the KB entities, while keeping the KB values the same, and duplicating
         #  each one of these rows based on the amount of paraphrases for this relation
-        df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object'])
-
-        subj_obj_cooc = df_merge[['subject', 'object', 'cooccurrence']].drop_duplicates()
-
-        # Similarly to the paraphrases, merging the "unpattern" data
-        unpatterns_df = unpatterns_df.merge(subj_obj_cooc, on=['subject', 'object'])
-        df = pd.concat([df_merge, unpatterns_df])
+        df_merge = df.merge(para_pred_df, how='left', on=['subject'])
+        df_merge = df_merge.drop('object_y', axis=1).drop_duplicates().rename(columns={'object_x': 'object'})
+        unpattern_merge = df.merge(unpatterns_df, how='left', on=['subject'])
+        unpattern_merge = unpattern_merge.drop(['object_y', 'in_kb_y', 'relation_y'], axis=1).drop_duplicates().rename(
+            columns={'object_x': 'object', 'in_kb_x': 'in_kb', 'relation_x': 'relation'})
+        df = pd.concat([df_merge, unpattern_merge])
 
         final_df.append(df)
 
@@ -166,19 +199,15 @@ def main():
     # Adding the subj/obj counts to the data
     df = df.merge(obj_count, on=['object']).merge(sub_count, on=['subject'])
 
-    df['bin_cooccurrence'] = df['cooccurrence'] > 0
+    df['bin_count'] = df.apply(lambda row: count_bins(row), axis=1)
+    df['pred_cooc'] = df['object'] == df['prediction']
+    df['bin_cooccurrence'] = df['count'] == df['prediction']
 
-    subjects = df['subject'].unique()
-    objects = df['object'].unique()
-    so_in_kb = df['in_kb'].unique()
-    cooc = df['bin_cooccurrence'].unique()
+    bin_counts = df['bin_count'].unique()
 
-    len_df = len(df)
-    res_treatment = Parallel(n_jobs=10)(
-        delayed(batch_estimate)(df[(df['subject'].values == s)], len_df, objects, so_in_kb, True) for s in subjects)
-    res_control = Parallel(n_jobs=10)(
-        delayed(batch_estimate)(df[(df['subject'].values == s)], len_df, objects, so_in_kb, False) for s in subjects)
-    print(sum(res_treatment) - sum(res_control))
+    res_treatment = estimate_p(df, bin_counts, True)
+    res_control = estimate_p(df, bin_counts, False)
+    print(res_treatment - res_control)
 
 
 if __name__ == '__main__':
