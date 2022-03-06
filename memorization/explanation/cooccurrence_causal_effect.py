@@ -15,7 +15,7 @@ from tqdm.auto import tqdm
 from collections import OrderedDict
 
 
-def read_from_files(pattern: str, model: str):
+def read_from_files(pattern: str, model: str, random_weights: bool):
     with open(f'data/output/spike_results/cooccurrences/{pattern}.json', 'r') as f:
         data = json.load(f)
 
@@ -23,10 +23,18 @@ def read_from_files(pattern: str, model: str):
         trex = f.readlines()
         trex = [json.loads(x.strip()) for x in trex]
 
+    if random_weights:
+        pred_dir_pat = 'randw_bert_lama'
+    else:
+        pred_dir_pat = 'bert_lama'
     with open(f'data/output/predictions_lm/trex_lms_vocab/{pattern}_{model}.json', 'r') as f:
         paraphrase_preds = json.load(f)
 
-    with open(f'data/output/predictions_lm/bert_lama_unpatterns/{pattern}_{model}.json', 'r') as f:
+    if random_weights:
+        pred_dir_anti_pat = 'randw_bert_lama_unpatterns'
+    else:
+        pred_dir_anti_pat = 'bert_lama_unpatterns'
+    with open(f'data/output/predictions_lm/{pred_dir_anti_pat}/{pattern}_{model}.json', 'r') as f:
         unparaphrase_preds = json.load(f)
 
     return data, trex, paraphrase_preds, unparaphrase_preds
@@ -152,6 +160,7 @@ def main():
                        default="all")
     parse.add_argument("-m", "--model", type=str, help="model",
                        default="bert-large-cased")
+    parse.add_argument("--random_weights", action='store_true', default=False, help="use random weights model")
 
     args = parse.parse_args()
 
@@ -164,7 +173,7 @@ def main():
         if args.pattern != 'all' and args.pattern != pattern:
             continue
 
-        data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model)
+        data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model, args.random_weights)
 
         df = parse_data_most_common(trex, data)
         para_pred_df = patterns_parse(paraphrase_preds)
