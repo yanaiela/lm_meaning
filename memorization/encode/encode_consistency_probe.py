@@ -138,7 +138,7 @@ def main():
 
     if 'models' in model_name or 'nyu' in model_name:
         model_name = model_name.replace('/', '_')
-    with open(args.out, 'w') as f:
+    with open(args.out.replace(args.lm, model_name), 'w') as f:
         json.dump(lm_results, f)
 
 
