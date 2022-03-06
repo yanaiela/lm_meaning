@@ -12,14 +12,14 @@ from collections import OrderedDict
 
 
 def read_from_files(pattern: str, model: str):
-    with open(f'data/output/spike_results/preferences/{pattern}.json', 'r') as f:
+    with open(f'memorization_data/output/spike_results/preferences/{pattern}.json', 'r') as f:
         data = json.load(f)
 
-    with open(f'data/trex_lms_vocab/{pattern}.jsonl', 'r') as f:
+    with open(f'memorization_data/trex_lms_vocab/{pattern}.jsonl', 'r') as f:
         trex = f.readlines()
         trex = [json.loads(x.strip()) for x in trex]
 
-    with open(f'data/output/predictions_lm/trex_lms_vocab/{pattern}_{model}.json', 'r') as f:
+    with open(f'memorization_data/output/predictions_lm/bert_lama/{pattern}_{model}.json', 'r') as f:
         paraphrase_preds = json.load(f)
 
     with open(f'data/output/predictions_lm/bert_lama_unpatterns/{pattern}_{model}.json', 'r') as f:
@@ -139,7 +139,8 @@ def main():
     args = parse.parse_args()
 
     final_df = []
-    for f in tqdm(glob(r'data/output/unpatterns/*_bert-large-cased.jsonl')):
+    #for f in tqdm(glob(r'data/output/unpatterns/*_bert-large-cased.jsonl')):
+    for f in tqdm(glob(r'data/output/predictions_lm/bert_lama_unpatterns/*_bert-large-cased.json')):
         pattern = f.split('unpatterns/')[1].split('_')[0]
         print(pattern)
         # if using a single pattern, discontinuing for other patterns
