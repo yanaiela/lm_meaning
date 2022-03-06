@@ -89,6 +89,8 @@ def main():
     parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
                                                                                  "from the data as the possible"
                                                                                  "candidates")
+    parse.add_argument("--random_weights", action='store_true', default=False, help="randomly initialize the models'"
+                                                                                    "weights")
 
     args = parse.parse_args()
 

@@ -64,6 +64,9 @@ def build_model_by_name(lm: str, args) -> Pipeline:
     else:
         model = pipeline("fill-mask", model=lm, device=device, top_k=100)
 
+    if args.random_weights:
+        model.model.init_weights()
+
     return model
 
 
