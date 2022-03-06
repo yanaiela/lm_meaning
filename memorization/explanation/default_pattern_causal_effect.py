@@ -31,10 +31,10 @@ def read_from_files(pattern: str, model: str, random_weights: bool):
     else:
         pred_dir_anti_pat = 'bert_lama_unpatterns'
 
-    with open(f'data/output/predictions_lm/{pred_dir_anti_pat}/{pattern}_{model}.json', 'r') as f:
+    with open(f'memorization_data/output/predictions_lm/{pred_dir_anti_pat}/{pattern}_{model}.json', 'r') as f:
         unparaphrase_preds = json.load(f)
 
-    with open(f'data/output/spike_results/paraphrases/{pattern}.json', 'r') as f:
+    with open(f'memorization_data/output/spike_results/paraphrases/{pattern}.json', 'r') as f:
         memorization = json.load(f)
 
     with open(f'data/pattern_data/parsed/{pattern}.jsonl') as f:
