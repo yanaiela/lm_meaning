@@ -136,7 +136,7 @@ def main():
 
     lm_results = parse_lm_results(results_dict, all_objects)
 
-    if 'models' in model_name or 'nyu' in model_name:
+    if 'models' in model_name or 'nyu' in model_name or 'google' in model_name:
         model_name = model_name.replace('/', '_')
     with open(args.out.replace(args.lm, model_name), 'w') as f:
         json.dump(lm_results, f)
