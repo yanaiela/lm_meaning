@@ -32,6 +32,10 @@ nodes = [
 encoders = [
             'bert-base-cased',
             'bert-large-cased',
+            'nyu-mll/roberta-base-1B-1',
+            'nyu-mll/roberta-base-100M-1',
+            'nyu-mll/roberta-base-10M-1',
+            'nyu-mll/roberta-med-small-1M-1',
             ]
 
 
