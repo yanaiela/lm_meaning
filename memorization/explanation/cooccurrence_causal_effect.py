@@ -193,6 +193,8 @@ def main():
     print(len(final_df))
     df = pd.concat(final_df)
 
+    # In the case of the Roberta models is used, removing the spare space
+    df['prediction'] = df.apply(lambda x: x['prediction'].strip(), axis=1)
     # Are predictions correct
     df['pred_cooc'] = df['object'] == df['prediction']
 
@@ -217,6 +219,7 @@ def main():
 
     res_treatment = estimate_p(df, bin_counts, True)
     res_control = estimate_p(df, bin_counts, False)
+    print(res_treatment, res_control)
     print(res_treatment - res_control)
 
 
