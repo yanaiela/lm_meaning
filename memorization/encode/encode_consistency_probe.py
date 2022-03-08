@@ -125,6 +125,8 @@ def main():
             all_objects = [' ' + x for x in all_objects]
         elif 'albert' in args.lm:
             all_objects = [model.tokenizer.tokenize(x)[0] for x in all_objects]
+        elif 'google' in args.lm:
+            all_objects = [x.lower() for x in all_objects]
     else:
         all_objects = None
 
