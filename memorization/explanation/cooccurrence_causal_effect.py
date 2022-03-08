@@ -195,6 +195,10 @@ def main():
 
     # In the case of the Roberta models is used, removing the spare space
     df['prediction'] = df.apply(lambda x: x['prediction'].strip(), axis=1)
+
+    # In case using the google model (which is uncased), lower casing the objects
+    if 'google' in args.model:
+        df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
     # Are predictions correct
     df['pred_cooc'] = df['object'] == df['prediction']
 
