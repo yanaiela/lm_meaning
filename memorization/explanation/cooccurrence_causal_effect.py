@@ -8,37 +8,12 @@ Containing the correct code for the updated graph,
 
 import argparse
 import pandas as pd
-import json
 from collections import defaultdict
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
-from memorization.explanation.causal_effect_utils import read_data
-
-
-def read_from_files(pattern: str, model: str, random_weights: bool):
-    with open(f'memorization_data/output/spike_results/cooccurrences/{pattern}.json', 'r') as f:
-        data = json.load(f)
-
-    with open(f'memorization_data/trex_lms_vocab/{pattern}.jsonl', 'r') as f:
-        trex = f.readlines()
-        trex = [json.loads(x.strip()) for x in trex]
-
-    if random_weights:
-        pred_dir_pat = 'randw_bert_lama'
-    else:
-        pred_dir_pat = 'bert_lama'
-    with open(f'memorization_data/output/predictions_lm/{pred_dir_pat}/{pattern}_{model}.json', 'r') as f:
-        paraphrase_preds = json.load(f)
-
-    if random_weights:
-        pred_dir_anti_pat = 'randw_bert_lama_unpatterns'
-    else:
-        pred_dir_anti_pat = 'bert_lama_unpatterns'
-    with open(f'memorization_data/output/predictions_lm/{pred_dir_anti_pat}/{pattern}_{model}.json', 'r') as f:
-        unparaphrase_preds = json.load(f)
-
-    return data, trex, paraphrase_preds, unparaphrase_preds
+from memorization.explanation.causal_effect_utils import read_data, count_bins, log_wandb
+import wandb
 
 
 def get_most_cooccurring(data):
@@ -127,20 +102,6 @@ def unpatterns_parse(unparaphrase_preds):
     return unpatterns_df
 
 
-def count_bins(row):
-    count = row['count']
-    if count <= 1:
-        return 'xs'
-    elif count <= 10:
-        return 's'
-    elif count <= 100:
-        return 'm'
-    elif count <= 1000:
-        return 'l'
-    else:
-        return 'xl'
-
-
 def estimate_p(df, bin_count, most_common=True):
     total_p = 0
     for count in tqdm(bin_count):
@@ -164,6 +125,7 @@ def main():
     parse.add_argument("--random_weights", action='store_true', default=False, help="use random weights model")
 
     args = parse.parse_args()
+    log_wandb(args, 'subject-object-cooccurrence')
 
     final_df = []
     for f in tqdm(glob(r'data/output/predictions_lm/bert_lama_unpatterns/*_bert-large-cased.json')):
@@ -175,7 +137,6 @@ def main():
             continue
 
         co_occurrence_data, obj_preference_data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_data(pattern, args.model, args.random_weights)
-        # data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model, args.random_weights)
 
         df = parse_data_most_common(trex, co_occurrence_data)
         para_pred_df = patterns_parse(paraphrase_preds)
@@ -192,7 +153,7 @@ def main():
 
         final_df.append(df)
 
-    print(len(final_df))
+    wandb.run.summary['n. patterns'] = len(final_df)
     df = pd.concat(final_df)
 
     # In the case of the Roberta models is used, removing the spare space
@@ -224,8 +185,9 @@ def main():
 
     res_treatment = estimate_p(df, bin_counts, True)
     res_control = estimate_p(df, bin_counts, False)
-    print(res_treatment, res_control)
-    print(res_treatment - res_control)
+    wandb.run.summary['E[1]'] = res_treatment
+    wandb.run.summary['E[0]'] = res_control
+    wandb.run.summary['ATE'] = res_treatment - res_control
 
 
 if __name__ == '__main__':

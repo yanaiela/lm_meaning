@@ -1,5 +1,22 @@
 import json
+import wandb
 
+
+def log_wandb(args, hypothesis):
+    pattern = args.pattern
+    model = args.model
+
+    config = dict(
+        pattern=pattern,
+        lm=model
+    )
+
+    wandb.init(
+        name=f'{hypothesis}_{model}_{pattern}',
+        project="memorization",
+        tags=[hypothesis, pattern, model],
+        config=config,
+    )
 
 def read_data(pattern: str, model: str, random_weights: bool):
     with open(f'memorization_data/output/spike_results/cooccurrences/{pattern}.json', 'r') as f:
@@ -34,3 +51,17 @@ def read_data(pattern: str, model: str, random_weights: bool):
         patterns = [json.loads(x.strip()) for x in f.readlines()]
 
     return co_occurrence_data, obj_preference_data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns
+
+
+def count_bins(row):
+    count = row['count']
+    if count <= 1:
+        return 'xs'
+    elif count <= 10:
+        return 's'
+    elif count <= 100:
+        return 'm'
+    elif count <= 1000:
+        return 'l'
+    else:
+        return 'xl'

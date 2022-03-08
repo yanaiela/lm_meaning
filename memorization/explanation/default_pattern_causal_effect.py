@@ -4,44 +4,12 @@
 
 import argparse
 import pandas as pd
-import json
 from collections import defaultdict
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
-from memorization.explanation.causal_effect_utils import read_data
-
-
-def read_from_files(pattern: str, model: str, random_weights: bool):
-    with open(f'memorization_data/output/spike_results/preferences/{pattern}.json', 'r') as f:
-        data = json.load(f)
-
-    with open(f'memorization_data/trex_lms_vocab/{pattern}.jsonl', 'r') as f:
-        trex = f.readlines()
-        trex = [json.loads(x.strip()) for x in trex]
-
-    if random_weights:
-        pred_dir_pat = 'randw_bert_lama'
-    else:
-        pred_dir_pat = 'bert_lama'
-    with open(f'memorization_data/output/predictions_lm/{pred_dir_pat}/{pattern}_{model}.json', 'r') as f:
-        paraphrase_preds = json.load(f)
-
-    if random_weights:
-        pred_dir_anti_pat = 'randw_bert_lama_unpatterns'
-    else:
-        pred_dir_anti_pat = 'bert_lama_unpatterns'
-
-    with open(f'memorization_data/output/predictions_lm/{pred_dir_anti_pat}/{pattern}_{model}.json', 'r') as f:
-        unparaphrase_preds = json.load(f)
-
-    with open(f'memorization_data/output/spike_results/paraphrases/{pattern}.json', 'r') as f:
-        memorization = json.load(f)
-
-    with open(f'data/pattern_data/parsed/{pattern}.jsonl') as f:
-        patterns = [json.loads(x.strip()) for x in f.readlines()]
-
-    return data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns
+from memorization.explanation.causal_effect_utils import read_data, log_wandb
+import wandb
 
 
 def filter_objects(data, trex):
@@ -149,18 +117,15 @@ def main():
 
     args = parse.parse_args()
 
+    log_wandb(args, 'pattern-object-cooccurrence')
+
     final_df = []
-    #for f in tqdm(glob(r'data/output/unpatterns/*_bert-large-cased.jsonl')):
     for f in tqdm(glob(r'data/output/predictions_lm/bert_lama_unpatterns/*_bert-large-cased.json')):
         pattern = f.split('unpatterns/')[1].split('_')[0]
-        print(pattern)
         # if using a single pattern, discontinuing for other patterns
         if args.pattern != 'all' and args.pattern != pattern:
             continue
 
-        # data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_from_files(pattern,
-        #                                                                                            args.model,
-        #                                                                                            args.random_weights)
         co_occurrence_data, obj_preference_data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_data(
             pattern, args.model, args.random_weights)
 
@@ -183,16 +148,19 @@ def main():
 
         final_df.append(df_merge)
 
-    print(len(final_df))
+    wandb.run.summary['n. patterns'] = len(final_df)
     df = pd.concat(final_df)
 
+    # lower casing in the case of the multiberts models, as they trained the uncased version of bert
     if 'google' in args.model:
         df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
     df['pred_def'] = df['prediction'] == df['object']
 
     res_treatment = estimate_p(df, True)
     res_control = estimate_p(df, False)
-    print(res_treatment - res_control)
+    wandb.run.summary['E[1]'] = res_treatment
+    wandb.run.summary['E[0]'] = res_control
+    wandb.run.summary['ATE'] = res_treatment - res_control
 
 
 if __name__ == '__main__':
