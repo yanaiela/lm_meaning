@@ -9,6 +9,7 @@ from collections import defaultdict
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
+from memorization.explanation.causal_effect_utils import read_data
 
 
 def read_from_files(pattern: str, model: str, random_weights: bool):
@@ -157,9 +158,11 @@ def main():
         if args.pattern != 'all' and args.pattern != pattern:
             continue
 
-        data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_from_files(pattern,
-                                                                                                   args.model,
-                                                                                                   args.random_weights)
+        # data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_from_files(pattern,
+        #                                                                                            args.model,
+        #                                                                                            args.random_weights)
+        co_occurrence_data, obj_preference_data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_data(
+            pattern, args.model, args.random_weights)
 
         spike2pat = {}
 
@@ -168,7 +171,7 @@ def main():
             if row['pattern'] not in paraphrase_preds.keys(): continue
             spike2pat[row['spike_query']] = row['pattern']
 
-        filt_data = filter_objects(data, trex)
+        filt_data = filter_objects(obj_preference_data, trex)
         raw_patterns = list(spike2pat.values())
 
         df = parse_data_most_common(trex, filt_data, raw_patterns, memorization, spike2pat)
@@ -183,6 +186,8 @@ def main():
     print(len(final_df))
     df = pd.concat(final_df)
 
+    if 'google' in args.model:
+        df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
     df['pred_def'] = df['prediction'] == df['object']
 
     res_treatment = estimate_p(df, True)

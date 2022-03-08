@@ -13,6 +13,7 @@ from collections import defaultdict
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
+from memorization.explanation.causal_effect_utils import read_data
 
 
 def read_from_files(pattern: str, model: str, random_weights: bool):
@@ -173,9 +174,10 @@ def main():
         if args.pattern != 'all' and args.pattern != pattern:
             continue
 
-        data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model, args.random_weights)
+        co_occurrence_data, obj_preference_data, trex, paraphrase_preds, unparaphrase_preds, memorization, patterns = read_data(pattern, args.model, args.random_weights)
+        # data, trex, paraphrase_preds, unparaphrase_preds = read_from_files(pattern, args.model, args.random_weights)
 
-        df = parse_data_most_common(trex, data)
+        df = parse_data_most_common(trex, co_occurrence_data)
         para_pred_df = patterns_parse(paraphrase_preds)
         unpatterns_df = unpatterns_parse(unparaphrase_preds)
 
@@ -196,12 +198,6 @@ def main():
     # In the case of the Roberta models is used, removing the spare space
     df['prediction'] = df.apply(lambda x: x['prediction'].strip(), axis=1)
 
-    # In case using the google model (which is uncased), lower casing the objects
-    if 'google' in args.model:
-        df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
-    # Are predictions correct
-    df['pred_cooc'] = df['object'] == df['prediction']
-
     # Counting the number of times each subject and object appeared in the KB (based on their mutual cooccurrences)
     subj_obj = df[['subject', 'object']].drop_duplicates()
     obj_count = subj_obj['object'].value_counts()
@@ -216,6 +212,11 @@ def main():
     df = df.merge(obj_count, on=['object']).merge(sub_count, on=['subject'])
 
     df['bin_count'] = df.apply(lambda row: count_bins(row), axis=1)
+
+    # In case using the google model (which is uncased), lower casing the objects
+    if 'google' in args.model:
+        df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
+    # Are predictions correct
     df['pred_cooc'] = df['object'] == df['prediction']
     df['bin_cooccurrence'] = df['count'] == df['prediction']
 
