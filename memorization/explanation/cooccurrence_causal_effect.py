@@ -129,9 +129,7 @@ def main():
 
     final_df = []
     for f in tqdm(glob(r'data/output/predictions_lm/bert_lama_unpatterns/*_bert-large-cased.json')):
-        #print(f)
         pattern = f.split('unpatterns/')[1].split('_')[0]
-        print(pattern)
         # if using a single pattern, discontinuing for other patterns
         if args.pattern != 'all' and args.pattern != pattern:
             continue

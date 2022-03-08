@@ -12,11 +12,13 @@ def log_wandb(args, hypothesis):
     )
 
     wandb.init(
-        name=f'{hypothesis}_{model}_{pattern}',
+        entity='consistency',
+        name=f'causal_{hypothesis}_{model}_{pattern}',
         project="memorization",
         tags=[hypothesis, pattern, model],
         config=config,
     )
+
 
 def read_data(pattern: str, model: str, random_weights: bool):
     with open(f'memorization_data/output/spike_results/cooccurrences/{pattern}.json', 'r') as f:
