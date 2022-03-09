@@ -135,6 +135,9 @@ def main():
     wandb.run.summary['n. patterns'] = len(final_df)
     df = pd.concat(final_df)
 
+    # In the case of the Roberta models is used, removing the spare space
+    df['prediction'] = df.apply(lambda x: x['prediction'].strip(), axis=1)
+
     if 'google' in args.model:
         df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
     df['pred_memorized'] = df['object'] == df['prediction']
