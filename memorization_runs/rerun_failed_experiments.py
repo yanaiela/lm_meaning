@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     api = wandb.Api()
 
-    start_time = datetime.strptime("2022-03-10T00:00:00", '%Y-%m-%dT%H:%M:%S')
+    start_time = datetime.strptime("2022-03-08T23:00:00", '%Y-%m-%dT%H:%M:%S')
 
     runs = api.runs("consistency/memorization")
     error_runs = []
@@ -52,10 +52,10 @@ if __name__ == '__main__':
     for run in runs:
         date_time_obj = datetime.strptime(run.created_at, '%Y-%m-%dT%H:%M:%S')
         if date_time_obj > start_time and run.state == 'failed':
-            meta = json.load(run.file("wandb-metadata.json").download())
+            meta = json.load(run.file("wandb-metadata.json").download(replace=True))
             program = ["/home/nlp/lazary/anaconda3/envs/memorization/bin/python"] + [meta["program"]] + meta["args"]
+            #print(program)
             error_runs.append(program)
 
-    cartesian_product = []
 
-    parallelize(nodes, cartesian_product, on_gpu=True, dry_run=args.dry_run)
+    parallelize(nodes, error_runs, on_gpu=True, dry_run=args.dry_run)

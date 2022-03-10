@@ -32,24 +32,27 @@ def parallelize(nodes_list, all_runs_args, on_gpu=False, dry_run=False):
     # └──────────────┘
 
     for sub_exp_idx, combination in enumerate(all_runs_args):
-        args_str = f"{ts}"
+        #args_str = f"{ts} memorization_runs/run_script.sh"
+        args_str = f"{ts}  sh  /home/nlp/lazary/workspace/thesis/lm_meaning/memorization_runs/run_script.sh  "
+        #args_str = ""
 
         for item in combination:
             args_str += f" {item}"
 
         if on_gpu:
             gpu_id = sub_exp_idx % 4
-            args_str += f" cuda:0"
 
             node_id = sub_exp_idx // 4 % len(nodes_list)
             env['CUDA_VISIBLE_DEVICES'] = f"{gpu_id}"
             env['TS_SOCKET'] = f"/tmp/yanai_gpu_{gpu_id}"
-            print(args_str.split(" "), node_id, gpu_id)
+            print(args_str, node_id, gpu_id)
         else:
             node_id = sub_exp_idx % len(nodes_list)
-            print(args_str.split(" "), node_id)
+            print(args_str, node_id)
 
         if not dry_run:
-            connections[node_id].run(args_str.split(" "), update_env=env)
+            connections[node_id].run(args_str.split("  "), update_env=env)
+            print(args_str.split("  "))
+            # print(f"{ts} /home/nlp/lazary/workspace/thesis/lm_meaning/memorization_runs/run_script.sh \"{args_str}\"")
 
     print(f"==> running {len(all_runs_args)} experiments")

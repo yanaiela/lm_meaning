@@ -14,5 +14,6 @@ out=$4
         --out $out \
         --gpu 0 \
         --wandb \
-        --use_targets
+        --use_targets \
+        --random_weights
 

@@ -27,6 +27,8 @@ nodes = [
     'nlp13',
     'nlp14',
     'nlp15',
+    'nlp16',
+    'nlp17',
 ]
 
 # assumes automatic connection w/o password
@@ -37,4 +39,4 @@ dargs = {}
 for connection in tqdm(connections):
 
     connection.run(f"{ts} -C".split(), update_env=env)
-    connection.run(f"{ts} -S 10".split(), update_env=env)
+    connection.run(f"{ts} -S 4".split(), update_env=env)

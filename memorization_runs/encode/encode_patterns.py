@@ -7,7 +7,7 @@ from memorization_runs.utils import get_lama_patterns
 # │ connect to all nodes │
 # └──────────────────────┘
 nodes = [
-    'nlp15',
+    #'nlp15',
     # 'nlp01',
     #'nlp02',
     # 'nlp03',
@@ -15,7 +15,7 @@ nodes = [
     'nlp05',
     #'nlp06',
     'nlp07',
-    #'nlp08',
+    'nlp08',
     'nlp09',
     'nlp10',
     #'nlp11',
@@ -23,6 +23,7 @@ nodes = [
     #'nlp13',
     'nlp14',
     'nlp16',
+    'nlp17',
 ]
 
 
@@ -32,15 +33,7 @@ nodes = [
 encoders = [
             'bert-base-cased',
             'bert-large-cased',
-            'nyu-mll/roberta-base-1B-1',
-            'nyu-mll/roberta-base-100M-1',
-            'nyu-mll/roberta-base-10M-1',
-            'nyu-mll/roberta-med-small-1M-1',
-            'google/multiberts-seed_0',
-            'google/multiberts-seed_1',
-            'google/multiberts-seed_2',
-            'google/multiberts-seed_3',
-            'google/multiberts-seed_4',
+            #'google/multiberts-seed_',
             ]
 
 
@@ -61,6 +54,7 @@ if __name__ == '__main__':
     relations = get_lama_patterns(args.patterns)
 
     cartesian_product = []
+    #for i in range(25):
     for encoder in encoders:
         for relation_id in relations:
             cartesian_product.append([f'memorization_data/trex_lms_vocab/{relation_id}.jsonl',
