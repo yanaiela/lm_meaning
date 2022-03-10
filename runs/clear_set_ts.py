@@ -37,4 +37,4 @@ dargs = {}
 for connection in tqdm(connections):
 
     connection.run(f"{ts} -C".split(), update_env=env)
-    connection.run(f"{ts} -S 10".split(), update_env=env)
+    connection.run(f"{ts} -S 4".split(), update_env=env)
