@@ -13,42 +13,17 @@ def log_wandb(args):
     pattern = args.data_file.split('/')[-1].split('.')[0]
     lm = args.lm
 
-    if args.baseline:
-        lm = 'majority-baseline'
-
     config = dict(
         pattern=pattern,
-        lm=lm
+        lm=lm,
+        random_weights=args.random_weights
     )
-
-    if 'consistency' in lm:
-        params = lm.split('consistency_')[-1].split('/')[0]
-        model_args = params.split('_')
-
-        config['loss_strategy'] = model_args[0]
-        config['n_tuples'] = model_args[1]
-        config['n_graphs'] = model_args[2]
-        config['rels_train'] = model_args[3]
-        config['origin_lm'] = model_args[4]
-        config['loss'] = model_args[5]
-        config['vocab'] = model_args[6]
-        config['wiki'] = model_args[7]
-        config['lama_train'] = model_args[8]
-        config['wiki_consistent_train_ratio'] = model_args[9]
-        config['consistent_loss_ratio'] = model_args[10]
-        config['additional_notes'] = model_args[11]
-
-        checkpoint = lm.split('checkpoint-')[-1].split('/')[0]
-        config['checkpoint'] = checkpoint
-
-        model_name = lm.split('/checkpoint-')[0]
-        config['model_name'] = model_name
 
     wandb.init(
         entity='consistency',
-        name=f'{pattern}_consistency_probe_{lm}',
+        name=f'encode_{pattern}_{lm}',
         project="memorization",
-        tags=[pattern, 'probe'],
+        tags=[pattern, 'encode'],
         config=config,
     )
 
@@ -89,8 +64,8 @@ def main():
     parse.add_argument("--use_targets", action='store_true', default=False, help="use the set of possible objects"
                                                                                  "from the data as the possible"
                                                                                  "candidates")
-    parse.add_argument("--random_weights", action='store_true', default=False, help="randomly initialize the models'"
-                                                                                    "weights")
+    parse.add_argument('--random_weights', default=False, type=lambda x: (str(x).lower() == 'true'),
+                       help="randomly initialize the models' weights")
 
     args = parse.parse_args()
 

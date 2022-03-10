@@ -13,3 +13,9 @@ def get_lama_patterns(in_file):
                  ['P527', 'P31']]
 
     return relations
+
+
+def get_servers():
+    with open('servers_usage.txt', 'r') as f:
+        nodes = [x.strip() for x in f.readlines()]
+        return nodes

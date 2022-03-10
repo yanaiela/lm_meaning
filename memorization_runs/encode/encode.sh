@@ -5,6 +5,7 @@ data_file=$1
 lm=$2
 patterns=$3
 out=$4
+random_weights=$5
 
 
 /home/nlp/lazary/anaconda3/envs/memorization/bin/python memorization/encode/encode_consistency_probe.py \
@@ -15,5 +16,5 @@ out=$4
         --gpu 0 \
         --wandb \
         --use_targets \
-        --random_weights
+        --random_weights $random_weights
 

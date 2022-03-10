@@ -83,7 +83,8 @@ def main():
                        default="all")
     parse.add_argument("-m", "--model", type=str, help="model",
                        default="bert-large-cased")
-    parse.add_argument("--random_weights", action='store_true', default=False, help="use random weights model")
+    parse.add_argument('--random_weights', default=False, type=lambda x: (str(x).lower() == 'true'),
+                       help="randomly initialize the models' weights")
 
     args = parse.parse_args()
     log_wandb(args, 'memorization')

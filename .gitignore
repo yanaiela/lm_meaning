@@ -320,3 +320,5 @@ data/*
 .idea/
 wandb/
 subscription.json
+
+memorization_runs/servers_usage.txt
