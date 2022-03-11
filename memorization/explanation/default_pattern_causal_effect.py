@@ -142,16 +142,17 @@ def main():
 
         df = parse_data_most_common(trex, filt_data, raw_patterns, memorization, spike2pat)
         para_pred_df = patterns_parse(paraphrase_preds)
+        #import pdb; pdb.set_trace()
 
         # Merging the paraphrase predictions with the KB entities, while keeping the KB values the same, and duplicating
         #  each one of these rows based on the amount of paraphrases for this relation
-        df_merge = df.merge(para_pred_df, how='left', on=['subject', 'object', 'pattern'])
+        df_merge = df.merge(para_pred_df, how='left', on=['subject', 'pattern'])
+        df_merge = df_merge.drop('object_y', axis=1).drop_duplicates().rename(columns={'object_x': 'object'})
 
         final_df.append(df_merge)
 
     wandb.run.summary['n. patterns'] = len(final_df)
     df = pd.concat(final_df)
-
     # In the case of the Roberta models is used, removing the spare space
     df['prediction'] = df.apply(lambda x: x['prediction'].strip(), axis=1)
 
