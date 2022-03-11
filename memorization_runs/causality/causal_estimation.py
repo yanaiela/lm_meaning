@@ -47,17 +47,31 @@ if __name__ == '__main__':
     parse = argparse.ArgumentParser("")
     parse.add_argument("-dry_run", "--dry_run", type=bool, help="flag to only print commands and not execute them",
                        default=False)
+    parse.add_argument("-patterns", "--patterns", type=str, help="patterns file, in case using all patterns, use the"
+                                                                 "'all' argument",
+                       default="data/trex/data/relations.jsonl")
     args = parse.parse_args()
 
-
     cartesian_product = []
-    for encoder in encoders:
-        if "*" in encoder:
-            for i in range(25):
-                encoder_inner = encoder.replace('*', str(i))
-                cartesian_product.append([encoder_inner])
-        else:
-            cartesian_product.append([encoder])
+
+    if args.patterns == 'all':
+        for encoder in encoders:
+            if "*" in encoder:
+                for i in range(25):
+                    encoder_inner = encoder.replace('*', str(i))
+                    cartesian_product.append([encoder_inner])
+            else:
+                cartesian_product.append([encoder, 'all'])
+    else:
+        relations = get_lama_patterns(args.patterns)
+        for rel in relations:
+            for encoder in encoders:
+                if "*" in encoder:
+                    for i in range(25):
+                        encoder_inner = encoder.replace('*', str(i))
+                        cartesian_product.append([encoder_inner])
+                else:
+                    cartesian_product.append([encoder, rel])
 
     # Subject-object cooccurrences
     parallelize(nodes, cartesian_product,
