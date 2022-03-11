@@ -16,6 +16,6 @@ def get_lama_patterns(in_file):
 
 
 def get_servers():
-    with open('servers_usage.txt', 'r') as f:
+    with open('memorization_runs/servers_usage.txt', 'r') as f:
         nodes = [x.strip() for x in f.readlines()]
         return nodes
