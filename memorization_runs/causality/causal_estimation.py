@@ -59,7 +59,7 @@ if __name__ == '__main__':
             if "*" in encoder:
                 for i in range(25):
                     encoder_inner = encoder.replace('*', str(i))
-                    cartesian_product.append([encoder_inner])
+                    cartesian_product.append([encoder_inner, 'all'])
             else:
                 cartesian_product.append([encoder, 'all'])
     else:
@@ -69,7 +69,7 @@ if __name__ == '__main__':
                 if "*" in encoder:
                     for i in range(25):
                         encoder_inner = encoder.replace('*', str(i))
-                        cartesian_product.append([encoder_inner])
+                        cartesian_product.append([encoder_inner, rel])
                 else:
                     cartesian_product.append([encoder, rel])
 
