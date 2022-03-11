@@ -1,33 +1,12 @@
 import argparse
 from memorization_runs.ts_rerun import parallelize
+from memorization_runs.utils import get_servers
 import wandb
 from datetime import datetime
 import json
 
 
-# ┌──────────────────────┐
-# │ connect to all nodes │
-# └──────────────────────┘
-nodes = [
-
-    # 'nlp01',
-    # 'nlp02',
-    # 'nlp03',
-    # 'nlp04',
-    # 'nlp05',
-    # 'nlp06',
-    'nlp07',
-    'nlp08',
-    'nlp09',
-    'nlp10',
-    # 'nlp11',
-    'nlp12',
-    # 'nlp13',
-    'nlp14',
-    'nlp15',
-    'nlp16',
-    'nlp17',
-]
+nodes = get_servers()
 
 
 # ┌──────────────────────┐
@@ -40,6 +19,7 @@ if __name__ == '__main__':
     parse = argparse.ArgumentParser("")
     parse.add_argument("-dry_run", "--dry_run", type=bool, help="flag to only print commands and not execute them",
                        default=False)
+    parse.add_argument("--no_gpu", action='store_false')
     args = parse.parse_args()
 
     api = wandb.Api()
@@ -54,8 +34,6 @@ if __name__ == '__main__':
         if date_time_obj > start_time and run.state == 'failed':
             meta = json.load(run.file("wandb-metadata.json").download(replace=True))
             program = ["/home/nlp/lazary/anaconda3/envs/memorization/bin/python"] + [meta["program"]] + meta["args"]
-            #print(program)
             error_runs.append(program)
 
-
-    parallelize(nodes, error_runs, on_gpu=True, dry_run=args.dry_run)
+    parallelize(nodes, error_runs, on_gpu=args.no_gpu, dry_run=args.dry_run)
