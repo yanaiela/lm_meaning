@@ -10,7 +10,9 @@ def get_lama_patterns(in_file):
     relations = [x for x in relations if x not in ['P166', 'P69', 'P54', 'P1923', 'P102'] +
                  # Relations that are hard to create patterns for
                  # or their subjects are mixed
-                 ['P527', 'P31']]
+                 ['P527', 'P31'] +
+                 # Bad relations
+                 ['P1001', 'P39', 'P127', 'P138']]
 
     return relations
 
