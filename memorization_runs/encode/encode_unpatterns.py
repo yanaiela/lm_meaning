@@ -34,6 +34,11 @@ if __name__ == '__main__':
 
     relations = get_lama_patterns(args.patterns)
 
+    if args.random_weights == 'false':
+        out_sub_dir = 'bert_lama_unpatterns'
+    else:
+        out_sub_dir = 'randw_bert_lama_unpatterns'
+
     cartesian_product = []
     for encoder_inner in encoders:
         if '*' in encoder_inner:
@@ -43,7 +48,7 @@ if __name__ == '__main__':
                     cartesian_product.append([f'memorization_data/trex_lms_vocab/{relation_id}.jsonl',
                                               encoder,
                                               f'data/unpattern_data/{relation_id}.jsonl',
-                                              f'memorization_data/output/predictions_lm/bert_lama_unpatterns/{relation_id}_{encoder}.json',
+                                              f'memorization_data/output/predictions_lm/{out_sub_dir}/{relation_id}_{encoder}.json',
                                               args.random_weights
                                               ])
         else:
@@ -52,7 +57,7 @@ if __name__ == '__main__':
                 cartesian_product.append([f'memorization_data/trex_lms_vocab/{relation_id}.jsonl',
                                           encoder,
                                           f'data/unpattern_data/{relation_id}.jsonl',
-                                          f'memorization_data/output/predictions_lm/bert_lama_unpatterns/{relation_id}_{encoder}.json',
+                                          f'memorization_data/output/predictions_lm/{out_sub_dir}/{relation_id}_{encoder}.json',
                                           args.random_weights
                                           ])
 

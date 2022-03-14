@@ -33,6 +33,11 @@ if __name__ == '__main__':
 
     relations = get_lama_patterns(args.patterns)
 
+    if args.random_weights == 'false':
+        out_sub_dir = 'bert_lama'
+    else:
+        out_sub_dir = 'randw_bert_lama'
+
     cartesian_product = []
     for encoder_inner in encoders:
         # in the case of the google multiberts, running with all of them
@@ -43,7 +48,7 @@ if __name__ == '__main__':
                     cartesian_product.append([f'memorization_data/trex_lms_vocab/{relation_id}.jsonl',
                                               encoder,
                                               f'memorization_data/pararel/{relation_id}.jsonl',
-                                              f'memorization_data/output/predictions_lm/bert_lama/{relation_id}_{encoder}.json',
+                                              f'memorization_data/output/predictions_lm/{out_sub_dir}/{relation_id}_{encoder}.json',
                                               args.random_weights
                                               ])
         # otherwise, in the other models (berts)
@@ -53,7 +58,7 @@ if __name__ == '__main__':
                 cartesian_product.append([f'memorization_data/trex_lms_vocab/{relation_id}.jsonl',
                                           encoder,
                                           f'memorization_data/pararel/{relation_id}.jsonl',
-                                          f'memorization_data/output/predictions_lm/bert_lama/{relation_id}_{encoder}.json',
+                                          f'memorization_data/output/predictions_lm/{out_sub_dir}/{relation_id}_{encoder}.json',
                                           args.random_weights
                                           ])
 

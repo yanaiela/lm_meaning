@@ -13,6 +13,8 @@ def log_wandb(args):
     pattern = args.data_file.split('/')[-1].split('.')[0]
     lm = args.lm
 
+    rand = str(args.random_weights)
+
     config = dict(
         pattern=pattern,
         lm=lm,
@@ -21,7 +23,7 @@ def log_wandb(args):
 
     wandb.init(
         entity='consistency',
-        name=f'encode_{pattern}_{lm}',
+        name=f'encode_{pattern}_{lm}_rand:{rand}',
         project="memorization",
         tags=[pattern, 'encode'],
         config=config,
