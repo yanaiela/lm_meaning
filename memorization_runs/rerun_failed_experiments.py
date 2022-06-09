@@ -4,6 +4,7 @@ from memorization_runs.utils import get_servers
 import wandb
 from datetime import datetime
 import json
+from tqdm import tqdm
 
 
 nodes = get_servers()
@@ -24,12 +25,12 @@ if __name__ == '__main__':
 
     api = wandb.Api()
 
-    start_time = datetime.strptime("2022-03-08T23:00:00", '%Y-%m-%dT%H:%M:%S')
+    start_time = datetime.strptime("2022-03-14T00:00:00", '%Y-%m-%dT%H:%M:%S')
 
-    runs = api.runs("consistency/memorization")
+    runs = api.runs("consistency/memorization", filters={'state': 'failed'})
     error_runs = []
 
-    for run in runs:
+    for run in tqdm(runs):
         date_time_obj = datetime.strptime(run.created_at, '%Y-%m-%dT%H:%M:%S')
         if date_time_obj > start_time and run.state == 'failed':
             meta = json.load(run.file("wandb-metadata.json").download(replace=True))
