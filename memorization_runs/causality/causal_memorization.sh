@@ -3,7 +3,7 @@ export PYTHONPATH=/home/nlp/lazary/workspace/thesis/lm_meaning
 
 model=$1
 patterns=$2
-random_weights=$5
+random_weights=$3
 
 
 /home/nlp/lazary/anaconda3/envs/memorization/bin/python memorization/explanation/memorization_causal_effect.py \
