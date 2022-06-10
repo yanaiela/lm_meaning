@@ -12,6 +12,10 @@ encoders = [
             'bert-base-cased',
             'bert-large-cased',
             'google/multiberts-seed_*',
+            'albert-base-v1',
+            'albert-large-v1',
+            'albert-xlarge-v1',
+            'albert-xxlarge-v1',
             ]
 
 

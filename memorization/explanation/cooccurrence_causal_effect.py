@@ -12,6 +12,7 @@ from collections import defaultdict
 from glob import glob
 from tqdm.auto import tqdm
 from collections import OrderedDict
+from transformers import AutoTokenizer
 from memorization.explanation.causal_effect_utils import read_data, count_bins, log_wandb
 import wandb
 
@@ -176,6 +177,10 @@ def main():
     # In case using the google model (which is uncased), lower casing the objects
     if 'google' in args.model:
         df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
+    elif 'albert' in args.model:
+        tok = AutoTokenizer.from_pretrained(args.model)
+        df['object'] = df.apply(lambda x: tok.tokenize(x['object'])[0], axis=1)
+
     # Are predictions correct
     df['pred_cooc'] = df['object'] == df['prediction']
     df['bin_cooccurrence'] = df['count'] == df['prediction']

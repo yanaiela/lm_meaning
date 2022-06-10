@@ -8,6 +8,7 @@ from collections import defaultdict
 import itertools
 from glob import glob
 from tqdm.auto import tqdm
+from transformers import AutoTokenizer
 from memorization.explanation.causal_effect_utils import read_data, count_bins, log_wandb
 import wandb
 
@@ -141,6 +142,9 @@ def main():
 
     if 'google' in args.model:
         df['object'] = df.apply(lambda x: x['object'].lower(), axis=1)
+    elif 'albert' in args.model:
+        tok = AutoTokenizer.from_pretrained(args.model)
+        df['object'] = df.apply(lambda x: tok.tokenize(x['object'])[0], axis=1)
     df['pred_memorized'] = df['object'] == df['prediction']
 
     bin_counts = df['bin_count'].unique()

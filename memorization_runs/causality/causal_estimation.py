@@ -1,31 +1,12 @@
 import argparse
 from memorization_runs.ts_run import parallelize
-from memorization_runs.utils import get_lama_patterns
+from memorization_runs.utils import get_lama_patterns, get_servers
 
 
 # ┌──────────────────────┐
 # │ connect to all nodes │
 # └──────────────────────┘
-nodes = [
-    'nlp01',
-    'nlp02',
-    'nlp03',
-    'nlp04',
-    'nlp05',
-    'nlp06',
-    'nlp07',
-    'nlp08',
-    'nlp09',
-    'nlp10',
-    'nlp11',
-    'nlp12',
-    'nlp13',
-    'nlp14',
-    'nlp15',
-    'nlp16',
-    'nlp17',
-]
-
+nodes = get_servers()
 
 # ┌──────────┐
 # │ encoders │
@@ -34,6 +15,10 @@ encoders = [
             'bert-base-cased',
             'bert-large-cased',
             'google_multiberts-seed_*',
+            'albert-base-v1',
+            'albert-large-v1',
+            'albert-xlarge-v1',
+            'albert-xxlarge-v1'
             ]
 
 
