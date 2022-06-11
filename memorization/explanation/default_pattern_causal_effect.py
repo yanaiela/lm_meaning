@@ -154,6 +154,7 @@ def main():
 
         # In case of the use of a "perfect" model, that always predict the correct answer.
         if args.perfect_model:
+            tok = AutoTokenizer.from_pretrained(args.model)
             df_merge['prediction'] = df_merge['object']
             df_merge['prediction'] = df_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
 

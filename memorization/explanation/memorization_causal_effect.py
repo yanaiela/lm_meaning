@@ -136,6 +136,7 @@ def main():
 
         # In case of the use of a "perfect" model, that always predict the correct answer.
         if args.perfect_model:
+            tok = AutoTokenizer.from_pretrained(args.model)
             sampled['prediction'] = sampled['object']
             sampled['prediction'] = sampled.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
 

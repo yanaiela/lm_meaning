@@ -165,6 +165,7 @@ def main():
             unpattern_merge['prediction'] = anti_list
 
             # tokenizing the predictions
+            tok = AutoTokenizer.from_pretrained(args.model)
             df_merge['prediction'] = df_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
             unpattern_merge['prediction'] = unpattern_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
 
