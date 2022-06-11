@@ -9,7 +9,8 @@ def log_wandb(args, hypothesis):
     config = dict(
         pattern=pattern,
         lm=model,
-        random_weights=args.random_weights
+        random_weights=args.random_weights,
+        perfect_model=args.perfect_model
     )
 
     wandb.init(
