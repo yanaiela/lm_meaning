@@ -37,6 +37,8 @@ if __name__ == '__main__':
                        default="data/trex/data/relations.jsonl")
     parse.add_argument("-random_weights", "--random_weights", type=str, help="use random weights",
                        default="false")
+    parse.add_argument("-perfect_model", "--random_weights", type=str, help="use random weights",
+                       default="false")
     args = parse.parse_args()
 
     cartesian_product = []
@@ -46,9 +48,9 @@ if __name__ == '__main__':
             if "*" in encoder:
                 for i in range(25):
                     encoder_inner = encoder.replace('*', str(i))
-                    cartesian_product.append([encoder_inner, 'all', args.random_weights])
+                    cartesian_product.append([encoder_inner, 'all', args.random_weights, args.perfect_model])
             else:
-                cartesian_product.append([encoder, 'all', args.random_weights])
+                cartesian_product.append([encoder, 'all', args.random_weights, args.perfect_model])
     else:
         relations = get_lama_patterns(args.patterns)
         for rel in relations:
@@ -56,9 +58,9 @@ if __name__ == '__main__':
                 if "*" in encoder:
                     for i in range(25):
                         encoder_inner = encoder.replace('*', str(i))
-                        cartesian_product.append([encoder_inner, rel, args.random_weights])
+                        cartesian_product.append([encoder_inner, rel, args.random_weights, args.perfect_model])
                 else:
-                    cartesian_product.append([encoder, rel, args.random_weights])
+                    cartesian_product.append([encoder, rel, args.random_weights, args.perfect_model])
 
     # Subject-object cooccurrences
     parallelize(nodes, cartesian_product,
