@@ -37,7 +37,7 @@ if __name__ == '__main__':
                        default="data/trex/data/relations.jsonl")
     parse.add_argument("-random_weights", "--random_weights", type=str, help="use random weights",
                        default="false")
-    parse.add_argument("-perfect_model", "--random_weights", type=str, help="use random weights",
+    parse.add_argument("-perfect_model", "--perfect_model", type=str, help="use random weights",
                        default="false")
     args = parse.parse_args()
 
