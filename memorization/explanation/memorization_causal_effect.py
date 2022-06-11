@@ -86,6 +86,8 @@ def main():
                        default="bert-large-cased")
     parse.add_argument('--random_weights', default=False, type=lambda x: (str(x).lower() == 'true'),
                        help="randomly initialize the models' weights")
+    parse.add_argument('--perfect_model', default=False, type=lambda x: (str(x).lower() == 'true'),
+                       help="Use a 'perfect' model, that always predict the correct answer")
 
     args = parse.parse_args()
     log_wandb(args, 'memorization')
@@ -131,6 +133,11 @@ def main():
                 continue
 
         sampled = pd.DataFrame(filtered_rows, columns=df.columns)
+
+        # In case of the use of a "perfect" model, that always predict the correct answer.
+        if args.perfect_model:
+            sampled['prediction'] = sampled['object']
+            sampled['prediction'] = sampled.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
 
         final_df.append(sampled)
 

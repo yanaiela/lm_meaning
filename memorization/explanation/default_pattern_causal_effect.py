@@ -116,6 +116,8 @@ def main():
     parse.add_argument("-n", "--num")
     parse.add_argument('--random_weights', default=False, type=lambda x: (str(x).lower() == 'true'),
                        help="randomly initialize the models' weights")
+    parse.add_argument('--perfect_model', default=False, type=lambda x: (str(x).lower() == 'true'),
+                       help="Use a 'perfect' model, that always predict the correct answer")
 
     args = parse.parse_args()
 
@@ -149,6 +151,11 @@ def main():
         #  each one of these rows based on the amount of paraphrases for this relation
         df_merge = df.merge(para_pred_df, how='left', on=['subject', 'pattern'])
         df_merge = df_merge.drop('object_y', axis=1).drop_duplicates().rename(columns={'object_x': 'object'})
+
+        # In case of the use of a "perfect" model, that always predict the correct answer.
+        if args.perfect_model:
+            df_merge['prediction'] = df_merge['object']
+            df_merge['prediction'] = df_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
 
         final_df.append(df_merge)
 

@@ -125,6 +125,8 @@ def main():
                        default="bert-large-cased")
     parse.add_argument('--random_weights', default=False, type=lambda x: (str(x).lower() == 'true'),
                        help="randomly initialize the models' weights")
+    parse.add_argument('--perfect_model', default=False, type=lambda x: (str(x).lower() == 'true'),
+                       help="Use a 'perfect' model, that always predict the correct answer")
 
     args = parse.parse_args()
     log_wandb(args, 'subject-object-cooccurrence')
@@ -149,6 +151,23 @@ def main():
         unpattern_merge = df.merge(unpatterns_df, how='left', on=['subject'])
         unpattern_merge = unpattern_merge.drop(['object_y', 'in_kb_y', 'relation_y'], axis=1).drop_duplicates().rename(
             columns={'object_x': 'object', 'in_kb_x': 'in_kb', 'relation_x': 'relation'})
+
+        # In case of the use of a "perfect" model, that always predict the correct answer.
+        if args.perfect_model:
+            df_merge['prediction'] = df_merge['object']
+            anti_dic = {}
+            objs = df['object'].unique().tolist()
+            for o in objs:
+                anti_dic[o] = [x for x in objs if x != o][0]
+            anti_list = []
+            for o in unpattern_merge['object'].tolist():
+                anti_list.append(anti_dic[o])
+            unpattern_merge['prediction'] = anti_list
+
+            # tokenizing the predictions
+            df_merge['prediction'] = df_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
+            unpattern_merge['prediction'] = unpattern_merge.apply(lambda x: tok.tokenize(x['prediction'])[0], axis=1)
+
         df = pd.concat([df_merge, unpattern_merge])
 
         final_df.append(df)
