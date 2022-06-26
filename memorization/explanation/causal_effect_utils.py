@@ -37,6 +37,9 @@ def read_data(pattern: str, model: str, random_weights: bool):
         pred_dir_pat = 'randw_bert_lama'
     else:
         pred_dir_pat = 'bert_lama'
+
+    if 'models' in model:
+        model = model.replace('/', '_')
     with open(f'memorization_data/output/predictions_lm/{pred_dir_pat}/{pattern}_{model}.json', 'r') as f:
         paraphrase_preds = json.load(f)
 
